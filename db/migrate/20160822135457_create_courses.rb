@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration[5.0]
       t.integer :date
       t.text :description
       t.references :category, foreign_key: true
-      t.boolean :visible
+      t.boolean :visible, default: true
 
       t.timestamps
     end

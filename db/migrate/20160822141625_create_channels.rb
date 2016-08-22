@@ -6,7 +6,7 @@ class CreateChannels < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.string :email
-      t.boolean :visible
+      t.boolean :visible, default: false
 
       t.timestamps
     end

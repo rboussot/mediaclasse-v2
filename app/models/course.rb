@@ -8,5 +8,4 @@ class Course < ApplicationRecord
   has_many :users_courses
   has_many :users, through: :users_courses
   validates :title, presence: true
-  validates :category, presence: true
 end

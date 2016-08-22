@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20160822141625) do
     t.string   "name"
     t.text     "description"
     t.string   "email"
-    t.boolean  "visible"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "visible",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["category_id"], name: "index_channels_on_category_id", using: :btree
     t.index ["user_id"], name: "index_channels_on_user_id", using: :btree
   end
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20160822141625) do
     t.integer  "date"
     t.text     "description"
     t.integer  "category_id"
-    t.boolean  "visible"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "visible",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
   end
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20160822141625) do
     t.string   "title"
     t.string   "video"
     t.text     "description"
-    t.boolean  "payment"
-    t.boolean  "visible"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "payment",     default: true
+    t.boolean  "visible",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["course_id"], name: "index_lectures_on_course_id", using: :btree
   end
 
@@ -103,25 +103,25 @@ ActiveRecord::Schema.define(version: 20160822141625) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "level_id"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "adress"
     t.string   "phone"
     t.date     "birth"
-    t.boolean  "visible"
+    t.boolean  "visible",                default: true
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["level_id"], name: "index_users_on_level_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
