@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822140023) do
+ActiveRecord::Schema.define(version: 20160822140502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20160822140023) do
     t.index ["theme_id"], name: "index_courses_themes_on_theme_id", using: :btree
   end
 
+  create_table "lectures", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "title"
+    t.string   "video"
+    t.text     "description"
+    t.boolean  "payment"
+    t.boolean  "visible"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["course_id"], name: "index_lectures_on_course_id", using: :btree
+  end
+
   create_table "themes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -82,4 +94,5 @@ ActiveRecord::Schema.define(version: 20160822140023) do
   add_foreign_key "courses", "categories"
   add_foreign_key "courses_themes", "courses"
   add_foreign_key "courses_themes", "themes"
+  add_foreign_key "lectures", "courses"
 end
