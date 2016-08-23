@@ -1,6 +1,6 @@
 /* Main class */
-.navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+.navbar-media {
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
   display: flex;
@@ -11,7 +11,7 @@
 }
 
 /* Optional class to fix the navbar on top */
-.navbar-wagon-fixed {
+.navbar-media-fixed {
   position: fixed;
   left: 0px;
   top: 0px;
@@ -20,36 +20,56 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
+.navbar-media-brand img {
   width: 50px;
 }
 
 /* Navbar right section (with form, links, button) */
-.navbar-wagon-right {
+.navbar-media-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Navbar item */
-.navbar-wagon-item {
+.navbar-media-item {
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
 }
 
 /* Navbar standard link */
-.navbar-wagon-link {
+.navbar-media-link {
   color: #616668;
-  font-size: 14px;
+  font-size: 18px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+
+#oeuvres.navbar-media-link:hover {
+
   text-decoration: none;
+  border-bottom:5px solid $litterature;
+}
+
+#methodes.navbar-media-link:hover {
+
+  text-decoration: none;
+  border-bottom:5px solid $technique;
+}
+
+#communaute.navbar-media-link:hover {
+
+  text-decoration: none;
+  border-bottom:5px solid $community;
+}
+
+#mescours.navbar-media-link:hover {
+
+  text-decoration: none;
+  border-bottom:5px solid $profile;
 }
 
 /* Navbar right button */
-.navbar-wagon-button {
+.navbar-media-button {
   margin-left: 10px;
   padding: 0 20px;
   border-radius: 20em;
@@ -59,21 +79,21 @@
   font-size: 14px;
   border: 2px solid #D23333;
 }
-.navbar-wagon-button:hover {
+.navbar-media-button:hover {
   color: white;
   background: #D23333;
   border-color: #ac2626;
 }
 
 /* Navbar search form */
-.navbar-wagon-search {
+.navbar-media-search {
   flex: 0 1 300px;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
   position: relative;
 }
-.navbar-wagon-search-btn {
+.navbar-media-search-btn {
   line-height: 40px;
   color: #E6E6E6;
   border: none;
@@ -83,7 +103,7 @@
   top: -2px;
   z-index: 1;
 }
-.navbar-wagon-search-input {
+.navbar-media-search-input {
   flex: 0 1 300px;
   transition: all 0.15s ease;
   line-height: 40px;
@@ -95,17 +115,17 @@
   font-size: 14px;
   outline: none;
 }
-.navbar-wagon-search-input:focus  {
+.navbar-media-search-input:focus  {
   border: 1px solid #CCCCCC;
 }
 
 /* Navbar dropdown menu */
-.navbar-wagon-dropdown-menu {
+.navbar-media-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
-.navbar-wagon-dropdown-menu li > a {
+.navbar-media-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
   color: #999999 !important;
@@ -113,11 +133,11 @@
   line-height: 22px !important;
   padding: 10px 20px;
 }
-.navbar-wagon-dropdown-menu li > a:hover {
+.navbar-media-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
 }
-.navbar-wagon-dropdown-menu:before {
+.navbar-media-dropdown-menu:before {
   content: ' ';
   height: 10px;
   width: 10px;
