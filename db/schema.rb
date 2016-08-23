@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160822152729) do
     t.string   "name"
     t.text     "description"
     t.string   "email"
-    t.boolean  "visible",     default: false
+    t.boolean  "visible",     default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["category_id"], name: "index_channels_on_category_id", using: :btree
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160822152729) do
     t.integer  "date"
     t.text     "description"
     t.integer  "category_id"
-    t.boolean  "visible",     default: true
+    t.boolean  "visible",     default: true, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20160822152729) do
     t.string   "title"
     t.string   "video"
     t.text     "description"
-    t.boolean  "payment",     default: true
-    t.boolean  "visible",     default: true
+    t.boolean  "payment",     default: true, null: false
+    t.boolean  "visible",     default: true, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["course_id"], name: "index_lectures_on_course_id", using: :btree
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20160822152729) do
     t.string   "adress"
     t.string   "phone"
     t.date     "birth"
-    t.boolean  "visible",                default: true
+    t.boolean  "visible",                default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["level_id"], name: "index_users_on_level_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

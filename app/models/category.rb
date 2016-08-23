@@ -1,6 +1,5 @@
 class Category < ApplicationRecord
-
-  validates :name, presence:true
-  validates :name, uniqueness:true
-  validates :description, presence: true
+  has_many :courses
+  has_many :channels
+  validates :name, presence: true, uniqueness: :true
 end

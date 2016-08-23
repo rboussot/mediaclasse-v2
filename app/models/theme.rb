@@ -1,6 +1,5 @@
 class Theme < ApplicationRecord
-
-  validates :name, presence:true
-  validates :description, presence: true
-
+  has_many :courses_themes
+  has_many :courses, through: :courses_themes
+  validates :name, presence: true, uniqueness: :true
 end

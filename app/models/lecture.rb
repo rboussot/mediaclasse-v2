@@ -1,6 +1,7 @@
 class Lecture < ApplicationRecord
   belongs_to :course
-
-  validates :title, presence:true
-  validates :payment, presence:true
+  has_many :comments
+  has_many :users_lectures
+  has_many :lectures, through: :users_lectures
+  validates :title, presence: true
 end
