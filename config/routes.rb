@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :courses do
     collection do
       get 'litterature', to: 'courses#litterature'
-       get 'technique', to: 'courses#technique'
+      get 'technique', to: 'courses#technique'
     end
   end
 

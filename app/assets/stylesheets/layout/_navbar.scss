@@ -32,40 +32,31 @@
 }
 
 /* Navbar item */
-.navbar-media-item {
+.navbar-login {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 10px;
+}
+
+.navbar-login:hover {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 10px;
+  text-decoration: none;
+  background-color: $underline;
 }
 
 /* Navbar standard link */
-.navbar-media-link {
-  color: #616668;
+.navbar-link {
+  color: black;
   font-size: 18px;
+  text-transform: uppercase;
 }
 
-#oeuvres.navbar-media-link:hover, {
-
-  text-decoration: none;
-  border-bottom:5px solid $litterature;
-}
-
-#methodes.navbar-media-link:hover {
-
-  text-decoration: none;
-  border-bottom:5px solid $technique;
-}
-
-#communaute.navbar-media-link:hover {
-
-  text-decoration: none;
-  border-bottom:5px solid $community;
-}
-
-#mescours.navbar-media-link:hover {
-
-  text-decoration: none;
-  border-bottom:5px solid $profile;
+.navbar-link :hover{
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 /* Navbar right button */

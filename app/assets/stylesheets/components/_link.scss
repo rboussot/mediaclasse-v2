@@ -1,29 +1,30 @@
 .link-litterature:hover {
   text-decoration: none;
   border-bottom:5px solid $litterature;
-  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 .link-technique:hover {
   text-decoration: none;
   border-bottom:5px solid $technique;
-  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 .link-community:hover {
   text-decoration: none;
   border-bottom:5px solid $community;
-  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 .link-profile:hover {
   text-decoration: none;
   border-bottom:5px solid $profile;
-  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 a {
- color: black;
+  text-decoration : none;
+  color: black;
 }
 
 a:hover {
