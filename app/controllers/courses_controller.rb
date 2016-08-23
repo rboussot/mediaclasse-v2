@@ -1,10 +1,16 @@
 class CoursesController < ApplicationController
 
   def litterature
-    @litterature = Course.all
+    # attention a modifier l'id
+    @litterature = Course.where(category_id: 1)
+    # @litterature = Course.where(category: "litterature")
+    # Course n'a pas de category juste un category_id
+    # seules les categories ont un name
   end
 
-  # def technique
-  #   @technique = Course.all
-  # end
+  def technique
+    # attention a modifier l'id
+    @technique = Course.where(category_id: 4)
+  end
+
 end
