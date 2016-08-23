@@ -5,16 +5,16 @@
 .home-card-large {
   background-color: $greylighter;
   border-radius: 6px;
-  margin: 5px;
+  margin-bottom: 20px;
   padding: 15px;
   min-height: 100%;
 }
 
 .home-card-small {
   background-color: $greywhite;
-  border: 1px grey solid;
+  border: 1px solid $greylight;
   border-radius: 6px;
-  margin: 5px;
+  margin-bottom: 20px;
   padding: 15px;
 }
 

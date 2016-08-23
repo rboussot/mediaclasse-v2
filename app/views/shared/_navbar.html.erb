@@ -5,11 +5,10 @@
           <%= image_tag "logo.png" %>
         <% end %>
 
-        <%= link_to "Oeuvres et analyses", litterature_courses_path, class: "navbar-media-item navbar-media-link", id: "oeuvres" %>
-        <%= link_to "Méthodes & Techniques", technique_courses_path, class: "navbar-media-item navbar-media-link", id: "methodes" %>
-        <%= link_to "Communauté", root_path, class: "navbar-media-item navbar-media-link", id: "communaute" %>
-        <%= link_to "Mes cours", root_path, class: "navbar-media-item navbar-media-link", id: "mescours" %>
-
+        <%= link_to "Oeuvres & analyses", root_path, class: "navbar-link link-litterature" %>
+        <%= link_to "Méthodes & Techniques", root_path, class: "navbar-link link-technique" %>
+        <%= link_to "Communauté", root_path, class: "navbar-link link-community" %>
+        <%= link_to "Mes cours", root_path, class: "navbar-link link-profile" %>
 
         <!-- Right Navigation -->
         <div class="navbar-media-right hidden-xs hidden-sm">
@@ -17,14 +16,6 @@
 
           <!-- Different navigation if login or not -->
           <% if user_signed_in? %>
-
-            <!-- Notification -->
-            <%#= link_to "#", class: "navbar-media-item navbar-media-link" do %>
-      <!--         <div class="badge-container">
-                <i class="fa fa-envelope-o"></i>
-                <div class="badge badge-blue">3</div>
-              </div> -->
-            <%# end %>
 
             <!-- Profile picture and dropdown -->
             <div class="navbar-media-item">
@@ -51,12 +42,12 @@
             </div>
 
           <% else %>
-            <!-- Login text link -->
-            <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-media-item navbar-media-link" %>
+            <!-- Connection -->
+            <%= link_to "Connection", new_user_session_path, class: "navbar-media-item navbar-login" %>
           <% end %>
 
-          <!-- Button (call-to-action) -->
-          <%= link_to t(".top_call_to_action", default: "connexion"), "#", class: "navbar-media-item navbar-media-button btn" %>
+          <!-- Inscription -->
+          <%= link_to "Inscription", "#", class: "navbar-media-item navbar-login" %>
         </div>
 
         <!-- Dropdown list appearing on mobile only -->
