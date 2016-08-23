@@ -38,8 +38,9 @@ $technique: #FFAB40;
 $underline: #FFDD00;
 
 // Gray scale
-$gray-darker:  lighten(#000, 13.5%); // #222
-$gray-dark:    lighten(#000, 20%);   // #333
-$gray:         lighten(#000, 33.5%); // #555
-$gray-light:   lighten(#000, 46.7%); // #777
-$gray-lighter: lighten(#000, 93.5%); // #eee
+$greydarker:  #222222;
+$greydark:    #333333;
+$grey:        #555555;
+$greylight:   #999999;
+$greylighter: #eeeeee;
+$greywhite:  #FEFEFE;

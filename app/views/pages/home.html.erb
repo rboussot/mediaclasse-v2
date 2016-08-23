@@ -1,2 +1,52 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+      <div class= "home-banner text-center">
+        <h1>Mediaclasse</h1>
+        <p>Cours de français et de littérature en vidéo pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture !</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class= "row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-6 video-wrapper">
+      <div class= "home-card-large">
+        <h4>Ma video de présentation</h4>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/44Zt5tz1tYE" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class= "home-card-large">
+        <h4>Découvrez mon dernier cours !</h4>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/L1i5anUZeC0" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
+      <div class= "home-card-small">
+        <h4>Édito</h4>
+        <p>Le site fait peau neuve ! Depuis septembre 2016, Mediaclasse est devenue une véritable plate-forme e-learning. Vous pouvez désormais commenter les vidéos, rejoindre la communauté et participer à mon projet !</p>
+      </div>
+
+
+      <div class= "home-card-small">
+        <h4><%= link_to "Rejoignez la communauté !", root_path, {class: "link-community"} %></h4>
+        <p>Si vous êtes auteur d'un blog ou d'une chaîne youtube sur la littérature, n'hésitez pas à me faire découvrir votre travail. Je réserve un espace consacré aux personnes créatives qui font un travail de qualité, méritant une meilleure visibilité !</p>
+      </div>
+
+      <div class= "home-card-small">
+        <h4><%= link_to "Participez", root_path, {class: "link-profile"} %></h4>
+        <p>Je souhaite que mes vidéos restent accessibles au plus grand nombre, c'est pourquoi vous pouvez fixer vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
