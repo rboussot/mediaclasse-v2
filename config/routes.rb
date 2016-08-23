@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get 'courses/litterature'
 
-  get 'courses/technique'
+  resources :courses do
+    collection do
+      get 'litterature', to: 'courses#litterature'
+       get 'technique', to: 'courses#litterature'
+    end
+  end
+
+
+
 
   devise_for :users
   root to: 'pages#home'
