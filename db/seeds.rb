@@ -8,14 +8,14 @@
 
 
 CoursesTheme.destroy_all
+Comment.destroy_all
 Lecture.destroy_all
 Course.destroy_all
 Category.destroy_all
 Theme.destroy_all
 Author.destroy_all
-Level.destroy_all
-Comment.destroy_all
 User.destroy_all
+Level.destroy_all
 
 moliere = Author.new(lastname: "Poquelin", firstname: "Jean-Baptiste", pseudo: "Molière", birth: 1662, death: 1673)
 moliere.save
