@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20160824105927) do
     t.string   "name"
     t.text     "description"
     t.string   "email"
-    t.string   "link"
     t.boolean  "visible",     default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -78,9 +77,9 @@ ActiveRecord::Schema.define(version: 20160824105927) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
-    t.string   "tag"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "tag"
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
   end

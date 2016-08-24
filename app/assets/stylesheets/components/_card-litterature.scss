@@ -1,0 +1,43 @@
+.card-litterature {
+  margin: 10px;
+  background-color: white;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+  display: flex;
+}
+
+.card-litterature ul {
+  list-style-type: none;
+  margin-top: 20px;
+  // display: inline;
+}
+
+.litterature-image {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: 25%;
+  min-width: 300px;
+  height: 320px;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 35px;
+  float: left;
+  border-radius: 3px;
+  display: flex;
+  flex: space-around;
+}
+
+.card-litterature p {
+  max-width: 95%;
+}
+
+.card-litterature h1 {
+  max-width: 95%;
+  margin-bottom: 15px;
+}
+
+
+
+
+
