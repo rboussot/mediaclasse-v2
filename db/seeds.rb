@@ -23,6 +23,9 @@ puts "Author Voltaire created"
 flaubert = Author.new(lastname: "Arouet", firstname: "François-Marie", pseudo: "Voltaire", birth: 1694, death: 1778)
 flaubert.save
 puts "Author Flaubert created"
+romain = Author.new(lastname: "Boussot", firstname: "Romain", pseudo: "RB", birth: 1982, death: 2222)
+romain.save
+puts "Author Romain was created"
 
 litterature = Category.new(name: "Littérature", description:"Oeuvres célèbres")
 litterature.save
@@ -49,16 +52,16 @@ puts "Course candide created"
 bovary = Course.new(author:flaubert, category:litterature,title:"Madame Bovary", date: 1857, description:"Madame Bovary: Mœurs de province, couramment abrégé en Madame Bovary, est un roman de Gustave Flaubert paru en 1857 chez Michel Lévy frères, après une pré-parution en 1856 dans le journal La Revue de Paris.", tag:"litterature")
 bovary.save
 puts "Course bovary created"
-registres = Course.new(category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers", tag:"technique")
+registres = Course.new(author:nil, category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers", tag:"technique")
 registres.save
 puts "Course registres created"
-realisme = Course.new(category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.", tag:"technique")
+realisme = Course.new(author:nil, category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.", tag:"technique")
 realisme.save
 puts "Course realisme created"
-metaphore = Course.new(category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.", tag:"technique")
+metaphore = Course.new(author:nil, category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.", tag:"technique")
 metaphore.save
 puts "Course metaphore created"
-corpus = Course.new(category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.", tag:"technique")
+corpus = Course.new(author:nil, category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.", tag:"technique")
 corpus.save
 puts "Course corpus created"
 
