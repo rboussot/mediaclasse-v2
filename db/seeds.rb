@@ -42,6 +42,9 @@ puts "Category style created"
 methodo = Category.new(name: "Méthodologie", description:"Les cours qui concernent la méthodologie des épreuves courantes")
 methodo.save
 puts "Category methodologie created"
+littchannels = Category.new(name: "Chaînes littéraires", description:"Oeuvres célèbres")
+littchannels.save
+puts "Category chaînes littéraires created"
 
 tartuffe = Course.new(author:moliere, category:litterature,title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.", tag:"litterature")
 tartuffe.save
@@ -203,3 +206,9 @@ comment5 = Comment.new(lecture: corpus1, user:john, content:"Héhé")
 comment5.save
 puts "Comment 5 created"
 
+channel1 = Channel.new(user: john, category: littchannels, name: "La Boite à Lettres", description:"Il est temps que la Littérature se dépoussière! Cette émission essaye donc de proposer un contenu accessible et décomplexé. Des vidéos sur les grandes oeuvres, sur ce qu'on appelle les Classiques mais aussi sur les grands auteurs de l'histoire littéraire française (et parfois d'ailleurs). Ensuite, il ne tient qu'à vous de les lire :)", email:"boitelettre@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCu8EOaw52LhS3b8X-N0N_5A")
+channel1.save
+puts "Channel channel1 created"
+channel2 = Channel.new(user: paul, category: littchannels, name: "L'Homme Littéraire", description:"L'Homme Littéraire est une chaîne consacrée essentiellement à la littérature et au monde du livre en général. Mystères littéraires, écrivains curieux, amour des mots et de la langue, sensations poétiques et volonté de savoir, tout cela vous attend ici. ", email:"hommelitteraire@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCkv82c0G9Qn1vUZ2mBcOn4A")
+channel2.save
+puts "Channel channel2 created"

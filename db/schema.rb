@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160824084943) do
     t.string   "name"
     t.text     "description"
     t.string   "email"
+    t.string   "link"
     t.boolean  "visible",     default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
