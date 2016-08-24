@@ -1,3 +1,12 @@
 <h1>Méthodes et techniques</h1>
 <p>Find me in app/views/courses/technique.html.erb</p>
 
+    <% @litterature.each do |c| %>
+     <ul>
+        <li> <h1> <%= c.title %> </h1> </li>
+        <li> <h3> <%= c.description %> </h3> </li>
+      </ul>
+    <% end %>
+
+  </div>
+</div>
