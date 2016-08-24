@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :courses do
     collection do
       get 'litterature', to: 'courses#litterature'
