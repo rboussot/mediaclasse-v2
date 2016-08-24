@@ -11,6 +11,10 @@ gem 'redis'
 gem 'pundit'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+gem "cloudinary", "1.1.0"
+gem "attachinary", github: "assembler/attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 gem 'sass-rails'
 gem 'jquery-rails'

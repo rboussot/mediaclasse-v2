@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount Attachinary::Engine => "/attachinary"
+
   resources :courses do
     collection do
       get 'litterature', to: 'courses#litterature'
       get 'technique', to: 'courses#technique'
     end
   end
-
-
-
 
   devise_for :users
   root to: 'pages#home'
