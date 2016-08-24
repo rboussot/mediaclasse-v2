@@ -151,7 +151,7 @@ puts "Lecture candide1 created"
 candide2 = Lecture.new(course: candide, title:"Chapitre 1", video:"https://youtu.be/_h-fP2nt9fM", description:"Le commentaire du chapitre de Candide", payment: true)
 candide2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide2_itryke.jpg'
 candide2.save
-puts "Lecture candide2.created"
+puts "Lecture candide2 created"
 
 bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"https://youtu.be/_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovay, le roman de Flaubert", payment: false)
 bovary1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
@@ -255,10 +255,10 @@ comment5.save
 puts "Comment 5 created"
 
 channel1 = Channel.new(user: john, category: littchannels, name: "La Boite à Lettres", description:"Il est temps que la Littérature se dépoussière! Cette émission essaye donc de proposer un contenu accessible et décomplexé. Des vidéos sur les grandes oeuvres, sur ce qu'on appelle les Classiques mais aussi sur les grands auteurs de l'histoire littéraire française (et parfois d'ailleurs). Ensuite, il ne tient qu'à vous de les lire :)", email:"boitelettre@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCu8EOaw52LhS3b8X-N0N_5A")
-channel1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052629/v9oaddxgbnzwxynchiyx.png'
+channel1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472055786/hommelitt_ae5msw.jpg'
 channel1.save
 puts "Channel channel1 created"
 channel2 = Channel.new(user: paul, category: littchannels, name: "L'Homme Littéraire", description:"L'Homme Littéraire est une chaîne consacrée essentiellement à la littérature et au monde du livre en général. Mystères littéraires, écrivains curieux, amour des mots et de la langue, sensations poétiques et volonté de savoir, tout cela vous attend ici. ", email:"hommelitteraire@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCkv82c0G9Qn1vUZ2mBcOn4A")
-channel2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052604/mzqacrertnf5aomm5oiz.png'
+channel2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472055786/boitelettres_fbc0hw.jpg'
 channel2.save
 puts "Channel channel2 created"
