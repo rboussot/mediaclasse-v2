@@ -8,4 +8,10 @@ class CoursesController < ApplicationController
     @technique = Course.where(tag:"technique")
   end
 
+  private
+
+  def course_params
+    params.require(:product).permit(:author_id, :category_id, :tag, :title, :date, :description, :picture, :visible)
+  end
+
 end

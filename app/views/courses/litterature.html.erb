@@ -3,6 +3,11 @@
 
     <% @litterature.each do |c| %>
      <ul>
+        <li>
+          <% if c.picture? %>
+            <%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %>
+          <% end %>
+        </li>
         <li> <h1> <%= c.title %> </h1> </li>
         <li> <h3> <%= c.description %> </h3> </li>
       </ul>

@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824084943) do
+ActiveRecord::Schema.define(version: 20160824105927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.string   "attachinariable_type"
+    t.integer  "attachinariable_id"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string   "lastname"
@@ -38,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160824084943) do
     t.string   "name"
     t.text     "description"
     t.string   "email"
+    t.string   "link"
     t.boolean  "visible",     default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -62,9 +78,9 @@ ActiveRecord::Schema.define(version: 20160824084943) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
+    t.string   "tag"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.string   "tag"
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
   end
