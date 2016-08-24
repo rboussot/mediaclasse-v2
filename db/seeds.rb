@@ -13,19 +13,19 @@ Course.destroy_all
 Category.destroy_all
 Theme.destroy_all
 Author.destroy_all
+Level.destroy_all
+Comment.destroy_all
+User.destroy_all
 
 moliere = Author.new(lastname: "Poquelin", firstname: "Jean-Baptiste", pseudo: "Molière", birth: 1662, death: 1673)
 moliere.save
 puts "Author Moliere created"
-voltaire = Author.new(lastname: "Flaubert", firstname: "Gustave", birth: 1821, death: 1880)
-voltaire.save
-puts "Author Voltaire created"
-flaubert = Author.new(lastname: "Arouet", firstname: "François-Marie", pseudo: "Voltaire", birth: 1694, death: 1778)
+flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", birth: 1821, death: 1880)
 flaubert.save
+puts "Author Voltaire created"
+voltaire = Author.new(lastname: "Arouet", firstname: "François-Marie", pseudo: "Voltaire", birth: 1694, death: 1778)
+voltaire.save
 puts "Author Flaubert created"
-romain = Author.new(lastname: "Boussot", firstname: "Romain", pseudo: "RB", birth: 1982, death: 2222)
-romain.save
-puts "Author Romain was created"
 
 litterature = Category.new(name: "Littérature", description:"Oeuvres célèbres")
 litterature.save
@@ -52,16 +52,16 @@ puts "Course candide created"
 bovary = Course.new(author:flaubert, category:litterature,title:"Madame Bovary", date: 1857, description:"Madame Bovary: Mœurs de province, couramment abrégé en Madame Bovary, est un roman de Gustave Flaubert paru en 1857 chez Michel Lévy frères, après une pré-parution en 1856 dans le journal La Revue de Paris.", tag:"litterature")
 bovary.save
 puts "Course bovary created"
-registres = Course.new(author:romain, category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers", tag:"technique")
+registres = Course.new(category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers", tag:"technique")
 registres.save
 puts "Course registres created"
-realisme = Course.new(author:romain, category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.", tag:"technique")
+realisme = Course.new(category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.", tag:"technique")
 realisme.save
 puts "Course realisme created"
-metaphore = Course.new(author:romain, category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.", tag:"technique")
+metaphore = Course.new(category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.", tag:"technique")
 metaphore.save
 puts "Course metaphore created"
-corpus = Course.new(author:romain, category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.", tag:"technique")
+corpus = Course.new(category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.", tag:"technique")
 corpus.save
 puts "Course corpus created"
 
@@ -163,3 +163,43 @@ puts "Lecture corpus3 created"
 corpus4 = Lecture.new(course: corpus, title:"Extraits de textes argumentatifs", video:"https://youtu.be/L1i5anUZeC0", description: "La méthode pour la question de corpus pour l'argumentation", payment: true)
 corpus4.save
 puts "Lecture corpus4 created"
+
+seconde = Level.new(name: "Seconde")
+seconde.save
+puts "Level seconde created"
+premiere = Level.new(name: "Première")
+premiere.save
+puts "Level premiere created"
+terminale = Level.new(name: "Terminale")
+terminale.save
+puts "Level terminale created"
+etudiant = Level.new(name: "Étudiant")
+etudiant.save
+puts "Level etudiant created"
+prof = Level.new(name: "Professeur")
+prof.save
+puts "Level prof created"
+
+john = User.new(email: "john.lennon@gmail.com", password: "mlkmlk", admin: true, level: prof)
+john.save
+puts "User john created"
+paul = User.new(email: "paul.mcartney@gmail.com", password: "mlkmlk", level: etudiant)
+paul.save
+puts "User paul created"
+
+comment1 = Comment.new(lecture: tartuffe1, user:john, content:"Youpi")
+comment1.save
+puts "Comment 1 created"
+comment2 = Comment.new(lecture: candide1, user:john, content:"Super")
+comment2.save
+puts "Comment 2 created"
+comment3 = Comment.new(lecture: bovary1, user:john, content:"Coucou")
+comment3.save
+puts "Comment 3 created"
+comment4 = Comment.new(lecture: realisme1, user:john, content:"Ok")
+comment4.save
+puts "Comment 4 created"
+comment5 = Comment.new(lecture: corpus1, user:john, content:"Héhé")
+comment5.save
+puts "Comment 5 created"
+
