@@ -46,7 +46,8 @@ littchannels = Category.new(name: "Chaînes littéraires", description:"Oeuvres 
 littchannels.save
 puts "Category chaînes littéraires created"
 
-tartuffe = Course.new(author:moliere, category:litterature,title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.", tag:"litterature")
+tartuffe = Course.new(author:moliere, category:litterature,title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.", tag:"litterature", )
+tartuffe.photo = Attachinary::File.new(resource_type: 'image', version: '', public_id: '')
 tartuffe.save
 puts "Course Tartuffe created"
 candide = Course.new(author:voltaire, category:litterature,title:"Candide", date: 1759, description:"Candide ou l'Optimisme est un conte philosophique de Voltaire paru à Genève en janvier 1759. Il a été réédité vingt fois du vivant de l’auteur, ce qui en fait un des plus grands succès littéraires français.", tag:"litterature")
