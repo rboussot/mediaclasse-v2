@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
 
   def technique
     # attention a modifier l'id
-    # @technique = Course.where(category_id: 4)
+    @technique = Course.where(tag:"technique")
   end
 
 end
