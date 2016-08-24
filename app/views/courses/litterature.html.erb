@@ -1,4 +1,14 @@
 <h1>Oeuvres et analyses</h1>
 <p>Find me in app/views/courses/litterature.html.erb</p>
 
+    <% @litterature.each do |c| %>
+     <ul>
+        <li> <h1> <%= c.title %> </h1> </li>
+        <li> <h3> <%= c.description %> </h3> </li>
+      </ul>
+    <% end %>
+
+  </div>
+</div>
+
 
