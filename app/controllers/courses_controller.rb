@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:product).permit(:author_id, :category_id, :tag, :title, :date, :description, :photo, :visible)
+    params.require(:product).permit(:author_id, :category_id, :tag, :title, :date, :description, :picture, :visible)
   end
 
 end

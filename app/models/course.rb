@@ -12,6 +12,13 @@ class Course < ApplicationRecord
       field :picture do
         partial "upload_pictures"
       end
+      field :author_id
+      field :title
+      field :date
+      field :description
+      field :category_id
+      field :visible
+      field :tag
     end
   end
 

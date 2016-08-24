@@ -11,6 +11,7 @@ CoursesTheme.destroy_all
 Comment.destroy_all
 Lecture.destroy_all
 Course.destroy_all
+Channel.destroy_all
 Category.destroy_all
 Theme.destroy_all
 Author.destroy_all
@@ -46,26 +47,38 @@ littchannels = Category.new(name: "Chaînes littéraires", description:"Oeuvres 
 littchannels.save
 puts "Category chaînes littéraires created"
 
-tartuffe = Course.new(author:moliere, category:litterature,title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.", tag:"litterature", )
-tartuffe.photo = Attachinary::File.new(resource_type: 'image', version: '', public_id: '')
+tartuffe = Course.new(author:moliere, category:litterature,title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.", tag:"litterature")
+tartuffe.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Molie%CC%80re_Tartuffe_snuogz.jpg'
 tartuffe.save
 puts "Course Tartuffe created"
+
 candide = Course.new(author:voltaire, category:litterature,title:"Candide", date: 1759, description:"Candide ou l'Optimisme est un conte philosophique de Voltaire paru à Genève en janvier 1759. Il a été réédité vingt fois du vivant de l’auteur, ce qui en fait un des plus grands succès littéraires français.", tag:"litterature")
+candide.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Voltaire_Candide_c75qsj.jpg'
 candide.save
 puts "Course candide created"
+
 bovary = Course.new(author:flaubert, category:litterature,title:"Madame Bovary", date: 1857, description:"Madame Bovary: Mœurs de province, couramment abrégé en Madame Bovary, est un roman de Gustave Flaubert paru en 1857 chez Michel Lévy frères, après une pré-parution en 1856 dans le journal La Revue de Paris.", tag:"litterature")
+bovary.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Flaubert_Madame_Bovary_zvtvs3.jpg'
 bovary.save
 puts "Course bovary created"
+
 registres = Course.new(category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers", tag:"technique")
+registres.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049910/4_xfjby3.jpg'
 registres.save
 puts "Course registres created"
+
 realisme = Course.new(category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.", tag:"technique")
+realisme.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050155/6_cxla0w.jpg'
 realisme.save
 puts "Course realisme created"
+
 metaphore = Course.new(category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.", tag:"technique")
+metaphore.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050265/7_dhzdox.jpg'
 metaphore.save
 puts "Course metaphore created"
+
 corpus = Course.new(category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.", tag:"technique")
+corpus.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049912/1_tu1vwg.jpg'
 corpus.save
 puts "Course corpus created"
 
@@ -123,6 +136,7 @@ corpus_bac.save
 puts "CoursesTheme metaphore_figures created"
 
 tartuffe1 = Lecture.new(course: tartuffe, title:"Résumé analyse", video:"https://youtu.be/_QaJabZwuHI", description:"Le résumé analysé et illustré de Tartuffe, la comédie de Molière", payment: false)
+# tartuffe.picture = "http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472044734/lpf6s97agdadqwtm9727.jpg"
 tartuffe1.save
 puts "Lecture tartuffe1 created"
 candide1 = Lecture.new(course: candide, title:"Résumé analyse", video:"https://youtu.be/988K0bxJyx8", description:"Le résumé analyse illustré de Candide, le conte philosophique de Voltaire", payment: false)
