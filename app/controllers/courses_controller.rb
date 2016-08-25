@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-
+  skip_before_action :authenticate_user!
   def litterature
     @litterature = Course.where(tag:"litterature")
   end

@@ -1,24 +1,29 @@
-
-
-
-
-
-
-
 <div class="container-fluid">
-  <div class="col-md-8 col-md-offset-4">
-    <% @litterature.each do |c| %>
-      <div class="card-litterature">
-         <ul>
-          <li><%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %></li>
-            <li> <h1> <%= c.title %> <%= c.author.pseudo %> </h1> </li>
-            <li> <h2> <%= c.author.lastname %>, <%= c.author.firstname %> </h2> </li>
-            <li> <p> <%= c.description %> </p> </li>
-            <li> <h4> <%= c.date %> </h4> </li>
-          </ul>
+  <div class="col-md-4">
+    <div id="directory">
+      <% ('A' .. 'Z').to_a.each do | letter | %>
+        <div>
+          <%= letter %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="scroll-wrapper">
+      <% @litterature.each do |c| %>
+        <div class="card-litterature">
+           <ul>
+            <li><%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %></li>
+              <li> <h1> <%= c.title %> <%= c.author.pseudo %> </h1> </li>
+              <li> <h2> <%= c.author.lastname %>, <%= c.author.firstname %> </h2> </li>
+              <li> <p> <%= c.description %> </p> </li>
+              <li> <h4> <%= c.date %> </h4> </li>
+            </ul>
 
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
 
