@@ -1,8 +1,8 @@
 .border {
-  position: fixes;
+  position: fixed;
   height: 100vh;
   width: 30px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
   left: 30px;
   z-index: -1;
@@ -12,12 +12,11 @@
   background-color: $litterature;
 }
 
-
 .technique {
   background-color: $technique;
 }
 
-
 .community {
   background-color: $community;
 }
+
