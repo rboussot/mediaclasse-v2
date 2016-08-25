@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lectures, only: [:show]
+
 
   devise_for :users
   root to: 'pages#home'

@@ -22,13 +22,13 @@
     <div class="scroll-wrapper">
       <% @litterature.each do |c| %>
         <div class="card-litterature">
-          <ul>
-            <li><%= cl_image_tag c.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
+          <%= link_to lecture_path(c) do %>
+            <ul>
+              <li><%= cl_image_tag c.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
               <li> <h2>  <%= c.author.pseudo %>, <%= c.title %> - <%= c.date %> </h2></li>
               <li> <p> <%= c.description %> </p> </li>
-              <li> <h4> <%= c.date %> </h4> </li>
             </ul>
-
+          <% end %>
         </div>
       <% end %>
     </div>

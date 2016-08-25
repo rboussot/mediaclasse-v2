@@ -138,77 +138,77 @@ corpus_bac = CoursesTheme.new(course:corpus, theme:bac)
 corpus_bac.save
 puts "CoursesTheme metaphore_figures created"
 
-tartuffe1 = Lecture.new(course: tartuffe, title:"Résumé analyse", video:"https://youtu.be/_QaJabZwuHI", description:"Le résumé analysé et illustré de Tartuffe, la comédie de Molière", payment: false)
+tartuffe1 = Lecture.new(course: tartuffe, title:"Résumé analyse", video:"_QaJabZwuHI", description:"Le résumé analysé et illustré de Tartuffe, la comédie de Molière", payment: false)
 tartuffe1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-tartuffe_l1qzdy.jpg'
 tartuffe1.save
 puts "Lecture tartuffe1 created"
 
-candide1 = Lecture.new(course: candide, title:"Résumé analyse", video:"https://youtu.be/988K0bxJyx8", description:"Le résumé analyse illustré de Candide, le conte philosophique de Voltaire", payment: false)
+candide1 = Lecture.new(course: candide, title:"Résumé analyse", video:"988K0bxJyx8", description:"Le résumé analyse illustré de Candide, le conte philosophique de Voltaire", payment: false)
 candide1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide_fwhcyg.jpg'
 candide1.save
 puts "Lecture candide1 created"
 
-candide2 = Lecture.new(course: candide, title:"Chapitre 1", video:"https://youtu.be/_h-fP2nt9fM", description:"Le commentaire du chapitre de Candide", payment: true)
+candide2 = Lecture.new(course: candide, title:"Chapitre 1", video:"_h-fP2nt9fM", description:"Le commentaire du chapitre de Candide", payment: true)
 candide2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide2_itryke.jpg'
 candide2.save
 puts "Lecture candide2 created"
 
-bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"https://youtu.be/_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovay, le roman de Flaubert", payment: false)
+bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovay, le roman de Flaubert", payment: false)
 bovary1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
 bovary1.save
 puts "Lecture bovary1 created"
 
-bovary2 = Lecture.new(course: bovary, title:"Chapitre 1", video:"https://youtu.be/9VLWSusv4pc", description:"Commentaire composé du premier chapitre de Madame Bovary de Flaubert", payment: true)
+bovary2 = Lecture.new(course: bovary, title:"Chapitre 1", video:"9VLWSusv4pc", description:"Commentaire composé du premier chapitre de Madame Bovary de Flaubert", payment: true)
 bovary2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary2_bbltfx.jpg'
 bovary2.save
 puts "Lecture bovary2 created"
 
-bovary3 = Lecture.new(course: bovary, title:"Question de corpus sur le roman", video:"https://youtu.be/uuY5wtJfmIE", description:"Méthodologie du corpus, appliquée à des extraits de roman, notamment Madame Bovary de Flaubert", payment: true)
+bovary3 = Lecture.new(course: bovary, title:"Question de corpus sur le roman", video:"uuY5wtJfmIE", description:"Méthodologie du corpus, appliquée à des extraits de roman, notamment Madame Bovary de Flaubert", payment: true)
 bovary3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary3_yzwte2.jpg'
 bovary3.save
 puts "Lecture bovary3 created"
 
-registres1 = Lecture.new(course: registres, title:"Le registre didactique", video:"https://youtu.be/L1i5anUZeC0", description:"Les marques du registres didactique en littérature", payment: false)
+registres1 = Lecture.new(course: registres, title:"Le registre didactique", video:"L1i5anUZeC0", description:"Les marques du registres didactique en littérature", payment: false)
 registres1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres1_mbwzmn.jpg'
 registres1.save
 puts "Lecture registres1 created"
 
-registres2 = Lecture.new(course: registres, title:"Le registre dramatique", video:"https://youtu.be/kT7rrvybIi8", description:"Les marques du registres dramatique en littérature", payment: true)
+registres2 = Lecture.new(course: registres, title:"Le registre dramatique", video:"kT7rrvybIi8", description:"Les marques du registres dramatique en littérature", payment: true)
 registres2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres2_tyw44i.jpg'
 registres2.save
 puts "Lecture registres2 created"
 
-realisme1 = Lecture.new(course: realisme, title: "Le réalisme chez Balzac", video:"https://youtu.be/59bsBUAlWdc", description:"Un cours sur le réalisme chez Balzac", payment: false)
+realisme1 = Lecture.new(course: realisme, title: "Le réalisme chez Balzac", video:"59bsBUAlWdc", description:"Un cours sur le réalisme chez Balzac", payment: false)
 realisme1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-realisme1_icjiq2.jpg'
 realisme1.save
 puts "Lecture realisme1 created"
 
-realisme2 = Lecture.new(course: realisme, title: "La question de corpus sur des textes réalistes", video:"https://youtu.be/gcmSx7YUmbg", description:"La question de corpus sur des textes réalistes", payment: true)
+realisme2 = Lecture.new(course: realisme, title: "La question de corpus sur des textes réalistes", video:"gcmSx7YUmbg", description:"La question de corpus sur des textes réalistes", payment: true)
 realisme2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-realisme2_zrcbn0.jpg'
 realisme2.save
 puts "Lecture realisme2 created"
 
-metaphore1 = Lecture.new(course: metaphore, title: "Les figures de style dans le commentaire composé", video:"https://youtu.be/44Zt5tz1tYE", description:"La méthodologie du commentaire composé, les grilles de lecture.", payment: false)
+metaphore1 = Lecture.new(course: metaphore, title: "Les figures de style dans le commentaire composé", video:"44Zt5tz1tYE", description:"La méthodologie du commentaire composé, les grilles de lecture.", payment: false)
 metaphore1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-metaphore1_xqe1bj.jpg'
 metaphore1.save
 puts "Lecture metaphore1 created"
 
-corpus1 = Lecture.new(course: corpus, title:"Extraits de pièces de théâtre", video:"https://youtu.be/kT7rrvybIi8", description:"La méthode pour la question de corpus pour le théâtre", payment: false)
+corpus1 = Lecture.new(course: corpus, title:"Extraits de pièces de théâtre", video:"kT7rrvybIi8", description:"La méthode pour la question de corpus pour le théâtre", payment: false)
 corpus1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus1_w8bzbw.jpg'
 corpus1.save
 puts "Lecture corpus1 created"
 
-corpus2 = Lecture.new(course: corpus, title:"Extraits de romans", video:"https://youtu.be/uuY5wtJfmIE", description:"La méthode pour la question de corpus pour le roman", payment: true)
+corpus2 = Lecture.new(course: corpus, title:"Extraits de romans", video:"uuY5wtJfmIE", description:"La méthode pour la question de corpus pour le roman", payment: true)
 corpus2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus2_sbgpsf.jpg'
 corpus2.save
 puts "Lecture corpus2 created"
 
-corpus3 = Lecture.new(course: corpus, title:"Extraits de poésies", video:"https://youtu.be/nziBPRPAvQI", description:"La méthode pour la question de corpus pour la poésie", payment: true)
+corpus3 = Lecture.new(course: corpus, title:"Extraits de poésies", video:"nziBPRPAvQI", description:"La méthode pour la question de corpus pour la poésie", payment: true)
 corpus3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus3_nxrigg.jpg'
 corpus3.save
 puts "Lecture corpus3 created"
 
-corpus4 = Lecture.new(course: corpus, title:"Extraits de textes argumentatifs", video:"https://youtu.be/L1i5anUZeC0", description: "La méthode pour la question de corpus pour l'argumentation", payment: true)
+corpus4 = Lecture.new(course: corpus, title:"Extraits de textes argumentatifs", video:"L1i5anUZeC0", description: "La méthode pour la question de corpus pour l'argumentation", payment: true)
 corpus4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus4_xkvzmi.jpg'
 corpus4.save
 puts "Lecture corpus4 created"
