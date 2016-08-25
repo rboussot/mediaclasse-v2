@@ -1,12 +1,25 @@
-<h1>Méthodes et techniques</h1>
-<p>Find me in app/views/courses/technique.html.erb</p>
-
-    <% @technique.each do |t| %>
-     <ul>
-        <li> <h1> <%= t.title %> </h1> </li>
-        <li> <h3> <%= t.description %> </h3> </li>
+<div class="container-fluid">
+  <div class="col-md-4 col-xs-1">
+    <div id="method-directory">
+      <ul>
+        <div class="pargenre"><li><h4>Types et formes de texte</h4></li></div>
+        <div class="pargenre"><li><h4>Histoire littéraire</h4></li></div>
+        <div class="pargenre"><li><h4>Stylistique</h4></li></div>
+        <div class="pargenre"><li><h4>Methodologie</h4></li></div>
       </ul>
-    <% end %>
-
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="scroll-wrapper">
+      <% @technique.each do |t| %>
+        <div class="card-genre">
+           <ul>
+            <li><%= cl_image_tag t.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
+              <li> <h1> <%= t.title %>  </h1> </li>
+              <li> <p> <%= t.description %> </p> </li>
+            </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
