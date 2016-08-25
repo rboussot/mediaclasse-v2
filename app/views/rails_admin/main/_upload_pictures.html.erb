@@ -2,5 +2,5 @@
 <%= form.attachinary_file_field :picture %>
 
 <% if form.object.picture? %>
-  <%= cl_image_tag form.object.picture.path, width: 200, height: 300, crop: :fill %>
+  <%= cl_image_tag form.object.picture.path, crop: :fill %>
 <% end %>

@@ -8,16 +8,17 @@
 <div class="container-fluid">
   <div class="col-md-8 col-md-offset-4">
     <% @litterature.each do |c| %>
-      <div class="card-litterature">
-         <ul>
-          <li><%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %></li>
-            <li> <h1> <%= c.title %> <%= c.author.pseudo %> </h1> </li>
-            <li> <h2> <%= c.author.lastname %>, <%= c.author.firstname %> </h2> </li>
-            <li> <p> <%= c.description %> </p> </li>
-            <li> <h4> <%= c.date %> </h4> </li>
-          </ul>
-
-      </div>
+      <%= link_to course_path(c) do %>
+        <div class="card-litterature">
+           <ul>
+            <li><%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %></li>
+              <li> <h1> <%= c.title %> <%= c.author.pseudo %> </h1> </li>
+              <li> <h2> <%= c.author.lastname %>, <%= c.author.firstname %> </h2> </li>
+              <li> <p> <%= c.description %> </p> </li>
+              <li> <h4> <%= c.date %> </h4> </li>
+            </ul>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

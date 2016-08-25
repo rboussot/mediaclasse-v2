@@ -20,5 +20,4 @@ class Channel < ApplicationRecord
       field :visible
     end
   end
-
 end
