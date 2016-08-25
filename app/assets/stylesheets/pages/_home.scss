@@ -2,6 +2,11 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.home-wrapper {
+  padding-top: 70px;
+}
+
+
 .home-card-large {
   background-color: $greylighter;
   border-radius: 6px;

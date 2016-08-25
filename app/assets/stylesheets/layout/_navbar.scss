@@ -17,6 +17,8 @@ div.navbar-media {
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+ z-index: 1;
 
 }
 
@@ -46,6 +48,24 @@ div.navbar-media {
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 10px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1px;
+}
+
+/* Navbar item */
+.navbar-signup {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 10px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.loginsignup {
+
 }
 
 .navbar-login:hover {

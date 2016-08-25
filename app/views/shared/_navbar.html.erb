@@ -41,12 +41,18 @@
       </div>
 
     <% else %>
+
+    <div class="loginsignup">
+
       <!-- Connection -->
       <%= link_to "Connection", new_user_session_path, class: "navbar-media-item navbar-login" %>
     <% end %>
 
     <!-- Inscription -->
-    <%= link_to "Inscription", "#", class: "navbar-media-item navbar-login" %>
+    <%= link_to "Inscription", "#", class: "navbar-media-item navbar-signup" %>
+
+    </div>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
