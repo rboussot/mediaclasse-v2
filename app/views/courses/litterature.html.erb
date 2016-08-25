@@ -1,19 +1,30 @@
 <div class="container-fluid">
-  <div class="col-md-4">
+    <!-- Search form -->
+    <form action="" class="navbar-wagon-search">
+      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+  <div class="col-md-2 col-xs-2">
     <div id="directory">
+    <div id="parauteur">
+    <h4>Par auteur</h4>
+    </div>
       <% ('A' .. 'Z').to_a.each do | letter | %>
-        <div>
+        <div id="letterslider">
+
           <%= letter %>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8 col-md-offset-1">
     <div class="scroll-wrapper">
       <% @litterature.each do |c| %>
         <div class="card-litterature">
            <ul>
-            <li><%= cl_image_tag c.picture.path, width: 200, height: 300, crop: :fill %></li>
+            <li><%= cl_image_tag c.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
               <li> <h1> <%= c.title %> <%= c.author.pseudo %> </h1> </li>
               <li> <h2> <%= c.author.lastname %>, <%= c.author.firstname %> </h2> </li>
               <li> <p> <%= c.description %> </p> </li>
@@ -23,7 +34,6 @@
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
 
