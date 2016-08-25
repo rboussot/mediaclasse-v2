@@ -1,0 +1,48 @@
+<div class="lecture-wrapper">
+  <div class="container">
+    <div class= "row">
+
+      <div class="border litterature"></div>
+
+      <div class= "col-xs-12 col-sm-3">
+        <div class="lecture-menu">
+          <% @course.lectures.each do |lecture| %>
+            <ul>
+              <%= link_to lecture_path(lecture) do %>
+                <li class="lecture-link"><%= lecture.title %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+
+
+
+      <div class= "col-xs-12 col-sm-9">
+        <div class="lecture-show">
+          <div class="lecture-video">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="854" height="480" showinfo=0 src="https://www.youtube.com/embed/<%= @lecture.video %>" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class= "tabs">
+
+            <a class="tab active" href="#">
+              <h3>Description</h3>
+            </a>
+            <a class="tab" href="#">
+              <h3>Documents</h3>
+            </a>
+            <a class="tab" href="#">
+              <h3>Discussion</h3>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

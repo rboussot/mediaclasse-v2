@@ -10,6 +10,7 @@
   list-style-type: none;
   padding-top: 10px;
   padding-bottom: 5px;
+  margin-top: 5px;
   // display: inline;
 }
 
@@ -33,7 +34,7 @@
   margin-top: 10px;
 }
 
-
-
-
-
+.card-litterature a:hover {
+  text-decoration : none;
+  background-color: $greylighter;
+}

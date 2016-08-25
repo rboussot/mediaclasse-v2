@@ -3,10 +3,15 @@
 }
 
 .lecture-menu {
-  border-left: 30px solid $litterature;
-  background-color: red;
+  height: 100vh;
+  margin-top: 80px;
 }
 
 .lecture-menu ul {
   list-style-type: none;
 }
+
+.lecture-video {
+  padding: 20px;
+}
+
