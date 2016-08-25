@@ -22,7 +22,7 @@ moliere = Author.new(lastname: "Poquelin", firstname: "Jean-Baptiste", pseudo: "
 moliere.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053089/moliere_oxcsys.jpg'
 moliere.save
 puts "Author Moliere created"
-flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", birth: 1821, death: 1880)
+flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", pseudo: "Flaubert", birth: 1821, death: 1880)
 flaubert.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052969/flaubert_umtdgg.jpg'
 flaubert.save
 puts "Author Flaubert created"
@@ -183,82 +183,4 @@ realisme1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v
 realisme1.save
 puts "Lecture realisme1 created"
 
-realisme2 = Lecture.new(course: realisme, title: "La question de corpus sur des textes réalistes", video:"https://youtu.be/gcmSx7YUmbg", description:"La question de corpus sur des textes réalistes", payment: true)
-realisme2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-realisme2_zrcbn0.jpg'
-realisme2.save
-puts "Lecture realisme2 created"
-
-metaphore1 = Lecture.new(course: metaphore, title: "Les figures de style dans le commentaire composé", video:"https://youtu.be/44Zt5tz1tYE", description:"La méthodologie du commentaire composé, les grilles de lecture.", payment: false)
-metaphore1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-metaphore1_xqe1bj.jpg'
-metaphore1.save
-puts "Lecture metaphore1 created"
-
-corpus1 = Lecture.new(course: corpus, title:"Extraits de pièces de théâtre", video:"https://youtu.be/kT7rrvybIi8", description:"La méthode pour la question de corpus pour le théâtre", payment: false)
-corpus1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus1_w8bzbw.jpg'
-corpus1.save
-puts "Lecture corpus1 created"
-
-corpus2 = Lecture.new(course: corpus, title:"Extraits de romans", video:"https://youtu.be/uuY5wtJfmIE", description:"La méthode pour la question de corpus pour le roman", payment: true)
-corpus2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus2_sbgpsf.jpg'
-corpus2.save
-puts "Lecture corpus2 created"
-
-corpus3 = Lecture.new(course: corpus, title:"Extraits de poésies", video:"https://youtu.be/nziBPRPAvQI", description:"La méthode pour la question de corpus pour la poésie", payment: true)
-corpus3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus3_nxrigg.jpg'
-corpus3.save
-puts "Lecture corpus3 created"
-
-corpus4 = Lecture.new(course: corpus, title:"Extraits de textes argumentatifs", video:"https://youtu.be/L1i5anUZeC0", description: "La méthode pour la question de corpus pour l'argumentation", payment: true)
-corpus4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus4_xkvzmi.jpg'
-corpus4.save
-puts "Lecture corpus4 created"
-
-seconde = Level.new(name: "Seconde")
-seconde.save
-puts "Level seconde created"
-premiere = Level.new(name: "Première")
-premiere.save
-puts "Level premiere created"
-terminale = Level.new(name: "Terminale")
-terminale.save
-puts "Level terminale created"
-etudiant = Level.new(name: "Étudiant")
-etudiant.save
-puts "Level etudiant created"
-prof = Level.new(name: "Professeur")
-prof.save
-puts "Level prof created"
-
-john = User.new(email: "john.lennon@gmail.com", password: "mlkmlk", admin: true, level: prof)
-john.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053667/johnlennon_uf5we8.jpg'
-john.save
-puts "User john created"
-paul = User.new(email: "paul.mcartney@gmail.com", password: "mlkmlk", level: etudiant)
-paul.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053667/paulmccartney_axkcqr.jpg'
-paul.save
-puts "User paul created"
-
-comment1 = Comment.new(lecture: tartuffe1, user:john, content:"Youpi")
-comment1.save
-puts "Comment 1 created"
-comment2 = Comment.new(lecture: candide1, user:john, content:"Super")
-comment2.save
-puts "Comment 2 created"
-comment3 = Comment.new(lecture: bovary1, user:john, content:"Coucou")
-comment3.save
-puts "Comment 3 created"
-comment4 = Comment.new(lecture: realisme1, user:john, content:"Ok")
-comment4.save
-puts "Comment 4 created"
-comment5 = Comment.new(lecture: corpus1, user:john, content:"Héhé")
-comment5.save
-puts "Comment 5 created"
-
-channel1 = Channel.new(user: john, category: littchannels, name: "La Boite à Lettres", description:"Il est temps que la Littérature se dépoussière! Cette émission essaye donc de proposer un contenu accessible et décomplexé. Des vidéos sur les grandes oeuvres, sur ce qu'on appelle les Classiques mais aussi sur les grands auteurs de l'histoire littéraire française (et parfois d'ailleurs). Ensuite, il ne tient qu'à vous de les lire :)", email:"boitelettre@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCu8EOaw52LhS3b8X-N0N_5A")
-channel1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472055786/hommelitt_ae5msw.jpg'
-channel1.save
-puts "Channel channel1 created"
-channel2 = Channel.new(user: paul, category: littchannels, name: "L'Homme Littéraire", description:"L'Homme Littéraire est une chaîne consacrée essentiellement à la littérature et au monde du livre en général. Mystères littéraires, écrivains curieux, amour des mots et de la langue, sensations poétiques et volonté de savoir, tout cela vous attend ici. ", email:"hommelitteraire@gmail.com", visible: true, link: "https://www.youtube.com/channel/UCkv82c0G9Qn1vUZ2mBcOn4A")
-channel2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472055786/boitelettres_fbc0hw.jpg'
-channel2.save
-puts "Channel channel2 created"
+realisme2 = Lecture.new(course: realisme, title: "La question de corpus sur des textes réalistes", video:"https://youtu.be/gcmSx7YUmbg", description:"...
