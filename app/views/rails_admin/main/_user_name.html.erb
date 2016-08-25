@@ -1,0 +1,8 @@
+<% User.find(form.object.user_id).email %>
+
+<% @users = User.all %>
+<% @users.each do |u| %>
+<%= u.email %>
+<% end %>
+
+

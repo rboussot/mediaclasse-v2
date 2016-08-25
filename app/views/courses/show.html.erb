@@ -1,0 +1,42 @@
+<div class="lecture-wrapper">
+  <div class="container">
+
+
+
+
+
+    <div class= "lecture-menu">
+      <div class= "col-xs-12 col-sm-3">
+        <% @courses_lectures.each do |c| %>
+          <ul>
+            <li class="lecture-link"><%= c.title %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    <div class= "lecture-show">
+      <div class= "col-xs-12 col-sm-10">
+        <%= @courses_lectures.each do |c| %>
+
+        <% end %>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $('.lecture-link').on('click', function(event){
+      $('.lecture-show').html('<%= "test" %>')
+    });
+
+  <% end %>
+<% end %>

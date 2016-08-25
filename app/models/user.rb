@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_attachment :picture
 
+  def name
+    email
+  end
+
   rails_admin do
     edit do
       field :picture do
