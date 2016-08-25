@@ -13,7 +13,6 @@
     </div>
       <% ('A' .. 'Z').to_a.each do | letter | %>
         <div id="letterslider">
-
           <%= letter %>
         </div>
       <% end %>
@@ -23,17 +22,15 @@
     <div class="scroll-wrapper">
       <% @litterature.each do |c| %>
         <div class="card-litterature">
-           <ul>
+          <ul>
             <li><%= cl_image_tag c.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
               <li> <h2>  <%= c.author.pseudo %>, <%= c.title %> - <%= c.date %> </h2></li>
               <li> <p> <%= c.description %> </p> </li>
               <li> <h4> <%= c.date %> </h4> </li>
             </ul>
+
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-
-

@@ -8,6 +8,11 @@ class CoursesController < ApplicationController
     @technique = Course.where(tag:"technique")
   end
 
+  def show
+    @course = Course.find(params[:id])
+    @courses_lectures = @course.lectures.where(visible: true)
+  end
+
   private
 
   def course_params
