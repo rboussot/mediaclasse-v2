@@ -22,7 +22,7 @@ moliere = Author.new(lastname: "Poquelin", firstname: "Jean-Baptiste", pseudo: "
 moliere.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053089/moliere_oxcsys.jpg'
 moliere.save
 puts "Author Moliere created"
-flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", birth: 1821, death: 1880)
+flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", pseudo: "Flaubert", birth: 1821, death: 1880)
 flaubert.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052969/flaubert_umtdgg.jpg'
 flaubert.save
 puts "Author Flaubert created"
