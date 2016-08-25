@@ -1,5 +1,6 @@
 .lecture-wrapper {
-  height: 100vh;
+  padding-top : 70px;
+  min-height: 800px;
 }
 
 .lecture-menu {
@@ -15,3 +16,10 @@
   padding: 20px;
 }
 
+.lecture-content {
+  background-color: $greylighter;
+  margin-left: 10px;
+  min-height: 400px;
+  padding: 40px;
+  border-radius: 0 6px 6px 6px;
+}
