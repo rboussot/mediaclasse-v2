@@ -1,0 +1,45 @@
+// #sidebar {
+//   border-left: 30px solid $litterature;
+// }
+
+#sidebar-letter {
+  text-align: center;
+  width: 30px;
+}
+
+
+#sidebar-letters:hover {
+  background-color: #ccc;
+}
+
+#sidebar-parauteur {
+  color: white;
+  width: 160px;
+  font-size: 10px;
+  margin: -70px 0px 0px -100px;
+  position: fixed;
+}
+
+#sidebar-parauteur h4 {
+  background-color: black;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  margin-bottom: 10px;
+}
+
+#sidebar-category {
+  color: white;
+  width: 160px;
+  font-size: 10px;
+  margin: -10px 0px 0px -100px;
+  position: fixed;
+}
+
+#sidebar-category h4 {
+  background-color: black;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  margin-bottom: 10px;
+}

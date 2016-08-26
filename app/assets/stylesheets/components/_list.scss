@@ -1,0 +1,73 @@
+.list {
+  background-color: $greywhite;
+  border-radius: 6px;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+}
+
+.list-themes {
+  font-size: 13px;
+  color: grey;
+  font-style: italic;
+}
+
+.list ul {
+  list-style-type: none;
+}
+
+.list a:hover {
+  text-decoration: none;
+}
+
+.list:hover {
+  background-color: $greylighter;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+  text-decoration : none;
+}
+
+.list-scroll {
+  overflow: scroll;
+  height: calc(100vh - 130px);
+}
+
+.list-image {
+    border: 1px solid #333333;
+    position: relative;
+    margin-right: 20px;
+    float: left;
+    border-radius: 3px;
+}
+
+.list-search {
+  text-align: right;
+  padding: 20px 0 20px 0 ;
+}
+
+.list-search-btn {
+  color: $greylighter;
+  border: none;
+  background: transparent;
+}
+.list-search-input {
+  -ms-flex: 0 1 300px;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+  line-height: 40px;
+  font-weight: lighter;
+  color: #666666;
+  border: 1px solid #E6E6E6;
+  border-radius: 5px;
+  padding: 0 10px;
+  outline: none;
+  width: 300px;
+}
+.list-search-input:focus  {
+  border: 1px solid #CCCCCC;
+}

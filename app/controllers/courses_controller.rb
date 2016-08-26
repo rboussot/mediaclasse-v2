@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!
   def litterature
-    @litterature = Course.joins(:author).where(courses: { tag: "litterature"}).order('pseudo ASC')
+    @litterature_courses = Course.joins(:author).where(courses: { tag: "litterature"}).order('pseudo ASC')
   end
 
   def technique
-    @technique = Course.where(tag:"technique")
+    @technique_courses = Course.joins(:category).where(tag:"technique")
   end
 
   private
