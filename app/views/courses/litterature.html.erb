@@ -18,7 +18,7 @@
         </div>
         <% ('A' .. 'Z').to_a.each do | letter | %>
           <div id="sidebar-letters">
-            <%= letter %>
+            <%= link_to letter, litterature_courses_path(anchor: letter) %>
           </div>
         <% end %>
       </div>
@@ -27,7 +27,7 @@
     <div class="col-xs-8">
       <div class="list-scroll">
         <% @litterature_courses.each do |c| %>
-          <div class="list">
+          <div class="list" id="<%= c.author.pseudo.first %>">
             <%= link_to lecture_path(c) do %>
               <%= cl_image_tag c.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
               <ul>
