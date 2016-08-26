@@ -1,27 +1,48 @@
-<div class="home-wrapper">
+<div class= "home-wrapper">
   <div class="container-fluid">
-    <div class="col-md-4 col-xs-1">
-      <div id="method-directory">
-        <ul>
-          <div class="pargenre"><li><h4>Types et formes de texte</h4></li></div>
-          <div class="pargenre"><li><h4>Histoire littéraire</h4></li></div>
-          <div class="pargenre"><li><h4>Stylistique</h4></li></div>
-          <div class="pargenre"><li><h4>Methodologie</h4></li></div>
-        </ul>
-      </div>
+  <div class="border technique"></div>
+    <!-- ========== SEARCHBAR ========== -->
+    <div class="col-xs-8 col-xs-offset-3">
+      <form action="" class="list-search">
+        <input type="text" class="list-search-input" placeholder="Chercher par titre">
+        <button type="submit" class="list-search-btn">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
     </div>
-    <div class="col-md-8">
-      <div class="scroll-wrapper">
-        <% @technique.each do |t| %>
-          <div class="card-genre">
-             <ul>
-              <li><%= cl_image_tag t.picture.path, :class => "style_image", width: 200, height: 300, crop: :fill %></li>
-                <li> <h1> <%= t.title %>  </h1> </li>
-                <li> <p> <%= t.description %> </p> </li>
+    <!-- ========== SIDEBAR ========== -->
+      <div class="col-xs-1 col-xs-offset-2">
+        <div id="sidebar">
+          <div id="sidebar-category">
+            <% @technique_courses.each do |c| %>
+              <h4><%= c.category.name %></h4>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <!-- ========== SCROLL LIST ========== -->
+    <div class="col-xs-8">
+      <div class="list-scroll">
+        <% @technique_courses.each do |c| %>
+          <div class="list">
+            <%= link_to lecture_path(c) do %>
+              <%= cl_image_tag c.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+              <ul>
+                <li><h3><%= c.title %></h3></li>
+                <li><p><%= c.description %></p></li>
+                <li><p><%= c.lectures.count %> videos</p></li>
+                <li>
+                  <p class="list-themes"> <% c.themes.each do |t| %>
+                    <%= t.name %>;
+                  <% end %>
+                  </p>
+                </li>
               </ul>
+            <% end %>
           </div>
         <% end %>
       </div>
     </div>
+  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
   </div>
 </div>

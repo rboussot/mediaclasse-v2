@@ -1,9 +1,9 @@
 .border {
   position: fixed;
-  height: 100vh;
+  height: calc(100vh - 110px);
   width: 30px;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   left: 30px;
   z-index: -1;
 }
