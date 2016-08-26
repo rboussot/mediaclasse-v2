@@ -1,6 +1,6 @@
-// #sidebar {
-//   border-left: 30px solid $litterature;
-// }
+#sidebar {
+  position: fixed;
+}
 
 #sidebar-letter {
   text-align: center;
@@ -17,7 +17,6 @@
   width: 160px;
   font-size: 10px;
   margin: -70px 0px 0px -100px;
-  position: fixed;
 }
 
 #sidebar-parauteur h4 {
