@@ -3,10 +3,10 @@
   display: flex;
   padding: 10px 10px 0 10px
 }
-.tabs a {
+.tabs span {
   color: white;
 }
-.tabs a:hover {
+.tabs span:hover {
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
@@ -22,17 +22,27 @@
   margin-bottom: 0;
 }
 .tab {
-  background: $litterature;
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
 }
+
+.tab .litterature {
+  background: $litterature;
+}
+
+.tab .technique {
+  background: $technique;
+}
+
 .tab:first-child {
   border-radius: 6px 0 0 0;
 }
+
 .tab:last-child {
   border-radius: 0 6px 0 0;
 }
+
 .tab.active {
   background: $greylighter;
   color: black;

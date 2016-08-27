@@ -7,9 +7,15 @@
   width: 30px;
 }
 
+#sidebar-letter:hover {
+  background-color: black;
+  text-decoration: none;
+  color: white;
+}
 
-#sidebar-letters:hover {
-  background-color: #ccc;
+#sidebar-letter a:hover {
+  color: white;
+  text-decoration: none;
 }
 
 #sidebar-parauteur {
@@ -28,17 +34,43 @@
 }
 
 #sidebar-category {
-  color: white;
   width: 160px;
   font-size: 10px;
   margin: -10px 0px 0px -100px;
   position: fixed;
 }
 
-#sidebar-category h4 {
+#sidebar-category h4.active {
+  color: white;
   background-color: black;
+}
+
+#sidebar-category h4 {
+  background-color: $greywhite;
+  color: $grey;
   font-size: 18px;
   text-align: center;
   padding: 15px 0 15px 0;
   margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+#sidebar-category a {
+  text-decoration: none;
+}
+
+#sidebar-category h4.active:hover {
+  opacity: .8;
+  color: white;
+  background-color: black;
+}
+
+#sidebar-category h4:hover {
+  background-color: $greylighter;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+  text-decoration : none;
 }
