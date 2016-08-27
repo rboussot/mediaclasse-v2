@@ -5,7 +5,10 @@
   <% end %>
 
   <%= link_to "Oeuvres & analyses", litterature_courses_path, class: "navbar-link link-litterature" %>
-  <%= link_to "Méthodes & Techniques", technique_courses_path, class: "navbar-link link-technique" %>
+
+  <% @technique_category = Category.where(tag: "technique").last %>
+  <%= link_to "Méthodes & Techniques", technique_courses_path(@technique_category), class: "navbar-link link-technique" %>
+
   <%= link_to "Communauté", root_path, class: "navbar-link link-community" %>
   <%= link_to "Mes cours", root_path, class: "navbar-link link-profile" %>
 
@@ -42,22 +45,18 @@
 
     <% else %>
 
-    <div class="loginsignup">
+      <div class="loginsignup">
 
-      <!-- Connection -->
+      <!-- ========== MODALES DE CONNECTION ========== -->
+
       <%#= link_to "Connection", new_user_session_path, class: "navbar-media-item navbar-login" %>
-    <%#= link_to "Inscription", "#", class: "navbar-media-item navbar-signup" %>
+      <%#= link_to "Inscription", "#", class: "navbar-media-item navbar-signup" %>
 
       <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">connexion</button>
-
-    <!-- Inscription -->
-
       <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">inscription</button>
+
     <% end %>
-
-
     </div>
-
   </div>
 
 
