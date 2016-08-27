@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :lectures, only: [:show]
   resources :channels, only: [:index]
+  resources :comments, only: [:new, :create, :delete]
 
   devise_for :users
   root to: 'pages#home'
