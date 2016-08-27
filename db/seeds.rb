@@ -73,6 +73,12 @@ puts "Category methodologie created"
 littchannels = Category.new(name: "Chaînes littéraires", description:"Oeuvres célèbres", tag:"chaines")
 littchannels.save
 puts "Category chaînes littéraires created"
+chainescritique = Category.new(name: "Critique littéraire", description:"Critique littéraire", tag:"chaines")
+chainescritique.save
+puts "Category chaînes critiques created"
+chainespoesie = Category.new(name: "Poésie", description:"Chaînes sur la poésie", tag:"chaines")
+chainespoesie.save
+puts "Category chaînes poésie created"
 
 tartuffe = Course.new(author:moliere, category:litterature, title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.")
 tartuffe.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Molie%CC%80re_Tartuffe_snuogz.jpg'
@@ -468,7 +474,7 @@ channel3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1
 channel3.save
 puts "Channel channel3 created"
 
-channel4 = Channel.new(user: mad, category: littchannels, name: "Entre mes... couvertures")
+channel4 = Channel.new(user: mad, category: chainescritique, name: "Entre mes... couvertures")
 channel4.description = "Si vous aimez les livres, la lecture, si vous êtes librocubiculariste et que votre endroit préféré de la maison, c'est le lit, si vous désirez découvrir des livres (ou même si vous n'aimez pas lire (et j'espère que vous réaliserez que lire, ça peut être divertissant)), vous êtes bienvenu(e) ici."
 channel4.email = "emc@gmail.com"
 channel4.visible = true
@@ -477,7 +483,7 @@ channel4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1
 channel4.save
 puts "Channel channel4 created"
 
-channel5 = Channel.new(user: mad, category: littchannels, name: "L'Arche")
+channel5 = Channel.new(user: mad, category: chainespoesie, name: "L'Arche")
 channel5.description = "Qu'est-ce que la beauté ? Pourquoi l'art est-il compliqué ? La poésie est-elle ennuyeuse ? Pourquoi les poètes sont tous bizarres et jaunâtres ?"
 channel5.email = "larche@gmail.com"
 channel5.visible = true
