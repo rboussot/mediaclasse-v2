@@ -10,7 +10,11 @@
           <% @lectures.each do |lecture| %>
             <ul>
               <%= link_to lecture_path(lecture) do %>
-                <li class="lecture-link"><%= lecture.title %></li>
+                <% if lecture.id.to_s == params[:id]%>
+                  <li class="lecture-link active"><%= lecture.title %></li>
+                <% else %>
+                  <li class="lecture-link"><%= lecture.title %></li>
+                <% end %>
               <% end %>
             </ul>
           <% end %>

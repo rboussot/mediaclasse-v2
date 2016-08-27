@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :lectures, only: [:show]
-
+  resources :channels, only: [:index]
 
   devise_for :users
   root to: 'pages#home'

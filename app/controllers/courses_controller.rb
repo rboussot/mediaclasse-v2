@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
 
   def technique
     @courses = Course.all
-    @technique_courses = Course.joins(:category).where(categories: {id: params[:format]})
+    @technique_courses = Course.joins(:category).where(categories: {id: params[:format]}).order('title ASC')
     @categories = Category.where(tag: "technique")
   end
 
