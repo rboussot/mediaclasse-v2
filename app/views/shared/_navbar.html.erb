@@ -45,18 +45,21 @@
 
     <% else %>
 
-    <div class="loginsignup">
+      <div class="loginsignup">
 
-      <!-- Connection -->
-      <%= link_to "Se connecter", new_user_session_path, class: "navbar-media-item navbar-login" %>
+      <!-- ========== MODALES DE CONNECTION ========== -->
+
+      <%#= link_to "Connection", new_user_session_path, class: "navbar-media-item navbar-login" %>
+      <%#= link_to "Inscription", "#", class: "navbar-media-item navbar-signup" %>
+
+      <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">connexion</button>
+      <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">inscription</button>
+
     <% end %>
-
-    <!-- Inscription -->
-    <%= link_to "Connexion", "#", class: "navbar-media-item navbar-signup" %>
-
     </div>
-
   </div>
+
+
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-media-item hidden-md hidden-lg">
