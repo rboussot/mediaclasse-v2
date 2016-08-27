@@ -9,7 +9,7 @@
   <% @technique_category = Category.where(tag: "technique").last %>
   <%= link_to "Méthodes & Techniques", technique_courses_path(@technique_category), class: "navbar-link link-technique" %>
 
-  <% @channels_category = Category.where(tag: "chaines").last %>
+  <% @channels_category = Category.where(tag: "chaines").first %>
   <%= link_to "Communauté", channels_path(@channels_category), class: "navbar-link link-community" %>
   <%= link_to "Mes cours", root_path, class: "navbar-link link-profile" %>
 
