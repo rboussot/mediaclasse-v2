@@ -3,6 +3,7 @@ class LecturesController < ApplicationController
     @lecture = Lecture.find(params[:id])
     @lecture_course = @lecture.course
     @lectures = @lecture_course.lectures
-    @lecture_comments = Comment.all.where(lecture: @lecture)
+    @lecture_comments = Comment.all.where(lecture: @lecture).joins(:user)
+    @comment = Comment.new
   end
 end
