@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @channel = Channel.where(user_id: current_user)
   end
 
   def update

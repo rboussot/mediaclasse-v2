@@ -21,10 +21,20 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def edit
+    @channel = Channel.where(user_id: current_user[:id]).first
+  end
+
+  def update
+    @channel = Channel.find(user_id: current_user[:id]).first
+    @channel.update(channel_params)
+    redirect_to root_path
+  end
+
   private
 
-  def cocktail_params
-    params.require(:channel).permit(:name, :description, :email, :link)
+  def channel_params
+    params.require(:channel).permit(:picture, :name, :description, :email, :link)
   end
 
 end

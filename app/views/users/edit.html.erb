@@ -3,8 +3,28 @@
   <div class="border profile"></div>
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
-        <br><br><br><br>Edit User Profile<br>
-        <%= link_to "Proposer une chaîne Youtube", new_channel_path  %>
+
+        <%= simple_form_for(@user) do |f| %>
+          <% if @user.errors.any? %>
+
+          <% end %>
+          <%= f.error_notification %>
+          <%= f.input :picture, as: :attachinary %>
+          <%= f.input :email %>
+          <%= f.input :firstname %>
+          <%= f.input :lastname %>
+          <%= f.input :level %>
+          <%= f.input :adress %>
+          <%= f.input :phone %>
+          <%= f.input :birth %>
+          <%= f.submit class: "navbar-wagon-button", value: "Sauver les modifications"%>
+        <% end %>
+
+        <% if @channel %>
+          <%= link_to "Modifier les infos de ma chaîne", edit_channel_path(@channel)  %>
+        <% else %>
+          <%= link_to "Proposer une chaîne Youtube", new_channel_path  %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -29,17 +29,17 @@
     <!-- ========== SCROLL LIST ========== -->
     <div class="col-xs-9">
       <div class="list-scroll">
-        <% @technique_courses.each do |c| %>
+        <% @technique_courses.each do |course| %>
           <div class="list-item">
-            <% if c.lectures.first %>
-              <%= link_to lecture_path(c.lectures.first) do %>
-                <%= cl_image_tag c.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+            <% if course.lectures.first %>
+              <%= link_to lecture_path(course.lectures.first) do %>
+                <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
                 <ul>
-                  <li><h3><%= c.title %></h3></li>
-                  <li><p><%= c.description %></p></li>
-                  <li><p><%= c.lectures.count %> videos</p></li>
+                  <li><h3><%= course.title %></h3></li>
+                  <li><p><%= course.description %></p></li>
+                  <li><p><%= course.lectures.count %> videos</p></li>
                   <li>
-                    <p class="list-themes"> <% c.themes.each do |t| %>
+                    <p class="list-themes"> <% course.themes.each do |t| %>
                       <%= t.name %>;
                     <% end %>
                     </p>
