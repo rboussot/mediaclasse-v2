@@ -26,17 +26,17 @@
     <!-- ========== SCROLL LIST ========== -->
     <div class="col-xs-9">
       <div class="list-scroll">
-        <% @litterature_courses.each do |c| %>
-          <% if c.lectures.first %>
-            <div class="list-item" id="<%= c.author.pseudo.first %>">
-              <%= link_to lecture_path(c.lectures.first) do %>
-                <%= cl_image_tag c.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+        <% @litterature_courses.each do |course| %>
+          <% if course.lectures.first %>
+            <div class="list-item" id="<%= course.author.pseudo.first %>">
+              <%= link_to lecture_path(course.lectures.first) do %>
+                <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
                 <ul>
-                  <li> <h3>  <%= c.author.pseudo %>, <%= c.title %> - <%= c.date %> </h3></li>
-                  <li> <p> <%= c.description %> </p> </li>
-                  <li> <p> <%= c.lectures.count %> videos</p> </li>
+                  <li> <h3>  <%= course.author.pseudo %>, <%= course.title %> - <%= course.date %> </h3></li>
+                  <li> <p> <%= course.description %> </p> </li>
+                  <li> <p> <%= course.lectures.count %> videos</p> </li>
                   <li>
-                    <p class="list-themes"> <% c.themes.each do |t| %>
+                    <p class="list-themes"> <% course.themes.each do |t| %>
                       <%= t.name %>;
                     <% end %>
                     </p>

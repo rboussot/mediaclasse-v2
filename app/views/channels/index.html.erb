@@ -14,7 +14,7 @@
     <div class="col-xs-1 col-xs-offset-2">
       <div id="sidebar">
         <div id="sidebar-category">
-          <% @categories.reverse.each do |category| %>
+          <% @categories.each do |category| %>
             <%= link_to channels_path(category) do %>
               <% if category.id.to_s == params[:format] %>
                 <h4 class="active"><%= category.name %></h4>

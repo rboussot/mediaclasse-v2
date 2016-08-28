@@ -8,50 +8,62 @@
 
 
 CoursesTheme.destroy_all
+puts "All courses_theme destroyed"
 Comment.destroy_all
+puts "All comments destroyed"
+Document.destroy_all
+puts "All documents destroyed"
 Lecture.destroy_all
+puts "All lectures destroyed"
 Course.destroy_all
+puts "All courses destroyed"
 Channel.destroy_all
+puts "All channels destroyed"
 Category.destroy_all
+puts "All categories destroyed"
 Theme.destroy_all
+puts "All themes destroyed"
 Author.destroy_all
+puts "All authors destroyed"
 User.destroy_all
+puts "All users destroyed"
 Level.destroy_all
+puts "All levels destroyed"
 
 moliere = Author.new(lastname: "Poquelin", firstname: "Jean-Baptiste", pseudo: "Molière", birth: 1662, death: 1673)
-moliere.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053089/moliere_oxcsys.jpg'
+moliere.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472053089/moliere_oxcsys.jpg'
 moliere.save
 puts "Author Moliere created"
 flaubert = Author.new(lastname: "Flaubert", firstname: "Gustave", pseudo: "Flaubert", birth: 1821, death: 1880)
-flaubert.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052969/flaubert_umtdgg.jpg'
+flaubert.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052969/flaubert_umtdgg.jpg'
 flaubert.save
 puts "Author Flaubert created"
 voltaire = Author.new(lastname: "Arouet", firstname: "François-Marie", pseudo: "Voltaire", birth: 1694, death: 1778)
-voltaire.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052899/voltaire_atmpc9.jpg'
+voltaire.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472052899/voltaire_atmpc9.jpg'
 voltaire.save
 puts "Author Voltaire created"
 maupassant = Author.new(lastname: "Maupassant", firstname: "Guy de", pseudo: "Maupassant", birth: 1694, death: 1778)
-maupassant.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472285845/220px-Maupassant_2_golg8n.jpg'
+maupassant.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472285845/220px-Maupassant_2_golg8n.jpg'
 maupassant.save
 puts "Author maupassant created"
 zola = Author.new(lastname: "Zola", firstname: "Émile", pseudo: "Zola", birth: 1840, death: 1902)
-zola.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472285961/ZOLA_1902B_hn3he6.jpg'
+zola.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472285961/ZOLA_1902B_hn3he6.jpg'
 zola.save
 puts "Author zola created"
 celine = Author.new(lastname: "Destouches", firstname: "Louis-Ferdinand", pseudo: "Céline", birth: 1894, death: 1961)
-celine.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286079/tumblr_inline_mspjklbmNf1qz4rgp_jur3n6.jpg'
+celine.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286079/tumblr_inline_mspjklbmNf1qz4rgp_jur3n6.jpg'
 celine.save
 puts "Author céline created"
 baudelaire = Author.new(lastname: "Baudelaire", firstname: "Charles", pseudo: "Baudelaire", birth: 1821, death: 1867)
-baudelaire.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286160/baudelaire_crop_wp1tvg.jpg'
+baudelaire.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286160/baudelaire_crop_wp1tvg.jpg'
 baudelaire.save
 puts "Author baudelaire created"
 corneille = Author.new(lastname: "Corneille", firstname: "Pierre", pseudo: "Corneille", birth: 1606, death: 1684)
-corneille.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286256/1002791-Pierre_Corneille_snyrdd.jpg'
+corneille.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286256/1002791-Pierre_Corneille_snyrdd.jpg'
 corneille.save
 puts "Author corneille created"
 camus = Author.new(lastname: "Camus", firstname: "Albert", pseudo: "Camus", birth: 1913, death: 1960)
-camus.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286375/Ectac.Albert-Camus.01_kasbh0.jpg'
+camus.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286375/Ectac.Albert-Camus.01_kasbh0.jpg'
 camus.save
 puts "Author camus created"
 
@@ -81,72 +93,72 @@ chainespoesie.save
 puts "Category chaînes poésie created"
 
 tartuffe = Course.new(author:moliere, category:litterature, title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.")
-tartuffe.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Molie%CC%80re_Tartuffe_snuogz.jpg'
+tartuffe.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Molie%CC%80re_Tartuffe_snuogz.jpg'
 tartuffe.save
 puts "Course Tartuffe created"
 
 candide = Course.new(author:voltaire, category:litterature, title:"Candide", date: 1759, description:"Candide ou l'Optimisme est un conte philosophique de Voltaire paru à Genève en janvier 1759. Il a été réédité vingt fois du vivant de l’auteur, ce qui en fait un des plus grands succès littéraires français.")
-candide.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Voltaire_Candide_c75qsj.jpg'
+candide.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Voltaire_Candide_c75qsj.jpg'
 candide.save
 puts "Course candide created"
 
 bovary = Course.new(author:flaubert, category:litterature, title:"Madame Bovary", date: 1857, description:"Madame Bovary: Mœurs de province, couramment abrégé en Madame Bovary, est un roman de Gustave Flaubert paru en 1857 chez Michel Lévy frères, après une pré-parution en 1856 dans le journal La Revue de Paris.")
-bovary.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Flaubert_Madame_Bovary_zvtvs3.jpg'
+bovary.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Flaubert_Madame_Bovary_zvtvs3.jpg'
 bovary.save
 puts "Course bovary created"
 
 belami = Course.new(author:maupassant, category:litterature, title:"Bel Ami", date: 1885, description:"Bel-Ami est un roman réaliste de Guy de Maupassant, dont l'action se déroule à Paris au XIXᵉ siècle, publié en 1885 sous forme de feuilleton dans Gil Blas.")
-belami.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223824/kr0clathb9ieqapz9a8v.jpg'
+belami.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223824/kr0clathb9ieqapz9a8v.jpg'
 belami.save
 puts "Course belami created"
 
 germinal = Course.new(author:zola, category:litterature, title:"Germinal", date: 1885, description:"Germinal est un roman d'Émile Zola publié en 1885. Il s'agit du treizième roman de la série des Rougon-Macquart. Écrit d'avril 1884 à janvier 1885, le roman paraît d'abord en feuilleton entre novembre 1884 et février 1885 dans le Gil Blas.")
-germinal.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223880/zcrc5zvmlqmzotgzypoe.jpg'
+germinal.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223880/zcrc5zvmlqmzotgzypoe.jpg'
 germinal.save
 puts "Course germinal created"
 
 assommoir = Course.new(author:zola, category:litterature, title:"L'Assommoir", date: 1877, description:"L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier.")
-assommoir.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223997/kv0nemyoxhwce52umzix.jpg'
+assommoir.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472223997/kv0nemyoxhwce52umzix.jpg'
 assommoir.save
 puts "Course assommoir created"
 
 voyage = Course.new(author:celine, category:litterature, title:"Voyage au Bout de la Nuit", date: 1932, description:"Voyage au bout de la nuit est le premier roman de Céline, publié en 1932. Ce livre manqua de deux voix le prix Goncourt mais obtint le prix Renaudot.")
-voyage.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224087/q86ygkqb6mvuxgu1vcll.jpg'
+voyage.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224087/q86ygkqb6mvuxgu1vcll.jpg'
 voyage.save
 puts "Course voyage created"
 
 lecid = Course.new(author:corneille, category:litterature, title:"Le Cid", date: 1637, description:"Le Cid est une pièce de théâtre tragi-comique en vers de Pierre Corneille dont la première représentation eut lieu le 7 janvier 1637 au théâtre du Marais.")
-lecid.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224194/hgy8tuy4mfps4kye1r8p.jpg'
+lecid.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224194/hgy8tuy4mfps4kye1r8p.jpg'
 lecid.save
 puts "Course lecid created"
 
 etranger = Course.new(author:camus, category:litterature, title:"L'Étranger", date: 1942, description:"L’Étranger est le premier roman d’Albert Camus, paru en 1942. Il prend place dans la tétralogie que Camus nommera « cycle de l’absurde » qui décrit les fondements de la philosophie camusienne : l’absurde.")
-etranger.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224259/pw40spihtsdpsikul2iw.jpg'
+etranger.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472224259/pw40spihtsdpsikul2iw.jpg'
 etranger.save
 puts "Course etranger created"
 
 registres = Course.new(category:forme,title:"Les registres littéraires", description:"Les registres littéraires On appelle registre littéraire (ou « tonalité », « ton ») l'ensemble des caractéristiques d'un texte qui provoquent des effets particuliers")
-registres.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049910/4_xfjby3.jpg'
+registres.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049910/4_xfjby3.jpg'
 registres.save
 puts "Course registres created"
 
 realisme = Course.new(category:histoire,title:"Le mouvement Réaliste", description:"Le Réalisme est un mouvement artistique et littéraire apparu en France vers 18501, né du besoin de réagir contre le sentimentalisme romantique.")
-realisme.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050155/6_cxla0w.jpg'
+realisme.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050155/6_cxla0w.jpg'
 realisme.save
 puts "Course realisme created"
 
 metaphore = Course.new(category:style,title:"Les métaphores", description:"La métaphore, du latin metaphora, lui-même du grec μεταφορά (metaphorá, au sens propre, transport), est une figure de style fondée sur l'analogie. Elle désigne une chose par une autre qui lui ressemble ou partage avec elle une qualité essentielle.")
-metaphore.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050265/7_dhzdox.jpg'
+metaphore.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472050265/7_dhzdox.jpg'
 metaphore.save
 puts "Course metaphore created"
 
 corpus = Course.new(category:methodo,title:"La question de corpus", description:"Comment préparer et rédiger la question de corpus au bac de français.")
-corpus.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049912/1_tu1vwg.jpg'
+corpus.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049912/1_tu1vwg.jpg'
 corpus.save
 puts "Course corpus created"
 
 compose = Course.new(category:methodo,title:"Le commentaire composé", description:"Cette méthodologie du commentaire composé fonctionne sur tous les types de textes : roman, poésie, théâtre, et même le texte argumentatif. Nous verrons ensemble des exemples pour chaque cas. La plupart des outils que je vais présenter sont connus depuis le collège, la méthodologie n'est pas complexe en soi : en fait, la difficulté viendra surtout du niveau culturel et littéraire des textes que vous allez aborder.")
-compose.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472222562/ksi6rdgnhxzyuib5xtli.jpg'
+compose.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472222562/ksi6rdgnhxzyuib5xtli.jpg'
 compose.save
 puts "Course commentaire composé created"
 
@@ -204,7 +216,7 @@ corpus_bac.save
 puts "CoursesTheme metaphore_figures created"
 
 tartuffe1 = Lecture.new(course: tartuffe, title:"Résumé analyse", video:"_QaJabZwuHI", description:"Le résumé analysé et illustré de Tartuffe, la comédie de Molière", payment: false)
-tartuffe1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-tartuffe_l1qzdy.jpg'
+tartuffe1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-tartuffe_l1qzdy.jpg'
 tartuffe1.save
 puts "Lecture tartuffe1 created"
 
@@ -229,22 +241,22 @@ tartuffe6.save
 puts "Lecture tartuffe5 created"
 
 candide1 = Lecture.new(course: candide, title:"Résumé analyse", video:"988K0bxJyx8", description:"Le résumé analyse illustré de Candide, le conte philosophique de Voltaire", payment: false)
-candide1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide_fwhcyg.jpg'
+candide1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide_fwhcyg.jpg'
 candide1.save
 puts "Lecture candide1 created"
 
 candide2 = Lecture.new(course: candide, title:"Chapitre 1", video:"_h-fP2nt9fM", description:"Le commentaire du chapitre de Candide", payment: true)
-candide2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide2_itryke.jpg'
+candide2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-candide2_itryke.jpg'
 candide2.save
 puts "Lecture candide2 created"
 
 bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovay, le roman de Flaubert", payment: false)
-bovary1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
+bovary1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
 bovary1.save
 puts "Lecture bovary1 created"
 
 bovary2 = Lecture.new(course: bovary, title:"Partie 1, Chapitre 1", video:"9VLWSusv4pc", description:"Commentaire composé du premier chapitre de Madame Bovary de Flaubert", payment: true)
-bovary2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary2_bbltfx.jpg'
+bovary2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary2_bbltfx.jpg'
 bovary2.save
 puts "Lecture bovary2 created"
 
@@ -309,47 +321,47 @@ voyage6.save
 puts "Lecture voyage6 created"
 
 registres1 = Lecture.new(course: registres, title:"Le registre didactique", video:"L1i5anUZeC0", description:"Les marques du registres didactique en littérature", payment: false)
-registres1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres1_mbwzmn.jpg'
+registres1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres1_mbwzmn.jpg'
 registres1.save
 puts "Lecture registres1 created"
 
 registres2 = Lecture.new(course: registres, title:"Le registre dramatique", video:"kT7rrvybIi8", description:"Les marques du registres dramatique en littérature", payment: true)
-registres2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres2_tyw44i.jpg'
+registres2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-registres2_tyw44i.jpg'
 registres2.save
 puts "Lecture registres2 created"
 
 realisme1 = Lecture.new(course: realisme, title: "Le réalisme chez Balzac", video:"59bsBUAlWdc", description:"Un cours sur le réalisme chez Balzac", payment: false)
-realisme1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-realisme1_icjiq2.jpg'
+realisme1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-realisme1_icjiq2.jpg'
 realisme1.save
 puts "Lecture realisme1 created"
 
 realisme2 = Lecture.new(course: realisme, title: "La question de corpus sur des textes réalistes", video:"gcmSx7YUmbg", description:"La question de corpus sur des textes réalistes", payment: true)
-realisme2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-realisme2_zrcbn0.jpg'
+realisme2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-realisme2_zrcbn0.jpg'
 realisme2.save
 puts "Lecture realisme2 created"
 
 metaphore1 = Lecture.new(course: metaphore, title: "Les figures de style dans le commentaire composé", video:"44Zt5tz1tYE", description:"La méthodologie du commentaire composé, les grilles de lecture.", payment: false)
-metaphore1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-metaphore1_xqe1bj.jpg'
+metaphore1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-metaphore1_xqe1bj.jpg'
 metaphore1.save
 puts "Lecture metaphore1 created"
 
 corpus1 = Lecture.new(course: corpus, title:"Extraits de romans", video:"uuY5wtJfmIE", description:"La méthode pour la question de corpus pour le roman", payment: true)
-corpus1.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus2_sbgpsf.jpg'
+corpus1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus2_sbgpsf.jpg'
 corpus1.save
 puts "Lecture corpus1 created"
 
 corpus2 = Lecture.new(course: corpus, title:"Extraits de pièces de théâtre", video:"kT7rrvybIi8", description:"La méthode pour la question de corpus pour le théâtre", payment: false)
-corpus2.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus1_w8bzbw.jpg'
+corpus2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus1_w8bzbw.jpg'
 corpus2.save
 puts "Lecture corpus2 created"
 
 corpus3 = Lecture.new(course: corpus, title:"Extraits de poésies", video:"nziBPRPAvQI", description:"La méthode pour la question de corpus pour la poésie", payment: true)
-corpus3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus3_nxrigg.jpg'
+corpus3.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus3_nxrigg.jpg'
 corpus3.save
 puts "Lecture corpus3 created"
 
 corpus4 = Lecture.new(course: corpus, title:"Extraits de textes argumentatifs", video:"L1i5anUZeC0", description: "La méthode pour la question de corpus pour l'argumentation", payment: true)
-corpus4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus4_xkvzmi.jpg'
+corpus4.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-corpus4_xkvzmi.jpg'
 corpus4.save
 puts "Lecture corpus4 created"
 
@@ -358,6 +370,7 @@ compose1.save
 puts "Lecture compose1 created"
 
 compose2 = Lecture.new(course: compose, title:"Commenter un extrait de roman", video:"gcmSx7YUmbg", description: "Application de ma méthodologie du commentaire composé pour le roman", payment: true)
+
 compose2.save
 puts "Lecture compose2 created"
 
@@ -377,21 +390,27 @@ compose6 = Lecture.new(course: compose, title:"Commenter un extrait de texte arg
 compose6.save
 puts "Lecture compose6 created"
 
-belami1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"goBK2RvI2TQ", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+belami1 = Lecture.new(course: belami, title:"Commenter un extrait de texte argumentatif", video:"goBK2RvI2TQ", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
 belami1.save
 puts "Lecture belami1 created"
 
-germinal1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"qYLKdUWzO_I", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+germinal1 = Lecture.new(course: germinal, title:"Commenter un extrait de texte argumentatif", video:"qYLKdUWzO_I", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
 germinal1.save
 puts "Lecture germinal1 created"
 
-assommoir1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"2c7iBqOUcUc", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+assommoir1 = Lecture.new(course: assommoir, title:"Commenter un extrait de texte argumentatif", video:"2c7iBqOUcUc", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
 assommoir1.save
 puts "Lecture assommoir1 created"
 
-lecid1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+lecid1 = Lecture.new(course: lecid, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
 lecid1.save
 puts "Lecture lecid1 created"
+
+Document.create(title: "Antisèche pour mieux retenir les grilles de lecture", url:'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472393487/Me%CC%81thodologie_du_commentaire_compose%CC%81_bac_de_franc%CC%A7ais_m0gvkc.pdf', lecture:compose1)
+Document.create(title: "Texte intégral du cours", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472396142/methodologie_commentaire_compose.pdf", lecture: compose1)
+Document.create(title: "Le texte intégral du roman", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472401778/Madame_Bovary_-_Texte_Inte%CC%81gral_x6bqnp.pdf", lecture: bovary1)
+Document.create(title: "Le résumé chapitre par chapitre", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472401783/bovary_-_re%CC%81sume%CC%81_nxrcdg.pdf", lecture: bovary1)
+Document.create(title: "Les slides de la vidéo", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472401960/bovary0_qhumzp.pdf", lecture: bovary1)
 
 seconde = Level.new(name: "Seconde")
 seconde.save

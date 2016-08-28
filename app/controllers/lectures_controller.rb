@@ -7,8 +7,8 @@ class LecturesController < ApplicationController
     @lectures = @lecture_course.lectures
     @lecture_comments = Comment.all.where(lecture: @lecture).joins(:user)
     @comment = Comment.new
-    skip_authorization
     @documents = Document.where(lecture_id: params[:id])
+    skip_authorization
   end
 
 end

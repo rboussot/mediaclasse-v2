@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
 
   def litterature
     @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    @pictures = Picture.all
     skip_authorization
   end
 
@@ -10,6 +11,7 @@ class CoursesController < ApplicationController
     @courses = policy_scope(Course)
     @technique_courses = Course.joins(:category).where(categories: {id: params[:format]}).order('title ASC')
     @categories = Category.where(tag: "technique")
+    @pictures = Picture.joins(:course).where('course_id != nil')
     skip_authorization
   end
 

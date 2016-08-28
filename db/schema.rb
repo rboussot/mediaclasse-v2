@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20160828150927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string   "attachinariable_type"
@@ -37,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "pseudo"
     t.integer  "birth"
     t.integer  "death"
+    t.string   "keywords"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "name"
     t.text     "description"
     t.string   "tag"
+    t.string   "tab"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -80,6 +82,8 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
+    t.string   "keywords"
+    t.string   "picture"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
@@ -109,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "title"
     t.string   "video"
     t.text     "description"
+    t.string   "picture"
     t.boolean  "payment",     default: true, null: false
     t.boolean  "visible",     default: true, null: false
     t.datetime "created_at",                 null: false
@@ -120,13 +125,6 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "spatial_ref_sys", primary_key: "srid", id: :integer, force: :cascade do |t|
-    t.string  "auth_name", limit: 256
-    t.integer "auth_srid"
-    t.string  "srtext",    limit: 2048
-    t.string  "proj4text", limit: 2048
   end
 
   create_table "themes", force: :cascade do |t|
