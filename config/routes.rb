@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :lectures, only: [:show]
-  resources :channels, only: [:index]
+  resources :documents, only: [:show]
+  resources :channels, only: [:index, :new, :create, :edit, :update]
   resources :comments, only: [:new, :create, :delete]
+  resources :users, only: [:edit, :update]
+  get "participation", to: "users#participation"
+  get "newsletter", to: "pages#newsletter"
 
   devise_for :users
   root to: 'pages#home'

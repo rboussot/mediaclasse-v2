@@ -145,7 +145,7 @@ corpus.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v147
 corpus.save
 puts "Course corpus created"
 
-compose = Course.new(category:methodo,title:"Le commentaire composé", description:"Comment préparer et rédiger son commentaire composé au bac de français.")
+compose = Course.new(category:methodo,title:"Le commentaire composé", description:"Cette méthodologie du commentaire composé fonctionne sur tous les types de textes : roman, poésie, théâtre, et même le texte argumentatif. Nous verrons ensemble des exemples pour chaque cas. La plupart des outils que je vais présenter sont connus depuis le collège, la méthodologie n'est pas complexe en soi : en fait, la difficulté viendra surtout du niveau culturel et littéraire des textes que vous allez aborder.")
 compose.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472222562/ksi6rdgnhxzyuib5xtli.jpg'
 compose.save
 puts "Course commentaire composé created"
@@ -377,6 +377,22 @@ compose6 = Lecture.new(course: compose, title:"Commenter un extrait de texte arg
 compose6.save
 puts "Lecture compose6 created"
 
+belami1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"goBK2RvI2TQ", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+belami1.save
+puts "Lecture belami1 created"
+
+germinal1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"qYLKdUWzO_I", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+germinal1.save
+puts "Lecture germinal1 created"
+
+assommoir1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"2c7iBqOUcUc", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+assommoir1.save
+puts "Lecture assommoir1 created"
+
+lecid1 = Lecture.new(course: compose, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+lecid1.save
+puts "Lecture lecid1 created"
+
 seconde = Level.new(name: "Seconde")
 seconde.save
 puts "Level seconde created"
@@ -400,11 +416,11 @@ curieux.save
 puts "Level curieux created"
 
 romain = User.new(email: "romain@gmail.com", password: "mlkmlk", admin: true, level: prof, firstname: "Romain", lastname: "Boussot")
-romain.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472291185/romain_maohch.jpg'
+romain.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379055/romain_ogqx4s.jpg'
 romain.save
 puts "User romain created"
 guillaume = User.new(email: "guillaume@gmail.com", password: "mlkmlk", admin: true, level: passionne, firstname: "Guillaume", lastname: "Laîné")
-guillaume.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472291025/guillaume_qw6wxl.jpg'
+guillaume.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379796/guillaume_rjaoe9.jpg'
 guillaume.save
 puts "User guillaume created"
 ludivine = User.new(email: "ludivine@gmail.com", password: "mlkmlk", level: etudiant, firstname: "Ludivine", lastname:"Deslaurier")
@@ -423,8 +439,8 @@ mad = User.new(email: "mad@gmail.com", password: "mlkmlk", level: etudiant, firs
 mad.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472289954/mad_pxsfsq.jpg'
 mad.save
 puts "User mad created"
-kevin = User.new(email: "mad@gmail.com", password: "mlkmlk", level: etudiant, firstname: "Kevin", lastname:"Pelladeaud")
-kevin.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472290255/13686766_10210280701720515_4072946683340410722_n_z6rra1.jpg'
+kevin = User.new(email: "hommelitteraire@gmail.com", password: "mlkmlk", level: etudiant, firstname: "Kevin", lastname:"Pelladeaud")
+kevin.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379928/pd950mp8b42dxdcqsniw.jpg'
 kevin.save
 puts "User kevin created"
 
@@ -470,7 +486,7 @@ channel3.description = "Le Marque-Page propose un contenu divertissant sur la li
 channel3.email = "marquepage@gmail.com"
 channel3.visible = true
 channel3.link = "https://www.youtube.com/channel/UCJgYXYDJV9UZfxMcKuvc-0g"
-channel3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472291675/marquepage_bqubjg.jpg'
+channel3.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379298/marquepage_cjjiu3.jpg'
 channel3.save
 puts "Channel channel3 created"
 
@@ -479,15 +495,15 @@ channel4.description = "Si vous aimez les livres, la lecture, si vous êtes libr
 channel4.email = "emc@gmail.com"
 channel4.visible = true
 channel4.link = "https://www.youtube.com/channel/UCy6r387MQ28-EvApxraTDLQ"
-channel4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472292195/emc_cvgmif.jpg'
+channel4.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379376/emc_fbmm80.jpg'
 channel4.save
 puts "Channel channel4 created"
 
-channel5 = Channel.new(user: mad, category: chainespoesie, name: "L'Arche")
+channel5 = Channel.new(user: aurelien, category: chainespoesie, name: "L'Arche")
 channel5.description = "Qu'est-ce que la beauté ? Pourquoi l'art est-il compliqué ? La poésie est-elle ennuyeuse ? Pourquoi les poètes sont tous bizarres et jaunâtres ?"
 channel5.email = "larche@gmail.com"
 channel5.visible = true
 channel5.link = "https://www.youtube.com/channel/UC-XaweTnPBhPM-2hbE6xCJQ"
-channel5.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472292313/larche_us7vci.jpg'
+channel5.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379380/larche_uk9lqy.jpg'
 channel5.save
 puts "Channel channel5 created"

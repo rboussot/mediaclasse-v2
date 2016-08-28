@@ -1,25 +1,17 @@
-.link-litterature:hover {
-  text-decoration: none;
-  border-bottom:5px solid $litterature;
-  margin-top: 6px;
+.link-litterature:before {
+  background: $litterature;
 }
 
-.link-technique:hover {
-  text-decoration: none;
-  border-bottom:5px solid $technique;
-  margin-top: 6px;
+.link-technique:before {
+  background: $technique;
 }
 
-.link-community:hover {
-  text-decoration: none;
-  border-bottom:5px solid $community;
-  margin-top: 6px;
+.link-community:before {
+  background: $community;
 }
 
-.link-profile:hover {
-  text-decoration: none;
-  border-bottom:5px solid $profile;
-  margin-top: 6px;
+.link-profile:before {
+  background: $profile;
 }
 
 a {
@@ -33,7 +25,7 @@ a:hover {
 }
 
 /* Underline From Center */
-.underline-litterature {
+.underline {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -45,14 +37,13 @@ a:hover {
   position: relative;
   overflow: hidden;
 }
-.underline-litterature:before {
+.underline:before {
   content: "";
   position: absolute;
   z-index: -1;
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: $litterature;
   height: 7px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -61,81 +52,43 @@ a:hover {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.underline-litterature:hover:before, .underline-litterature:focus:before, .underline-litterature:active:before {
+.underline:hover:before, .underline:focus:before, .underline:active:before {
   left: 0;
   right: 0;
 }
 
-/* Underline From Center */
-.underline-technique {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  position: relative;
-  overflow: hidden;
-}
-.underline-technique:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  background: $technique;
-  height: 7px;
-  -webkit-transition-property: left, right;
-  transition-property: left, right;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.underline-technique:hover:before, .underline-technique:focus:before, .underline-technique:active:before {
-  left: 0;
-  right: 0;
+.link-document-technique {
+  list-style: none;
+  line-height: 2;
 }
 
-/* Underline From Center */
-.underline-community {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  position: relative;
-  overflow: hidden;
-}
-.underline-community:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  background: $community;
-  height: 7px;
-  -webkit-transition-property: left, right;
-  transition-property: left, right;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.underline-community:hover:before, .underline-community:focus:before, .underline-community:active:before {
-  left: 0;
-  right: 0;
+.link-document-litterature {
+  list-style: none;
+  line-height: 2;
 }
 
-/* Underline From Center */
-.underline-profile {
+.link-document-technique a:hover {
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  background-color: $technique;
+}
+
+.link-document-litterature a:hover {
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  background-color: $litterature;
+}
+
+
+/* ========== Icon Float ========== */
+/* Icon Grow */
+.hvr-icon-grow {
+  width: 100%;
+  line-height: 2;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -145,25 +98,63 @@ a:hover {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  overflow: hidden;
-}
-.underline-profile:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  background: $profile;
-  height: 7px;
-  -webkit-transition-property: left, right;
-  transition-property: left, right;
+  padding-right: 2.2em;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+}
+.hvr-icon-grow:before {
+  content: "\f093";
+  position: absolute;
+  left: -2em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.underline-profile:hover:before, .underline-profile:focus:before, .underline-profile:active:before {
-  left: 0;
-  right: 0;
+.hvr-icon-grow:hover:before, .hvr-icon-grow:focus:before, .hvr-icon-grow:active:before {
+  -webkit-transform: scale(1.3) translateZ(0);
+  transform: scale(1.3) translateZ(0);
 }
+
+// /* Icon Float */
+// .hvr-icon-float {
+//     width: 100%;
+//   line-height: 2;
+//   display: inline-block;
+//   vertical-align: middle;
+//   -webkit-transform: translateZ(0);
+//   transform: translateZ(0);
+//   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+//   -webkit-backface-visibility: hidden;
+//   backface-visibility: hidden;
+//   -moz-osx-font-smoothing: grayscale;
+//   position: relative;
+//   padding-right: 2.2em;
+//   -webkit-transition-duration: 0.3s;
+//   transition-duration: 0.3s;
+// }
+// .hvr-icon-float:before {
+//   content: "\f093";
+//   position: absolute;
+//   left: -2em;
+//   padding: 0 1px;
+//   font-family: FontAwesome;
+//   -webkit-transform: translateZ(0);
+//   transform: translateZ(0);
+//   -webkit-transition-duration: 0.3s;
+//   transition-duration: 0.3s;
+//   -webkit-transition-property: transform;
+//   transition-property: transform;
+//   -webkit-transition-timing-function: ease-out;
+//   transition-timing-function: ease-out;
+// }
+// .hvr-icon-float:hover:before, .hvr-icon-float:focus:before, .hvr-icon-float:active:before {
+//   -webkit-transform: translateY(-4px);
+//   transform: translateY(-4px);
+// }
