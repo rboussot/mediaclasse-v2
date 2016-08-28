@@ -1,0 +1,7 @@
+<%= cloudinary_js_config %>
+
+<%= form.attachinary_file_field :documents, input_html: { multiple: true } %>
+
+<% form.object.documents.each do |document| %>
+  <%= cl_image_tag document.path, width: 300, height: 200, crop: :fill %>
+<% end %>

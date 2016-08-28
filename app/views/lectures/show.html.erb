@@ -43,29 +43,46 @@
           </div>
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
+            <!-- === DESCRIPTION === -->
             <p class="lecture-description content"><%= @lecture.description %></p>
-            <p class="lecture-documents content">Documents</p>
-            <div class= "lecture-discussion content">
-              <!-- ========== COMMENT FORM ========== -->
-              <div class= "lecture-discussion">
-                <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
-                <b><%= current_user.firstname %>
-                <%= current_user.lastname %></b><br>
-                <%= form_for(@comment) do |f| %>
-                  <% if @comment.errors.any? %>
-                    <div id="error_explanation">
-                      <ul>
-                      <% @comment.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                      </ul>
-                    </div>
+            <!-- === DOCUMENTS === -->
+            <div class="lecture-documents content">
+              <% if @documents %>
+                <ul>
+                  <% @documents.each do |document| %>
+                    <li class="hvr-icon-grow">
+                      <%= link_to document.title, document_path(document)%>
+                    </li>
                   <% end %>
-                  <%= f.submit class: "lecture-submit", value: "Publier"%>
-                  <%= f.text_area :content, class: "lecture-form-technique" %>
-                <% end %>
-              </div>
-              <!-- ========== OTHER COMMENTS ========== -->
+                </ul>
+              <% else %>
+                <h4>Aucun document pour l'instant !</h4>
+                Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
+              <% end %>
+            </div>
+            <!-- === COMMENT FORM === -->
+            <div class= "lecture-discussion content">
+              <% if user_signed_in? %>
+                <div class= "lecture-discussion">
+                  <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+                  <b><%= current_user.firstname %>
+                  <%= current_user.lastname %></b><br>
+                  <%= form_for(@comment) do |f| %>
+                    <% if @comment.errors.any? %>
+                      <div id="error_explanation">
+                        <ul>
+                        <% @comment.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <%= f.submit class: "lecture-submit", value: "Publier"%>
+                    <%= f.text_area :content, class: "lecture-form-technique" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <!-- === OTHER COMMENTS === -->
               <% @lecture_comments.each do |comment| %>
                 <div class= "lecture-discussion">
                   <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
