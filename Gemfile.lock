@@ -23,6 +23,13 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 5573cc73fc9d3122e8110154e7bc359cb91050a6
+  specs:
+    stripe (1.51.0)
+      rest-client (>= 1.4, < 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -288,6 +295,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe!
   uglifier
 
 RUBY VERSION

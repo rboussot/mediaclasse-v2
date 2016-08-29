@@ -1,30 +1,39 @@
 <div class="home-wrapper">
   <div class="container">
-  <div class="border profile"></div>
+     <div class="border profile"></div>
     <div class="row">
-      <div class="col-xs-10 col-xs-offset-1">
+
+      <div class="col-xs-8 col-xs-offset-2">
+
+      <div class="profile-edit-wrapper">
+
+      <h2>Mon profil</h2>
 
         <%= simple_form_for(@user) do |f| %>
           <% if @user.errors.any? %>
 
           <% end %>
           <%= f.error_notification %>
-          <%= f.input :picture, as: :attachinary %>
+
           <%= f.input :email %>
-          <%= f.input :firstname %>
-          <%= f.input :lastname %>
-          <%= f.input :level %>
-          <%= f.input :adress %>
-          <%= f.input :phone %>
-          <%= f.input :birth %>
-          <%= f.submit class: "navbar-wagon-button", value: "Sauver les modifications"%>
+          <%= f.input :firstname, label: "Prénom" %>
+          <%= f.input :lastname, label: "Nom" %>
+          <%= f.input :level, label: "Niveau" %>
+          <%= f.input :adress, label: "Adresse" %>
+          <%= f.input :phone, label: "Téléphone" %>
+          <%= f.input :birth, label: "Date de naissance" %>
+          <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
+          <%= f.submit class: "btn btn-primary", value: "Sauver les modifications"%>
         <% end %>
 
         <% if @channel %>
-          <%= link_to "Modifier les infos de ma chaîne", edit_channel_path(@channel)  %>
+          <%= link_to "Modifier les infos de ma chaîne", edit_channel_path(@channel), class:"btn btn-primary"  %>
         <% else %>
           <%= link_to "Proposer une chaîne Youtube", new_channel_path  %>
         <% end %>
+
+      </div>
+
       </div>
     </div>
   </div>
