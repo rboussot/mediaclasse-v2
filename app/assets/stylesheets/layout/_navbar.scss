@@ -46,37 +46,59 @@ div.navbar-media {
 .navbar-login {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 10px;
-  display: block;
+  // padding: 0 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: inline;
   margin-bottom: 1px;
   border-radius: 3px;
+  background-color: #B4A7D6;
+  color: white;
+  border: none;
+  opacity: 0.95;
 }
 
 /* Navbar item */
 .navbar-signup {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 10px;
-  display: block;
+  // padding: 0 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: inline;
   border-radius: 3px;
+  border: none;
+  background-color: #007582;
+  color: white;
+  opacity: 0.85;
 }
 
 .loginsignup {
-
+  font-size: 14px;
 }
 
 .navbar-login:hover {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 10px;
+  // padding: 0 10px;
   text-decoration: none;
   background-color: $underline;
+  opacity: 1
+}
+
+.navbar-signup:hover {
+  flex: 0 1 auto;
+  cursor: pointer;
+  // padding: 0 10px;
+  text-decoration: none;
+  background-color: $blue;
+  opacity: 1
 }
 
 /* Navbar standard link */
 .navbar-link {
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
@@ -112,13 +134,13 @@ div.navbar-media {
 .navbar-media-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: black !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-media-dropdown-menu li > a:hover {
-  background: transparent !important;
+  background: #D9D9D9 !important;
   color: black !important;
 }
 .navbar-media-dropdown-menu:before {
@@ -133,3 +155,9 @@ div.navbar-media {
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.navbar-media-dropdown-menu .fa {
+  color: #B4A7D6;
+}
+
+
