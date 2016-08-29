@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  skip_after_action :verify_authorized
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     @channel = Channel.where(user_id: current_user)
   end
 
   def update
+    @user = current_user
     @user.update(user_params)
     redirect_to root_path
   end
