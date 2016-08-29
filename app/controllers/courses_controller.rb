@@ -7,8 +7,9 @@ class CoursesController < ApplicationController
   end
 
   def technique
+    @category = Category.find_by_name(params[:category])
     @courses = policy_scope(Course)
-    @technique_courses = Course.joins(:category).where(categories: {id: params[:format]}).order('title ASC')
+    @technique_courses = Course.joins(:category).where(categories: {id: @category.id}).order('title ASC')
     @categories = Category.where(tag: "technique")
   end
 

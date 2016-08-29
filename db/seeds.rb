@@ -365,7 +365,7 @@ corpus4.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v147205
 corpus4.save
 puts "Lecture corpus4 created"
 
-compose1 = Lecture.new(course: compose, title:"Méthodologie générale du commentaire composé", video:"44Zt5tz1tYE", description: "Ma méthodologie du commentaire composé pour n'importe quel type de texte.", payment: true)
+compose1 = Lecture.new(course: compose, title:"Méthodologie générale du commentaire composé", video:"44Zt5tz1tYE", description: "Ma méthodologie du commentaire composé pour n'importe quel type de texte.", payment: false)
 compose1.save
 puts "Lecture compose1 created"
 

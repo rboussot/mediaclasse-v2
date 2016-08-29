@@ -14,9 +14,9 @@
     <div class="col-xs-1 col-xs-offset-2">
       <div id="sidebar">
         <div id="sidebar-category">
-          <% @categories.reverse.each do |category| %>
-            <%= link_to technique_courses_path(category) do %>
-              <% if category.id.to_s == params[:format] %>
+          <% @categories.each do |category| %>
+            <%= link_to technique_courses_path(category: category.name) do %>
+              <% if category == @category %>
                 <h4 class="active"><%= category.name %></h4>
               <% else %>
                 <h4><%= category.name %></h4>
