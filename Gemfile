@@ -17,6 +17,7 @@ gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'pg_search'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'money-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'

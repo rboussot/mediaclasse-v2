@@ -1,0 +1,95 @@
+<div class="home-wrapper">
+  <div class="container">
+  <div class="border profile"></div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "deux" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="plan-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="200"
+            data-label="2€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "cinq" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="plan-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="500"
+            data-label="5€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "dix" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="1000"
+            data-label="10€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "quinze" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="1500"
+            data-label="15€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "vingt" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="2000"
+            data-label="20€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "vingt-cinq" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="2500"
+            data-label="25€">
+          </script>
+        <% end %>
+
+        <%= form_tag plans_path do %>
+          <%= hidden_field_tag "plan", "trente" %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+            data-name="Mediaclasse.fr"
+            data-description="Participation mensuelle"
+            data-amount="3000"
+            data-label="30€">
+          </script>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+

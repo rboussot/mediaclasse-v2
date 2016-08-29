@@ -3,7 +3,8 @@ class ChannelsController < ApplicationController
   skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    @channels = Channel.joins(:category).where(categories: {id: params[:format]}).order('name ASC')
+    @category = Category.find_by_name(params[:category])
+    @channels = Channel.joins(:category).where(categories: {id: @category.id}).order('name ASC')
     @categories = Category.where(tag: "chaines")
   end
 

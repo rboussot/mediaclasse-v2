@@ -25,13 +25,17 @@
         <div class="lecture-show">
           <!-- ========== VIDEO EMBED ========== -->
           <div class="lecture-video">
+            <% if policy(@lecture).watch_video? %>
             <div class="embed-responsive embed-responsive-16by9">
-              <% if policy(@lecture).watch_video? %>
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
-              <% else %>
-                <p>Il faut s'inscrire</p>
-              <% end %>
+              <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
             </div>
+            <% else %>
+              <div class="lecture-vignette" style="background-image: url(http://img.youtube.com/vi/<%= @lecture.video %>/sddefault.jpg);">
+                <%= link_to plans_path do %>
+                  <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
           <!-- ========== TABS ========== -->
           <div class= "tabs">
@@ -81,8 +85,9 @@
                         </ul>
                       </div>
                     <% end %>
-                    <%= f.submit class: "lecture-submit", value: "Publier"%>
                     <%= f.text_area :content, class: "lecture-form-technique" %>
+                    <%= hidden_field_tag "lecture_id", params[:id] %>
+                    <%= f.submit class: "lecture-submit", value: "Publier" %>
                   <% end %>
                 </div>
               <% end %>
@@ -91,7 +96,7 @@
                 <div class= "lecture-discussion">
                   <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
                   <b><%= comment.user.firstname %>
-                  <%= comment.user.lastname %></b><br>
+                  <%= comment.user.lastname %></b><i> - <%= comment.created_at.strftime("le %e/%M/%Y à %H:%M") %></i><br>
                   <%= comment.content %>
                 </div>
               <% end %>
@@ -104,8 +109,6 @@
     </div>
   </div>
 </div>
-<!-- ========== FOOTER ========== -->
-<%= render 'shared/footer' %>
 <!-- ========== JS ACTION ON TABS ========== -->
 <% content_for(:js) do %>
   <%= javascript_tag do %>
