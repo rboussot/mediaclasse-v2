@@ -4,4 +4,8 @@ class LecturePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def watch_video?
+    record.payment == false # TODO: OU user a payé
+  end
 end
