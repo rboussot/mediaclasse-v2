@@ -20,10 +20,12 @@
     <%= render 'shared/flashes' %>
     <%= render 'shared/loginmodal' %>
     <%= render 'shared/signupmodal' %>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= yield(:js) %>
     <%= cloudinary_js_config %>
+
   </body>
 </html>
 
