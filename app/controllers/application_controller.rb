@@ -4,19 +4,18 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
-  # after_action :verify_authorized, except: :index, unless: :skip_pundit?
-  # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
-  # Uncomment when you *get* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  # def user_not_authorized
-  #   flash[:alert] = "You are not authorized to perform this action."
-  #   redirect_to(root_path)
-  # end
+  def user_not_authorized
+    flash[:alert] = "Oups, vous n'avez pas cette autorisation !"
+    redirect_to(root_path)
+  end
 
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /^(active_)?admin/
+    devise_controller? || params[:controller] =~ /^rails_admin/
   end
 end

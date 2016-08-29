@@ -1,16 +1,15 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_after_action :verify_authorized
 
   def litterature
     @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
-    skip_authorization
   end
 
   def technique
     @courses = policy_scope(Course)
     @technique_courses = Course.joins(:category).where(categories: {id: params[:format]}).order('title ASC')
     @categories = Category.where(tag: "technique")
-    skip_authorization
   end
 
   private

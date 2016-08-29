@@ -26,7 +26,11 @@
           <!-- ========== VIDEO EMBED ========== -->
           <div class="lecture-video">
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
+              <% if policy(@lecture).watch_video? %>
+                <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
+              <% else %>
+                <p>Il faut s'inscrire</p>
+              <% end %>
             </div>
           </div>
           <!-- ========== TABS ========== -->
