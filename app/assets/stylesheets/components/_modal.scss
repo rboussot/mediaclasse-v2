@@ -1,6 +1,7 @@
 .modal-body {
-  background-color: #ccc;
+  background-color: white;
   border-left: 35px solid #B4A7D6;
+  padding: 40px;
 }
 #mySignUpModal {
 
@@ -8,4 +9,23 @@
 
 #logi {
     border-left: 35px solid green;
+}
+
+.modal-body h2 {
+  font-size: 22px;
+  color: #B4A7D6;
+  font-weight: bold;
+}
+
+.form-actions .btn-default {
+  width: 100%;
+  background-color: #B4A7D6;
+  color: white;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.form-inputs label {
+  font-size : 15px;
+  color:#737373 ;
 }
