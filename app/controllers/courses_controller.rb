@@ -1,11 +1,18 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!
+
   def litterature
-    @litterature_courses = Course.joins(:author).where(courses: { tag: "litterature"}).order('pseudo ASC')
+    @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    @pictures = Picture.all
+    skip_authorization
   end
 
   def technique
-    @technique_courses = Course.joins(:category).where(tag:"technique")
+    @courses = policy_scope(Course)
+    @technique_courses = Course.joins(:category).where(categories: {id: params[:format]}).order('title ASC')
+    @categories = Category.where(tag: "technique")
+    @pictures = Picture.joins(:course).where('course_id != nil')
+    skip_authorization
   end
 
   private

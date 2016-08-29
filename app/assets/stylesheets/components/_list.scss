@@ -1,4 +1,4 @@
-.list {
+.list-item {
   background-color: $greywhite;
   border-radius: 6px;
   min-height: 290px;
@@ -6,6 +6,7 @@
   align-items: center;
   padding: 10px 20px 10px 20px;
   margin-bottom: 10px;
+  width: 85%;
 }
 
 .list-themes {
@@ -14,15 +15,15 @@
   font-style: italic;
 }
 
-.list ul {
+.list-item ul {
   list-style-type: none;
 }
 
-.list a:hover {
+.list-item a:hover {
   text-decoration: none;
 }
 
-.list:hover {
+.list-item:hover {
   background-color: $greylighter;
   -webkit-transition: background-color 100ms linear;
   -moz-transition: background-color 100ms linear;
@@ -34,7 +35,7 @@
 
 .list-scroll {
   overflow: scroll;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 150px);
 }
 
 .list-image {
@@ -43,6 +44,8 @@
     margin-right: 20px;
     float: left;
     border-radius: 3px;
+    width: 178;
+    height: 267;
 }
 
 .list-search {
@@ -51,7 +54,7 @@
 }
 
 .list-search-btn {
-  color: $greylighter;
+  color: $greylight;
   border: none;
   background: transparent;
 }
@@ -61,8 +64,8 @@
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
+  color: $greylight;
+  border: 2px solid $greylight;
   border-radius: 5px;
   padding: 0 10px;
   outline: none;

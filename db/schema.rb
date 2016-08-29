@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824105927) do
+ActiveRecord::Schema.define(version: 20160828150927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160824105927) do
     t.string   "pseudo"
     t.integer  "birth"
     t.integer  "death"
+    t.string   "keywords"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160824105927) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "tag"
+    t.string   "tab"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -78,7 +82,8 @@ ActiveRecord::Schema.define(version: 20160824105927) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
-    t.string   "tag"
+    t.string   "keywords"
+    t.string   "picture"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
@@ -94,11 +99,21 @@ ActiveRecord::Schema.define(version: 20160824105927) do
     t.index ["theme_id"], name: "index_courses_themes_on_theme_id", using: :btree
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.integer  "lecture_id"
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lecture_id"], name: "index_documents_on_lecture_id", using: :btree
+  end
+
   create_table "lectures", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "title"
     t.string   "video"
     t.text     "description"
+    t.string   "picture"
     t.boolean  "payment",     default: true, null: false
     t.boolean  "visible",     default: true, null: false
     t.datetime "created_at",                 null: false
@@ -153,6 +168,7 @@ ActiveRecord::Schema.define(version: 20160824105927) do
   add_foreign_key "courses", "categories"
   add_foreign_key "courses_themes", "courses"
   add_foreign_key "courses_themes", "themes"
+  add_foreign_key "documents", "lectures"
   add_foreign_key "lectures", "courses"
   add_foreign_key "users", "levels"
 end
