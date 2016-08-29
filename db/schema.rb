@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "pseudo"
     t.integer  "birth"
     t.integer  "death"
-    t.string   "keywords"
-    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +43,6 @@ ActiveRecord::Schema.define(version: 20160828150927) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "tag"
-    t.string   "tab"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -82,8 +78,7 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
-    t.string   "keywords"
-    t.string   "picture"
+    t.string   "tag"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["author_id"], name: "index_courses_on_author_id", using: :btree
@@ -113,7 +108,6 @@ ActiveRecord::Schema.define(version: 20160828150927) do
     t.string   "title"
     t.string   "video"
     t.text     "description"
-    t.string   "picture"
     t.boolean  "payment",     default: true, null: false
     t.boolean  "visible",     default: true, null: false
     t.datetime "created_at",                 null: false
