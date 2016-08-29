@@ -6,6 +6,8 @@ class CreateAuthors < ActiveRecord::Migration[5.0]
       t.string :pseudo
       t.integer :birth
       t.integer :death
+      t.string :keywords
+      t.string :picture
 
       t.timestamps
     end

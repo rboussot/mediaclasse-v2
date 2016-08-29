@@ -1,0 +1,47 @@
+<div class= "home-wrapper">
+  <div class="container-fluid">
+  <div class="border community"></div>
+    <!-- ========== SEARCHBAR ========== -->
+    <div class="col-xs-8 col-xs-offset-3">
+      <form action="" class="list-search">
+        <input type="text" class="list-search-input" placeholder="Chercher dans la communauté">
+        <button type="submit" class="list-search-btn">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <!-- ========== SIDEBAR ========== -->
+    <div class="col-xs-1 col-xs-offset-2">
+      <div id="sidebar">
+        <div id="sidebar-category">
+          <% @categories.each do |category| %>
+            <%= link_to channels_path(category) do %>
+              <% if category.id.to_s == params[:format] %>
+                <h4 class="active"><%= category.name %></h4>
+              <% else %>
+                <h4><%= category.name %></h4>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- ========== SCROLL LIST ========== -->
+    <div class="col-xs-9">
+      <div class="list-scroll">
+        <% @channels.each do |channel| %>
+          <div class="list-item">
+            <%= link_to channel.link do %>
+              <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+              <ul>
+                <li><h3><%= channel.name %></h3></li>
+                <li><p><%= channel.description %></p></li>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
+  </div>
+</div>

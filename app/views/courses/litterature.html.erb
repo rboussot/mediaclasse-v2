@@ -4,7 +4,7 @@
       <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
       <form action="" class="list-search">
-        <input type="text" class="list-search-input" placeholder="Chercher par titre">
+        <input type="text" class="list-search-input" placeholder="Chercher dans les oeuvres">
         <button type="submit" class="list-search-btn">
           <i class="fa fa-search"></i>
         </button>
@@ -17,32 +17,34 @@
           <h4>Par auteur</h4>
         </div>
         <% ('A' .. 'Z').to_a.each do | letter | %>
-          <div id="sidebar-letters">
+          <div id="sidebar-letter">
             <%= link_to letter, litterature_courses_path(anchor: letter) %>
           </div>
         <% end %>
       </div>
     </div>
     <!-- ========== SCROLL LIST ========== -->
-    <div class="col-xs-8">
+    <div class="col-xs-9">
       <div class="list-scroll">
-        <% @litterature_courses.each do |c| %>
-          <div class="list" id="<%= c.author.pseudo.first %>">
-            <%= link_to lecture_path(c) do %>
-              <%= cl_image_tag c.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
-              <ul>
-                <li> <h3>  <%= c.author.pseudo %>, <%= c.title %> - <%= c.date %> </h3></li>
-                <li> <p> <%= c.description %> </p> </li>
-                <li> <p> <%= c.lectures.count %> videos</p> </li>
-                <li>
-                  <p class="list-themes"> <% c.themes.each do |t| %>
-                    <%= t.name %>;
-                  <% end %>
-                  </p>
-                </li>
-              </ul>
-            <% end %>
-          </div>
+        <% @litterature_courses.each do |course| %>
+          <% if course.lectures.first %>
+            <div class="list-item" id="<%= course.author.pseudo.first %>">
+              <%= link_to lecture_path(course.lectures.first) do %>
+                <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
+                <ul>
+                  <li> <h3>  <%= course.author.pseudo %>, <%= course.title %> - <%= course.date %> </h3></li>
+                  <li> <p> <%= course.description %> </p> </li>
+                  <li> <p> <%= course.lectures.count %> videos</p> </li>
+                  <li>
+                    <p class="list-themes"> <% course.themes.each do |t| %>
+                      <%= t.name %>;
+                    <% end %>
+                    </p>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

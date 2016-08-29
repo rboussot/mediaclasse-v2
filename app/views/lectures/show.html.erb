@@ -1,49 +1,129 @@
 <div class="lecture-wrapper">
   <div class="container">
     <div class= "row">
+      <!-- ========== BORDER COLOR ========== -->
+      <div class="border <%= @lecture_course.category.tag %>"></div>
 
-      <div class="border litterature"></div>
-
+      <!-- ========== SIDE MENU ========== -->
       <div class= "col-xs-12 col-sm-3">
         <div class="lecture-menu">
-          <% @course.lectures.each do |lecture| %>
+          <% @lectures.each do |lecture| %>
             <ul>
               <%= link_to lecture_path(lecture) do %>
-                <li class="lecture-link"><%= lecture.title %></li>
+                <% if lecture.id.to_s == params[:id]%>
+                  <li class="lecture-link active"><%= lecture.title %></li>
+                <% else %>
+                  <li class="lecture-link"><%= lecture.title %></li>
+                <% end %>
               <% end %>
             </ul>
           <% end %>
         </div>
       </div>
-
-
-
+      <!-- ========== VIDEO PAGE ========== -->
       <div class= "col-xs-12 col-sm-9">
         <div class="lecture-show">
+          <!-- ========== VIDEO EMBED ========== -->
           <div class="lecture-video">
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe width="854" height="480" showinfo=0 src="https://www.youtube.com/embed/<%= @lecture.video %>" frameborder="0" allowfullscreen></iframe>
+              <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
             </div>
           </div>
+          <!-- ========== TABS ========== -->
           <div class= "tabs">
-            <a class="tab active" href="#">
+            <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
               <h3>Description</h3>
-            </a>
-            <a class="tab" href="#">
+            </span>
+            <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
               <h3>Documents</h3>
-            </a>
-            <a class="tab" href="#">
+            </span>
+            <span class="tab tab-discussion <%= @lecture_course.category.tag %>" href="#">
               <h3>Discussion</h3>
-            </a>
+            </span>
           </div>
+          <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
-            <p><%= @lecture.description %></p>
+            <!-- === DESCRIPTION === -->
+            <p class="lecture-description content"><%= @lecture.description %></p>
+            <!-- === DOCUMENTS === -->
+            <div class="lecture-documents content">
+              <% if @documents %>
+                <ul>
+                  <% @documents.each do |document| %>
+                    <li class="hvr-icon-grow">
+                      <%= link_to document.title, document_path(document)%>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <h4>Aucun document pour l'instant !</h4>
+                Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
+              <% end %>
+            </div>
+            <!-- === COMMENT FORM === -->
+            <div class= "lecture-discussion content">
+              <% if user_signed_in? %>
+                <div class= "lecture-discussion">
+                  <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+                  <b><%= current_user.firstname %>
+                  <%= current_user.lastname %></b><br>
+                  <%= form_for(@comment) do |f| %>
+                    <% if @comment.errors.any? %>
+                      <div id="error_explanation">
+                        <ul>
+                        <% @comment.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <%= f.submit class: "lecture-submit", value: "Publier"%>
+                    <%= f.text_area :content, class: "lecture-form-technique" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <!-- === OTHER COMMENTS === -->
+              <% @lecture_comments.each do |comment| %>
+                <div class= "lecture-discussion">
+                  <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+                  <b><%= comment.user.firstname %>
+                  <%= comment.user.lastname %></b><br>
+                  <%= comment.content %>
+                </div>
+              <% end %>
+            <!-- ========== CLOSE TABS ========== -->
+            </div>
           </div>
+    <!-- ========== CLOSE CONTAINERS ========== -->
         </div>
       </div>
-
-
-
     </div>
   </div>
 </div>
+<!-- ========== FOOTER ========== -->
+<%= render 'shared/footer' %>
+<!-- ========== JS ACTION ON TABS ========== -->
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.tab-description').on('click', function(event) {
+        $(".content").hide();
+        $(".lecture-description").show();
+        $(".tab").removeClass('active');
+        $(this).addClass('active');
+      });
+      $('.tab-documents').on('click', function(event) {
+        $(".content").hide();
+        $(".lecture-documents").show();
+        $(".tab").removeClass('active');
+        $(this).addClass('active');
+      });
+      $('.tab-discussion').on('click', function(event) {
+        $(".content").hide();
+        $(".lecture-discussion").show();
+        $(".tab").removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+  <% end %>
+<% end %>

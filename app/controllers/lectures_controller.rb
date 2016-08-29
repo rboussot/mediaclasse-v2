@@ -1,7 +1,14 @@
 class LecturesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def show
-    @course = Course.find(params[:id])
-    @lectures = @course.lectures
-    @lecture = @lectures.first
+    @lecture = Lecture.find(params[:id])
+    @lecture_course = @lecture.course
+    @lectures = @lecture_course.lectures
+    @lecture_comments = Comment.all.where(lecture: @lecture).joins(:user)
+    @comment = Comment.new
+    @documents = Document.where(lecture_id: params[:id])
+    skip_authorization
   end
+
 end
