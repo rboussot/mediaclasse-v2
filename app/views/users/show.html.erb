@@ -1,0 +1,24 @@
+  <div class="card-wrapper">
+    <div class="container-fluid">
+      <div class="border profile"></div>
+
+
+        <!-- ========== VIGNETTE ========== -->
+        <% @my_courses.each do |course| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-course" data-id="<%= course.id %>" style='background-image: url(<%= course.picture %>)'>
+              <span class="card-title"><%= course.title %></span>
+              <span class="card-author"><%= course.author.pseudo %></span>
+            </div>
+            <div>
+              <div class= "card-like checkbox" id="like-<%= course.id %>">
+                  <%= render 'like', course: course %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!-- ========== CLOSE WRAPPERS ========== -->
+
+    </div>
+  </div>
+

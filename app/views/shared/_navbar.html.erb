@@ -11,7 +11,7 @@
 
   <% @channels_category = Category.where(tag: "chaines").first.name %>
   <%= link_to "Communauté", channels_path(category: @channels_category), class: "navbar-link underline link-community" %>
-  <%= link_to "Mes cours", root_path, class: "navbar-link underline link-profile" %>
+  <%= link_to "Mes cours", user_path(current_user), class: "navbar-link underline link-profile" %>
 
   <!-- Right Navigation -->
   <div class="navbar-media-right hidden-xs hidden-sm">

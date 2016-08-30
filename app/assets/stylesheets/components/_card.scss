@@ -1,0 +1,46 @@
+.card-wrapper {
+  padding-top: 70px;
+  margin: 0 70px;
+}
+.card-course {
+  position: relative;
+  background-size: cover;
+  min-height: 300px;
+  margin: 20px 0;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+body span.card-title {
+  color: white !important;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 26px;
+  font-style: italic;
+  text-shadow: 1px 1px 2px black;
+}
+
+body span.card-author {
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 24px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.card-like label {
+  position: absolute;
+  font-size: 14px;
+  font-weight: lighter;
+  right: 30px;
+  font-style: italic;
+  min-width: 200px;
+}
+
+.card-like {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}

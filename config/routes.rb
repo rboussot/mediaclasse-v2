@@ -8,13 +8,18 @@ Rails.application.routes.draw do
       get 'litterature', to: 'courses#litterature'
       get 'technique', to: 'courses#technique'
     end
+
+    post 'like'
   end
 
   resources :lectures, only: [:show]
   resources :documents, only: [:show]
   resources :channels, only: [:index, :new, :create, :edit, :update]
   resources :comments, only: [:new, :create, :delete]
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    post ':course_id/like' => "users#like", on: :collection, as: :like
+  end
+
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
 

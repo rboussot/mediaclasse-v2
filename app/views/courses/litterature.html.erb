@@ -1,5 +1,5 @@
 <div class= "home-wrapper">
-  <div class="container-fluid">
+  <div class="container.fluid">
   <div class="border litterature"></div>
       <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
@@ -34,7 +34,7 @@
                 <ul>
                   <li> <h3>  <%= course.author.pseudo %>, <%= course.title %> - <%= course.date %> </h3></li>
                   <li> <p> <%= course.description %> </p> </li>
-                  <li> <p> <%= course.lectures.count %> videos</p> </li>
+                  <li> <p> <%= course.lectures.count %> videos </p> </li>
                   <li>
                     <p class="list-themes"> <% course.themes.each do |t| %>
                       <%= t.name %>;
@@ -42,6 +42,13 @@
                     </p>
                   </li>
                 </ul>
+                <!-- === CHECKBOX === -->
+                <div>
+                  <div class= "list-like checkbox" id="like-<%= course.id %>">
+                    <%= render 'like', course: course %>
+                  </div>
+                </div>
+                <!-- === END OF CHECKBOX === -->
               <% end %>
             </div>
           <% end %>
@@ -51,4 +58,5 @@
   <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
   </div>
 </div>
+
 
