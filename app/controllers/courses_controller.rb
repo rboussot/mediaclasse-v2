@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
 
   def litterature
     @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    @documents = Document.joins(:lecture)
+    @lectures = Lecture.joins(:document)
   end
 
   def technique
@@ -11,6 +13,15 @@ class CoursesController < ApplicationController
     @courses = policy_scope(Course)
     @technique_courses = Course.joins(:category).where(categories: {id: @category.id}).order('title ASC')
     @categories = Category.where(tag: "technique")
+  end
+
+  def like
+    @course = Course.find(params[:course_id])
+    if params[:liked]
+      @course.liked_by current_user
+    else
+      @course.unliked_by current_user
+    end
   end
 
   private

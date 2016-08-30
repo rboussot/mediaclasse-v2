@@ -1,0 +1,3 @@
+$('#like-<%= @course.id %>').html("<%= j render 'like', course: @course %>");
+$("[data-id=<%= @course.id %>]").parent().fadeOut();
+
