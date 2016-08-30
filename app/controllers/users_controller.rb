@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to root_path
+    redirect_to edit_user_path
   end
 
   def participation
@@ -32,6 +32,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname)
+    params.require(:user).permit(:firstname, :lastname, :picture, :email, :adress, :phone, :birth, :level_id)
   end
 end

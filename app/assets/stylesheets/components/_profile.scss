@@ -2,19 +2,157 @@
   padding: 50px;
   margin-top: 15px;
   padding-top: 5px;
-  width: 90%;
+  width: 100%;
   line-height: 1;
-  background-color: #E9E9E9;
+  background-color: white;
   border-radius: 4px;
+  position: relative;
 }
 
+.form-group.attachinary.optional.user_picture {
+  background-color: white;
+  padding: 10px;
+  margin-right: 20px;
+  width: 500px;
+}
+
+#user_picture {
+  display: block;
+  margin-left: 0px;
+  width: 320px;
+
+}
+
+.user_picture {
+  float: right;
+  margin-right: 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group.attachinary.optional.user_picture {
+   width: 350px;
+}
+
+.attachinary_container {
+  width: 200px;
+  height: 85px
+}
+
+
+.user_picture ul  {
+  display: inline;
+  list-style-type: none;
+  width: 220px;
+  height: 75px;
+}
+
+.user_picture li  {
+  background-color: white;
+  width: 180px;
+}
+
+
 .profile-edit-wrapper input {
-  width: 85%;
+  display: inline;
+  width: 55%;
   height: 35px;
   margin-bottom: 5px;
+  margin-left: 15px;
 }
+
+#edit_user_2 {
+  width: 100%;
+  border-radius: 4px;
+  padding-bottom: 0px;
+}
+
+.edit_user {
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+}
+
+#user_phone {
+  width: 180px;
+}
+
+
+#user_email {
+  width: 320px;
+  margin-left: 20px;
+}
+
+#user_firstname {
+  width: 220px;
+}
+
+#user_lastname {
+  width: 220px;
+  margin-left: 40px;
+}
+
+#user_level_id {
+  width: 140px;
+  margin-left: 20px;
+  display: inline;
+  margin-bottom: 15px;
+}
+
+
+.user_level_id {
+  display: inline;
+  margin-left: 0px;
+  width: 300px;
+}
+
+.user_birth {
+  display: inline;
+  margin-bottom: 10px;
+}
+
+#user_birth_3i {
+  margin-left: 10px;
+}
+
+.form-inline {
+display: inline;
+}
+
 
 .profile-edit-wrapper h2 {
   color: #B4A7D6;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+#profilesave {
+  margin-top: 20px;
+  margin-left: auto;
+  width: 100%;
+  background-color: #B4A7D6;
+  border: none;
+  height: 50px;
+  font-size: 20px;
+}
+
+.user-channel-edit {
+  background-color: #E9E9E9;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.user-channel-delete {
+  background-color: transparent;
+  padding: 3px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 8px;
+  line-height: 1.2;
 }
