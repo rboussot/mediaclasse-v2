@@ -158,7 +158,6 @@ ActiveRecord::Schema.define(version: 20160829132337) do
     t.string   "stripe_customer_id"
     t.string   "plan"
     t.date     "paydate"
-    t.date     "paynext"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["level_id"], name: "index_users_on_level_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

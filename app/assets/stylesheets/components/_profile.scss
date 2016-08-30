@@ -64,6 +64,7 @@
 #edit_user_2 {
   width: 100%;
   border-radius: 4px;
+  padding-bottom: 0px;
 }
 
 .edit_user {
@@ -91,9 +92,18 @@
   margin-left: 40px;
 }
 
-#user_level {
-  width: 240px;
+#user_level_id {
+  width: 140px;
   margin-left: 20px;
+  display: inline;
+  margin-bottom: 15px;
+}
+
+
+.user_level_id {
+  display: inline;
+  margin-left: 0px;
+  width: 300px;
 }
 
 .user_birth {
@@ -101,8 +111,8 @@
   margin-bottom: 10px;
 }
 
-#user_birth_1i {
-  margin-left: 15px;
+#user_birth_3i {
+  margin-left: 10px;
 }
 
 .form-inline {
@@ -135,4 +145,14 @@ display: inline;
   color: black;
   font-size: 17px;
   line-height: 1.7;
+}
+
+.user-channel-delete {
+  background-color: transparent;
+  padding: 3px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 8px;
+  line-height: 1.2;
 }

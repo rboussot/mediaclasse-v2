@@ -16,30 +16,33 @@
           <%= f.error_notification %>
 
           <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
-
-
           <%= f.input :firstname, label: "Prénom" %>
           <%= f.input :lastname, label: "Nom" %>
           <%= f.input :email %>
-          <%= f.input :level, label: "Niveau" %>
+          <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
           <%= f.input :adress, label: "Adresse" %>
           <%= f.input :phone, label: "Téléphone", class: "telinput" %>
-          <%= f.input :birth, label: "Date de naissance" %>
+          <%#= f.input :birth, label: "Date de naissance" %>
+
+              <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
 
           <%= f.submit class: "btn btn-primary",id:"profilesave", value: "Enregistrer"%>
         <% end %>
 
-        <div class="user-channel-edit">
-
-          <p>Tu es l'auteur d'un blog ou d'une chaîne Youtube littéraire ? <br>
-            Tu souhaites rejoindre la communauté Mediaclasse ?</p>
-
-          <% if @channel %>
-            <%= link_to "Editer mon blog / ma chaine YouTube", edit_channel_path(@channel), class:"btn btn-primary" %>
-          <% else %>
-            <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"btn btn-primary"  %>
-          <% end %>
+        <div class="user-channel-delete">
+        <%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger" %>
         </div>
+          <div class="user-channel-edit">
+            <p>Tu es l'auteur d'un blog ou d'une chaîne Youtube littéraire ? <br>
+              Tu souhaites rejoindre la communauté Mediaclasse ?</p>
+
+            <% if @channel  %>
+              <%= link_to "Editer mon blog / ma chaine YouTube", edit_channel_path(@channel), class:"btn btn-primary" %>
+            <%# else %>
+              <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"btn btn-primary"  %>
+          </div>
+          <% end %>
+
 
       </div>
 
