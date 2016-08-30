@@ -9,10 +9,11 @@
 
           <% end %>
           <%= f.error_notification %>
-          <%= f.input :picture, as: :attachinary %>
+
           <%= f.input :name, label: "Indique le nom de ton projet !" %>
           <%= f.input :description, label: "Décris ta chaîne ou ton blog." %>
           <%= f.input :link, label: "Colle le lien ici." %><br>
+          <%= f.input :picture, label: "Ajoute une image !", as: :attachinary %>
           <%= f.input :email, label: "Indique l'adresse email dédiée." %><br>
           <%= f.submit class: "navbar-wagon-button", value: "Proposer ma chaîne"%>
         <% end %>
