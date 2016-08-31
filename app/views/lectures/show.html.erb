@@ -29,19 +29,18 @@
       <div class= "col-xs-12 col-sm-9">
         <div class="lecture-show">
           <!-- ========== VIDEO EMBED ========== -->
-          <div class="lecture-video">
-            <% if policy(@lecture).watch_video? %>
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
-            </div>
-            <% else %>
-              <div class="lecture-vignette" style="background-image: url(http://img.youtube.com/vi/<%= @lecture.video %>/sddefault.jpg);">
-                <%= link_to plans_path do %>
-                  <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
-                <% end %>
+          <% if policy(@lecture).watch_video? %>
+            <div class="lecture-video">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% else %>
+            <%= render 'shared/planmodal' %>
+            <div data-toggle = "modal" data-target = "#PlanModal" class="lecture-vignette" style="background-image: url(http://img.youtube.com/vi/<%= @lecture.video %>/sddefault.jpg);">
+              <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
+            </div>
+          <% end %>
           <!-- ========== TABS ========== -->
           <div class= "tabs">
             <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">

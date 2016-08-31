@@ -31,7 +31,7 @@
       <div class="list-scroll">
         <% @channels.each do |channel| %>
           <div class="list-item">
-            <%= link_to channel.link do %>
+            <%= link_to channel.link, target: :_blank do %>
               <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
               <ul>
                 <li><h3><%= channel.name %></h3></li>

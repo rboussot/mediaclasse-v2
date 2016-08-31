@@ -1,2 +1,4 @@
-$('#comment-<%= @comment.id %>').fadeOut();
-
+$('#comment-<%= @comment.id %>').fadeOut(function(){
+  console.log(this);
+  this.remove();
+});

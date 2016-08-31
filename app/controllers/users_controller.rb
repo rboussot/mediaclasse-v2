@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @channel = Channel.where(user_id: current_user)
+    @channel = @user.channel
   end
 
   def update

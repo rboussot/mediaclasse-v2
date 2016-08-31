@@ -12,10 +12,7 @@
   list-style-type: none;
 }
 
-.lecture-video {
-  margin: 20px 0px 20px 10px;
-  border: 1px solid black;
-}
+
 
 .lecture-content {
   background-color: $greylight;
@@ -87,12 +84,19 @@ ul a:link {
   text-decoration : none;
 }
 
+.lecture-video {
+  margin: 20px 0px 20px 10px;
+  border: 1px solid black;
+}
+
 .lecture-vignette {
+  @extend .lecture-video;
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 450px;
   position: relative;
+  cursor: pointer;
 }
 
 .lecture-icon {
