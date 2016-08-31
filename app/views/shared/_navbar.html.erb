@@ -1,29 +1,43 @@
 <div class="navbar-media">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-media-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo.png", class: "hvr-grow" %>
   <% end %>
-
-  <%= link_to "Oeuvres & analyses", litterature_courses_path, class: "navbar-link underline link-litterature hvr-underline-from-center" %>
-
-  <% @technique_category = Category.where(tag: "technique").first.name %>
-  <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category), class: "navbar-link underline link-technique" %>
-
-  <% @channels_category = Category.where(tag: "chaines").first.name %>
-  <%= link_to "Communauté", channels_path(category: @channels_category), class: "navbar-link underline link-community" %>
-  <% if current_user %>
-    <%= link_to "Mes cours", user_path(current_user), class: "navbar-link underline link-profile" %>
-  <% else %>
-    <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "navbar-link underline link-profile" %>
-  <% end %>
-  <!-- Right Navigation -->
-  <div class="navbar-media-right hidden-xs hidden-sm">
-
-
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
-
-      <!-- Profile picture and dropdown -->
+  <!-- ========== LARGE SCREEN MENU ========== -->
+    <!-- === LINK LITT === -->
+    <%= link_to "Oeuvres & analyses", litterature_courses_path, class: "hidden-xs hidden-sm navbar-link underline link-litterature hvr-underline-from-center" %>
+    <!-- === LINK TECH === -->
+    <% @technique_category = Category.where(tag: "technique").first.name %>
+    <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
+    <!-- === LINK CHANNELS === -->
+    <% @channels_category = Category.where(tag: "chaines").first.name %>
+    <%= link_to "Communauté", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
+    <% if current_user %>
+    <!-- === LINK MY_COURSES === -->
+      <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+    <% else %>
+      <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+    <% end %>
+  <!-- ========== MOBILE SCREEN MENU ========== -->
+    <!-- === LINK LITT === -->
+    <%= link_to "Oeuvres", litterature_courses_path, class: "hidden-md hidden-lg navbar-link-little underline link-litterature hvr-underline-from-center" %>
+    <!-- === LINK TECH === -->
+    <% @technique_category = Category.where(tag: "technique").first.name %>
+    <%= link_to "Techniques", technique_courses_path(category: @technique_category), class: "hidden-md hidden-lg navbar-link-little underline link-technique" %>
+    <!-- === LINK CHANNELS === -->
+    <% @channels_category = Category.where(tag: "chaines").first.name %>
+    <%= link_to "Communauté", channels_path(category: @channels_category), class: "hidden-md hidden-lg navbar-link-little underline link-community" %>
+    <% if current_user %>
+    <!-- === LINK MY_COURSES === -->
+      <%= link_to "Mes cours", user_path(current_user), class: "hidden-md hidden-lg navbar-link-little underline link-profile" %>
+    <% else %>
+      <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-md hidden-lg navbar-link-little underline link-profile" %>
+    <% end %>
+  <!-- ========== LOGIN ========== -->
+  <% if user_signed_in? %>
+  <!-- === PROFILE & DROPDOWN === -->
+  <div class="hidden-xs hidden-sm">
+    <div class="navbar-media-right">
       <div class="navbar-media-item">
         <div class="dropdown">
           <%= cl_image_tag current_user.picture.path, class: "list-image", width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
@@ -56,26 +70,17 @@
           </ul>
         </div>
       </div>
-
     <% else %>
-
+    <!-- ========== NOT LOGIN ========== -->
       <div class="loginsignup">
-
-      <!-- ========== MODALES DE CONNECTION ========== -->
-
-      <%#= link_to "Connection", new_user_session_path, class: "navbar-media-item navbar-login" %>
-      <%#= link_to "Inscription", "#", class: "navbar-media-item navbar-signup" %>
-
-      <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">connexion</button>
-      <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">inscription</button>
-
+        <!-- === MODALES DE CONNECTION === -->
+        <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">connexion</button>
+        <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">inscription</button>
+      </div>
     <% end %>
-    </div>
   </div>
-
-
-
-  <!-- Dropdown list appearing on mobile only -->
+</div>
+  <!-- ========== MOBILE SCREEN ========== -->
   <div class="navbar-media-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>

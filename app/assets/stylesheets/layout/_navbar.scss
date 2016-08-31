@@ -21,6 +21,15 @@ div.navbar-media {
   z-index: 1;
 }
 
+a.navbar-link {
+  display: flex;
+  justify-content: space-around;
+}
+div.navbar-menu {
+  display: flex;
+  justify-content: space-around;
+}
+
 /* Optional class to fix the navbar on top */
 .navbar-media-fixed  {
   position: fixed;
@@ -52,10 +61,19 @@ div.navbar-media {
   display: inline;
   margin-bottom: 1px;
   border-radius: 3px;
-  background-color: #B4A7D6;
+  background-color: $greydark;
   color: white;
   border: none;
-  opacity: 0.95;
+  opacity: 0.80;
+}
+
+.navbar-login:hover {
+  flex: 0 1 auto;
+  cursor: pointer;
+  // padding: 0 10px;
+  text-decoration: none;
+  background-color: $profile;
+  opacity: 1
 }
 
 /* Navbar item */
@@ -68,22 +86,13 @@ div.navbar-media {
   display: inline;
   border-radius: 3px;
   border: none;
-  background-color: #007582;
+  background-color: $greydark;
   color: white;
-  opacity: 0.85;
+  opacity: 0.80;
 }
 
 .loginsignup {
   font-size: 14px;
-}
-
-.navbar-login:hover {
-  flex: 0 1 auto;
-  cursor: pointer;
-  // padding: 0 10px;
-  text-decoration: none;
-  background-color: $underline;
-  opacity: 1
 }
 
 .navbar-signup:hover {
@@ -91,12 +100,18 @@ div.navbar-media {
   cursor: pointer;
   // padding: 0 10px;
   text-decoration: none;
-  background-color: $blue;
+  background-color: $profile;
   opacity: 1
 }
 
 /* Navbar standard link */
 .navbar-link {
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.navbar-link-little {
   color: black;
   font-size: 16px;
   text-transform: uppercase;
@@ -159,5 +174,6 @@ div.navbar-media {
 .navbar-media-dropdown-menu .fa {
   color: #B4A7D6;
 }
+
 
 

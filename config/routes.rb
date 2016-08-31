@@ -3,19 +3,20 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Attachinary::Engine => "/attachinary"
 
-  resources :courses, only: [:show] do
+  resources :courses, only: [:show, :index] do
     collection do
       get 'litterature', to: 'courses#litterature'
       get 'technique', to: 'courses#technique'
     end
-
     post 'like'
   end
 
-  resources :lectures, only: [:show]
+  resources :lectures, only: [:show] do
+    post ':course_id/like' => "lectures#like", on: :collection, as: :like
+  end
   resources :documents, only: [:show]
   resources :channels, only: [:index, :new, :create, :edit, :update]
-  resources :comments, only: [:new, :create, :delete]
+  resources :comments, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
     post ':course_id/like' => "users#like", on: :collection, as: :like
   end

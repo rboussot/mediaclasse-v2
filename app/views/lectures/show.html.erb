@@ -3,7 +3,12 @@
     <div class= "row">
       <!-- ========== BORDER COLOR ========== -->
       <div class="border <%= @lecture_course.category.tag %>"></div>
-
+      <!-- ========== CHECKBOX ========== -->
+      <% if current_user %>
+        <div class= "sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
+          <%= render 'like', course: @lecture_course %>
+        </div>
+      <% end %>
       <!-- ========== SIDE MENU ========== -->
       <div class= "col-xs-12 col-sm-3">
         <div class="lecture-menu">
@@ -98,6 +103,12 @@
                   <b><%= comment.user.firstname %>
                   <%= comment.user.lastname %></b><i> - <%= comment.created_at.strftime("le %e/%M/%Y à %H:%M") %></i><br>
                   <%= comment.content %>
+                  <% if comment.user == current_user %>
+                    <%= form_tag comment_path(comment) do %>
+                      <%= hidden_field_tag "comment_id", comment.id %>
+                      <%= button_to("Destroy", comment_path(comment), method: :delete, class: "lecture-submit") %>
+                    <% end %>
+                  <% end %>
                 </div>
               <% end %>
             <!-- ========== CLOSE TABS ========== -->

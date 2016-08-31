@@ -74,3 +74,14 @@
   transition: background-color 100ms linear;
   text-decoration : none;
 }
+
+.sidebar-like {
+  top: 50px;
+  left: 50px;
+}
+
+.sidebar-like label{
+  font-weight: lighter;
+  font-style: italic;
+  padding-right: 40px;
+}

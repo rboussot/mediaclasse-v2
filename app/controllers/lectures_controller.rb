@@ -11,4 +11,13 @@ class LecturesController < ApplicationController
     skip_authorization
   end
 
+  def like
+    @course = Course.find(params[:course_id])
+    if params[:liked]
+      @course.liked_by current_user
+    else
+      @course.unliked_by current_user
+    end
+  end
+
 end
