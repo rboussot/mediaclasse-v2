@@ -1,5 +1,5 @@
 <div class="home-wrapper">
-  <div class="container">
+  <div class="container-fluid">
     <div class="border profile"></div>
     <div class="row">
 
@@ -38,14 +38,11 @@
 
             <% if @channel  %>
               <%= link_to "Editer mon blog / ma chaine YouTube", edit_channel_path(@channel), class:"btn btn-primary" %>
-            <%# else %>
+            <% else %>
               <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"btn btn-primary"  %>
+            <% end %>
           </div>
-          <% end %>
-
-
-      </div>
-
+        </div>
       </div>
     </div>
   </div>
