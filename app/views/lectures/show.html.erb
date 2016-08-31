@@ -6,7 +6,7 @@
       <!-- ========== CHECKBOX ========== -->
       <% if current_user %>
         <div class= "sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
-          <%= render 'like', course: @lecture_course %>
+          <%= render '/courses/like', course: @lecture_course %>
         </div>
       <% end %>
       <!-- ========== SIDE MENU ========== -->
@@ -73,46 +73,10 @@
                 Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
               <% end %>
             </div>
-            <!-- === COMMENT FORM === -->
-            <div class= "lecture-discussion content">
-              <% if user_signed_in? %>
-                <div class= "lecture-discussion">
-                  <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
-                  <b><%= current_user.firstname %>
-                  <%= current_user.lastname %></b><br>
-                  <%= form_for(@comment) do |f| %>
-                    <% if @comment.errors.any? %>
-                      <div id="error_explanation">
-                        <ul>
-                        <% @comment.errors.full_messages.each do |message| %>
-                          <li><%= message %></li>
-                        <% end %>
-                        </ul>
-                      </div>
-                    <% end %>
-                    <%= f.text_area :content, class: "lecture-form-technique" %>
-                    <%= hidden_field_tag "lecture_id", params[:id] %>
-                    <%= f.submit class: "lecture-submit", value: "Publier" %>
-                  <% end %>
-                </div>
-              <% end %>
-              <!-- === OTHER COMMENTS === -->
-              <% @lecture_comments.each do |comment| %>
-                <div class= "lecture-discussion">
-                  <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
-                  <b><%= comment.user.firstname %>
-                  <%= comment.user.lastname %></b><i> - <%= comment.created_at.strftime("le %e/%M/%Y à %H:%M") %></i><br>
-                  <%= comment.content %>
-                  <% if comment.user == current_user %>
-                    <%= form_tag comment_path(comment) do %>
-                      <%= hidden_field_tag "comment_id", comment.id %>
-                      <%= button_to("Destroy", comment_path(comment), method: :delete, class: "lecture-submit") %>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            <!-- ========== CLOSE TABS ========== -->
+            <div id="lecture-comments">
+              <%= render 'comments' %>
             </div>
+            <!-- ========== CLOSE TABS ========== -->
           </div>
     <!-- ========== CLOSE CONTAINERS ========== -->
         </div>

@@ -4,7 +4,12 @@
       <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
       <form action="" class="list-search">
-        <input type="text" class="list-search-input" placeholder="Chercher dans les oeuvres et analyses" name="search">
+
+        <div class="btn-group">
+          <input type="text" class="list-search-input" placeholder="Chercher dans les oeuvres et analyses" name="search" value="<%= params[:search] %>">
+          <%= link_to "", litterature_courses_path, id: 'list-search-clear', class:'glyphicon glyphicon-remove' %>
+        </div>
+
         <button type="submit" class="list-search-btn" >
           <i class="fa fa-search"></i>
         </button>
@@ -12,12 +17,12 @@
     </div>
       <!-- ========== SIDEBAR ========== -->
     <div class="col-xs-1 col-md-offset-2">
+      <div id="sidebar-parauteur">
+        <h4>Par auteur</h4>
+      </div>
       <div id="sidebar" class="hidden-xs hidden-sm">
-        <div id="sidebar-parauteur">
-          <h4>Par auteur</h4>
-        </div>
         <% ('A' .. 'Z').to_a.each do | letter | %>
-          <%= link_to litterature_courses_path(anchor: letter) do %>
+          <%= link_to "##{letter}", class: :scroll do %>
             <div id="sidebar-letter"><%= letter %></div>
           <% end %>
         <% end %>
