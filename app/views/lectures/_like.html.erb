@@ -1,0 +1,4 @@
+<%= form_tag like_lectures_path(course), remote: true do %>
+  <label>Garder dans mes cours</label>
+  <%= check_box_tag :liked, "1", current_user.liked?(course), class: "like-link" %>
+<% end %>

@@ -2,17 +2,30 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_after_action :verify_authorized
 
+  def index
+    @courses = policy_scope(Course)
+
+  end
+
   def litterature
-    @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    @courses = policy_scope(Course)
+    if params[:search] && params[:search] != ""
+      @litterature_courses = Course.search(params[:search]).joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    else
+      @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+    end
     @documents = Document.joins(:lecture)
-    @lectures = Lecture.joins(:document)
   end
 
   def technique
     @category = Category.find_by_name(params[:category])
     @courses = policy_scope(Course)
-    @technique_courses = Course.joins(:category).where(categories: {id: @category.id}).order('title ASC')
     @categories = Category.where(tag: "technique")
+    if params[:search] && params[:search] != ""
+      @technique_courses = Course.search(params[:search]).joins(:category).where(categories: {tag: "technique"}).order('title ASC')
+    else
+      @technique_courses = Course.joins(:category).where(categories: {id: @category.id}).order('title ASC')
+    end
   end
 
   def like

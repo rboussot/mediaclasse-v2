@@ -65,12 +65,12 @@
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
-  color: $greylight;
+  color: $greydark;
   border: 2px solid $greylight;
   border-radius: 5px;
   padding: 0 10px;
   outline: none;
-  width: 300px;
+  width: 350px;
 }
 .list-search-input:focus  {
   border: 1px solid #CCCCCC;

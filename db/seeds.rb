@@ -162,6 +162,16 @@ compose.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v147222
 compose.save
 puts "Course commentaire composé created"
 
+phedre = Course.new(category:methodo,title:"Phèdre", description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle.")
+phedre.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049912/1_tu1vwg.jpg'
+phedre.save
+puts "Course phedre created"
+
+andromaque = Course.new(category:methodo,title:"Andromaque", description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle")
+andromaque.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472222562/ksi6rdgnhxzyuib5xtli.jpg'
+andromaque.save
+puts "Course andromaque created"
+
 theatre = Theme.new(name: "Le théâtre et sa représentation", description:"les procédés de mise en scène du 17e siècle à nos jours")
 theatre.save
 puts "Theme theatre created"
@@ -276,7 +286,7 @@ bovary6 = Lecture.new(course: bovary, title:"Partie 3, Chapitre 8", video:"_31zy
 bovary6.save
 puts "Lecture bovary6 created"
 
-etranger1 = Lecture.new(course: etranger, title:"Résumé analyse", video:"2uJuSpdNbHE", description:"", payment: true)
+etranger1 = Lecture.new(course: etranger, title:"Résumé analyse", video:"2uJuSpdNbHE", description:"", payment: false)
 etranger1.save
 puts "Lecture etranger1 created"
 
@@ -296,7 +306,7 @@ etranger5 = Lecture.new(course: etranger, title:"Partie 2, chapitre 5", video:"2
 etranger5.save
 puts "Lecture etranger5 created"
 
-voyage1 = Lecture.new(course: voyage, title:"Résumé analyse", video:"2MW_4a9JR1A", description:"", payment: true)
+voyage1 = Lecture.new(course: voyage, title:"Résumé analyse", video:"2MW_4a9JR1A", description:"", payment: false)
 voyage1.save
 puts "Lecture voyage1 created"
 
@@ -390,19 +400,19 @@ compose6 = Lecture.new(course: compose, title:"Commenter un extrait de texte arg
 compose6.save
 puts "Lecture compose6 created"
 
-belami1 = Lecture.new(course: belami, title:"Commenter un extrait de texte argumentatif", video:"goBK2RvI2TQ", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+belami1 = Lecture.new(course: belami, title:"Commenter un extrait de texte argumentatif", video:"goBK2RvI2TQ", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: false)
 belami1.save
 puts "Lecture belami1 created"
 
-germinal1 = Lecture.new(course: germinal, title:"Commenter un extrait de texte argumentatif", video:"qYLKdUWzO_I", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+germinal1 = Lecture.new(course: germinal, title:"Commenter un extrait de texte argumentatif", video:"qYLKdUWzO_I", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: false)
 germinal1.save
 puts "Lecture germinal1 created"
 
-assommoir1 = Lecture.new(course: assommoir, title:"Commenter un extrait de texte argumentatif", video:"2c7iBqOUcUc", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+assommoir1 = Lecture.new(course: assommoir, title:"Commenter un extrait de texte argumentatif", video:"2c7iBqOUcUc", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: false)
 assommoir1.save
 puts "Lecture assommoir1 created"
 
-lecid1 = Lecture.new(course: lecid, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: true)
+lecid1 = Lecture.new(course: lecid, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: false)
 lecid1.save
 puts "Lecture lecid1 created"
 
@@ -412,6 +422,9 @@ Document.create(title: "Le texte intégral du roman", url:"http://res.cloudinary
 Document.create(title: "Le résumé chapitre par chapitre", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472401783/bovary_-_re%CC%81sume%CC%81_nxrcdg.pdf", lecture: bovary1)
 Document.create(title: "Les slides de la vidéo", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472401960/bovary0_qhumzp.pdf", lecture: bovary1)
 
+college = Level.new(name: "Collège")
+college.save
+puts "Level college created"
 seconde = Level.new(name: "Seconde")
 seconde.save
 puts "Level seconde created"
