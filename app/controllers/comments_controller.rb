@@ -1,21 +1,19 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(user: current_user, content: params[:comment][:content], lecture_id: params[:lecture_id])
-    authorize @comment
+    comment = Comment.new(user: current_user, content: params[:comment][:content], lecture_id: params[:lecture_id])
+    authorize comment
+    render :new unless comment.save # Il renvoie automatiquement au comment/create.js.erb
 
-    if @comment.save
-      redirect_to :back
-    else
-      render :new
-    end
+    @lecture = Lecture.find(params[:lecture_id])
+    @lecture_comments = Comment.all.where(lecture: @lecture).joins(:user).order('updated_at DESC')
+    @comment = Comment.new
   end
 
   def destroy
     @comment = Comment.find(params[:comment_id])
     authorize @comment
     @comment.destroy
-    redirect_to :back
   end
 
   private

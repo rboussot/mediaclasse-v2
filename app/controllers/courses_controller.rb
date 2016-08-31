@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   def litterature
     @courses = policy_scope(Course)
     if params[:search] && params[:search] != ""
-      @litterature_courses = Course.search(params[:search]).joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
+      @litterature_courses = Course.search(params[:search]).joins(:author).joins(:category).where(categories: {tag: "litterature"}).reorder('pseudo ASC')
     else
       @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
     end
@@ -35,6 +35,8 @@ class CoursesController < ApplicationController
     else
       @course.unliked_by current_user
     end
+
+    head :ok
   end
 
   private

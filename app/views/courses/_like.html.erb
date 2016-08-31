@@ -1,4 +1,4 @@
 <%= form_tag course_like_path(course), remote: true do %>
-  <label> Garder dans mes cours ?  </label>
+  <%= label_tag "liked", "Garder dans mes cours ?" %>
   <%= check_box_tag :liked, "1", current_user.liked?(course), class: "like-link" %>
 <% end %>
