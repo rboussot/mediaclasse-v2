@@ -1,11 +1,7 @@
 <% if notice %>
   <div class="alert alert-info alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <% if current_user%>
-      <%= flash[:notice] = "Vous êtes connecté !" %>
-    <% else %>
-      <%= flash[:notice] = "Vous êtes déconnecté !" %>
-    <% end %>
+    <%= notice %>
   </div>
 <% end %>
 <% if alert %>
