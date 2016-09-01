@@ -2,8 +2,9 @@
   width:100% !important;
   background-color: $greydark;
   height: 230px;
-  margin-top: 60px;
   border-top: 30px solid transparent;
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer h1 {
@@ -27,6 +28,8 @@
 
 .footer-part {
   padding: 20px;
+  justify-content: space-around;
+
 }
 
 .footer .fa {

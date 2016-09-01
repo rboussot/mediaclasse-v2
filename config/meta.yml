@@ -1,5 +1,5 @@
 # config/meta.yml
 meta_title: "Mediaclasse"
 meta_description: "Commentaires composés pour le collège et le lycée avec les meilleures méthodes pédagogiques en vidéo"
-meta_image: "/logo.png" # Une image dans votre dossier app/assets/images/
+meta_image: "logo.png" # Une image dans votre dossier app/assets/images/
 twitter_account: "https://twitter.com/mediaclassefr?lang=fr" # indispensable pour les Twitter Cards

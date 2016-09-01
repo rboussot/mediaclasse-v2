@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Attachinary::Engine => "/attachinary"
+  devise_for :users
 
   resources :courses, only: [:show, :index] do
     collection do
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
 
-  devise_for :users
   root to: 'pages#home'
 
   resources :stripe_callbacks, only: [:create]

@@ -2,9 +2,13 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500|family=Hind:300,500,600");
+
+$base-font: "Hind", "Helvetica", "sans-serif";
+$header-font: "Hind", "Helvetica", "sans-serif";
+
+// <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
+// font-family: 'Hind', sans-serif;
 
 // Local fonts (uncomment following lines)
 // @font-face {

@@ -66,6 +66,10 @@ camus = Author.new(lastname: "Camus", firstname: "Albert", pseudo: "Camus", birt
 camus.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472286375/Ectac.Albert-Camus.01_kasbh0.jpg'
 camus.save
 puts "Author camus created"
+racine = Author.new(lastname: "Racine", firstname: "Jean", pseudo: "Racine", birth: 1639, death: 1699)
+racine.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472717460/Jean_racine_fja8jg.jpg'
+racine.save
+puts "Author racine created"
 
 litterature = Category.new(name: "Littérature", description:"Oeuvres célèbres", tag: "litterature")
 litterature.save
@@ -92,8 +96,8 @@ chainespoesie = Category.new(name: "Poésie", description:"Chaînes sur la poés
 chainespoesie.save
 puts "Category chaînes poésie created"
 
-tartuffe = Course.new(author:moliere, category:litterature, title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.")
-tartuffe.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472035983/couverture_-_Molie%CC%80re_Tartuffe_snuogz.jpg'
+tartuffe = Course.new(author:moliere, category:litterature, title:"Tartuffe", date: 1664, description:"Le Tartuffe ou l’Imposteur est une comédie en cinq actes et en vers de Molière, pièce de théâtre représentée pour la première fois le 5 février 1669 sur la scène du Palais-Royal.")
+tartuffe.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472379866/qkfnkwjw7kemj78qfv8u.jpg'
 tartuffe.save
 puts "Course Tartuffe created"
 
@@ -162,13 +166,13 @@ compose.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v147222
 compose.save
 puts "Course commentaire composé created"
 
-phedre = Course.new(category:methodo,title:"Phèdre", description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle.")
-phedre.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472049912/1_tu1vwg.jpg'
+phedre = Course.new(author: racine, category:litterature, title:"Phèdre", date: 1677, description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle.")
+phedre.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472715544/couverture_-_Racine_Phe%CC%80dre_olvam9.jpg'
 phedre.save
 puts "Course phedre created"
 
-andromaque = Course.new(category:methodo,title:"Andromaque", description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle")
-andromaque.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472222562/ksi6rdgnhxzyuib5xtli.jpg'
+andromaque = Course.new(author: racine, category:litterature, title:"Andromaque", date: 1668, description:"La tragédie de Racine, représentative du théâtre tragique de 17e siècle")
+andromaque.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472715544/couverture_-andromaque_cjfx2r.jpg'
 andromaque.save
 puts "Course andromaque created"
 
@@ -224,6 +228,12 @@ puts "CoursesTheme metaphore_figures created"
 corpus_bac = CoursesTheme.new(course:corpus, theme:bac)
 corpus_bac.save
 puts "CoursesTheme metaphore_figures created"
+phedre_theatre = CoursesTheme.new(course:phedre, theme:theatre)
+phedre_theatre.save
+puts "CoursesTheme phedre_theatre created"
+andromaque_theatre = CoursesTheme.new(course:andromaque, theme:theatre)
+andromaque_theatre.save
+puts "CoursesTheme andromaque created"
 
 tartuffe1 = Lecture.new(course: tartuffe, title:"Résumé analyse", video:"_QaJabZwuHI", description:"Le résumé analysé et illustré de Tartuffe, la comédie de Molière", payment: false)
 tartuffe1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054218/youtube-tartuffe_l1qzdy.jpg'
@@ -260,7 +270,7 @@ candide2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v14720
 candide2.save
 puts "Lecture candide2 created"
 
-bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovay, le roman de Flaubert", payment: false)
+bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovary, le roman de Flaubert", payment: false)
 bovary1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
 bovary1.save
 puts "Lecture bovary1 created"
@@ -380,7 +390,6 @@ compose1.save
 puts "Lecture compose1 created"
 
 compose2 = Lecture.new(course: compose, title:"Commenter un extrait de roman", video:"gcmSx7YUmbg", description: "Application de ma méthodologie du commentaire composé pour le roman", payment: true)
-
 compose2.save
 puts "Lecture compose2 created"
 
@@ -415,6 +424,14 @@ puts "Lecture assommoir1 created"
 lecid1 = Lecture.new(course: lecid, title:"Commenter un extrait de texte argumentatif", video:"FoYlgnjN4Y0", description: "Application de ma méthodologie du commentaire composé sur un extrait argumentatif", payment: false)
 lecid1.save
 puts "Lecture lecid1 created"
+
+phedre1 = Lecture.new(course: phedre, title:"Résumé et analyse", video:"nL-1Xbi9Djw", description: "Résumé illustré et analyse de Phèdre, la pièce de Racine.", payment: false)
+phedre1.save
+puts "Lecture phedre1 created"
+
+andromaque1 = Lecture.new(course: andromaque, title:"Résumé et analyse", video:"f1zvstOtMUg", description: "Résumé illustré et analyse d'Andromaque, la pièce de Racine.", payment: false)
+andromaque1.save
+puts "Lecture andromaque1 created"
 
 Document.create(title: "Antisèche pour mieux retenir les grilles de lecture", url:'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472393487/Me%CC%81thodologie_du_commentaire_compose%CC%81_bac_de_franc%CC%A7ais_m0gvkc.pdf', lecture:compose1)
 Document.create(title: "Texte intégral du cours", url:"http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472396142/methodologie_commentaire_compose.pdf", lecture: compose1)
@@ -476,22 +493,22 @@ kevin.picture_url = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472
 kevin.save
 puts "User kevin created"
 
-comment1 = Comment.new(lecture: compose1, user:jordi, content:"Youpi !")
+comment1 = Comment.new(lecture: compose1, user:jordi, content:"Je découvre avec plaisir :)")
 comment1.save
 puts "Comment 1 created"
-comment2 = Comment.new(lecture: compose1, user:ludivine, content:"Super !")
+comment2 = Comment.new(lecture: compose1, user:ludivine, content:"Super ! J'ai reconnu la musique, c'est du Ravel :)")
 comment2.save
 puts "Comment 2 created"
-comment3 = Comment.new(lecture: compose1, user:kevin, content:"Ok !")
+comment3 = Comment.new(lecture: compose1, user:kevin, content:"Ok j'ai tout compris.")
 comment3.save
 puts "Comment 3 created"
-comment4 = Comment.new(lecture: bovary1, user:jordi, content:"Coucou !")
+comment4 = Comment.new(lecture: bovary1, user:jordi, content:"Je découvre avec plaisir :)")
 comment4.save
 puts "Comment 4 created"
-comment5 = Comment.new(lecture: bovary1, user:ludivine, content:"Ok !")
+comment5 = Comment.new(lecture: bovary1, user:ludivine, content:"Super ! J'ai reconnu la musique, c'est du Brahms :)")
 comment5.save
 puts "Comment 5 created"
-comment6 = Comment.new(lecture: bovary1, user:kevin, content:"Héhé !")
+comment6 = Comment.new(lecture: bovary1, user:kevin, content:"Ok j'ai tout compris.")
 comment6.save
 puts "Comment 6 created"
 
