@@ -4,7 +4,7 @@
 
 
         <!-- ========== VIGNETTE ========== -->
-        <% @my_courses.each do |course| %>
+        <% @my_courses.reverse.each do |course| %>
           <%= link_to lecture_path(course.lectures.first) do %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card-course" data-id="<%= course.id %>" style='background-image: url(<%= course.picture %>)'>

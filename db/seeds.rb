@@ -270,7 +270,7 @@ candide2.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v14720
 candide2.save
 puts "Lecture candide2 created"
 
-bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Le résumé analyse illustré de Madame Bovary, le roman de Flaubert", payment: false)
+bovary1 = Lecture.new(course: bovary, title:"Résumé analyse", video:"_31zyVWwvuQ", description:"Est-ce que Flaubert utilise Charles pour parler d’Emma ? Est-ce qu’il utilise Emma pour parler des romans ? Ou bien passe-t-il par les romans pour parler de la réalité ? Quel est le but de Flaubert avec Madame Bovary ? Cette incertitude peut mettre mal à l’aise les lecteurs, qui vont trouver les personnages décevants et l’intrigue un peu banale, et qui vont passer à côté de ce qui fait véritablement la saveur de ce roman.", payment: false)
 bovary1.picture = 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472054217/youtube-bovary_dpkwtd.jpg'
 bovary1.save
 puts "Lecture bovary1 created"
