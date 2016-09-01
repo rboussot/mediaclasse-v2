@@ -24,6 +24,10 @@
   text-decoration: none;
 }
 
+.list-item a {
+  width: 100%;
+}
+
 .list-item:hover {
   background-color: $greylighter;
   -webkit-transition: background-color 100ms linear;

@@ -22,6 +22,11 @@
   text-decoration: none;
 }
 
+#sidebar-letter a:focus, a:visited, a:active {
+  color: black;
+  text-decoration: none;
+}
+
 #sidebar-parauteur {
   color: white;
   width: 160px;
@@ -55,7 +60,7 @@
 
 #sidebar-category h4 {
   background-color: $greywhite;
-  color: $grey;
+  color: $greydark;
   font-size: 18px;
   text-align: center;
   padding: 15px 0 15px 0;
