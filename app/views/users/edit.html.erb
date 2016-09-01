@@ -29,9 +29,7 @@
           <%= f.submit class: "btn btn-primary",id:"profilesave", value: "Enregistrer"%>
         <% end %>
 
-        <div class="user-channel-delete">
-        <%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger" %>
-        </div>
+
           <div class="user-channel-edit">
             <p>Tu es l'auteur d'un blog ou d'une chaîne Youtube littéraire ? <br>
               Tu souhaites rejoindre la communauté Mediaclasse ?</p>
@@ -42,6 +40,11 @@
               <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"btn btn-primary"  %>
             <% end %>
           </div>
+
+        <div class="user-channel-delete">
+          <%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger", id:"deleteaccount" %>
+        </div>
+
         </div>
       </div>
     </div>

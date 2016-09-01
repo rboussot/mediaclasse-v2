@@ -80,7 +80,6 @@
 
 #user_email {
   width: 320px;
-  margin-left: 20px;
 }
 
 #user_firstname {
@@ -155,4 +154,11 @@ display: inline;
   color: white;
   font-size: 8px;
   line-height: 1.2;
+
+}
+
+.user-channel-delete #deleteaccount {
+  font-size: 11px;
+  float: right !important;
+  margin-top: 10px;
 }
