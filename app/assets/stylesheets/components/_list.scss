@@ -39,8 +39,9 @@
 }
 
 .list-scroll {
-  overflow: scroll;
-  height: calc(100vh - 150px);
+    overflow: scroll;
+    height: calc(100vh - 150px);
+    padding-bottom: 40px;
 }
 
 .list-image {
@@ -85,7 +86,7 @@
   width: 350px;
 }
 .list-search-input:focus  {
-  border: 1px solid #CCCCCC;
+  border: 2px solid #CCCCCC;
 }
 
 .list-like label {
