@@ -4,8 +4,12 @@
     <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
       <form action="" class="list-search">
-        <input type="text" class="list-search-input" placeholder="Chercher dans les méthodes & techniques" name="search">
-        <button type="submit" class="list-search-btn">
+        <div class="btn-group">
+          <input type="text" class="list-search-input" placeholder="Chercher dans les méthodes & techniques" name="search" value="<%= params[:search] %>">
+          <% @technique_category = Category.where(tag: "technique").first.name %>
+          <%= link_to "", technique_courses_path(category: @technique_category), id: 'list-search-clear', class:'glyphicon glyphicon-remove' %>
+        </div>
+        <button type="submit" class="list-search-btn" >
           <i class="fa fa-search"></i>
         </button>
       </form>
@@ -29,38 +33,47 @@
     <!-- ========== SCROLL LIST ========== -->
     <div class="col-xs-9">
       <div class="list-scroll">
-        <% @technique_courses.each do |course| %>
-          <!-- ==== LIST ITEM ==== -->
-          <div class="list-item">
-            <% if course.lectures.first %>
-              <%= link_to lecture_path(course.lectures.first) do %>
-                <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
-                <ul>
-                  <li><h3><%= course.title %></h3></li>
-                  <li><p><%= course.description %></p></li>
-                  <li><p><%= course.lectures.count %> videos</p></li>
-                  <li>
-                    <p class="list-themes"> <% course.themes.each do |t| %>
-                      <%= t.name %>;
-                    <% end %>
-                    </p>
-                  </li>
-                </ul>
-                <!-- === CHECKBOX === -->
-                <% if current_user %>
-                  <div>
-                    <div class= "list-like checkbox" id="like-<%= course.id %>">
-                      <%= render 'like', course: course %>
+        <% if @technique_courses.count > 0 %>
+          <% @technique_courses.each do |course| %>
+            <!-- ==== LIST ITEM ==== -->
+            <div class="list-item">
+              <% if course.lectures.first %>
+                <%= link_to lecture_path(course.lectures.first) do %>
+                  <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
+                  <ul>
+                    <li><h3><%= course.title %></h3></li>
+                    <li><p><%= course.description %></p></li>
+                    <li><p><%= course.lectures.count %> videos</p></li>
+                    <li>
+                      <p class="list-themes"> <% course.themes.each do |t| %>
+                        <%= t.name %>;
+                      <% end %>
+                      </p>
+                    </li>
+                  </ul>
+                  <!-- === CHECKBOX === -->
+                  <% if current_user %>
+                    <div>
+                      <div class= "list-like checkbox" id="like-<%= course.id %>">
+                        <%= render 'like', course: course %>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
+                  <!-- === END OF CHECKBOX === -->
                 <% end %>
-                <!-- === END OF CHECKBOX === -->
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
+        <!-- ========== PAS DE RESULTAT ========== -->
+        <% else %>
+          <div class="list-item"">
+            <div class="banner-image">
+              <p class="banner-text"> Oups ! Pas de résultat pour cette recherche ! </p>
+            </div>
+          </div>
         <% end %>
+  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
       </div>
     </div>
-  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
   </div>
 </div>
