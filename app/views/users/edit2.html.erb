@@ -38,14 +38,14 @@
               <% end %>
             </div>
 
-<!--             <div class="user-channel-delete">
+<!--         <div class="user-channel-delete">
               <#%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger", id:"deleteaccount" %>
             </div> -->
 
-
             <%= render 'shared/deleteaccountmodal' %>
-            <button type="button" class="user-channel-delete hvr-glow" data-toggle="modal" data-target="#DeleteAccountModal">Supprimer mon compte</button>
-
+            <div data-toggle="modal" data-target="#DeleteAccountModal" >
+              <button class="btn btn-danger user-channel-delete" id="delete" >Supprimer mon compte</button>
+            </div>
 
         </div>
       </div>

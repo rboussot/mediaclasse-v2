@@ -189,11 +189,17 @@ a.profile-youtube {
   line-height: 1.7;
 }
 
-.user-channel-delete #deleteaccount {
-  font-size: 11px;
-  float: right !important;
-  margin-top: 20px;
-  margin-bottom: 40px;
+.user-channel-delete {
+    font-size: 11px;
+    float: right !important;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: red;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
 }
 
 /* Glow */
