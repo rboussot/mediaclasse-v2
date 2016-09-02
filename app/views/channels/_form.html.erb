@@ -1,0 +1,26 @@
+<%= simple_form_for(@channel) do |f| %>
+  <% if @channel.errors.any? %>
+  <% end %>
+  <%= f.error_notification %>
+  <h3 class="channel-title" >Ma chaîne / mon blog</h3>
+  <div class="channel-edit ">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :name, label: "Indique le nom de ton projet !" %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :picture, as: :attachinary %>
+    </div>
+  </div>
+    <%= f.input :description, label: "Décris ta chaîne ou ton blog." %>
+    <%= f.input :link, label: "Colle le lien ici." %>
+    <%= f.input :email, label: "Indique l'adresse email dédiée." %>
+
+    <% if @channel.user == current_user  %>
+      <%= f.submit class: "channel-button hvr-glow align-center", value: "Sauver les modifications"%>
+    <% else %>
+      <%= f.submit class: "channel-button hvr-glow align-center", value: "Proposer ma chaîne / mon blog"%>
+      <p><i>Ta chaîne ne sera pas automatiquement publiée : je vais la visiter pour m'assurer que le contenu est approprié, puis je te fais un retour personnellement par email pour te donner mon avis et valider la publication avec toi :) En tout cas, n'hésite pas à me contacter : mediaclasse.fr@gmail.com</i></p>
+    <% end %>
+  </div>
+<% end %>

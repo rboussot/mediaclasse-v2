@@ -1,26 +1,10 @@
 <div class="home-wrapper">
-  <div class="container">
+  <div class="container-fluid">
   <div class="border community"></div>
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
-
-        <%= simple_form_for(@channel) do |f| %>
-          <% if @channel.errors.any? %>
-
-          <% end %>
-          <%= f.error_notification %>
-
-        <div class="user-channel-edit">
-        <h3>Mon projet</h3>
-          <%= f.input :name, label: "Indique le nom de ton projet !" %>
-          <%= f.input :description, label: "Décris ta chaîne ou ton blog." %>
-          <%= f.input :link, label: "Colle le lien ici." %><br>
-          <%= f.input :picture, label: "Ajoute une image !", as: :attachinary %>
-          <%= f.input :email, label: "Indique l'adresse email dédiée." %><br>
-          <%= f.submit class: "navbar-media-button", value: "Proposer ma chaîne"%>
-        </div>
-        <% end %>
-
+      <!-- ========== CHANNEL FORM ========== -->
+        <%= render 'form' %>
       </div>
     </div>
   </div>
