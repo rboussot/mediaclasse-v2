@@ -13,8 +13,8 @@
     <!-- === LINK CHANNELS === -->
     <% @channels_category = Category.where(tag: "chaines").first.name %>
     <%= link_to "Communauté", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
-    <% if current_user %>
     <!-- === LINK MY_COURSES === -->
+    <% if current_user %>
       <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
     <% else %>
       <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-xs hidden-sm navbar-link underline link-profile" %>

@@ -1,164 +1,222 @@
-.profile-edit-wrapper {
-  padding: 50px;
-  margin-top: 15px;
-  padding-top: 5px;
-  width: 100%;
-  line-height: 1;
-  background-color: white;
-  border-radius: 4px;
-  position: relative;
+// .profile-edit-wrapper {
+//   padding: 50px;
+//   margin-top: 15px;
+//   padding-top: 5px;
+//   width: 100%;
+//   line-height: 1;
+//   background-color: white;
+//   border-radius: 4px;
+//   position: relative;
+// }
+
+// .form-group.attachinary.optional.user_picture {
+//   background-color: white;
+//   padding: 10px;
+//   margin-right: 20px;
+//   width: 500px;
+// }
+
+// #user_picture {
+//   display: block;
+//   margin-left: 0px;
+//   width: 320px;
+
+// }
+
+// .user_picture {
+//   float: right;
+//   margin-right: 0px;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+// }
+
+// .form-group.attachinary.optional.user_picture {
+//    width: 350px;
+// }
+
+.profile_title {
+  color: $profile;
+  font-style: bolder;
 }
 
-.form-group.attachinary.optional.user_picture {
-  background-color: white;
-  padding: 10px;
-  margin-right: 20px;
-  width: 500px;
-}
-
-#user_picture {
-  display: block;
-  margin-left: 0px;
-  width: 320px;
-
-}
-
-.user_picture {
-  float: right;
-  margin-right: 0px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-group.attachinary.optional.user_picture {
-   width: 350px;
-}
-
-.attachinary_container {
-  width: 200px;
-  height: 85px
-}
-
-
-.user_picture ul  {
-  display: inline;
+.attachinary_container ul {
   list-style-type: none;
-  width: 220px;
-  height: 75px;
 }
 
-.user_picture li  {
-  background-color: white;
-  width: 180px;
+.attachinary_container ul li img {
 }
 
+// .user_picture ul  {
+//   display: inline;
+//   list-style-type: none;
+//   width: 220px;
+//   height: 75px;
+// }
 
-.profile-edit-wrapper input {
-  display: inline;
-  width: 55%;
-  height: 35px;
-  margin-bottom: 5px;
-  margin-left: 15px;
-}
-
-#edit_user_2 {
-  width: 100%;
-  border-radius: 4px;
-  padding-bottom: 0px;
-}
-
-.edit_user {
-  width: 100%;
-  background-color: white;
-  padding: 10px;
-}
-
-#user_phone {
-  width: 180px;
-}
+// .user_picture li  {
+//   background-color: white;
+//   width: 180px;
+// }
 
 
-#user_email {
-  width: 320px;
-}
+// .profile-edit-wrapper input {
+//   display: inline;
+//   width: 55%;
+//   height: 35px;
+//   margin-bottom: 5px;
+//   margin-left: 15px;
+// }
 
-#user_firstname {
-  width: 220px;
-}
+// #edit_user_2 {
+//   width: 100%;
+//   border-radius: 4px;
+//   padding-bottom: 0px;
+// }
 
-#user_lastname {
-  width: 220px;
-  margin-left: 40px;
-}
+// .edit_user {
+//   width: 100%;
+//   background-color: white;
+//   padding: 10px;
+// }
 
-#user_level_id {
-  width: 140px;
-  margin-left: 20px;
-  display: inline;
-  margin-bottom: 15px;
-}
-
-
-.user_level_id {
-  display: inline;
-  margin-left: 0px;
-  width: 300px;
-}
-
-.user_birth {
-  display: inline;
-  margin-bottom: 10px;
-}
-
-#user_birth_3i {
-  margin-left: 10px;
-}
-
-.form-inline {
-display: inline;
-}
+// #user_phone {
+//   width: 320;
+// }
 
 
-.profile-edit-wrapper h2 {
-  color: #B4A7D6;
-  font-size: 24px;
-}
+// #user_email {
+//   width: 320px;
+// }
+
+// #user_firstname {
+//   width: 320;
+// }
+
+// #user_lastname {
+//   width: 320;
+//   margin-left: 40px;
+// }
+
+// #user_level_id {
+//   width: 320;
+//   margin-left: 20px;
+//   display: inline;
+//   margin-bottom: 15px;
+// }
+
+
+// .user_level_id {
+//   display: inline;
+//   margin-left: 0px;
+//   width: 320px;
+// }
+
+// .user_birth {
+//   display: inline;
+//   margin-bottom: 10px;
+// }
+
+// #user_birth_3i {
+//   margin-left: 10px;
+// }
+
+// .form-inline {
+// display: inline;
+// }
+
+
+// .profile-edit-wrapper h2 {
+//   color: #B4A7D6;
+//   font-size: 24px;
+// }
 
 #profilesave {
   margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: auto;
   width: 100%;
-  background-color: #B4A7D6;
+  background-color: $profile;
   border: none;
   height: 50px;
   font-size: 20px;
 }
 
+a.profile-youtube {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: $profile;
+    font-size: 20px;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    border: none;
+}
+
+.channel-button {
+    background-color: #CC0000;
+    font-size: 20px;
+    color: white;
+    font-size: 16px;
+    padding: 8px 30px;
+    border-radius: 3px;
+    border: none;
+    margin: 20px 0 20px calc(50% - 140px);
+    width: 280px;
+}
+
 .user-channel-edit {
-  background-color: #E9E9E9;
+  background-color: $greylight;
   border-radius: 4px;
-  padding: 8px;
+  padding: 40px;
   margin-top: 5px;
   width: 100%;
+  color: black;
+  font-size: 17px;
+  line-height: 1.7;
   text-align: center;
+}
+
+.channel-edit {
+  background-color: $greylight;
+  border-radius: 4px;
+  padding: 40px;
+  margin-top: 5px;
+  margin-bottom: 80px;
+  width: 100%;
   color: black;
   font-size: 17px;
   line-height: 1.7;
 }
 
-.user-channel-delete {
-  background-color: transparent;
-  padding: 3px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 8px;
-  line-height: 1.2;
-
-}
-
 .user-channel-delete #deleteaccount {
   font-size: 11px;
   float: right !important;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Glow */
+.hvr-glow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+h3.channel-title {
+  color: #CC0000;
+  text-align: center;
+  margin: 30px 0px;
 }

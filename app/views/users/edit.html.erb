@@ -2,48 +2,45 @@
   <div class="container-fluid">
     <div class="border profile"></div>
     <div class="row">
-
-      <div class="col-xs-10 col-xs-offset-1">
-
-      <div class="profile-edit-wrapper">
-
-      <h2>Mon profil</h2>
-
+    <br><h2 class="text-center profile_title">Mon profil</h2><br>
         <%= simple_form_for(@user) do |f| %>
-          <% if @user.errors.any? %>
-
-          <% end %>
           <%= f.error_notification %>
+          <div class="col-xs-3 col-xs-offset-3">
+            <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.input :firstname, label: "Prénom" %>
+            <%= f.input :lastname, label: "Nom" %>
+          </div>
+          <div class="col-xs-3 col-xs-offset-3">
+            <%= f.input :email %>
+            <%= f.input :phone, label: "Téléphone", class: "telinput" %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
+            <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3">
+            <%= f.input :adress, label: "Adresse", as: :text %>
 
-          <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
-          <%= f.input :firstname, label: "Prénom" %>
-          <%= f.input :lastname, label: "Nom" %>
-          <%= f.input :email %>
-          <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
-          <%= f.input :adress, label: "Adresse" %>
-          <%= f.input :phone, label: "Téléphone", class: "telinput" %>
-          <%#= f.input :birth, label: "Date de naissance" %>
-
-              <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
-
-          <%= f.submit class: "btn btn-primary",id:"profilesave", value: "Enregistrer"%>
+          <%= f.submit class: "btn btn-primary hvr-glow",id:"profilesave", value: "Enregistrer"%>
         <% end %>
 
 
-          <div class="user-channel-edit">
-            <p>Tu es l'auteur d'un blog ou d'une chaîne Youtube littéraire ? <br>
-              Tu souhaites rejoindre la communauté Mediaclasse ?</p>
+            <div class="user-channel-edit">
+              <p>Tu es l'auteur d'un blog ou d'une chaîne Youtube littéraire ? <br>
+                Tu souhaites rejoindre la communauté Mediaclasse ?</p>
 
-            <% if @channel  %>
-              <%= link_to "Editer mon blog / ma chaine YouTube", edit_channel_path(@channel), class:"btn btn-primary" %>
-            <% else %>
-              <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"btn btn-primary"  %>
-            <% end %>
-          </div>
+              <% if @channel  %>
+                <%= link_to "Editer mon blog / ma chaine YouTube", edit_channel_path(@channel), class:"profile-youtube hvr-glow" %>
+              <% else %>
+                <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"profile-youtube hvr-glow"  %>
+              <% end %>
+            </div>
 
-        <div class="user-channel-delete">
-          <%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger", id:"deleteaccount" %>
-        </div>
+            <div class="user-channel-delete">
+              <%= link_to "Supprimer mon compte", root_path, class:"btn btn-danger", id:"deleteaccount" %>
+            </div>
 
         </div>
       </div>
