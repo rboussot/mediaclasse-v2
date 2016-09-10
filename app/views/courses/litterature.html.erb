@@ -38,7 +38,7 @@
                   <ul>
                     <li> <h3>  <%= course.author.pseudo %>, <%= course.title %> - <%= course.date %> </h3></li>
                     <li> <p> <%= course.description %> </p> </li>
-                    <li> <p> <%= course.lectures.count %> videos </p> </li>
+                    <li> <p> <%= pluralize(course.lectures.count, 'vidéo') %></p> </li>
                     <li>
                       <p class="list-themes"> <% course.themes.each do |t| %>
                         <%= t.name %>;
@@ -63,7 +63,8 @@
         <% else %>
           <div class="list-item"">
             <div class="banner-image">
-              <p class="banner-text"> Oups ! Pas de résultat pour cette recherche ! </p>
+              <p class="banner-title"> Oups ! Pas de résultat pour cette recherche ! </p>
+              <p class="banner-text"> Si vous avez entré un mot (même mal orthographié) censé rediriger vers une oeuvre que j'ai traité, <br>n'hésitez pas à me le signaler par email : mediaclasse.fr@gmail.com, à bientôt :)</p>
             </div>
           </div>
         <% end %>

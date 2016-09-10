@@ -27,7 +27,8 @@
     <div class= "footer-part">
       <h1>Plan du site</h1>
       <p>  <%= link_to "Oeuvres & analyses", litterature_courses_path %><p>
-      <p>  <%= link_to "Méthodes & Techniques", technique_courses_path %><p>
+      <% @technique_category = Category.where(tag: "technique").first.name %>
+      <p>  <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category) %><p>
     </div>
 
 

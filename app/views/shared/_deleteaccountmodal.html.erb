@@ -3,11 +3,17 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <br><br><p>Cette action entrainera la suppression définitive de votre compte et la perte de toutes les informations que vous avez sauvegardé.</p>
+        <h2>Supprimer mon compte</h2>
+        <p>En supprimant votre compte, vous supprimez également toutes les informations qui lui sont liées, et vous enlevez votre chaîne ou votre blog de la communauté.</p>
         <p> ►  Souhaitez vous continuer ? </p>
         <div class="text-center">
-          <%= link_to "Supprimer mon compte", root_path, class:"btn btn-default"%>
-          <%= link_to "Annuler", edit_user_path, class:"btn btn-default"%>
+          <%= simple_form_for(@user) do |f| %>
+              <%= f.input :deleted, label: "Je confirme la suppression de ce compte" %>
+              <%= f.submit class: "btn btn-primary hvr-glow", id:"profilesave", value: "Continuer" %>
+          <% end %>
+            <%= link_to edit_user_path do %>
+              <p class="link-button hvr-glow"> Annuler </p>
+            <% end %>
         </div>
       </div>
     </div>

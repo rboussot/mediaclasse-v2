@@ -28,6 +28,7 @@ class User < ApplicationRecord
       field :birth
       field :visible
       field :admin
+      field :deleted
     end
   end
 end

@@ -1,6 +1,6 @@
 .modal-body {
   background-color: white;
-  border-left: 35px solid #B4A7D6;
+  border-left: 35px solid $profile;
   padding: 40px;
 }
 #mySignUpModal {
@@ -13,13 +13,13 @@
 
 .modal-body h2 {
   font-size: 22px;
-  color: #B4A7D6;
+  color: $profile;
   font-weight: bold;
 }
 
 .form-actions .btn-default {
   width: 100%;
-  background-color: #B4A7D6;
+  background-color: $profile;
   color: white;
   font-size: 18px;
   border-radius: 4px;
@@ -27,5 +27,5 @@
 
 .form-inputs label {
   font-size : 15px;
-  color:#737373 ;
+  color: $grey;
 }

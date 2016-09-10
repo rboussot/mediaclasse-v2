@@ -4,7 +4,13 @@ class ChannelsController < ApplicationController
 
   def index
     @category = Category.find_by_name(params[:category])
-    @channels = Channel.joins(:category).where(categories: {id: @category.id}).order('name ASC')
+    @channels = Channel
+      .joins(:category)
+      .where(visible: true)
+      .where(categories: {id: @category.id})
+      .joins(:user)
+      .where(users: {deleted: false})
+      .order('name ASC')
     @categories = Category.where(tag: "chaines")
   end
 

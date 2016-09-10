@@ -1,0 +1,22 @@
+<div class="modal fade" id="PlanCollectif" tabindex="-1" role="dialog" aria-labelledby="PlanLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2>Participation</h2>
+        Avec votre participation chaque mois : <br>
+        ► Vous accédez à tous mes cours de façon illimitée. <br>
+        ► Vous permettez à mon travail de rester accessible à tous. <br><br>
+        Le service est illimité quel que soit le montant de votre participation mensuelle !<br>
+        <% if current_user %>
+          <div class="form-actions">
+            <br>
+            <%= link_to "Participer", plans_path, class: "btn btn-default" %>
+          </div>
+        <% else %>
+          <%= render :template => "devise/sessions/new" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

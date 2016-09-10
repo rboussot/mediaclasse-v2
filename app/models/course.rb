@@ -3,7 +3,8 @@ class Course < ApplicationRecord
   pg_search_scope :search,
     against: {
       title: 'A',
-      description: 'B'
+      description: 'B',
+      keywords: 'C'
     },
     associated_against: {
       author: {

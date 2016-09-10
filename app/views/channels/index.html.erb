@@ -1,6 +1,6 @@
 <div class= "home-wrapper">
   <div class="container-fluid">
-  <div class="border community"></div>
+  <div class="hidden-xs hidden-sm border community"></div>
     <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
       <form action="" class="list-search">
@@ -29,19 +29,29 @@
     <!-- ========== SCROLL LIST ========== -->
     <div class="col-xs-9">
       <div class="list-scroll">
-        <% @channels.each do |channel| %>
-          <div class="list-item">
-            <%= link_to channel.link, target: :_blank do %>
-              <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
-              <ul>
-                <li><h3><%= channel.name %></h3></li>
-                <li><p><%= channel.description %></p></li>
-              </ul>
-            <% end %>
+        <% if @channel %>
+          <% @channels.each do |channel| %>
+            <div class="list-item">
+              <%= link_to channel.link, target: :_blank do %>
+                <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+                <ul>
+                  <li><h3><%= channel.name %></h3></li>
+                  <li><p><%= channel.description %></p></li>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        <!-- ========== PAS DE RESULTAT ========== -->
+        <% else %>
+          <div class="list-item"">
+            <div class="banner-image">
+              <p class="banner-title"> Aucune chaîne pour l'instant ! </p>
+              <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"profile-youtube hvr-glow"  %>
+            </div>
           </div>
         <% end %>
+  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
       </div>
     </div>
-  <!-- ====== CLOSE WRAPPER AND CONTAINER ====== -->
   </div>
 </div>

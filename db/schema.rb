@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830090636) do
+ActiveRecord::Schema.define(version: 20160909173246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,8 +69,9 @@ ActiveRecord::Schema.define(version: 20160830090636) do
     t.integer  "lecture_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "super",      default: false, null: false
     t.index ["lecture_id"], name: "index_comments_on_lecture_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -82,7 +83,7 @@ ActiveRecord::Schema.define(version: 20160830090636) do
     t.text     "description"
     t.integer  "category_id"
     t.boolean  "visible",     default: true, null: false
-    t.string   "keywords"
+    t.text     "keywords"
     t.string   "picture"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -114,10 +115,10 @@ ActiveRecord::Schema.define(version: 20160830090636) do
     t.string   "video"
     t.text     "description"
     t.string   "picture"
-    t.boolean  "payment",     default: true, null: false
-    t.boolean  "visible",     default: true, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "payment",     default: false, null: false
+    t.boolean  "visible",     default: true,  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["course_id"], name: "index_lectures_on_course_id", using: :btree
   end
 
@@ -132,6 +133,8 @@ ActiveRecord::Schema.define(version: 20160830090636) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "level_id"
+    t.index ["level_id"], name: "index_themes_on_level_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -158,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160830090636) do
     t.string   "stripe_customer_id"
     t.string   "plan"
     t.date     "paydate"
+    t.boolean  "deleted",                default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["level_id"], name: "index_users_on_level_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -187,5 +191,6 @@ ActiveRecord::Schema.define(version: 20160830090636) do
   add_foreign_key "courses_themes", "themes"
   add_foreign_key "documents", "lectures"
   add_foreign_key "lectures", "courses"
+  add_foreign_key "themes", "levels"
   add_foreign_key "users", "levels"
 end

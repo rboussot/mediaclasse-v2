@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-        <div class= "home-banner text-center">
+        <div class= "plan-banner text-center">
           <h1>Mediaclasse</h1>
-          <p>Cours de français et de littérature en vidéo pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture !</p>
+          <p>La littérature française analysée et illustrée en vidéo pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture !</p>
         </div>
       </div>
     </div>
@@ -19,7 +19,15 @@
         <div class= "home-card-large">
           <h4>Découvrez mon dernier cours !</h4>
           <div class="embed-responsive embed-responsive-16by9 home-video">
-              <iframe width="854" height="480" showinfo=0 src="https://www.youtube.com/embed/L1i5anUZeC0?showinfo=0" frameborder="1" allowfullscreen></iframe>
+          <% @lecture = Lecture.last %>
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class= "home-card-large">
+          <h4>Mon dernier coup de coeur sur Youtube !</h4>
+          <div class="embed-responsive embed-responsive-16by9 home-video">
+          <% @lecture = Lecture.last %>
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/Or9ubUF4vho?showinfo=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -30,12 +38,54 @@
         </div>
         <div class= "home-card-small">
           <h4><%= link_to "Rejoignez la communauté !", new_channel_path, {class: "underline link-community"} %></h4>
-          <p>Si vous êtes auteur d'un blog ou d'une chaîne youtube sur la littérature, n'hésitez pas à me faire découvrir votre travail. Je réserve un espace consacré aux personnes créatives qui font un travail de qualité, méritant une meilleure visibilité !</p>
+          <p><%= Category.where(tag: "chaines").first.description %></p>
         </div>
         <div class= "home-card-small">
-          <h4><%= link_to "Participez", root_path, {class: "underline link-profile"} %></h4>
-          <p>Je souhaite que mes vidéos restent accessibles au plus grand nombre, c'est pourquoi vous pouvez fixer vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
+          <h4><%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
+          <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous pouvez fixer vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
         </div>
+        <div class= "home-card-small">
+          <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
+          <p><%= Category.where(tag: "litterature").first.description %></p>
+        </div>
+        <div class= "home-card-small">
+          <% @technique_category = Category.where(tag: "technique").first.name %>
+          <h4><%= link_to "Toute la méthodologie", technique_courses_path(category: @technique_category), {class: "underline link-technique"} %></h4>
+          <p><%= Category.where(tag: "technique").last.description %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-11 col-sm-offset-2 col-sm-8">
+        <% if @super_comments.length > 0 %>
+          <h3 class="text-center">Vos commentaires !</h3>
+        <% end %>
+        <% @super_comments.each do |comment| %>
+          <div class= "home-comment">
+            <!-- Capture if picture exist -->
+            <% if comment.user.picture %>
+              <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+            <% else %>
+              <%= cl_image_tag 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472721068/2000px-AWS_Simple_Icons_Non-Service_Specific_User.svg_kkmiui.png', class: "list-image", width: 80, height: 80, crop: :fill %>
+            <% end %>
+            <!-- Capture name or begining of email adress -->
+            <% if comment.user.firstname %>
+              <b><%= comment.user.firstname %> <%= comment.user.lastname %></b>
+            <% else %>
+              <%= comment.user.email.gsub(/.*(?=@)/).first %>
+            <% end %>
+            <!-- Add the timestamp on the comment -->
+            <i> - <%= comment.created_at.strftime("le %e/%M/%Y à %H:%M") %></i><br>
+            <%= comment.content %>
+            <!-- Current user can suppr the comment -->
+            <% if comment.user == current_user %>
+              <%= form_tag comment_path(comment), remote: true do %>
+                <%= hidden_field_tag "comment_id", comment.id %>
+                <%= button_to("Supprimer", comment_path(comment), method: :delete, class: "lecture-submit") %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

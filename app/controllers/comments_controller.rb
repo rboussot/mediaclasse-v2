@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :find_comment, only: [:edit, :update, :destroy]
 
   def create
     comment = Comment.new(user: current_user, content: params[:comment][:content], lecture_id: params[:lecture_id])
@@ -10,8 +11,17 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  def edit
+    # CF before_action
+  end
+
+  def update
+    # CF before_action
+    @comment.update(comment_params)
+  end
+
   def destroy
-    @comment = Comment.find(params[:comment_id])
+    # CF before_action
     authorize @comment
     @comment.destroy
   end
@@ -19,6 +29,11 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :lecture_id)
+    params.require(:comment).permit(:content, :user_id, :lecture_id, :super)
+  end
+
+  def find_comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
   end
 end

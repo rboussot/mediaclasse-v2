@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  after_action :deleted_user
+
+  def deleted_user
+    if user_signed_in? && current_user.deleted
+      sign_out current_user
+      flash[:alert] = "Désolé, ce compte a été supprimé par l'utilisateur !"
+    end
+  end
 
   include Pundit
 
@@ -15,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
   { host: ENV['HOST'] || 'localhost:3000' }
-end
+  end
 
   private
 

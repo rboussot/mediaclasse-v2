@@ -83,6 +83,23 @@ a:hover, a:focus {
   background-color: $litterature;
 }
 
+p.link-button {
+  background-color: $greydark;
+  padding: 10px 20px 10px 20px;
+  margin: 10px 0px 0px 0px;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  opacity: 0.6;
+  color: white;
+}
+p.link-button.hvr-glow a {
+  color: white;
+}
+
+div.form-actions {
+  width: 100%;
+}
 
 /* ========== Icon Float ========== */
 /* Icon Grow */
@@ -122,6 +139,10 @@ a:hover, a:focus {
   transform: scale(1.3) translateZ(0);
 }
 
+li.hvr-icon-grow {
+  cursor: pointer;
+}
+
 // /* Icon Float */
 // .hvr-icon-float {
 //     width: 100%;
@@ -158,3 +179,22 @@ a:hover, a:focus {
 //   -webkit-transform: translateY(-4px);
 //   transform: translateY(-4px);
 // }
+
+/* Glow */
+.hvr-glow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
