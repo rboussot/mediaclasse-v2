@@ -57,7 +57,16 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "mediaclasse-v2_#{Rails.env}"
   config.action_mailer.perform_caching = false
-  # config.action_mailer.smtp_settings =
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => 'mediaclasse.contact@gmail.com',
+    :password             => 'pointapitre3',
+    :authentication       => :plain,
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none'
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
