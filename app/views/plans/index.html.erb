@@ -1,130 +1,56 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-    <div class="border profile"></div>
-      <div class="row">
-        <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
-          <div class="plan-title">
-            <h2>Participez pour un prix libre !</h2><br>
-            <h4>Le prix libre rend mon travail accessible à tous :)</h4>
-            <p>Vous n'achetez pas du contenu, vous participez à un projet. </p>
-            <p>Ainsi, quel que soit le montant de votre participation mensuelle :</p>
-            <p>
-              ► Vous accédez de façon illimitée à toutes mes vidéos et documents.<br>
-              ► Vous contribuez à mon projet sur le principe du mécénat. <br>
-              ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
-              ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
-            </p>
-          </div>
+  <div class="border profile"></div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class= "plan-banner text-center">
+          <h3>Page en construction</h3>
+          <p>Bonjour ! Merci d'être venu jusqu'ici !
+          <p>Je m'apprête à mettre en place un système de participation sur le site, </p>
+          <p>Mais la fonctionnalité est encore en cours de développement ! </p>
+          <h4>Cependant, voici le principe que je souhaite mettre en place :</h4>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-offset-2 plan-wrapper">
-          <div class= "plan-stripe hvr-glow deux">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "deux" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="200"
-                data-label="2€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow cinq">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "cinq" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="500"
-                data-label="5€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow dix">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "dix" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="1000"
-                data-label="10€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow quinze">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "quinze" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="1500"
-                data-label="15€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow vingt">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "vingt" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="2000"
-                data-label="20€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow vingt-cinq">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "vingt-cinq" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="2500"
-                data-label="25€">
-              </script>
-            <% end %>
-          </div>
-          <div class= "plan-stripe hvr-glow trente">
-            <%= form_tag plans_path do %>
-              <%= hidden_field_tag "plan", "trente" %>
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
-                data-name="Mediaclasse.fr"
-                data-description="Participation mensuelle"
-                data-amount="3000"
-                data-label="30€">
-              </script>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-offset-2 plan-wrapper">
-          <%= render 'shared/planquestion' %>
-          <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-question hvr-glow">
-            <p>Comment ça fonctionne ?</p>
-          </div>
-          <%= render 'shared/plancollectif' %>
-          <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
-            <p>Créer un compte collectif ?</p>
-          </div>
+        <div class="plan-title">
+          <h2>Participez pour un prix libre !</h2><br>
+          <h4>Le prix libre rend mon travail accessible à tous :)</h4>
+          <p>Vous n'achetez pas du contenu, vous participez à un projet. </p>
+          <p>Ainsi, quel que soit le montant de votre participation mensuelle :</p>
+          <p>
+            ► Vous accédez de façon illimitée à toutes mes vidéos et documents.<br>
+            ► Vous contribuez à mon projet sur le principe du mécénat. <br>
+            ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
+            ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
+          </p>
         </div>
       </div>
     </div>
+    <%= render 'shared/inprogressmodal'%>
+    <div class="row">
+        <div class="plan-wrapper">
+          <div class= "plan-stripe hvr-glow deux">
+            <h4><%= link_to "2 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow cinq">
+            <h4><%= link_to "5 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow dix">
+            <h4><%= link_to "10 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow quinze">
+            <h4><%= link_to "15 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow vingt">
+            <h4><%= link_to "20 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow vingt-cinq">
+            <h4><%= link_to "25 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow trente">
+            <h4><%= link_to "30 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
   </div>
 </div>
-
+<%= render 'shared/footer' %>
