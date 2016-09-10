@@ -6427,3 +6427,13 @@ User.create!(email:'zouhir.epc@gmail.com', password:'mlkmlk')
 puts User.last.email
 User.create!(email:'zyzaloxy@gmail.com', password:'mlkmlk')
 puts User.last.email
+User.create!(email:'jujusbbh@gmail.com', password:'mlkmlk')
+puts User.last.email
+User.create!(email:'frantzfelix14@yahoo.fr', password:'mlkmlk')
+puts User.last.email
+User.create!(email:'oligurnet@hotmail.com', password:'mlkmlk')
+puts User.last.email
+User.create!(email:'xanachristina@gmail.com', password:'mlkmlk')
+puts User.last.email
+User.create!(email:'monpatron13@gmail.com', password:'mlkmlk')
+puts User.last.email
