@@ -1,9 +1,23 @@
 .alert.alert-info.alert-dismissible {
-  z-index: 255;
-  margin-top: 5px;
-  position: absolute;
-  top: 65px;
+  z-index: 254;
+  margin-top: 0px;
+  position: fixed;
+  top: 70px;
   left: 0px;
   width: 100%;
-  opacity: 0.95;
+  opacity: 1;
+  background: $profile;
+  border: none
+}
+
+.alert.alert-warning.alert-dismissible {
+  z-index: 255;
+  margin-top: 0px;
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  opacity: 1;
+  background: $technique;
+  border: none
 }

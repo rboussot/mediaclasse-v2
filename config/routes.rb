@@ -17,13 +17,14 @@ Rails.application.routes.draw do
   end
   resources :documents, only: [:show]
   resources :channels, only: [:index, :new, :create, :edit, :update]
-  resources :comments, only: [:new, :create, :destroy]
+  resources :comments, only: [:new, :edit, :update, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
     post ':course_id/like' => "users#like", on: :collection, as: :like
   end
 
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
+  get "inprogress", to: "plans#inprogress"
 
   root to: 'pages#home'
 

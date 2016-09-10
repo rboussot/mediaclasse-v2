@@ -7,4 +7,7 @@ class CoursePolicy < ApplicationPolicy
   def index?
     @scope = Scope.search(params[:search]).joins(:author).joins(:category).order('pseudo ASC')
   end
+  def like?
+    true
+  end
 end

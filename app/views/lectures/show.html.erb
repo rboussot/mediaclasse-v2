@@ -2,7 +2,7 @@
   <div class="container">
     <div class= "row">
       <!-- ========== BORDER COLOR ========== -->
-      <div class="border <%= @lecture_course.category.tag %>"></div>
+      <div class="hidden-xs border <%= @lecture_course.category.tag %>"></div>
       <!-- ========== CHECKBOX ========== -->
       <% if current_user %>
         <div class= "sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
@@ -10,7 +10,7 @@
         </div>
       <% end %>
       <!-- ========== SIDE MENU ========== -->
-      <div class= "col-xs-12 col-sm-3">
+      <div class= "col-xs-12 col-sm-12 col-md-3">
         <div class="lecture-menu">
           <% @lectures.each do |lecture| %>
             <ul>
@@ -26,19 +26,21 @@
         </div>
       </div>
       <!-- ========== VIDEO PAGE ========== -->
-      <div class= "col-xs-12 col-sm-9">
+      <div class= "col-xs-12 col-md-9">
         <div class="lecture-show">
           <!-- ========== VIDEO EMBED ========== -->
           <% if policy(@lecture).watch_video? %>
-            <div class="lecture-video">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" allowfullscreen></iframe>
-              </div>
-            </div>
+              <%= render 'shared/embedvideo' %>
           <% else %>
             <%= render 'shared/planmodal' %>
-            <div data-toggle = "modal" data-target = "#PlanModal" class="lecture-vignette" style="background-image: url(http://img.youtube.com/vi/<%= @lecture.video %>/sddefault.jpg);">
+            <div data-toggle = "modal" data-target = "#PlanModal" class="lecture-vignette">
+              <%= cl_image_tag @lecture.course.picture, class: "lecture-cover" %>
               <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
+              <h2 class= "lecture-title"><%= @lecture.title %></h2>
+              <p class="lecture-note">
+                <i>Video réservée aux abonnés </i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
             </div>
           <% end %>
           <!-- ========== TABS ========== -->
@@ -59,7 +61,7 @@
             <p class="lecture-description content"><%= @lecture.description %></p>
             <!-- === DOCUMENTS === -->
             <div class="lecture-documents content">
-              <% if @documents %>
+              <% if policy(@lecture).watch_video? && @documents %>
                 <ul>
                   <% @documents.each do |document| %>
                     <li class="hvr-icon-grow">
@@ -67,11 +69,21 @@
                     </li>
                   <% end %>
                 </ul>
+              <% elsif @documents %>
+                <%= render 'shared/planmodal' %>
+                <% @documents.each do |document| %>
+                  <ul>
+                    <li data-toggle = "modal" data-target = "#PlanModal" class="hvr-icon-grow">
+                      <%= document.title %>
+                    </li>
+                  </ul>
+                <% end %>
               <% else %>
                 <h4>Aucun document pour l'instant !</h4>
                 Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
               <% end %>
             </div>
+            <!-- === COMMENTS PARTIAL === -->
             <div id="lecture-comments">
               <%= render 'comments' %>
             </div>

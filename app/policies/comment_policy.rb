@@ -14,10 +14,10 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user  # Only comment author can update it
+    user.admin  # Only comment author can update it
   end
 
   def destroy?
-    record.user == user  # Only comment author can update it
+    record.user == user || user.admin # Only comment author can update it
   end
 end

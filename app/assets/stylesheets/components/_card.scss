@@ -9,6 +9,20 @@
   margin: 20px 0;
   border-radius: 3px;
   border: 1px solid black;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+
+.card-course:hover, .card-course:focus, .card-course:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
 }
 
 body span.card-title {
@@ -43,4 +57,40 @@ body span.card-author {
   position: absolute;
   top: 30px;
   right: 40px;
+}
+
+.card-course:hover, .card-course:focus, .card-course:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.card-empty {
+  position: relative;
+  height: calc(100vh - 220px);
+  margin: 20px 0;
+  border-radius: 3px;
+  border: 1px solid black;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+
+.card-empty:hover, .card-empty:focus, .card-empty:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.card-litterature {
+  background-position: top;
+  background-size: cover;
+}
+
+.card-technique {
+  background-position: top;
+  background-size: cover;
 }

@@ -1,30 +1,50 @@
   <div class="card-wrapper">
     <div class="container-fluid">
       <div class="border profile"></div>
-
-
         <!-- ========== VIGNETTE ========== -->
-        <% @my_courses.reverse.each do |course| %>
-          <%= link_to lecture_path(course.lectures.first) do %>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="card-course" data-id="<%= course.id %>" style='background-image: url(<%= course.picture %>)'>
-                <span class="card-title"><%= course.title %></span>
-                <% if course.author %>
-                  <span class="card-author"><%= course.author.pseudo %></span>
-                <% else %>
-                  <span class="card-author"><%= course.category.name %></span>
-                <% end %>
-              </div>
-              <div>
-                <div class= "card-like checkbox" id="like-<%= course.id %>">
-                    <%= render 'like', course: course %>
+        <% if @my_courses.length > 0 %>
+          <% @my_courses.each do |course| %>
+            <%= link_to lecture_path(course.lectures.first) do %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card-course" data-id="<%= course.id %>" style='background-image: url(<%= course.picture %>)'>
+                  <span class="card-title"><%= course.title %></span>
+                  <% if course.author %>
+                    <span class="card-author"><%= course.author.pseudo %></span>
+                  <% else %>
+                    <span class="card-author"><%= course.category.name %></span>
+                  <% end %>
                 </div>
+                <div>
+                  <div class= "card-like checkbox" id="like-<%= course.id %>">
+                      <%= render 'like', course: course %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <h4>Vous n'avez encore aucun cours dans votre espace personnel !</h4>
+          <p>N'hésitez pas à explorer les cours littéraires et techniques :</p>
+        </div>
+          <%= link_to litterature_courses_path do %>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="card-empty card-litterature", style='background-image: url("http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473263654/courses/litterature.jpg")'>
+                <span class="card-title">Oeuvres & analyses</span>
               </div>
             </div>
           <% end %>
+            <% @technique_category = Category.where(tag: "technique").first.name %>
+            <%= link_to technique_courses_path(category: @technique_category) do %>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="card-empty card-technique", style='background-image: url("http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473255510/courses/technique.jpg")'>
+                  <span class="card-title">Méthodes & techniques</span>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
         <!-- ========== CLOSE WRAPPERS ========== -->
-
     </div>
   </div>
 

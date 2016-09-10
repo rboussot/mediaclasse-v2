@@ -3,19 +3,19 @@
 en:
   devise:
     confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: "Votre adresse email a bien été mise à jour !"
+      send_instructions: "Vous allez recevoir dans quelques minutes un email avec toutes les instructions pour bien confirmer votre adresse !"
+      send_paranoid_instructions: "Si votre adresse email existe bien dans notre base de donnée, vous allez recevoir dans quelques minutes un email avec toutes les instructions pour bien confirmer votre adresse !"
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      already_authenticated: "Vous êtes déjà connecté !"
+      inactive: "Votre compte n'a pas encore été activé !"
+      invalid: "Désolé, %{authentication_keys} et votre mot de passe ne correspondent pas !"
+      locked: "Votre compte est désormais verrouillé."
+      last_attempt: "Il vous reste un dernier essai avant que votre compte ne soit verrouillé."
+      not_found_in_database: "Désolé, votre %{authentication_keys} et votre mot de passe ne correspondent pas !"
+      timeout: "Votre session s'est terminée, s'il vous plaît, veuillez vous connecter à nouveau !"
+      unauthenticated: "Vous devez vous connecter pour continuer !"
+      unconfirmed: "Vous devez confirmer votre email avant de continuer !"
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -30,7 +30,7 @@ en:
       success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      send_instructions: "Vous allez recevoir par email les instructions pour choisir votre nouveau mot de passe !"
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
@@ -43,9 +43,9 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Vous êtes désormais connecté !"
+      signed_out: "Vous êtes désormais déconnecté !"
+      already_signed_out: "Vous êtes déconnecté."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

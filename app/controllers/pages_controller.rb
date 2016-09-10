@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   skip_after_action :verify_authorized
 
   def home
+    @super_comments = Comment.where(super: true).last(5)
   end
 
   def newsletter

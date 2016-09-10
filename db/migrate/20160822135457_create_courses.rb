@@ -9,6 +9,7 @@ class CreateCourses < ActiveRecord::Migration[5.0]
       t.boolean :visible, default: true, null: false
       t.string :keywords
       t.string :picture
+      t.text :keywords
       t.timestamps
     end
   end

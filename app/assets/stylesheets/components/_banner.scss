@@ -1,5 +1,5 @@
 .banner-image {
-  background-image: url("http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472405866/Isaac_Israels_meisje_lezend_op_de_divan_1920_h7rwor.jpg");
+  background-image: url("http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473264132/lectrice.jpg");
   background-size: 100%;
   background-position: center;
   width: 100%;
@@ -7,10 +7,16 @@
   margin-top: 20px;
   text-align: center;
 }
-.banner-text {
-    margin-top: 25%;
+.banner-title {
+    margin-top: 20%;
     font-family: 'Hind', sans-serif;
     text-shadow: 1px 1px 2px black;
     color: white;
     font-size: 20px;
+  }
+.banner-text {
+    font-family: 'Hind', sans-serif;
+    text-shadow: 1px 1px 2px black;
+    color: white;
+    font-size: 16px;
   }

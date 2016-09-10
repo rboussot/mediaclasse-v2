@@ -3,19 +3,30 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <br><br>
-        Cette vidéo est réservée aux abonnés, avec votre participation chaque mois : <br>
-        ► Vous accédez à tous mes cours de façon illimitée. <br>
-        ► Vous permettez à mon travail de rester accessible à tous. <br><br>
-
-        Le service est illimité quel que soit le montant de votre participation mensuelle !<br>
+        <h2>Participez pour un prix libre !</h2>
+        <h4>Je vous propose de choisir vous même le montant de votre abonnement ! Pourquoi ?</h4>
+        <p><i class="fa fa-star" aria-hidden="true"> </i>
+        C'est la meilleure manière de rendre mon travail accessible à tous.</p>
+        <p><i class="fa fa-star" aria-hidden="true"> </i>
+        C'est davantage une contribution solidaire qu'un acte d'achat.</p>
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <%= link_to "Participer", plans_path, class: "btn btn-default" %>
+            <%= link_to "En savoir plus ?", plans_path, class: "btn btn-default hvr-glow" %>
           </div>
         <% else %>
-          <%= render :template => "devise/sessions/new" %>
+        <h2>Connexion</h2>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email, required: false, autofocus: true %>
+              <%= f.input :password, label: "Mot de passe", required: false %>
+              <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Me connecter" %>
+            </div>
+          <% end %>
+          <%= render "devise/shared/links" %>
         <% end %>
       </div>
     </div>

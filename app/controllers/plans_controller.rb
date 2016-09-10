@@ -1,10 +1,13 @@
 class PlansController < ApplicationController
   skip_after_action :verify_authorized, :verify_policy_scoped
   def index
-
+    redirect_to :inprogress
   end
 
   def show
+  end
+
+  def inprogress
   end
 
   def create

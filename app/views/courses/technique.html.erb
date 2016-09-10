@@ -1,12 +1,12 @@
 <div class= "home-wrapper">
   <div class="container-fluid">
-  <div class="border technique"></div>
+  <div class="hidden-xs hidden-sm border technique"></div>
     <!-- ========== SEARCHBAR ========== -->
     <div class="col-xs-8 col-xs-offset-3">
       <form action="" class="list-search">
         <div class="btn-group">
           <input type="text" class="list-search-input" placeholder="Chercher dans les méthodes & techniques" name="search" value="<%= params[:search] %>">
-          <% @technique_category = Category.where(tag: "technique").first.name %>
+          <% @technique_category = Category.where(tag: "technique").name %>
           <%= link_to "", technique_courses_path(category: @technique_category), id: 'list-search-clear', class:'glyphicon glyphicon-remove' %>
         </div>
         <button type="submit" class="list-search-btn" >
@@ -18,7 +18,7 @@
     <div class="col-xs-1 col-xs-offset-2">
       <div id="sidebar">
         <div id="sidebar-category">
-          <% @categories.each do |category| %>
+          <% @categories.reverse.each do |category| %>
             <%= link_to technique_courses_path(category: category.name) do %>
               <% if category == @category %>
                 <h4 class="active"><%= category.name %></h4>
@@ -68,7 +68,7 @@
         <% else %>
           <div class="list-item"">
             <div class="banner-image">
-              <p class="banner-text"> Oups ! Pas de résultat pour cette recherche ! </p>
+              <p class="banner-title"> Désolé ! cette partie est encore en construction ! </p>
             </div>
           </div>
         <% end %>
