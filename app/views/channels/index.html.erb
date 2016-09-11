@@ -29,7 +29,7 @@
     <!-- ========== SCROLL LIST ========== -->
     <div class="col-xs-9">
       <div class="list-scroll">
-        <% if @channel %>
+        <% if @channels && @channels.length > 0 %>
           <% @channels.each do |channel| %>
             <div class="list-item">
               <%= link_to channel.link, target: :_blank do %>

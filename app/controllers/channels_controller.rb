@@ -8,8 +8,6 @@ class ChannelsController < ApplicationController
       .joins(:category)
       .where(visible: true)
       .where(categories: {id: @category.id})
-      .joins(:user)
-      .where(users: {deleted: false})
       .order('name ASC')
     @categories = Category.where(tag: "chaines")
   end
