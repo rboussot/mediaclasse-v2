@@ -13,6 +13,7 @@ class Channel < ApplicationRecord
       end
       field :name
       field :description
+      field :category
       field :email
       field :link
       field :visible
