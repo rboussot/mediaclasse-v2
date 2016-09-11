@@ -68,7 +68,7 @@ Rails.application.configure do
   #   :authentication       => :plain,
   # }
   config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {domain: 'www.mediaclasse.fr.mailgun.org'}
+  config.action_mailer.mailgun_settings = {domain: 'www.mediaclasse.fr'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

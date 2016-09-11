@@ -42,7 +42,7 @@ Rails.application.configure do
   #   :authentication       => :plain,
   # }
   config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {domain: 'http://localhost:3000.mailgun.org'}
+  config.action_mailer.mailgun_settings = {domain: 'http://localhost:3000'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
