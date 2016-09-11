@@ -19,6 +19,7 @@ gem 'pg_search'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'money-rails'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'mailgunner', '~> 2.4'
 
 gem 'sass-rails'
 gem 'jquery-rails'
