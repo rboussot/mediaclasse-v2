@@ -31,16 +31,18 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
-    :domain               => 'gmail.com',
-    :user_name            => 'mediaclasse.contact@gmail.com',
-    :password             => 'pointapitre3',
-    :authentication       => :plain,
-    :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none'
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailgun
+  # ActionMailer::Base.smtp_settings = {
+  #   :address              => 'smtp.mailgun.org',
+  #   :port                 => 587,
+  #   :domain               => ENV['domain'],
+  #   :user_name            => ENV['mailgun_username'],
+  #   :password             => ENV['mailgun_password'],
+  #   :authentication       => :plain,
+  # }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {domain: 'http://localhost:3000.mailgun.org'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
