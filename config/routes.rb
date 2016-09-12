@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
   get "inprogress", to: "plans#inprogress"
+  get "googleba02ed7fdee6ed83.html", to: "pages#google_validation"
 
   root to: 'pages#home'
 
