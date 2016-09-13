@@ -4,6 +4,13 @@ class PagesController < ApplicationController
 
   def home
     @super_comments = Comment.where(super: true).last(5)
+    @edito= Category.where(tag: "edito").first
+    @pres= Category.where(tag: "pres").first
+    @favorite= Category.where(tag: "favorite").first
+    @litterature = Category.where(tag: "litterature").first
+    @methodo =  Category.where(name: "Méthodologie").first
+    @channels = Category.where(tag: "chaines").first
+    @technique_category = Category.where(tag: "technique").last.name
   end
 
   def googlevalidation

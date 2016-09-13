@@ -12,8 +12,9 @@
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-6 video-wrapper">
         <div class= "home-card-large">
           <h4>Ma vidéo de présentation</h4>
+          <p><%= @pres.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
-            <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/HsH-rp29ZDc?showinfo=0" frameborder="1" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
         <div class= "home-card-large">
@@ -25,21 +26,21 @@
         </div>
         <div class= "home-card-large">
           <h4>Mon dernier coup de coeur sur Youtube !</h4>
-          <p>L'Homme Littéraire nous raconte comment les Enfers sont représentés dans la littérature française du XVIe siècle à nos jours : étude transversale qui met à contribution Rabelais, Nerval, Zola, Hugo, Milton, Camus, Tolkien...</p>
+          <p><%= @favorite.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
           <% @lecture = Lecture.last %>
-              <iframe width="854" height="480" src= "https://www.youtube.com/embed/x7fqs7Y8bD0?showinfo=0" frameborder="1" allowfullscreen></iframe>
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
         <div class= "home-card-small">
           <h4>Édito</h4>
-          <p>Le site fait peau neuve ! Depuis septembre 2016, Mediaclasse est devenue une véritable plate-forme e-learning. Vous pouvez désormais commenter les vidéos, rejoindre la communauté et participer à mon projet !</p>
+          <p><%= @edito.description %></p>
         </div>
         <div class= "home-card-small">
           <h4><%= link_to "Rejoignez la communauté !", new_channel_path, {class: "underline link-community"} %></h4>
-          <p><%= Category.where(tag: "chaines").first.description %></p>
+          <p><%= @channels.description %></p>
         </div>
         <div class= "home-card-small">
           <h4><%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
@@ -47,12 +48,11 @@
         </div>
         <div class= "home-card-small">
           <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
-          <p><%= Category.where(tag: "litterature").first.description %></p>
+          <p><%= @litterature.description %></p>
         </div>
         <div class= "home-card-small">
-          <% @technique_category = Category.where(tag: "technique").first.name %>
-          <h4><%= link_to "Toute la méthodologie", technique_courses_path(category: @technique_category), {class: "underline link-technique"} %></h4>
-          <p><%= Category.where(tag: "technique").last.description %></p>
+          <h4><%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
+          <p><%= @methodo.description %></p>
         </div>
       </div>
     </div>
