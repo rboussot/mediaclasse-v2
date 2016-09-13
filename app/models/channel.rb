@@ -12,6 +12,7 @@ class Channel < ApplicationRecord
         partial "upload_pictures"
       end
       field :name
+      field :user_id
       field :description
       field :category
       field :email

@@ -19,6 +19,7 @@ class ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
+    @channel.user = current_user
     authorize @channel
     if @channel.save
       redirect_to root_path
@@ -42,7 +43,7 @@ class ChannelsController < ApplicationController
   private
 
   def channel_params
-    params.require(:channel).permit(:picture, :name, :description, :email, :link)
+    params.require(:channel).permit(:picture, :name, :description, :email, :link, :user_id)
   end
 
 end

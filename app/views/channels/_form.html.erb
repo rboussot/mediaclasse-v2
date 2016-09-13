@@ -16,7 +16,6 @@
     <%= f.input :description, label: "Décris ta chaîne ou ton blog." %>
     <%= f.input :link, label: "Colle le lien ici." %>
     <%= f.input :email, label: "Indique l'adresse email dédiée." %>
-
     <% if @channel.user == current_user  %>
       <%= f.submit class: "channel-button hvr-glow align-center", value: "Sauver les modifications"%>
     <% else %>
