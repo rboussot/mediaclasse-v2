@@ -34,6 +34,27 @@
   position: relative;
 }
 
+input.lecture-submit {
+  color: white;
+  background-color: $grey;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 3px;
+  padding: 4px 0 1px 0;
+  width: 80px;
+}
+
+input.lecture-submit:hover {
+  background-color: $greydark;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+  text-decoration : none;
+}
+
 .lecture-form-technique{
   width: calc(100% - 100px);
   max-width: calc(100% - 100px);
