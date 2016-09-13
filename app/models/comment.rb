@@ -3,6 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   validates :content, presence: true
   def name
-    self.user.firstname+" : "+content.first(10)
+    self.user.email+" : "+content.first(10)
   end
 end

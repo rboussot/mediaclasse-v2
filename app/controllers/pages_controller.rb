@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @super_comments = Comment.where(super: true).last(5)
   end
 
-  def google_validation
+  def googlevalidation
   end
 
   def newsletter
