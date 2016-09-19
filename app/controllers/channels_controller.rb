@@ -34,7 +34,7 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.find(user_id: current_user[:id]).first
+    @channel = Channel.where(user_id: current_user[:id]).first
     authorize @channel
     @channel.update(channel_params)
     redirect_to root_path

@@ -44,7 +44,11 @@
           <p><%= @edito.description %> Pour découvrir régulièrement mes nouvelles publications, inscrivez-vous à ma <strong><%= link_to "Lettre d'Infos", newsletter_path, class: "underline link-profile" %></strong></p>
         </div>
         <div class= "home-card-small">
-          <h4><%= link_to "Rejoignez la communauté !", new_channel_path, {class: "underline link-community"} %></h4>
+          <% if @channel %>
+            <h4><%= link_to "Rejoignez la communauté !", edit_channel_path(@channel), {class: "underline link-community"} %></h4>
+          <% else %>
+            <h4><%= link_to "Rejoignez la communauté !", new_channel_path, {class: "underline link-community"} %></h4>
+          <% end %>
           <p><%= @channels.description %></p>
         </div>
         <div class= "home-card-small">
