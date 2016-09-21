@@ -10,7 +10,9 @@ class PagesController < ApplicationController
     @litterature = Category.where(tag: "litterature").first
     @methodo =  Category.where(name: "Méthodologie").first
     @channels = Category.where(tag: "chaines").first
-    @channel = Channel.where(user_id: current_user[:id]).first
+    if current_user
+      @channel = Channel.where(user_id: current_user[:id]).first
+    end
     @technique_category = Category.where(tag: "technique").last.name
   end
 
