@@ -6,8 +6,8 @@
   align-items: center;
   padding: 10px 20px 10px 20px;
   margin-bottom: 10px;
-  width: 85%;
   position: relative;
+  width: 85%;
 }
 
 .list-themes {
@@ -113,3 +113,41 @@ input[type="checkbox"] {
 .list-videocount {
   margin-left: 100px;
 }
+
+// ========== LIST-XS ==========
+//
+.list-item-xs {
+  background-color: $greywhite;
+  border-radius: 6px;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.list-item-xs ul {
+  list-style-type: none;
+  margin-left: 157px;
+}
+
+.list-item-xs a:hover {
+  text-decoration: none;
+}
+
+.list-item-xs a {
+  width: 100%;
+}
+
+.list-item-xs:hover {
+  background-color: $greylighter;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+  text-decoration : none;
+}
+

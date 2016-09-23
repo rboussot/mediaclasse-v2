@@ -2,7 +2,7 @@
   <div class="container-fluid">
   <div class="hidden-xs hidden-sm border technique"></div>
     <!-- ========== SEARCHBAR ========== -->
-    <div class="col-xs-8 col-xs-offset-3">
+    <div class="col-xs-8 col-sm-offset-3">
       <form action="" class="list-search">
         <div class="btn-group">
           <input type="text" class="list-search-input" placeholder="Chercher dans les méthodes & techniques" name="search" value="<%= params[:search] %>">
@@ -10,12 +10,12 @@
           <%= link_to "", technique_courses_path(category: @technique_category), id: 'list-search-clear', class:'glyphicon glyphicon-remove' %>
         </div>
         <button type="submit" class="list-search-btn" >
-          <i class="fa fa-search"></i>
+          <i class="hidden-xs fa fa-search"></i>
         </button>
       </form>
     </div>
     <!-- ========== SIDEBAR ========== -->
-    <div class="col-xs-1 col-xs-offset-2">
+    <div class="col-sm-1 col-sm-offset-2 hidden-xs">
       <div id="sidebar">
         <div id="sidebar-category">
           <% @categories.reverse.each do |category| %>
@@ -30,13 +30,26 @@
         </div>
       </div>
     </div>
+    <div class= "col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+      <div id="sidebar-category-xs">
+        <% @categories.reverse.each do |category| %>
+          <%= link_to technique_courses_path(category: category.name) do %>
+            <% if category == @category %>
+              <h4 class="active"><%= category.name %></h4>
+            <% else %>
+              <h4><%= category.name %></h4>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <!-- ========== SCROLL LIST ========== -->
-    <div class="col-xs-9">
+    <div class="col-xs-12 col-sm-9">
       <div class="list-scroll">
         <% if @technique_courses.count > 0 %>
           <% @technique_courses.each do |course| %>
             <!-- ==== LIST ITEM ==== -->
-            <div class="list-item">
+            <div class="list-item hidden-xs">
               <% if course.lectures.first %>
                 <%= link_to lecture_path(course.lectures.first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
@@ -62,11 +75,27 @@
                   <!-- === END OF CHECKBOX === -->
                 <% end %>
               </div>
+              <!-- ========== LIST-ITEM-XS ========== -->
+              <div class= "list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
+                <%= link_to lecture_path(course.lectures.first) do %>
+                  <%= cl_image_tag course.picture, class: "list-image", width: 174, height: 259, crop: :fill %>
+                  <ul>
+                    <li><h4><%= course.title %></h4></li>
+                    <li><p><%= pluralize(course.lectures.count, 'vidéo') %></p></li>
+                  </ul>
+                <% end %>
+              </div>
+              <!-- ========== END LIST ========== -->
             <% end %>
           <% end %>
         <!-- ========== PAS DE RESULTAT ========== -->
         <% else %>
-          <div class="list-item"">
+          <div class="list-item hidden-xs">
+            <div class="banner-image">
+              <p class="banner-title"> Désolé ! cette partie est encore en construction ! </p>
+            </div>
+          </div>
+          <div class="list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
             <div class="banner-image">
               <p class="banner-title"> Désolé ! cette partie est encore en construction ! </p>
             </div>
