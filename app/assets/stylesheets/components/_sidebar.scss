@@ -1,7 +1,5 @@
 #sidebar {
-  // position: fixed;
   padding-right: 8px;
-
   height: calc(100vh - 154px);
   overflow: auto;
 }
@@ -96,4 +94,46 @@
   font-weight: lighter;
   font-style: italic;
   padding-right: 40px;
+}
+
+// SIDEBAR CATEGORY XS
+//
+#sidebar-category-xs {
+  width: 160px;
+  font-size: 10px;
+}
+
+#sidebar-category-xs h4.active {
+  color: white;
+  background-color: black;
+}
+
+#sidebar-category-xs h4 {
+  background-color: $greywhite;
+  color: $greydark;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+#sidebar-category-xs a {
+  text-decoration: none;
+}
+
+#sidebar-category-xs h4.active:hover {
+  opacity: .8;
+  color: white;
+  background-color: black;
+}
+
+#sidebar-category-xs h4:hover {
+  background-color: $greylighter;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+  text-decoration : none;
 }

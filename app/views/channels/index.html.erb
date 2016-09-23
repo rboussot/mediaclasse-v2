@@ -2,16 +2,17 @@
   <div class="container-fluid">
   <div class="hidden-xs hidden-sm border community"></div>
     <!-- ========== SEARCHBAR ========== -->
-    <div class="col-xs-8 col-xs-offset-3">
-      <form action="" class="list-search">
+    <div class="col-xs-8 col-sm-offset-3">
+    <br><br>
+      <!-- <form action="" class="list-search">
         <input type="text" class="list-search-input" placeholder="Chercher dans la communauté">
         <button type="submit" class="list-search-btn">
-          <i class="fa fa-search"></i>
+          <i class="fa fa-search hidden-xs"></i>
         </button>
-      </form>
+      </form> -->
     </div>
     <!-- ========== SIDEBAR ========== -->
-    <div class="col-xs-1 col-xs-offset-2">
+    <div class="col-xs-1 col-xs-offset-2 hidden-xs">
       <div id="sidebar">
         <div id="sidebar-category">
           <% @categories.each do |category| %>
@@ -26,12 +27,25 @@
         </div>
       </div>
     </div>
+    <div class= "col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+      <div id="sidebar-category-xs">
+        <% @categories.each do |category| %>
+            <%= link_to channels_path(category: category.name) do %>
+              <% if category == @category %>
+                <h4 class="active"><%= category.name %></h4>
+              <% else %>
+                <h4><%= category.name %></h4>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
     <!-- ========== SCROLL LIST ========== -->
-    <div class="col-xs-9">
+    <div class="col-xs-12 col-sm-9">
       <div class="list-scroll">
         <% if @channels && @channels.length > 0 %>
           <% @channels.each do |channel| %>
-            <div class="list-item">
+            <div class="list-item hidden-xs">
               <%= link_to channel.link, target: :_blank do %>
                 <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
                 <ul>
@@ -40,10 +54,25 @@
                 </ul>
               <% end %>
             </div>
+            <!-- ===== LIST_ITEM_XS ===== -->
+            <div class="list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
+              <%= link_to channel.link, target: :_blank do %>
+                <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+                <ul>
+                  <li><h4><%= channel.name %></h4></li>
+                </ul>
+              <% end %>
+            </div>
           <% end %>
         <!-- ========== PAS DE RESULTAT ========== -->
         <% else %>
-          <div class="list-item"">
+          <div class="list-item hidden-xs">
+            <div class="banner-image">
+              <p class="banner-title"> Aucune chaîne pour l'instant ! </p>
+              <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"profile-youtube hvr-glow"  %>
+            </div>
+          </div>
+          <div class="list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
             <div class="banner-image">
               <p class="banner-title"> Aucune chaîne pour l'instant ! </p>
               <%= link_to "Présenter mon blog / ma chaine YouTube ", new_channel_path, class:"profile-youtube hvr-glow"  %>
