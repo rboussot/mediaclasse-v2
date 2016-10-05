@@ -4,7 +4,9 @@ class Lecture < ApplicationRecord
   has_many :documents
   validates :title, presence: true
   def name
-    self.course.title+" - "+title
+    if course && course.title
+      self.course.title+" - "+title
+    end
   end
   # scope :id, ->
 end
