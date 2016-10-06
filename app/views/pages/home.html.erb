@@ -8,7 +8,10 @@
           pour les lycéens, les étudiants en Lettres,
           <br>et tous les passionnés de culture !</p>
           <%= link_to newsletter_path do %>
-            <div class="plan-newsletter hvr-grow hidden-xs"><%= image_tag "newsletter-white.png" %></div>
+            <div class="plan-newsletter hvr-grow hidden-xs home-newsletter">
+              <i class="fa fa-paper-plane"></i>
+              <u><i>Ma Lettre d'infos</i></u>
+            </div>
           <% end %>
         </div>
       </div>
@@ -41,7 +44,7 @@
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
         <div class= "home-card-small">
           <h4>Édito</h4>
-          <p><%= @edito.description %> Pour découvrir régulièrement mes nouvelles publications, inscrivez-vous à ma <strong><%= link_to "Lettre d'Infos", newsletter_path, class: "underline link-profile" %></strong></p>
+          <p><%= @edito.description %> <br><br> Pour découvrir régulièrement mes nouvelles publications, inscrivez-vous maintenant à ma <strong><%= link_to "Lettre d'Infos", newsletter_path, class: "underline link-profile" %></strong></p>
         </div>
         <div class= "home-card-small">
           <% if @channel %>
