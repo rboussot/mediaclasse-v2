@@ -22,14 +22,14 @@
           <h4>Ma vidéo de présentation</h4>
           <p><%= @pres.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
-            <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
         <div class= "home-card-large">
           <h4>Découvrez mon dernier cours !</h4>
           <div class="embed-responsive embed-responsive-16by9 home-video">
           <% @lecture = Lecture.last %>
-              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
         <div class= "home-card-large">
@@ -37,7 +37,7 @@
           <p><%= @favorite.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
           <% @lecture = Lecture.last %>
-              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0" frameborder="1" allowfullscreen></iframe>
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
       </div>
