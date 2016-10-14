@@ -29,6 +29,9 @@ class User < ApplicationRecord
       field :visible
       field :admin
       field :deleted
+      field :collective
+      field :plan
+      field :stripe_customer_id
     end
   end
 end
