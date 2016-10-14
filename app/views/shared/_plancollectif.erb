@@ -3,15 +3,19 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2>Participation</h2>
-        Avec votre participation chaque mois : <br>
-        ► Vous accédez à tous mes cours de façon illimitée. <br>
-        ► Vous permettez à mon travail de rester accessible à tous. <br><br>
-        Le service est illimité quel que soit le montant de votre participation mensuelle !<br>
+        <div class= "text-left">
+          <h2>Plan collectif</h2>
+          ► Vous êtes professeur ou médiathécaire ? <br>
+          ► Vous souhaitez ouvrir un compte accessible en même temps sur plusieurs postes ? <br><br>
+          Contactez-moi simplement par email : <br>
+          <strong><i>mediaclasse.fr@gmail.com</strong></i><br><br>
+          Vous pouvez me communiquer un numéro de téléphone, je vous rappellerai rapidement.
+          Nous ferons alors ensemble un devis personnalisé, en fonction de votre nombre d'utilisateurs !<br>
+        </div>
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <%= link_to "Participer", plans_path, class: "btn btn-default" %>
+            <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK !</button>
           </div>
         <% else %>
           <%= render :template => "devise/sessions/new" %>
