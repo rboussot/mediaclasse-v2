@@ -7,7 +7,7 @@ tmp/*
 public/assets
 *.crt
 *.key
-*.crt
+*.csr
 *.pem
 
 # Ignore application configuration
