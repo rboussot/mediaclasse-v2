@@ -6,6 +6,6 @@ class LecturePolicy < ApplicationPolicy
   end
 
   def watch_video?
-    record.payment == false # TODO: OU user a payé
+    record.payment == false || @user.plan
   end
 end

@@ -1,0 +1,56 @@
+<div class="home-wrapper">
+  <div class="container-fluid">
+  <div class="border profile"></div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class= "plan-banner text-center">
+          <h3>Page en construction</h3>
+          <p>Bonjour ! Merci d'être venu jusqu'ici !
+          <p>Je m'apprête à mettre en place un système de participation sur le site, </p>
+          <p>Mais la fonctionnalité est encore en cours de développement ! </p>
+          <h4>Cependant, voici le principe que je souhaite mettre en place :</h4>
+        </div>
+        <div class="plan-title">
+          <h2>Participez pour un prix libre !</h2><br>
+          <h4>Le prix libre rend mon travail accessible à tous :)</h4>
+          <p>Vous n'achetez pas du contenu, vous participez à un projet. </p>
+          <p>Ainsi, quel que soit le montant de votre participation mensuelle :</p>
+          <p>
+            ► Vous accédez de façon illimitée à toutes mes vidéos et documents.<br>
+            ► Vous contribuez à mon projet sur le principe du mécénat. <br>
+            ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
+            ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= render 'shared/inprogressmodal'%>
+    <div class="row">
+        <div class="plan-wrapper">
+          <div class= "plan-stripe hvr-glow deux">
+            <h4><%= link_to "2 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow cinq">
+            <h4><%= link_to "5 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow dix">
+            <h4><%= link_to "10 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow quinze">
+            <h4><%= link_to "15 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow vingt">
+            <h4><%= link_to "20 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow vingt-cinq">
+            <h4><%= link_to "25 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+          <div class= "plan-stripe hvr-glow trente">
+            <h4><%= link_to "30 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+  </div>
+</div>
+<%= render 'shared/footer' %>
