@@ -16,9 +16,13 @@
             <ul>
               <%= link_to lecture_path(lecture) do %>
                 <% if lecture.id.to_s == params[:id]%>
-                  <li class="lecture-link active"><%= lecture.title %></li>
+                  <li class="lecture-link active"><%= lecture.title %>
+                    <%= "*" if lecture.payment && !current_user.plan %>
+                  </li>
                 <% else %>
-                  <li class="lecture-link"><%= lecture.title %></li>
+                  <li class="lecture-link"><%= lecture.title %>
+                    <%= "*" if lecture.payment  && !current_user.plan %>
+                  </li>
                 <% end %>
               <% end %>
             </ul>
@@ -38,8 +42,7 @@
               <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
               <h2 class= "lecture-title"><%= @lecture.title %></h2>
               <p class="lecture-note">
-                <i>Video réservée aux abonnés </i>
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <i>* Video réservée aux abonnés</i>
               </p>
             </div>
           <% end %>

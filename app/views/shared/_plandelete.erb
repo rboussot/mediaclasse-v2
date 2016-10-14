@@ -1,16 +1,13 @@
-<div class="modal fade" id="PlanQuestion" tabindex="-1" role="dialog" aria-labelledby="PlanLabel">
+<div class="modal fade" id="PlanDelete" tabindex="-1" role="dialog" aria-labelledby="PlanLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class= "text-left">
-          <h2>Participation</h2>
+          <h2>Êtes-vous sûr de vouloir arrêter votre participation ?</h2>
           Avec votre participation chaque mois : <br>
           ► Vous accédez à tous mes cours de façon illimitée. <br>
-          ► Vous permettez à mon travail de rester accessible à tous. <br>
-          <br>
-          Vous accédez à l'intégralité de mes contenus, quel que soit le montant de votre participation mensuelle !<br>
-          <br>
+          ► Vous permettez à mon travail de rester accessible à tous. <br><br>
           Que se passe-t-il si je cesse de participer ?<br>
           ► Les versements sont immédiatement arrêtés.<br>
           ► Vous n'avez plus accès à mes contenus réservés.<br>
@@ -19,7 +16,8 @@
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK !</button>
+            <%= link_to "Oui, arrêter", cancel_plan_path, class: "btn btn-default" %><br><br>
+            <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">Annuler</button>
           </div>
         <% else %>
           <%= render :template => "devise/sessions/new" %>

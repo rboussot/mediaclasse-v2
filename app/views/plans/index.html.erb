@@ -1,56 +1,266 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-  <div class="border profile"></div>
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class= "plan-banner text-center">
-          <h3>Page en construction</h3>
-          <p>Bonjour ! Merci d'être venu jusqu'ici !
-          <p>Je m'apprête à mettre en place un système de participation sur le site, </p>
-          <p>Mais la fonctionnalité est encore en cours de développement ! </p>
-          <h4>Cependant, voici le principe que je souhaite mettre en place :</h4>
+    <div class="border profile"></div>
+      <!-- ========== IF PLAN EXIST ========== -->
+      <% if !current_user.plan.blank? %>
+      <!-- === EN-TÊTE ===-->
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+            <div class="plan-title">
+              <h2>Merci pour votre participation !</h2><br>
+              <h4>Vous participez actuellement pour un montant de <%= current_user.plan %> euros par mois.</h4>
+              <p>
+                ► Vous accédez sans limite à l'intégralité de mes vidéos et documents.<br>
+                ► Vous contribuez à mon projet sur le principe du mécénat. <br>
+                ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
+                ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="plan-title">
-          <h2>Participez pour un prix libre !</h2><br>
-          <h4>Le prix libre rend mon travail accessible à tous :)</h4>
-          <p>Vous n'achetez pas du contenu, vous participez à un projet. </p>
-          <p>Ainsi, quel que soit le montant de votre participation mensuelle :</p>
-          <p>
-            ► Vous accédez de façon illimitée à toutes mes vidéos et documents.<br>
-            ► Vous contribuez à mon projet sur le principe du mécénat. <br>
-            ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
-            ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
-          </p>
+        <!-- === BOUTONS === -->
+        <div class="row">
+          <div class="col-xs-offset-2 plan-wrapper">
+            <%= render 'shared/plandelete' %>
+            <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-question hvr-glow">
+              <p>Cesser de participer</p>
+            </div>
+          </div>
         </div>
-      </div>
+      <!-- ========== ELSIF PLANS COLLECTIFS ========== -->
+      <% elsif current_user.collective %>
+      <!-- === EN-TÊTE === -->
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+            <div class="plan-title">
+              <h2>Plan collectif</h2><br>
+              <h4>Félicitations ! Votre plan collectif est prêt à être activé !</h4>
+              <p>Je vous invite à sélectionner le plan qui correspond au nombre d'utilisateurs souhaités.</p>
+                ► Vous pourrez laisser ce compte ouvert sur plusieurs postes en même temps.</br>
+                ► Tous les utilisateurs auront le même compte et le même mot de passe, ne communiquez pas ces informations à des personnes extérieures.</br>
+                ► Vos utilisateurs pourront accéder à l'intégralité de mes ressources. <br>
+                ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
+            </div>
+          </div>
+        </div>
+      <!-- === PLANS === -->
+        <div class="row">
+          <div class="col-xs-offset-2 plan-wrapper">
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "trente" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="3000"
+                  data-label="30€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "soixante" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="6000"
+                  data-label="60€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "quatre-vingt-dix" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="9000"
+                  data-label="90€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "cent-vingt" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="12000"
+                  data-label="120€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "cent-quatre-vingt" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="1!000"
+                  data-label="180€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow collectif">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "trois-cent" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="30000"
+                  data-label="300€">
+                </script>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <!-- ========== ELSE PLANS INDIVIDUELS ========== -->
+      <% else %>
+      <!-- === EN-TÊTE === -->
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+            <div class="plan-title">
+              <h2>Participez pour un prix libre !</h2><br>
+              <h4>Le prix libre rend mon travail accessible à tous :)</h4>
+              <p>Vous n'achetez pas du contenu, vous participez à un projet. </p>
+              <p>Ainsi, quel que soit le montant de votre participation mensuelle :</p>
+              <p>
+                ► Vous accédez sans limite à l'intégralité de mes vidéos et documents.<br>
+                ► Vous contribuez à mon projet sur le principe du mécénat. <br>
+                ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
+                ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- === PLANS  === -->
+        <div class="row">
+          <div class="col-xs-offset-2 plan-wrapper">
+            <div class= "plan-stripe hvr-glow deux">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "deux" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="200"
+                  data-label="2€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow cinq">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "cinq" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="500"
+                  data-label="5€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow dix">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "dix" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="1000"
+                  data-label="10€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow quinze">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "quinze" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="1500"
+                  data-label="15€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow vingt">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "vingt" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="2000"
+                  data-label="20€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow vingt-cinq">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "vingt-cinq" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="2500"
+                  data-label="25€">
+                </script>
+              <% end %>
+            </div>
+            <div class= "plan-stripe hvr-glow trente">
+              <%= form_tag plans_path do %>
+                <%= hidden_field_tag "plan", "trente" %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_C6oAMIhWYRg14cX2Gud6K4Q5"
+                  data-name="Mediaclasse.fr"
+                  data-description="Participation mensuelle"
+                  data-amount="3000"
+                  data-label="30€">
+                </script>
+              <% end %>
+            </div>
+            / par mois. <br>
+          </div>
+        </div>
+        <!-- === BOUTONS === -->
+        <div class="row">
+          <div class="col-xs-offset-2 plan-wrapper">
+            <%= render 'shared/plancollectif' %>
+            <br>Vous êtes une classe, une médiathèque, une université, une association ?
+            <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
+              <p>Créer un compte collectif ?</p>
+            </div>
+            <%= render 'shared/planquestion' %>
+            <br>Vous souhaitez en savoir plus sur le système de paiement ?
+            <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-question hvr-glow">
+              <p>Comment ça fonctionne ?</p>
+            </div>
+          </div>
+        </div>
+    <!-- ========== END ========== -->
+      <% end %>
+    <!-- ========== CLOSE WRAPPERS ========== -->
     </div>
-    <%= render 'shared/inprogressmodal'%>
-    <div class="row">
-        <div class="plan-wrapper">
-          <div class= "plan-stripe hvr-glow deux">
-            <h4><%= link_to "2 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow cinq">
-            <h4><%= link_to "5 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow dix">
-            <h4><%= link_to "10 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow quinze">
-            <h4><%= link_to "15 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow vingt">
-            <h4><%= link_to "20 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow vingt-cinq">
-            <h4><%= link_to "25 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-          <div class= "plan-stripe hvr-glow trente">
-            <h4><%= link_to "30 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
-          </div>
-        </div>
-      </div>
-      <br><br><br>
   </div>
 </div>
-<%= render 'shared/footer' %>
+
