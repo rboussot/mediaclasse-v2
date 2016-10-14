@@ -5,6 +5,10 @@ tmp/*
 *.swp
 .DS_Store
 public/assets
+*.crt
+*.key
+*.crt
+*.pem
 
 # Ignore application configuration
 /config/application.yml
