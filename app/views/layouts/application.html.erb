@@ -8,7 +8,7 @@
     <% if @lecture %>
       <meta property="og:image" content="http://img.youtube.com/vi/<%= @lecture.video %>/sddefault.jpg" />
     <%else %>
-      <meta property="og:image" content="http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473598042/mediaclasse-capture.jpg" />
+      <meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/acquis/couvertures/mediaclasse-capture.jpg" />
     <% end %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= favicon_link_tag "logo.png" %>
