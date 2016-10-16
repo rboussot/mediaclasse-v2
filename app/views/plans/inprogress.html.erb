@@ -1,14 +1,14 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-  <div class="border profile"></div>
+  <div class="border profile hidden-xs"></div>
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <div class= "plan-banner text-center">
           <h3>Page en construction</h3>
-          <p>Bonjour ! Merci d'être venu jusqu'ici !
-          <p>Je m'apprête à mettre en place un système de participation sur le site, </p>
+          <p class= "hidden-xs">Bonjour ! Merci d'être venu jusqu'ici !
+          <p>Vous pourrez bientôt participer fiinancièrement à mon projet, </p>
           <p>Mais la fonctionnalité est encore en cours de développement ! </p>
-          <h4>Cependant, voici le principe que je souhaite mettre en place :</h4>
+          <p class= "hidden-xs">Cependant, voici le principe que je souhaite mettre en place :</p>
         </div>
         <div class="plan-title">
           <h2>Participez pour un prix libre !</h2><br>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <%= render 'shared/inprogressmodal'%>
-    <div class="row">
+    <div class="row col-sm-offset-1">
         <div class="plan-wrapper">
           <div class= "plan-stripe hvr-glow deux">
             <h4><%= link_to "2 €", "#", "data-toggle" => "modal", "data-target" => "#inProgressModal" %></h4>
