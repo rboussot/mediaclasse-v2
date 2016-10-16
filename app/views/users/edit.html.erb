@@ -1,26 +1,29 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-    <div class="border profile"></div>
-    <div class="row">
+    <div class="border profile hidden-xs"></div>
     <br><h2 class="text-center profile_title">Mon profil</h2><br>
         <%= simple_form_for(@user) do |f| %>
           <%= f.error_notification %>
-          <div class="col-xs-3 col-xs-offset-3">
-            <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+              <%= f.input :picture, as: :attachinary, label: "Votre photo" %>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <%= f.input :firstname, label: "Prénom" %>
+              <%= f.input :lastname, label: "Nom" %>
+            </div>
           </div>
-          <div class="col-xs-3">
-            <%= f.input :firstname, label: "Prénom" %>
-            <%= f.input :lastname, label: "Nom" %>
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+              <%= f.input :email %>
+              <%= f.input :phone, label: "Téléphone", class: "telinput" %>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
+              <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
+            </div>
           </div>
-          <div class="col-xs-3 col-xs-offset-3">
-            <%= f.input :email %>
-            <%= f.input :phone, label: "Téléphone", class: "telinput" %>
-          </div>
-          <div class="col-xs-3">
-            <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
-            <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
-          </div>
-          <div class="col-xs-6 col-xs-offset-3">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <%= f.input :adress, label: "Adresse", as: :text %>
           <%= f.submit class: "btn btn-primary hvr-glow", id:"profilesave", value: "Enregistrer"%>
         <% end %>
