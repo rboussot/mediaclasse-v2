@@ -79,7 +79,7 @@
             <% if comment.user.picture %>
               <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
             <% else %>
-              <%= cl_image_tag 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1472721068/2000px-AWS_Simple_Icons_Non-Service_Specific_User.svg_kkmiui.png', class: "list-image", width: 80, height: 80, crop: :fill %>
+              <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
             <% end %>
             <!-- Capture name or begining of email adress -->
             <% if comment.user.firstname %>

@@ -32,7 +32,7 @@
             <% if current_user.picture %>
               <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% else %>
-              <%= cl_image_tag 'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473446586/user.svg.png', width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
+              <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% end %>
             <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
               <li>
