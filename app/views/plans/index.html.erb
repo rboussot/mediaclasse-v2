@@ -1,11 +1,11 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-    <div class="border profile"></div>
+    <div class="border profile hidden-xs"></div>
       <!-- ========== IF PLAN EXIST ========== -->
       <% if !current_user.plan.blank? %>
       <!-- === EN-TÊTE ===-->
         <div class="row">
-          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+          <div class="col-xs-12 col-sm-7 col-sm-offset-3">
             <div class="plan-title">
               <h2>Merci pour votre participation !</h2><br>
               <h4>Vous participez actuellement pour un montant de <%= current_user.plan %> euros par mois.</h4>
@@ -20,7 +20,7 @@
         </div>
         <!-- === BOUTONS === -->
         <div class="row">
-          <div class="col-xs-offset-2 plan-wrapper">
+          <div class="col-sm-offset-2 plan-wrapper">
             <%= render 'shared/plandelete' %>
             <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-question hvr-glow">
               <p>Cesser de participer</p>
@@ -31,7 +31,7 @@
       <% elsif current_user.collective %>
       <!-- === EN-TÊTE === -->
         <div class="row">
-          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+          <div class="col-xs-12 col-sm-7 col-sm-offset-3">
             <div class="plan-title">
               <h2>Plan collectif</h2><br>
               <h4>Félicitations ! Votre plan collectif est prêt à être activé !</h4>
@@ -126,11 +126,21 @@
             </div>
           </div>
         </div>
+        <!-- === BOUTONS === -->
+        <div class="row">
+          <div class="col-xs-offset-2 plan-wrapper">
+            <%= render 'shared/planquestion' %>
+            <br>Vous souhaitez en savoir plus sur le système de paiement ?
+            <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-question hvr-glow">
+              <p>Comment ça fonctionne ?</p>
+            </div>
+          </div>
+        </div>
       <!-- ========== ELSE PLANS INDIVIDUELS ========== -->
       <% else %>
       <!-- === EN-TÊTE === -->
         <div class="row">
-          <div class="col-xs-offset-2 col-xs-10 col-sm-7 col-sm-offset-3">
+          <div class="col-xs-12 col-sm-7 col-sm-offset-3">
             <div class="plan-title">
               <h2>Participez pour un prix libre !</h2><br>
               <h4>Le prix libre rend mon travail accessible à tous :)</h4>

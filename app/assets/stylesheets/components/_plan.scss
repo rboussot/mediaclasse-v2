@@ -31,9 +31,9 @@
 }
 
 .plan-banner p {
-  font-size: 20px;
-  margin-top: 20px;
-  line-height: 1.4;
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1;
 }
 
 .plan-wrapper {
@@ -117,5 +117,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7bbde0', end
 .collectif {
   background-color: $profile;
   opacity: .8;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
