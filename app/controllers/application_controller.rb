@@ -32,8 +32,6 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /^rails_admin/
   end
 
-  protected
-
   def ensure_domains
     if Rails.env.production? && request.subdomain != 'www'
       redirect_to request.url.sub("//","//www.")
