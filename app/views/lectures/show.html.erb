@@ -15,13 +15,13 @@
           <% @lectures.each do |lecture| %>
             <ul>
               <%= link_to lecture_path(lecture) do %>
-                <% if lecture.id.to_s == params[:id]%>
+                <% if lecture.id.to_s == params[:id] %>
                   <li class="lecture-link active"><%= lecture.title %>
-                    <%= "*" if lecture.payment && !current_user.plan %>
+                    <%= "*" if current_user && lecture.payment && !current_user.plan %>
                   </li>
                 <% else %>
                   <li class="lecture-link"><%= lecture.title %>
-                    <%= "*" if lecture.payment  && !current_user.plan %>
+                    <%= "*" if current_user && lecture.payment  && !current_user.plan %>
                   </li>
                 <% end %>
               <% end %>
