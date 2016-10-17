@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   after_action :deleted_user
+  # ========== Forcer le www dans rails admin ==========
+  before_filter :force_www!
+  # => cf protected
 
   def deleted_user
     if user_signed_in? && current_user.deleted
@@ -29,5 +32,13 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /^rails_admin/
+  end
+
+  protected
+
+  def force_www!
+    if Rails.env.production? and request.host[0..3] != "www."
+      redirect_to "#{request.protocol}www.#{request.host_with_port}#{request.fullpath}", :status => 301
+    end
   end
 end
