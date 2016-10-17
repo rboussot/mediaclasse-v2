@@ -6,6 +6,6 @@ class LecturePolicy < ApplicationPolicy
   end
 
   def watch_video?
-    user && (record.payment == false || @user.plan)
+    record.payment == false || (user && @user.plan)
   end
 end

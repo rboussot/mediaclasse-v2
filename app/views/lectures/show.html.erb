@@ -17,11 +17,11 @@
               <%= link_to lecture_path(lecture) do %>
                 <% if lecture.id.to_s == params[:id] %>
                   <li class="lecture-link active"><%= lecture.title %>
-                    <%= "*" if current_user && lecture.payment && !current_user.plan %>
+                    <%= "*" unless policy(lecture).watch_video? %>
                   </li>
                 <% else %>
                   <li class="lecture-link"><%= lecture.title %>
-                    <%= "*" if current_user && lecture.payment  && !current_user.plan %>
+                    <%= "*" unless policy(lecture).watch_video? %>
                   </li>
                 <% end %>
               <% end %>
