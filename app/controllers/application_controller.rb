@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   after_action :deleted_user
-  before_action :ensure_domains
 
   def deleted_user
     if user_signed_in? && current_user.deleted
@@ -32,9 +31,4 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /^rails_admin/
   end
 
-  def ensure_domains
-    if Rails.env.production? && request.subdomain != 'www'
-      redirect_to request.url.sub("//","//www.")
-    end
-  end
 end
