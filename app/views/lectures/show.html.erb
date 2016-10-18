@@ -34,17 +34,23 @@
         <div class="lecture-show">
           <!-- ========== VIDEO EMBED ========== -->
           <% if policy(@lecture).watch_video? %>
-              <%= render 'shared/embedvideo' %>
+            <%= render 'shared/embedvideo' %>
           <% else %>
+
             <%= render 'shared/planmodal' %>
-            <div data-toggle = "modal" data-target = "#PlanModal" class="lecture-vignette">
-              <%= cl_image_tag @lecture.course.picture, class: "lecture-cover" %>
-              <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
-              <h2 class= "lecture-title"><%= @lecture.title %></h2>
+            <div data-toggle = "modal" data-target = "#PlanModal">
+              <div class="embed-responsive embed-responsive-16by9 lecture-vignette">
+                <%= image_tag @lecture.course.picture, class: "lecture-cover" %>
+                <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
+                <h2 class= "lecture-title hidden-xs"><%= @lecture.title %></h2>
+                <h2 class= "lecture-title-xs hidden-sm hidden-md hidden-lg hidden-xl"><%= @lecture.title %></h2>
+                <p class="lecture-note">
+              </div>
               <p class="lecture-note">
                 <i>* Video réservée aux abonnés</i>
               </p>
             </div>
+
           <% end %>
           <!-- ========== TABS ========== -->
           <div class= "tabs">
