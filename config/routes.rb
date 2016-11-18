@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
 
+  constraints subdomain: false do
+    get ':any', to: redirect(subdomain: 'www', path: '/%{any}'), any: /.*/
+  end
+
   resources :courses, only: [:show, :index] do
     collection do
       get 'litterature', to: 'courses#litterature'
