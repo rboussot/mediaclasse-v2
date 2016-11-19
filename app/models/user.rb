@@ -34,4 +34,22 @@ class User < ApplicationRecord
       field :stripe_customer_id
     end
   end
+
+  rails_admin do
+    list do
+      field :id
+      field :email
+      field :sign_in_count
+      field :current_sign_in_at
+      field :plan
+      field :collective
+      field :created_at
+      field :updated_at
+      field :reset_password_sent_at
+      field :deleted
+      field :current_sign_in_ip
+      field :last_sign_in_ip
+    end
+  end
+
 end
