@@ -1,7 +1,13 @@
 <div class="navbar-media">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-media-brand" do %>
-    <%= image_tag "logo.png", class: "hvr-grow" %>
+  <% if current_user && current_user.admin %>
+    <%= link_to rails_admin_path, class: "navbar-media-brand" do %>
+      <%= image_tag "logo.png", class: "hvr-grow" %>
+    <% end %>
+  <% else %>
+    <%= link_to root_path, class: "navbar-media-brand" do %>
+      <%= image_tag "logo.png", class: "hvr-grow" %>
+    <% end %>
   <% end %>
   <!-- ========== LARGE SCREEN MENU ========== -->
     <!-- === LINK LITT === -->
