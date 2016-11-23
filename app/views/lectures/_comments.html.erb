@@ -47,7 +47,7 @@
         <%= comment.user.email.gsub(/.*(?=@)/).first %>
       <% end %>
       <!-- Add the timestamp on the comment -->
-      <i> - <%= comment.created_at.strftime("le %e/%M/%Y à %H:%M") %></i><br>
+      <i> - <%= comment.created_at.strftime("le %d/%m/%y à %H:%M") %></i><br>
       <%= comment.content %>
       <!-- Current user can suppr the comment -->
       <% if comment.user == current_user %>
