@@ -30,8 +30,9 @@
 .lecture-discussion {
   display: none;
   width: 100%;
-  height: 100px;
   position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input.lecture-submit {
@@ -75,7 +76,7 @@ input.lecture-submit:hover {
     width: 100px;
     position: absolute;
     right: 0px;
-    top: 55px;
+    bottom: 0px;
 }
 
 a li.lecture-link.active {
