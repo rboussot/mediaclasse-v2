@@ -4,7 +4,7 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find(params[:id])
     @lecture_course = @lecture.course
-    @lectures = @lecture_course.lectures
+    @lectures = @lecture_course.lectures.order('updated_at ASC')
     @lecture_comments = Comment.all.where(lecture: @lecture).joins(:user).order('updated_at DESC')
     @comment = Comment.new
     @documents = Document.where(lecture_id: params[:id])
