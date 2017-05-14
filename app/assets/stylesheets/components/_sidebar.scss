@@ -7,22 +7,17 @@
 #sidebar-letter {
   text-align: center;
   width: 30px;
+
+  &.disabled{
+    color: grey;
+    cursor: default;
+  }
 }
 
-#sidebar-letter:hover {
+#sidebar-letter:hover:not(.disabled) {
   background-color: black;
   text-decoration: none;
   color: white;
-}
-
-#sidebar-letter a:hover {
-  color: white;
-  text-decoration: none;
-}
-
-#sidebar-letter a:focus, a:visited, a:active {
-  color: black;
-  text-decoration: none;
 }
 
 #sidebar-parauteur {

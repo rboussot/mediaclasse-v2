@@ -1,3 +1,3 @@
 <%= form_tag like_users_path(course), remote: true do %>
-  <%= check_box_tag :liked, "1", current_user.liked?(course), class: "like-link" %>
+  <%= check_box_tag :liked, "1", current_user.has_course?(course), class: "like-link" %>
 <% end %>

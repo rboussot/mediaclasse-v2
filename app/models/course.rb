@@ -20,7 +20,7 @@ class Course < ApplicationRecord
     #   }
     #   ignoring: :accents
     # }
-  acts_as_votable
+
   belongs_to :author
   belongs_to :category
   has_many :lectures

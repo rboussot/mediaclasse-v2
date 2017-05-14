@@ -20,9 +20,16 @@
       </div>
       <div id="sidebar" class="hidden-xs hidden-sm">
         <% ('A' .. 'Z').to_a.each do | letter | %>
-          <%= link_to "##{letter}", class: :scroll do %>
-            <div id="sidebar-letter"><%= letter %></div>
+
+          <% if @sidebar_letters.include? letter %>
+            <%= link_to "##{letter}", class: :scroll do %>
+              <div id="sidebar-letter"><%= letter %></div>
+            <% end %>
+          <% else %>
+            <div id="sidebar-letter" class="disabled"><%= letter %></div>
           <% end %>
+
+
         <% end %>
       </div>
     </div>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     authorize @user
-    @my_courses = @user.find_liked_items
+    @my_courses = @user.courses
   end
 
   def edit
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   def like
     @course = Course.find(params[:course_id])
     if params[:liked]
-      @course.liked_by current_user
+      current_user.add_course @course
       authorize @course
     else
-      @course.unliked_by current_user
+      current_user.remove_course @course
       authorize @course
     end
   end
