@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  acts_as_voter
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :channel
@@ -13,6 +12,36 @@ class User < ApplicationRecord
   def name
     email
   end
+
+
+  ############## replace 'acts_as_voter'
+  def add_course course
+    self.courses_ids <<= course.id
+    save
+  end
+
+  def remove_course course
+    self.courses_ids -= [course.id]
+    save
+  end
+
+  def courses_ids
+    (self[:courses_ids] || "").split.map(&:to_i)
+  end
+
+  def courses_ids= courses_ids
+    write_attribute :courses_ids, courses_ids.uniq.join(" ")
+  end
+
+  def courses
+    Course.where id: courses_ids
+  end
+
+  def has_course? course
+    courses_ids.include? course.id
+  end
+  ###########
+
 
   rails_admin do
     edit do

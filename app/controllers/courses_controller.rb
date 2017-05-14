@@ -15,6 +15,7 @@ class CoursesController < ApplicationController
       @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
     end
     @documents = Document.joins(:lecture)
+    @sidebar_letters = Author.pluck(:pseudo).map{|e| e[0]}.uniq
   end
 
   def technique
@@ -31,9 +32,9 @@ class CoursesController < ApplicationController
   def like
     @course = Course.find(params[:course_id])
     if params[:liked]
-      @course.liked_by current_user
+      current_user.add_course @course
     else
-      @course.unliked_by current_user
+      current_user.remove_course @course
     end
 
     head :ok
