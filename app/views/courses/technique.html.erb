@@ -50,7 +50,7 @@
           <% @technique_courses.each do |course| %>
             <!-- ==== LIST ITEM ==== -->
             <div class="list-item hidden-xs">
-              <% if course.lectures.first %>
+              <% if course.lectures.first && course.visible %>
                 <%= link_to lecture_path(course.lectures.first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
                   <ul>

@@ -38,7 +38,7 @@
       <div class="list-scroll">
         <% if @litterature_courses.count > 0 %>
           <% @litterature_courses.each do |course| %>
-            <% if course.lectures.first %>
+            <% if course.lectures.first && course.visible %>
 
               <div class="list-item hidden-xs" id="<%= course.author.pseudo.first %>">
                 <%= link_to lecture_path(course.lectures.first) do %>
