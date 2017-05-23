@@ -72,7 +72,7 @@
                   <ul>
                     <li><h4><%= course.author.pseudo %></h4></li>
                     <li><p><i><u><%= course.title %></u></i></p></li>
-                    <li><p><%= pluralize(course.lectures.count, 'vidéo') %></p></li>
+                    <li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>
                   </ul>
                 <% end %>
               </div>

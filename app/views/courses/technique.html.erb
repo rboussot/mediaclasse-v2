@@ -48,15 +48,15 @@
       <div class="list-scroll">
         <% if @technique_courses.count > 0 %>
           <% @technique_courses.each do |course| %>
+            <% if course.lectures.first && course.visible %>
             <!-- ==== LIST ITEM ==== -->
-            <div class="list-item hidden-xs">
-              <% if course.lectures.first && course.visible %>
+              <div class="list-item hidden-xs">
                 <%= link_to lecture_path(course.lectures.first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
                   <ul>
                     <li><h3><%= course.title %></h3></li>
                     <li><p><%= course.description %></p></li>
-                    <li> <p> <%= pluralize(course.lectures.count, 'vidéo') %></p> </li>
+                    <li> <p> <%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p> </li>
                     <li>
                       <p class="list-themes"> <% course.themes.each do |t| %>
                         <%= t.name %>;
@@ -81,7 +81,7 @@
                   <%= cl_image_tag course.picture, class: "list-image", width: 174, height: 259, crop: :fill %>
                   <ul>
                     <li><h4><%= course.title %></h4></li>
-                    <li><p><%= pluralize(course.lectures.count, 'vidéo') %></p></li>
+                    <li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>
                   </ul>
                 <% end %>
               </div>
