@@ -66,6 +66,19 @@
   cursor: pointer;
 }
 
+.plan-delete-off {
+  font-size: 14px;
+  padding: 13px 20px 0px 20px;
+  margin: 20px;
+  margin-left: 76px;
+  background-color: #770000;
+  color: white;
+  border-radius: 3px;
+  min-width: 179px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .plan-banner h2 {
   color: $profile;
 }
