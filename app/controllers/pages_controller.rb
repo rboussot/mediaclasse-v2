@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   skip_after_action :verify_authorized
 
   def home
-    @super_comments = Comment.where(super: true).last(5)
+    @super_comments = Comment.where(super: true).shuffle.last(5)
     @edito= Category.where(tag: "edito").first
     @pres= Category.where(tag: "pres").first
     @favorite= Category.where(tag: "favorite").first
