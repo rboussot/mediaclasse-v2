@@ -8,7 +8,10 @@
           <div class="col-xs-12 col-sm-7 col-sm-offset-3">
             <div class="plan-title">
               <br><br><h2>Merci pour votre participation !</h2><br>
-              <h4>Vous participez actuellement pour un montant de <%= current_user.plan %> euros par mois.</h4>
+              <h4>Vous participez actuellement pour un montant de <%= current_user.plan %>
+              <% unless current_user.collective %> euros par mois.
+              <% end %>.
+              </h4>
               <p>
                 ► Vous accédez sans limite à l'intégralité de mes vidéos et documents.<br>
                 ► Vous contribuez à mon projet sur le principe du mécénat. <br>
