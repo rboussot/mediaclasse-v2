@@ -16,8 +16,10 @@
                 ► Vous accédez sans limite à l'intégralité de mes vidéos et documents.<br>
                 ► Vous contribuez à mon projet sur le principe du mécénat. <br>
                 ► Vous permettez à chacun d'accéder à mes ressources selon ses revenus.<br>
+                <% unless current_user.collective %>
                 ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
                 * Le paiement est international, entièrement sécurisé et crypté de bout en bout.<br>
+                <% end %>
               </p>
             </div>
           </div>
@@ -25,10 +27,12 @@
         <!-- === BOUTONS === -->
         <div class="row">
           <div class="col-sm-offset-2 plan-wrapper">
-            <%= render 'shared/plandelete' %>
-            <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-delete hvr-glow">
-              <p>Cesser de participer</p>
-            </div>
+            <% unless current_user.collective %>
+              <%= render 'shared/plandelete' %>
+              <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-delete hvr-glow">
+                <p>Cesser de participer</p>
+              </div>
+            <% end %>
           </div>
         </div>
       <!-- ========== ELSIF PLANS COLLECTIFS ========== -->
