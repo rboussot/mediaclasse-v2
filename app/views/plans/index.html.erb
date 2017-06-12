@@ -277,10 +277,13 @@
               <p>Cesser de participer</p>
             </div>
             <%= render 'shared/plancollectif' %>
-            <br>Médiathèque, école, association : bénéficiez de tarifs collectifs !
-            <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
-              <p>Comment ça marche ?</p>
-            </div>
+            <br>Médiathèque, école, association : bénéficiez d'un tarif collectif !
+              <!-- <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
+                <p>Mes tarifs spéciaux</p>
+              </div> -->
+              <%= link_to "https://goo.gl/0JJzqY", target: :_blank do %>
+                <div type="link" class="plan-question hvr-glow"><p>Consulter les remises !</p></div>
+              <% end %>
           </div>
         </div>
     <!-- ========== END ========== -->
