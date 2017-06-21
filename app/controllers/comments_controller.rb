@@ -5,8 +5,19 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(user: current_user, content: comment_params[:content])
-    @comment = Comment.new if @comment.save
+    # @comment = Comment.new if @comment.save
     authorize @comment
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to comments_path }
+        format.js { } # Il renvoie automatiquement à "create.js.erb"
+      end
+    else
+      respond_to do |format|
+        format.html { render 'index'}
+        format.js { } # Il renvoie automatiquement à "create.js.erb"
+      end
+    end
   end
 
   def edit

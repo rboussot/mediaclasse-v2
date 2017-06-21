@@ -1,1 +1,11 @@
-$('#lecture-comments').html("<%= j render 'all' %>");
+<!-- $('#lecture-comments').html("<%= j render 'all' %>"); -->
+
+<% if @comment.errors.any? %>
+  $('#iferror').append("Le commentaire ne doit pas être vide !<br>");
+<% else %>
+  var new_comment = $("<%= j render 'show', comment: @comment %>").hide();
+  $('#comments').prepend(new_comment);
+  new_comment.fadeIn();
+  $('#comment_content').val('');
+  $('#iferror').html("");
+<% end %>
