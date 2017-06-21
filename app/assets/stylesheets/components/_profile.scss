@@ -133,13 +133,16 @@
 #profilesave {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: auto;
+  margin-left: 14px;
   width: 100%;
   background-color: $profile;
   border: none;
   height: 50px;
   font-size: 20px;
+  position: relative;
 }
+
+
 
 a.profile-youtube {
     margin-top: 20px;

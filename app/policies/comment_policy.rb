@@ -5,6 +5,10 @@ class CommentPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true  # Anyone can view all comments
+  end
+
   def show?
     true  # Anyone can view a comment
   end

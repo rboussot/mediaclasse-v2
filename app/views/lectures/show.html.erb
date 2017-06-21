@@ -1,3 +1,11 @@
+<% content_for :meta_title do %>
+  <%= @lecture.title %>
+<% end %>
+
+<% content_for :meta_image do %>
+  <%= @lecture.meta_image %>
+<% end %>
+
 <div class="lecture-wrapper">
   <div class="container">
     <div class= "row">
@@ -60,9 +68,6 @@
             <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
               <h3>Documents</h3>
             </span>
-<!--             <span class="tab tab-discussion <%= @lecture_course.category.tag %>" href="#">
-              <h3>Discussion</h3>
-            </span> -->
           </div>
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
@@ -92,10 +97,6 @@
                 Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
               <% end %>
             </div>
-            <!-- === COMMENTS PARTIAL === -->
-            <div id="lecture-comments">
-              <%= render 'comments' %>
-            </div>
             <!-- ========== CLOSE TABS ========== -->
           </div>
     <!-- ========== CLOSE CONTAINERS ========== -->
@@ -117,12 +118,6 @@
       $('.tab-documents').on('click', function(event) {
         $(".content").hide();
         $(".lecture-documents").show();
-        $(".tab").removeClass('active');
-        $(this).addClass('active');
-      });
-      $('.tab-discussion').on('click', function(event) {
-        $(".content").hide();
-        $(".lecture-discussion").show();
         $(".tab").removeClass('active');
         $(this).addClass('active');
       });
