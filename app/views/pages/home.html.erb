@@ -77,10 +77,14 @@
     <div class="row">
       <div class="col-xs-11 col-sm-offset-2 col-sm-8">
         <% if @super_comments.length > 0 %>
-          <h3 class="text-center">Vos commentaires !</h3>
+          <h4 class="text-center">Vos commentaires !
+          <%= link_to comments_path do %>
+              <p class="home-livredor"><i>Livre d'Or</i></p>
+          <% end %>
+          </h4>
         <% end %>
         <% @super_comments.each do |comment| %>
-          <div class= "home-comment">
+          <div class= "home-discussion">
             <!-- Capture if picture exist -->
             <% if comment.user.picture %>
               <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>

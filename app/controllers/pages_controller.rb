@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_after_action :verify_authorized
+  before_action :find_super_comments, only: [:home]
 
   def home
-    @super_comments = Comment.where(super: true).shuffle.last(5)
     @edito= Category.where(tag: "edito").first
     @pres= Category.where(tag: "pres").first
     @favorite= Category.where(tag: "favorite").first
@@ -21,4 +21,11 @@ class PagesController < ApplicationController
 
   def newsletter
   end
+
+  private
+
+  def find_super_comments
+    @super_comments = policy_scope(Comment).includes(user: :picture_files).order('created_at DESC').where(super: true).shuffle.last(5)
+  end
+
 end

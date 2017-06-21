@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :documents, only: [:show]
   resources :channels, only: [:index, :new, :create, :edit, :update]
-  resources :comments, only: [:new, :edit, :update, :create, :destroy]
+  resources :comments, only: [:index, :new, :edit, :update, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
     post ':course_id/like' => "users#like", on: :collection, as: :like
   end
