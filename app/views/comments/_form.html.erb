@@ -1,0 +1,24 @@
+  <!-- ==== USER PICTURE ==== -->
+  <% if user_signed_in? %>
+    <div class= "lecture-discussion">
+      <!-- Load avatar -->
+      <% if current_user.picture %>
+        <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
+      <% end %>
+      <!-- Capture name or begining of email adress -->
+      <% if current_user.firstname %>
+          <b><%= current_user.firstname %> <%= current_user.lastname %></b>
+        <% else %>
+          <%= current_user.email.gsub(/.*(?=@)/).first %>
+      <% end %>
+  <!-- === FORM ITSELF === -->
+      <%= form_for @comment, remote: true do |f| %>
+        <%= f.text_area :content, class: "lecture-form" %>
+        <%= f.submit class: "lecture-submit", value: "Publier" %>
+      <% end %>
+      <!-- END OF FORM -->
+      <div id="iferror"></div>
+    </div>
+  <% end %>
