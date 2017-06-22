@@ -1,10 +1,5 @@
 # config/meta.yml
 meta_title: "Mediaclasse"
-meta_description: "Les grands classiques de la littérature française résumés, analysés et illustrés en vidéo
-pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture !
-Mes méthodologies sont spécialement conçues pour le baccalauréat de Français en première
-(qu'on appelle parfois "Épreuve Anticipée de Français", soit EAF)
-mais on peut aussi les utiliser en complément de cours pour le bac de littérature (terminale L)
-et le CAPES de Lettres Modernes (le concours pour devenir professeur de Lettres)."
+meta_description: "Les grands classiques de la littérature française résumés, analysés et illustrés en vidéo pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture ! Mes méthodologies sont spécialement conçues pour le baccalauréat de Français en première (qu'on appelle parfois "Épreuve Anticipée de Français", soit EAF) mais on peut aussi les utiliser en complément de cours pour le bac de littérature (terminale L) et le CAPES de Lettres Modernes (le concours pour devenir professeur de Lettres)."
 meta_image: "logo.png" # Une image dans votre dossier app/assets/images/
 twitter_account: "@mediaclassefr" # indispensable pour les Twitter Cards
