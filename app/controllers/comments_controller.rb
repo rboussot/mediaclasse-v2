@@ -51,6 +51,6 @@ class CommentsController < ApplicationController
   end
 
   def find_comments
-    @comments = policy_scope(Comment).includes(user: :picture_files).order('created_at DESC')
+    @comments = policy_scope(Comment).where(visible: true).includes(user: :picture_files).order('created_at DESC')
   end
 end
