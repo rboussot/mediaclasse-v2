@@ -27,6 +27,7 @@
     <div class= "row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-6 video-wrapper">
         <div class= "home-card-large">
+            <p id="home-reagissez"><i>Commentez</i></p>
           <h4>Présentation</h4>
           <p><%= @pres.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
@@ -52,9 +53,8 @@
         <div class= "home-card-small">
           <h4>Édito</h4>
           <%= link_to comments_path do %>
-            <p id="home-reagissez"><i>Réagissez</i></p>
           <% end %>
-          <p><%= @edito.description %> <br><br> Pour connaître à l'avance mes prochaines publications, inscrivez-vous maintenant à ma <strong><%= link_to "Lettre d'Infos", newsletter_path, class: "underline link-profile" %></strong>
+          <p><%= @edito.description.gsub("\n", "<br/>").html_safe %> <br><br> Pour connaître à l'avance mes prochaines publications, inscrivez-vous maintenant à ma <strong><%= link_to "Lettre d'Infos", newsletter_path, class: "underline link-profile" %></strong>
           </p>
         </div>
         <div class= "home-card-small">
