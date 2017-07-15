@@ -43,112 +43,17 @@
             <div class="plan-title">
               <h2>Plan collectif</h2><br>
               <h4>Félicitations ! Votre plan collectif est prêt à être activé !</h4>
-              <p>Je vous invite à sélectionner le plan qui correspond au nombre d'utilisateurs souhaités.</p>
+              <p>Je vous invite à me contacter directement par email : mediaclasse.fr@gmail.com</p>
+                ► Indiquez-moi le nombre d'utilisateurs et la durée de l'abonnement.<br>
+                ► Profitez de remises spéciales
+                <%= link_to "https://goo.gl/0JJzqY", target: :_blank do %>
+                  <u>à consulter directement ici</u>
+                <% end %>.<br>
                 ► Vous pourrez laisser ce compte ouvert sur plusieurs postes en même temps.</br>
                 ► Tous les utilisateurs auront le même compte et le même mot de passe, ne communiquez pas ces informations à des personnes extérieures.</br>
                 ► Vos utilisateurs pourront accéder à l'intégralité de mes ressources. <br>
-                ► Vous pouvez cesser de participer quand vous le souhaitez, en un clic. <br>
-            </div>
-          </div>
-        </div>
-      <!-- === PLANS === -->
-        <div class="row">
-          <div class="col-xs-offset-2 plan-wrapper">
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "trente" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="3000"
-                  data-label="30€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "soixante" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="6000"
-                  data-label="60€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "quatre-vingt-dix" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="9000"
-                  data-label="90€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "cent-vingt" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="12000"
-                  data-label="120€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "cent-quatre-vingt" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="1!000"
-                  data-label="180€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            <div class= "plan-stripe hvr-glow collectif">
-              <%= form_tag plans_path do %>
-                <%= hidden_field_tag "plan", "trois-cent" %>
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
-                  data-name="Mediaclasse.fr"
-                  data-description="Participation mensuelle"
-                  data-amount="30000"
-                  data-label="300€"
-                  data-currency="EUR">
-                </script>
-              <% end %>
-            </div>
-            / par mois. <br>
-            <p><i>* Le paiement est international, entièrement sécurisé et crypté de bout en bout.</i></p>
-          </div>
-        </div>
-        <!-- === BOUTONS === -->
-        <div class="row">
-          <div class="col-xs-offset-2 plan-wrapper">
-            <%= render 'shared/planquestion' %>
-            <br>Vous souhaitez en savoir plus sur le système de paiement ?
-            <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-question hvr-glow">
-              <p>Comment ça fonctionne ?</p>
+                ► Paiement en une seule fois : je vous communiquerai mon RIB pour le virement quand vous m'aurez bien confirmé que le compte fonctionne.<br>
+                ► L'abonnement prendra fin simplement à la fin de la période choisie.<br>
             </div>
           </div>
         </div>
