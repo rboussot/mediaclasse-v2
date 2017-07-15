@@ -18,11 +18,15 @@
 }
 
 .form-actions .btn-default {
+  position: relative;
+  top: 0px;
+  left: 0px;
   width: 100%;
   background-color: $profile;
   color: white;
   font-size: 18px;
   border-radius: 4px;
+  padding: 6px;
 }
 
 .form-inputs label {
