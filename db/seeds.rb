@@ -41,7 +41,7 @@ balzac = Author.create!(
   death:1850,
   picture:'http://res.cloudinary.com/mediaclasse-fr/image/upload/v1473141632/authors/balzac.jpg'
 )
-puts "Author moliere created"
+puts "Author balzac created"
 moliere = Author.create!(
   lastname:"Poquelin",
   firstname:"Jean-Baptiste",
