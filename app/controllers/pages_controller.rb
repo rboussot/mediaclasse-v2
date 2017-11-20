@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   private
 
   def find_super_comments
-    @super_comments = policy_scope(Comment).includes(user: :picture_files).where(super: true).shuffle.last(5)
+    @super_comments = policy_scope(Comment).includes(user: :picture_files).where(super: true).order(created_at: :desc).last(5)
   end
 
 end
