@@ -43,7 +43,7 @@
     <% if comment.user.firstname %>
       <b><%= comment.user.firstname %> <%= comment.user.lastname %></b>
     <% else %>
-      <%= comment.user.email.gsub(/.*(?=@)/).first %>
+      <b><%= comment.user.email.gsub(/.*(?=@)/).first %></b>
     <% end %>
     <!-- Add the timestamp on the comment -->
     <i> - <%= comment.created_at.strftime("le %d/%m/%y à %H:%M") %></i><br>
