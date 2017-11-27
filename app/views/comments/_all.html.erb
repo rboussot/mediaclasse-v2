@@ -10,7 +10,7 @@
       <% if current_user.firstname %>
           <b><%= current_user.firstname %> <%= current_user.lastname %></b>
         <% else %>
-          <%= current_user.email.gsub(/.*(?=@)/).first %>
+          <b><%= current_user.email.gsub(/.*(?=@)/).first %></b>
         <% end %>
       <!-- If error -->
       <%= form_for @comment, remote: true do |f| %>
