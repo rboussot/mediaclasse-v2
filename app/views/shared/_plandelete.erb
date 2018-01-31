@@ -4,19 +4,13 @@
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class= "text-left">
-          <h2>Êtes-vous sûr de vouloir arrêter votre participation ?</h2>
-          Avec votre participation chaque mois : <br>
-          ► Vous accédez à tous mes cours de façon illimitée. <br>
-          ► Vous permettez à mon travail de rester accessible à tous. <br><br>
-          Que se passe-t-il si je cesse de participer ?<br>
-          ► Les versements sont immédiatement arrêtés.<br>
-          ► Vous n'avez plus accès à mes contenus réservés.<br>
-          ► Vous conservez toutes les informations de votre compte personnel.<br>
+          <h2>Êtes-vous sûr de vouloir vous désabonner ?</h2>
+          Lorsque vous cessez de participer, les versements sont immédiatement arrêtés, et vous n'avez plus accès à mes contenus réservés, mais bien sûr, vous conservez toutes les informations de votre compte personnel !<br>
         </div>
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <%= link_to "Oui, arrêter", cancel_plan_path, class: "btn btn-default" %><br><br>
+            <%= link_to "Oui", cancel_plan_path, class: "btn btn-default" %><br><br>
             <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">Annuler</button>
           </div>
         <% else %>
