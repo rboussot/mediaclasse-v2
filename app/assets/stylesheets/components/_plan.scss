@@ -74,7 +74,8 @@
   padding: 13px 20px 0px 20px;
   margin: 20px;
   margin-left: 76px;
-  background-color: #770000;
+  background-color: #660000;
+  opacity: .7;
   color: white;
   border-radius: 3px;
   min-width: 179px;
@@ -98,7 +99,7 @@
     display: inline-grid;
     border-radius: 3px;
     width: 176px;
-    height: 159px;
+    height: 170px;
     text-align: left;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -164,43 +165,17 @@
   background-color: $grey;
 }
 
-// .cinq {
-//   background-color: $grey;
-//   opacity: .8;
-// }
-
 .huit {
   background-color: $stripelight;
 }
-
-// .dix {
-//   background-color: $stripe;
-//   opacity: .7;
-// }
-
-// .quinze {
-//   background-color: $stripe;
-//   opacity: .9;
-// }
 
 .seize {
   background-color: $stripe;
 }
 
-// .vingt {
-//   background-color: $profile;
-//   opacity: .7;
-// }
-
-// .vingt-cinq {
-//   background-color: $profile;
-//   opacity: .9;
-// }
-
-// .trente {
-//   background-color: $orange;
-//   opacity: .8;
-// }
+.remise {
+  background-color: $orange;
+}
 
 .trente-deux {
   background-color: $blue;
