@@ -116,9 +116,9 @@
           <!-- Remises et virements -->
           <div class="col-xs-offset-3 plan-button">
             <%= render 'shared/plancollectif' %>
-            Payer par virement ? Profiter de remises spéciales ?
-              <%= link_to "https://goo.gl/0JJzqY", target: :_blank do %>
-                <div type="link" class="plan-question hvr-glow"><p>C'est par ici !</p></div>
+            Payer par virement ? Profiter de remises collectives ? Contactez-moi :
+              <%= mail_to:"mediaclasse.fr@gmail.com" do %>
+                <div type="link" class="plan-question hvr-glow"><p>mediaclasse.fr@gmail.com !</p></div>
               <% end %>
           </div>
           <!-- Cesser de participer -->
