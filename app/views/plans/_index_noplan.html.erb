@@ -114,12 +114,13 @@
         <!-- === BOUTONS === -->
         <div class="row">
           <!-- Remises et virements -->
-          <div class="col-xs-offset-3 plan-button">
             <%= render 'shared/plancollectif' %>
-            Payer par virement ? Profiter de remises collectives ? Contactez-moi :
-              <%= mail_to:"mediaclasse.fr@gmail.com", subject:"Comment payer par virement ?", body:"Bonjour !\nDans le corps de votre email, précisez le nombre d'utilisateurs et le nombre de mois que vous souhaitez payer par virement. \nJe vous indiquerai alors les tarifs, et si cela vous convient, je vous enverrai un RIB pour le virement. \nVotre abonnement sera ouvert dès réception du paiement ! \nMerci pour votre confiance !" do %>
-                <div type="link" class="plan-question hvr-glow"><p>mediaclasse.fr@gmail.com</p></div>
-              <% end %>
+          <!-- Payer par virement -->
+          <div class="col-xs-offset-3 plan-button">
+            Payer par virement ? Profiter de remises collectives ?
+            <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
+              <p>Contactez-moi</p>
+            </div><br>
           </div>
           <!-- Cesser de participer -->
           <div class="col-xs-offset-3 plan-button">

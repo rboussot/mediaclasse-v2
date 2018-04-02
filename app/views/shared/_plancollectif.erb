@@ -4,20 +4,12 @@
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class= "text-left">
-          <h2>Plan collectif</h2>
-          ► Vous êtes professeur, médiathécaire, président d'association ? <br>
-          ► Vous souhaitez ouvrir un compte pour plusieurs utilisateurs ?<br>
-          ► Vous souhaitez limiter votre abonnement dans la durée ?<br>
-          ► Vous avez besoin d'une facture ?<br><br>
-          Contactez-moi simplement par email, je me chargerai de tout :
-          <strong><i>mediaclasse.fr@gmail.com</strong></i><br><br>
-          Vous ne payez par virement, qu'après avoir confirmé que tout fonctionne chez vous.<br><br>
-          <%= link_to "https://goo.gl/0JJzqY", target: :_blank do %>
-            <div class="form-actions">
-              <button type="link" class="btn btn-default">Consulter ma grille tarifaire !</button>
-              <!-- < %= "Cliquez ici pour consulter ma grille tarifaire !" %><br><br> -->
-            </div>
-          <% end %>
+          <h2>Payer par virement ?</h2>
+          <b>Écrivez-moi à cette adresse : mediaclasse.fr@gmail.com </b><br><br>
+          Dans le corps de votre email, précisez le nombre d'utilisateurs et le nombre de mois que vous souhaitez payer par virement. <br>
+          Je vous indiquerai alors les tarifs, et si cela vous convient, je vous enverrai un RIB pour le virement. <br>
+          Votre abonnement sera ouvert dès réception du paiement ! <br>
+          <br>
         </div>
         <% if current_user %>
           <div class="form-actions">
