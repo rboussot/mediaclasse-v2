@@ -28,15 +28,45 @@
                   <h4>Individuel</h4>
                   <p>Vous participez actuellement pour un montant de 4€ / mois !</p>
               </div>
+            <% elsif current_user.plan === "cinq" %>
+              <div class= "plan-stripe quatre">
+                  <h4>Individuel</h4>
+                  <p>Vous participez actuellement pour un montant de 5€ / mois !</p>
+              </div>
             <% elsif current_user.plan === "huit" %>
               <div class= "plan-stripe huit">
                   <h4>Participant</h4>
                   <p>Merci ! Vous participez actuellement pour un montant de 8€ / mois !</p>
               </div>
+            <% elsif current_user.plan === "dix" %>
+              <div class= "plan-stripe huit">
+                  <h4>Participant</h4>
+                  <p>Merci ! Vous participez actuellement pour un montant de 10€ / mois !</p>
+              </div>
+            <% elsif current_user.plan === "quinze" %>
+              <div class= "plan-stripe seize">
+                  <h4>Contributeur</h4>
+                  <p>Merci ! Vous contribuez actuellement pour un montant de 15€ / mois !</p>
+              </div>
             <% elsif current_user.plan === "seize" %>
               <div class= "plan-stripe seize">
                   <h4>Contributeur</h4>
                   <p>Merci ! Vous contribuez actuellement pour un montant de 16€ / mois !</p>
+              </div>
+            <% elsif current_user.plan === "vingt" %>
+              <div class= "plan-stripe seize">
+                  <h4>Contributeur</h4>
+                  <p>Merci ! Vous contribuez actuellement pour un montant de 20€ / mois !</p>
+              </div>
+            <% elsif current_user.plan === "vingt-cinq" %>
+              <div class= "plan-stripe seize">
+                  <h4>Contributeur</h4>
+                  <p>Merci ! Vous contribuez actuellement pour un montant de 25€ / mois !</p>
+              </div>
+            <% elsif current_user.plan === "trente" %>
+              <div class= "plan-stripe trente-deux">
+                  <h4>Mécène</h4>
+                  <p>Merci ! Vous participez actuellement pour un montant de 30€ / mois !</p>
               </div>
             <% elsif current_user.plan === "trente-deux" %>
               <div class= "plan-stripe trente-deux">
@@ -52,16 +82,9 @@
           </div>
         <!-- === BOUTONS === -->
           <!-- Remises et virements -->
-          <div class="col-sm-5 plan-button"><br></div>
-          <div class="col-sm-5 plan-button">
-            <%= render 'shared/plancollectif' %>
-              Consulter les tarifs collectifs ?
-              <%= link_to "https://goo.gl/0JJzqY", target: :_blank do %>
-                <div type="link" class="plan-question hvr-glow"><p>C'est par ici !</p></div>
-              <% end %>
-          </div>
+          <div class="col-sm-5 plan-button"><br><br></div>
           <!-- Cesser de participer -->
-          <div class="col-sm-5 plan-button">
+          <div class="col-sm-offset-1 col-sm-5 plan-button">
             <% if current_user.collective %>
               <%= render 'shared/planquestion' %>
               Votre abonnement est payé !
@@ -69,7 +92,7 @@
                   <p>Cesser de participer</p>
                 </div><br>
             <% else %>
-              Arrêter mon abonnement :
+              Arrêter mon abonnement :<br>
               <%= render 'shared/plandelete' %>
               <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-delete hvr-glow">
                 <p>Cesser de participer</p>
