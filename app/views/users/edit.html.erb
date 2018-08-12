@@ -15,17 +15,22 @@
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+            <!--
               <%= f.input :email, disabled: true %>
               <%= f.input :phone, label: "Téléphone", class: "telinput" %>
+            -->
+          <i>Ces données supplémentaires ne sont jamais communiquées à un tiers : elles ne sont qu'un indicateur pour m'aider à ajuster la pédagogie des contenus.</i>
             </div>
             <div class="col-xs-12 col-sm-3">
               <%= f.input :birth, label: "Date de naissance", as: :date, start_year: Date.today.year - 90,end_year: Date.today.year - 12, discard_day: false,order: [ :day, :month, :year  ] %>
               <%= f.input :level_id, collection: Level.all, label: "Niveau" %>
             </div>
           </div>
+          <!--
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <%= f.input :adress, label: "Adresse", as: :text %>
           </div><br>
+          -->
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <%= f.submit class: "btn btn-primary hvr-glow", id:"profilesave", value: "Enregistrer"%>
           </div>
