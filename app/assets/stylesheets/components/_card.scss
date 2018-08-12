@@ -5,7 +5,8 @@
 .card-course {
   position: relative;
   background-size: cover;
-  min-height: 300px;
+  min-height: 350px;
+  max-width: 300px;
   margin: 20px 0;
   border-radius: 3px;
   border: 1px solid black;
@@ -55,8 +56,8 @@ body span.card-author {
 
 .card-like {
   position: absolute;
-  top: 30px;
-  right: 40px;
+  bottom: 60px;
+  left: 60px;
 }
 
 .card-course:hover, .card-course:focus, .card-course:active {
