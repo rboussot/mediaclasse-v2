@@ -3,8 +3,13 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-        <div class="banner-image"></div>
-
+        <div class="banner-image">
+          <div class="banner-newsletter">
+            <h3>Ma Lettre d'Informations<br></h3>
+            <h4>Pour recevoir gratuitement mes nouvelles publications par e-mail :</h4>
+          </div>
+        </div>
+        <br>
 
         <!-- Begin MailChimp Signup Form -->
         <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -16,24 +21,17 @@
         <div id="mc_embed_signup">
         <form action="//mediaclasse.us13.list-manage.com/subscribe/post?u=5d3c11d83e081794e90af353a&amp;id=6d9d1d99a2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
-          <h3>Pour recevoir mes nouvelles publications par e-mail :<br>
-            <%= link_to comments_path do %>
-              <p id="home-livredor"><i>Livre d'Or</i></p>
-            <% end %>
-          </h3>
-          <h4>N'hésitez pas à vous inscrire à ma Lettre d'Infos mensuelle (c'est gratuit) !</h4>
-        <div class="champs requis"><span class="asterisk">*</span> champs requis</div>
         <div class="mc-field-group">
-          <label for="mce-EMAIL">Adresse E-mail  <span class="asterisk">*</span>
+          <label for="mce-EMAIL">Adresse E-mail*
         </label>
           <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
         </div>
         <div class="mc-field-group">
-          <label for="mce-FNAME">Prénom </label>
+          <label for="mce-FNAME">Prénom* </label>
           <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
         </div>
         <div class="mc-field-group">
-          <label for="mce-LNAME">Nom de Famille </label>
+          <label for="mce-LNAME">Nom de Famille* </label>
           <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
         </div>
           <div id="mce-responses" class="clear">
@@ -44,6 +42,9 @@
             <div class="clear"><input type="submit" value="Je m'inscris !" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
             </div>
         </form>
+        </div>
+        <div class="champs requis">
+          <span class="asterisk">*</span> <i>Ces données ne sont jamais communiquées à un tiers, elles ne servent qu'à envoyer la Lettre d'Infos.</i><br> <br> <br> <br> <br>
         </div>
         <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text'; /*
          * Translated default messages for the $ validation plugin.
