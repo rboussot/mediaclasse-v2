@@ -150,14 +150,13 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
-      mini_mime (>= 0.1.1)
-    mailgunner (2.4.0)
+    mail (2.6.5)
+      mime-types (>= 1.16, < 4)
+    mailgunner (2.5.0)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     monetize (1.4.0)
@@ -309,7 +308,8 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   listen (~> 3.0.5)
-  mailgunner (~> 2.4)
+  mail (= 2.6.5)
+  mailgunner (~> 2.5.0)
   money-rails
   pg
   pg_search
