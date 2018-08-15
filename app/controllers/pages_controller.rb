@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   def invoices
     # Accéder à l'API de Stripe
     require "stripe"
-    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     # Si c'est un ancien ID qui commence en S, on récupère le bon à partir de l'API de Stripe
     if current_user[:stripe_customer_id][0] == "s"
       @stripe_subscription_data = Stripe::Subscription.retrieve(current_user[:stripe_customer_id])
@@ -43,9 +43,6 @@ class PagesController < ApplicationController
     unless current_user && current_user.admin
       redirect_to root_path
     end
-    # Accéder à l'API de stripe
-    require "stripe"
-    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
     # Récupérer tous les utilisateurs qui ont un abonnement en cours
     @users_with_subscription = User.where.not(stripe_customer_id: [nil, ""]).order('email ASC')
   end
@@ -67,6 +64,14 @@ class PagesController < ApplicationController
     # Enregistrer cet ID à la place de l'autre
     @user.stripe_customer_id = @stripe_real_customer_id
     @user.save
+  end
+
+  def test
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    # Récupérer les informations de l'utilisateur actuel
+    @customer_infos = Stripe::Customer.retrieve(current_user.stripe_customer_id)
   end
 
   private

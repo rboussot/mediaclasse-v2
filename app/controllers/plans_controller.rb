@@ -27,7 +27,7 @@ class PlansController < ApplicationController
       :plan => plan,
       :email => current_user.email
     )
-    current_user.stripe_customer_id = customer['subscriptions']['data'][0]['id']
+    current_user.stripe_customer_id = customer['id']
     current_user.paydate = Time.at(customer['created'])
     current_user.plan = plan
     @user = current_user
@@ -37,14 +37,24 @@ class PlansController < ApplicationController
 
   def cancel
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    subscription = Stripe::Subscription.retrieve(current_user.stripe_customer_id)
-    subscription.delete
+    # ===== Supprimer le customer quand on a son ID
+    customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    customer.delete
     current_user.paydate = nil
     current_user.plan = nil
     current_user.stripe_customer_id = nil
     @user = current_user
     @user.save
     redirect_to plans_path
+    # ===== Supprimer la Subscription quand on a son ID
+    # subscription = Stripe::Subscription.retrieve(current_user.stripe_customer_id)
+    # subscription.delete
+    # current_user.paydate = nil
+    # current_user.plan = nil
+    # current_user.stripe_customer_id = nil
+    # @user = current_user
+    # @user.save
+    # redirect_to plans_path
   end
 
 end
