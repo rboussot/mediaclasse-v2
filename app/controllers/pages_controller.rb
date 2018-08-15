@@ -67,6 +67,10 @@ class PagesController < ApplicationController
   end
 
   def test
+    # Page réservée aux Administrateurs du site
+    unless current_user && current_user.admin
+      redirect_to root_path
+    end
     # Accéder à l'API de stripe
     require "stripe"
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
