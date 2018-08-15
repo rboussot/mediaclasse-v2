@@ -1,0 +1,150 @@
+<!-- === EN-TÊTE === -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="plan-title">
+              <br>
+                <h3>Votre abonnement intégral pour un prix libre</h3>
+              <br>
+              <div class="plan-infos">
+                ► C'est un prix libre : <u>quel que soit le montant choisi</u>, vous accédez à TOUT, sans limite ! Les forfaits les plus élevés contribuent aux forfaits réduits et au développement du site.<br>
+                ► Par carte bancaire, <u>Le paiement est renouvelé automatiquement tous les mois</u>, mais vous pouvez l'arrêter immédiatement en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
+                ► Le système de paiement est <u>international et sécurisé à 100%</u> (la connexion est cryptée de bout en bout). <br>
+                ► Vos données ne sont <u>jamais communiquées</u> à un tiers, elles ne servent qu'à activer votre abonnement.<br><br>
+              </div>
+              <div>
+                Accepter les
+                <%= render 'shared/plancgv' %>
+                <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
+                  <i>Conditions générales de vente ?  </i>
+                </span>
+                <%= link_to plans_path do %>
+                  <i class="fa fa-check-square"></i>
+                <% end %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!-- === PLANS === -->
+            <div class="row">
+              <div class="col-xs-offset-2 plan-wrapper">
+                <!-- DEUX -->
+                <div class= "plan-stripe deux">
+                  <h4>Prix réduit</h4>
+                  <p>Une somme symbolique pour les plus faibles revenus !</p>
+                  <%= form_tag plans_path do %>
+                    <%= hidden_field_tag "plan", "deux" %>
+                    <span style="margin: 15px"></span>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                      data-name="Mediaclasse.fr"
+                      data-description="Participation mensuelle"
+                      data-amount="200"
+                      data-label="2€ /mois"
+                      data-currency="EUR">
+                    </script>
+                    <!-- <span class="plan-infobulle hidden-xs">Prix réduit : une somme symbolique pour les plus faibles revenus !</span> -->
+                  <% end %>
+                </div>
+                <!-- QUATRE -->
+                <div class= "plan-stripe quatre">
+                  <h4>Individuel</h4>
+                  <p>Un prix neutre pour s'abonner en toute indépendance.</p>
+                  <%= form_tag plans_path do %>
+                    <%= hidden_field_tag "plan", "quatre" %>
+                    <span style="margin: 15px"></span>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                      data-name="Mediaclasse.fr"
+                      data-description="Participation mensuelle"
+                      data-amount="400"
+                      data-label="4€ / mois"
+                      data-currency="EUR">
+                    </script>
+                    <!-- <span class="plan-infobulle hidden-xs">Individuel : un prix neutre pour s'abonner en toute indépendance.</span> -->
+                  <% end %>
+                </div>
+                <!-- HUIT -->
+                <div class= "plan-stripe huit">
+                  <h4>Participant</h4>
+                  <p>Merci ! Vous prenez part au système de solidarité !</p>
+                  <%= form_tag plans_path do %>
+                    <%= hidden_field_tag "plan", "huit" %>
+                    <span style="margin: 14px"></span>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                      data-name="Mediaclasse.fr"
+                      data-description="Participation mensuelle"
+                      data-amount="800"
+                      data-label="8€ / mois"
+                      data-currency="EUR">
+                    </script>
+                   <!--  <span class="plan-infobulle hidden-xs">Participant : Merci ! Vous prenez part au système de solidarité !</span> -->
+                  <% end %>
+                </div>
+                <!-- SEIZE -->
+                <div class= "plan-stripe seize">
+                  <h4>Contributeur</h4>
+                  <p>Merci ! Grâce à vous, le site se développe et devient pérenne !</p>
+                  <%= form_tag plans_path do %>
+                    <%= hidden_field_tag "plan", "seize" %>
+                    <span style="margin: 13px"></span>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                      data-name="Mediaclasse.fr"
+                      data-description="Participation mensuelle"
+                      data-amount="1600"
+                      data-label="16€ /mois"
+                      data-currency="EUR">
+                    </script>
+                    <!-- <span class="plan-infobulle hidden-xs">Contributeur : Merci ! Grâce à vous, le site à se développe et devient pérenne !</span> -->
+                  <% end %>
+                </div>
+                <!-- TRENTE-DEUX -->
+                <div class= "plan-stripe trente-deux">
+                  <h4>Mécène</h4>
+                  <p>Vous soutenez le projet avec passion ! Merci pour cette générosité !</p>
+                  <%= form_tag plans_path do %>
+                    <%= hidden_field_tag "plan", "trente-deux" %>
+                    <span style="margin: 12px"></span>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                      data-name="Mediaclasse.fr"
+                      data-description="Participation mensuelle"
+                      data-amount="3200"
+                      data-label="32€ / mois"
+                      data-currency="EUR">
+                    </script>
+                   <!--  <span class="plan-infobulle hidden-xs">Mécène : vous soutenez le projet avec passion ! Merci pour cette générosité !</span> -->
+                  <% end %>
+                </div>
+              </div>
+            </div>
+    <!-- === BOUTONS === -->
+            <br>
+            <div class="row">
+              <!-- Remises et virements -->
+                <%= render 'shared/plancollectif' %>
+              <!-- Payer par virement -->
+              <div class="col-xs-offset-3 plan-button">
+                Payer par virement ? Profiter de remises collectives ?
+                <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
+                  <p>Contactez-moi</p>
+                </div><br>
+              </div>
+              <!-- Cesser de participer -->
+              <div class="col-xs-offset-3 plan-button">
+                <%= render 'shared/planquestion' %>
+                Ce bouton deviendra actif dès que vous serez abonné :
+                <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-delete-off hvr-glow">
+                  <p>Cesser de participer</p>
+                </div><br>
+              </div>
+            </div>
+          </div>
+        </div>

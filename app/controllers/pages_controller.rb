@@ -22,6 +22,53 @@ class PagesController < ApplicationController
   def newsletter
   end
 
+  def invoices
+    # Accéder à l'API de Stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Si c'est un ancien ID qui commence en S, on récupère le bon à partir de l'API de Stripe
+    if current_user[:stripe_customer_id][0] == "s"
+      @stripe_subscription_data = Stripe::Subscription.retrieve(current_user[:stripe_customer_id])
+      @stripe_customer_id = @stripe_subscription_data["customer"]
+    # Si c'est un ancien ID qui commence en CUS
+    else
+      @stripe_customer_id = current_user[:stripe_customer_id]
+    end
+    # Récupérer les Factures depuis l'API de Stripe
+      @invoices = Stripe::Invoice.list(limit: 100, customer: @stripe_customer_id)
+  end
+
+  def getsub
+    # Page réservée aux Administrateurs du site
+    unless current_user && current_user.admin
+      redirect_to root_path
+    end
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Récupérer tous les utilisateurs qui ont un abonnement en cours
+    @users_with_subscription = User.where.not(stripe_customer_id: [nil, ""]).order('email ASC')
+  end
+
+  def replacesub
+    # Page réservée aux Administrateurs du site
+    unless current_user && current_user.admin
+      redirect_to root_path
+    end
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Récupérer les infos de l'abonnement
+    @stripe_subscription_data = Stripe::Subscription.retrieve(params[:format])
+    # Retrouver l'utilisateur qui possède cet abonnement
+    @user = User.where(stripe_customer_id: params[:format]).first
+    # Retrouver le véritable ID de cet utilisateur
+    @stripe_real_customer_id = @stripe_subscription_data["customer"]
+    # Enregistrer cet ID à la place de l'autre
+    @user.stripe_customer_id = @stripe_real_customer_id
+    @user.save
+  end
+
   private
 
   def find_super_comments

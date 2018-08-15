@@ -1,0 +1,31 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>Liste des Abonnés avec leur ID Stripe</h3>
+        <!-- ===== AFFICHER LES ABONNÉS ===== -->
+          <% @users_with_subscription.each do |user_with_subscription| %>
+            <% unless user_with_subscription.stripe_customer_id[0] == "c" %>
+              <style type="text/css">
+                p {
+                  color: #26b72b;
+                }
+                </style>
+                <%= link_to replacesub_path(user_with_subscription.stripe_customer_id) do %>
+                  <%= user_with_subscription.email %> -
+                  <%= @old_id = user_with_subscription.stripe_customer_id %>
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= user_with_subscription.email %> -
+                <%= @old_id = user_with_subscription.stripe_customer_id %>
+              </p>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
