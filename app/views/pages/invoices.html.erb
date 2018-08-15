@@ -1,0 +1,28 @@
+<div class="home-wrapper">
+  <div class="container-fluid">
+    <div class="border profile hidden-xs"></div>
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-1 col-sm-offset-2">
+        <%= link_to plans_path do %>
+              <div class="lecture-retour hvr-bubble-left">
+                <p>Retour</p>
+              </div>
+            <% end %>
+          </div>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+        <br><h3>Factures de votre abonnement en cours</h3><br><br>
+<!-- === LISTE DES FACTURES === -->
+          <% @invoices["data"].each do |data| %>
+            <%= link_to data["hosted_invoice_url"], format: 'pdf', target: :_blank do %>
+              <h4> <%= Time.at(data["date"]).strftime("%d/%m/%Y") %>
+                <!-- - (<#%= number_to_currency(data["amount_due"]/100.0,:unit=>'€')%>)</h4> -->
+            <% end %>
+          <% end %>
+<!-- ===== Fin de la page ===== -->
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/footer' %>

@@ -7,9 +7,12 @@
       <!-- ========== ELSIF PLANS COLLECTIFS ========== -->
       <% elsif current_user.collective %>
         <%= render 'index_collectiveplan' %>
-      <!-- ========== ELSE PLANS INDIVIDUELS ========== -->
+      <!-- ========== ELSE PLANS CHECKED ========== -->
+      <% elsif params[:format] %>
+        <%= render 'index_showplans' %>
+      <!-- ========== ELSE PLANS CHECKED ========== -->
       <% else %>
-        <%= render 'index_noplan' %>
+        <%= render 'index_noplan(js)' %>
     <!-- ========== END ========== -->
       <% end %>
     <!-- ========== CLOSE WRAPPERS ========== -->

@@ -56,6 +56,16 @@
   cursor: pointer;
 }
 
+.plan-pointer {
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.plan-cgv{
+  height: 300px;
+  overflow-y: scroll;
+}
+
 .plan-delete {
   font-size: 14px;
   padding: 13px 20px 0px 20px;
@@ -91,12 +101,42 @@
     font-size: 14px;
 }
 
+.plan-box {
+  font-size: 24px;
+  cursor: pointer;
+}
+.plan-checked {
+  display: none;
+}
+.plan-stripebutton-inactive {
+  width: 93px;
+  margin: auto;
+  position: relative;
+  padding: 0 12px;
+  height: 30px;
+  line-height: 30px;
+  background: #909090;
+  opacity: 0.7;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.plan-stripebutton-active {
+  display: none;
+}
+
 .plan-stripe {
     font-size: 14px;
     padding: 0px 15px 10px 15px;
     margin: 3px;
-    display: -ms-inline-grid;
-    display: inline-grid;
+    display: inline-block;
     border-radius: 3px;
     width: 176px;
     height: 170px;

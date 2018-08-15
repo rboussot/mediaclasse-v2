@@ -1,0 +1,16 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>Mise à jour des ID Stripe</h3>
+          <!-- CHANGER LES ID -->
+          <p>Email utilisateur : <%= @user.email %></p>
+          <p>Ancien id : <%= params[:format] %></p>
+          <p>Nouvel id trouvé : <%= @stripe_real_customer_id %></p>
+          <p>Nouvel id enregistré : <%= @user.stripe_customer_id %></p>
+          <%= link_to "OK", getsub_path %>
+      </div>
+    </div>
+  </div>
+</div>
