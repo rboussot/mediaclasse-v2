@@ -5,8 +5,14 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <h3>Liste des Abonnés avec leur ID Stripe</h3>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
-        <%= @customer_infos %>
-        <!-- ===== FIN DE PAGE ===== -->
+          <% @customers.each do |customer| %>
+            <%= link_to customer_infos_path(customer.stripe_customer_id) do %>
+              <p>
+                <%= customer.email %> -
+                <%= customer.stripe_customer_id %>
+              </p>
+            <% end %>
+          <% end %>
       </div>
     </div>
   </div>

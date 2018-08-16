@@ -26,9 +26,10 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
   get "invoices", to: "pages#invoices"
-  get "getsub", to: "pages#getsub"
+  get "customers_list", to: "pages#customers_list"
+  get "invoices_pastdue", to: "pages#invoices_pastdue"
+  get "customer_infos", to: "pages#customer_infos"
   get "replacesub", to: "pages#replacesub"
-  get "test", to: "pages#test"
   get "inprogress", to: "plans#inprogress"
   get "cancel_plan", to: "plans#cancel"
   get '/googleba02ed7fdee6ed83.html', to: 'pages#googlevalidation'

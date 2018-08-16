@@ -38,13 +38,13 @@ class PagesController < ApplicationController
       @invoices = Stripe::Invoice.list(limit: 100, customer: @stripe_customer_id)
   end
 
-  def getsub
+  def customers_list
     # Page réservée aux Administrateurs du site
     unless current_user && current_user.admin
       redirect_to root_path
     end
     # Récupérer tous les utilisateurs qui ont un abonnement en cours
-    @users_with_subscription = User.where.not(stripe_customer_id: [nil, ""]).order('email ASC')
+    @customers = User.where.not(stripe_customer_id: [nil, ""]).order('email ASC')
   end
 
   def replacesub
@@ -66,16 +66,28 @@ class PagesController < ApplicationController
     @user.save
   end
 
-  def test
+  def customer_infos
     # Page réservée aux Administrateurs du site
     unless current_user && current_user.admin
       redirect_to root_path
     end
     # Accéder à l'API de stripe
     require "stripe"
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    # Récupérer les informations de l'utilisateur actuel
-    @customer_infos = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Récupérer les informations de l'utilisateur sélectionné
+    @customer_infos = Stripe::Customer.retrieve(params[:format])
+ end
+
+  def invoices_pastdue
+        # Page réservée aux Administrateurs du site
+    unless current_user && current_user.admin
+      redirect_to root_path
+    end
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Récupérer tous les utilisateurs qui ont un défaut de paiement
+    @invoices = Stripe::Invoice.list(past_due: true, limit: 100)
   end
 
   private

@@ -1,0 +1,17 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>Informations client</h3>
+        <!-- ===== AFFICHER LES ABONNÉS ===== -->
+        <p>E-mail : <%= @customer_infos[:email] %></p>
+        <p>Stripe_customer_id : <%= @customer_infos[:id] %></p>
+        <p>Subscription : <%= @customer_infos["subscriptions"]["data"].find({["canceled_at"] => "null"}).first["id"] %></p>
+        <!-- @stripe_customer_infos["subscriptions"]["data"].find({"canceled_at" => "null"}).first["id"] -->
+        <!-- ===== FIN DE PAGE ===== -->
+      </div>
+    </div>
+  </div>
+</div>
+

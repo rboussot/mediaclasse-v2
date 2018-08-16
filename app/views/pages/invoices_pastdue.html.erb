@@ -1,0 +1,21 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>Nombre de factures impayées : <%= @invoices.count %></h3>
+        <!-- ===== AFFICHER LES ABONNÉS ===== -->
+          <% @invoices.each do |invoice| %>
+              <p>
+                <% user = User.where(stripe_customer_id: invoice["customer"]).first %>
+                <% unless user.nil? %>
+                  <%= user.email %>
+                <% end %>
+                 - <%= invoice["customer"] %>
+              </p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
