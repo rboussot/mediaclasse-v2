@@ -76,10 +76,15 @@ class PagesController < ApplicationController
     Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
     # Récupérer les informations de l'utilisateur sélectionné
     @customer_infos = Stripe::Customer.retrieve(params[:format])
+    # Si l'abonnement est en cours, récupérer les informations
+    unless @customer_infos["deleted"] || @customer_infos["subscriptions"]["data"].blank?
+      @subscription_id = @customer_infos["subscriptions"]["data"].find({["canceled_at"] => "null"}).first["id"]
+      @subscription_infos = Stripe::Subscription.retrieve(@subscription_id)
+    end
  end
 
   def invoices_pastdue
-        # Page réservée aux Administrateurs du site
+    # Page réservée aux Administrateurs du site
     unless current_user && current_user.admin
       redirect_to root_path
     end
@@ -88,6 +93,41 @@ class PagesController < ApplicationController
     Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
     # Récupérer tous les utilisateurs qui ont un défaut de paiement
     @invoices = Stripe::Invoice.list(past_due: true, limit: 100)
+  end
+
+  def invoice_infos
+    # Page réservée aux Administrateurs du site
+    unless current_user && current_user.admin
+      redirect_to root_path
+    end
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Récupérer les informations de la facture
+    @invoice = Stripe::Invoice.retrieve(params[:format])
+    # Récupérer l'utilisateur dans ma base de données
+    @user = User.where(stripe_customer_id: @invoice["customer"]).first
+    # Si l'utilisateur existe en base de données, récupérer le client stripe
+    unless @user.nil?
+      @customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
+    end
+  end
+
+  def customer_delete
+    # Désabonner l'utilisateur dans la base de données
+    current_user.paydate = nil
+    current_user.plan = nil
+    current_user.stripe_customer_id = nil
+    @user = current_user
+    @user.save
+    # Envoyer un email à l'utilisateur
+    # ?
+    # ?
+    # Supprimer le customer sur Stripe
+    customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    customer.delete
+    # Rediriger sur la page des factures impayées
+    redirect_to invoices_pastdue_path
   end
 
   private

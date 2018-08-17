@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get "invoices", to: "pages#invoices"
   get "customers_list", to: "pages#customers_list"
   get "invoices_pastdue", to: "pages#invoices_pastdue"
+  get "invoice_infos", to: "pages#invoice_infos"
   get "customer_infos", to: "pages#customer_infos"
   get "replacesub", to: "pages#replacesub"
   get "inprogress", to: "plans#inprogress"

@@ -6,13 +6,16 @@
         <h3>Nombre de factures impayées : <%= @invoices.count %></h3>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @invoices.each do |invoice| %>
+            <%= link_to invoice_infos_path(invoice["id"]), target: :_blank do %>
               <p>
                 <% user = User.where(stripe_customer_id: invoice["customer"]).first %>
                 <% unless user.nil? %>
                   <%= user.email %>
                 <% end %>
                  - <%= invoice["customer"] %>
+                 - <%= invoice["attempt_count"] %>
               </p>
+            <% end %>
           <% end %>
       </div>
     </div>

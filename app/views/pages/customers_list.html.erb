@@ -3,13 +3,14 @@
 <!-- === EN-TÊTE === -->
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <h3>Liste des Abonnés avec leur ID Stripe</h3>
+        <h3>Nombre d'Abonnés : <%= @customers.length %></h3>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @customers.each do |customer| %>
-            <%= link_to customer_infos_path(customer.stripe_customer_id) do %>
+            <%= link_to customer_infos_path(customer.stripe_customer_id), target: :_blank do %>
               <p>
                 <%= customer.email %> -
-                <%= customer.stripe_customer_id %>
+                <%= customer.stripe_customer_id %> -
+                <%= customer.plan %> -
               </p>
             <% end %>
           <% end %>

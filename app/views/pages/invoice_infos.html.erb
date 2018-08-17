@@ -1,0 +1,57 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>Informations facture</h3>
+        <!-- ===== INFOS SUR LA FACTURE SÉLECTIONNÉE ===== -->
+        <div>
+          Email :
+          <% user = User.where(stripe_customer_id: @invoice["customer"]).first %>
+            <% unless user.nil? %>
+              <%= user.email %>
+            <% end %>
+          <br>
+          Id de l'utilisateur pour Stripe :
+          <%= @invoice["customer"] %>
+          <br>
+          Nombre de tentatives de retrait :
+          <%= @invoice["attempt_count"] %>
+          <br>
+          Type d'abonnement :
+          <%= @invoice["lines"]["data"].last["plan"]["name"] %>
+          <br>
+          Date du premier échec de paiement:
+          <%= Time.at(@invoice["date"]).strftime('%d/%m/%Y') %>
+          <br>
+          <% unless @customer.nil? %>
+            Date de début de l'abonnement :
+            <%= Time.at(@customer["created"]).strftime('%d/%m/%Y') %>
+            <br>
+            Nombre de mois payés :
+            <%= (Time.at(@invoice["date"]).year * 12 + Time.at(@invoice["date"]).month) - (Time.at(@customer["created"]).year * 12 + Time.at(@customer["created"]).month) %>
+            <br>
+          <% end %>
+          Nombre de jours écoulés :
+          <%= (Date.today.to_date - Time.at(@invoice["date"]).to_date).to_i %>
+          <!-- === INFOS BRUTES === -->
+          <!--
+          <br><br>
+          <%= @invoice %>
+          <br><br>
+          <%= @customer %>
+          -->
+        </div><br>
+        <!-- === BOUTON D'ACTION === -->
+
+          <div class = "btn btn-primary">
+            Désabonner et prévenir
+          </div>
+
+        <!-- ===== FIN DE PAGE ===== -->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
