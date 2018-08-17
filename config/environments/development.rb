@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -42,7 +42,7 @@ Rails.application.configure do
   #   :password             => ENV['mailgun_password'],
   #   :authentication       => :plain,
   # }
-  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.mailgun_settings = {domain: 'http://localhost:3000'}
 
   # Print deprecation notices to the Rails logger.

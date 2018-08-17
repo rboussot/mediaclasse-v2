@@ -1,0 +1,25 @@
+<p>Bonjour
+  <% unless @user.firstname.nil? %>
+    <%= @user.firstname %> !
+  <% end %>
+</p>
+<p>Bienvenue parmi les abonnés de Mediaclasse ! </p>
+<% case @user.plan %>
+  <% when "deux" %>
+  <p>Votre abonnement de 2€ par mois commence aujourd'hui ! Merci pour votre contribution et pour votre confiance. Ce forfait est prévu spécialement pour permettre un accès à tous mes contenus, pour une somme symbolique.</p>
+  <% when "quatre" %>
+  <p>Votre abonnement de 4€ par mois commence aujourd'hui ! Merci pour votre contribution et pour votre confiance. Ce forfait vous permet d'accéder à tous mes contenus de façon individuelle et indépendante.</p>
+  <% when "huit" %>
+  <p>Votre abonnement de 8€ par mois commence aujourd'hui ! Merci pour votre contribution et pour votre confiance : vous participez à un système de solidarité qui rend mes contenus accessibles à tous !</p>
+  <% when "seize" %>
+  <p>Votre abonnement de 16€ par mois commence aujourd'hui ! Merci pour votre contribution et pour votre confiance : grâce à votre participation, le site se développe et devient pérenne !</p>
+  <% when "trente-deux" %>
+  <p>Votre abonnement de 32€ par mois commence aujourd'hui ! Merci pour votre contribution et pour votre confiance. Vous soutenez le projet avec passion ! Merci pour cette générosité !</p>
+<% end %>
+<p>
+<p>Votre abonnement est automatiquement renouvelé tous les mois, mais vous pouvez l'interrompre quand vous le souhaitez, en cliquant sur le bouton rouge "Cesser de participer" depuis votre <%= link_to 'espace "Abonnement"', plans_url %>. C'est sur cette même page que vous pourrez consulter et télécharger les factures de l'abonnement en cours.</p>
+<p>Si vous avez la moindre question, n'hésitez pas à me contacter à l'adresse suivante : mediaclasse.fr@gmail.com, je vous répondrai avec plaisir.</p>
+<p>En vous souhaitant une excellente utilisation du site,</p>
+
+Romain de Mediaclasse
+</p>

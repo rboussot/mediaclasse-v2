@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "invoice_infos", to: "pages#invoice_infos"
   get "customer_infos", to: "pages#customer_infos"
   get "replacesub", to: "pages#replacesub"
+  get "test", to: "pages#test"
   get "inprogress", to: "plans#inprogress"
   get "cancel_plan", to: "plans#cancel"
   get '/googleba02ed7fdee6ed83.html', to: 'pages#googlevalidation'

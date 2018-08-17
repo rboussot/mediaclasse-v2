@@ -1,4 +1,4 @@
- source 'https://rubygems.org'
+source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '5.0.0'
@@ -32,6 +32,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'letter_opener'
 
   gem 'pry-byebug'
   gem 'pry-rails'
