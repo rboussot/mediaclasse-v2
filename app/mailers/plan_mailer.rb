@@ -8,6 +8,6 @@ class PlanMailer < ApplicationMailer
   def welcome(user)
     @user = user
 
-    mail(to: @user.email, subject: "Welcome #{@user.firstname}")
+    mail(to: @user.email, subject: "Bienvenue #{@user.firstname}")
   end
 end
