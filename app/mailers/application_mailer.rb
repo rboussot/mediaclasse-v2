@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'postmaster@www.mediaclasse.fr'
+  default from: 'postmaster@mediaclasse.fr'
   layout 'mailer'
 end

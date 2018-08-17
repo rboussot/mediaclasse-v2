@@ -22,6 +22,9 @@ class PagesController < ApplicationController
   def newsletter
   end
 
+  def test
+  end
+
   def invoices
     # Accéder à l'API de Stripe
     require "stripe"

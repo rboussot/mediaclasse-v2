@@ -32,6 +32,11 @@ class PlansController < ApplicationController
     current_user.plan = plan
     @user = current_user
     @user.save
+    # Send email with mailgun
+    if @user.save
+      PlanMailer.welcome(@user).deliver_now
+    end
+    # Redirect to the plans page
     redirect_to plans_path
   end
 
