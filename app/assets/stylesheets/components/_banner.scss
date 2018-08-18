@@ -27,3 +27,22 @@
     font-size: 20px;
     padding-top: 200px;
   }
+  .banner-cookie {
+    width: 100%;
+    background-color: black;
+    color: silver;
+    font-size: 15px;
+    padding: 30px;
+    position: fixed;
+    bottom: 0px
+  }
+  .banner-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .banner-cookie:target {
+    display: none;
+  }
