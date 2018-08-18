@@ -7,9 +7,9 @@
         <!-- ===== INFOS SUR LA FACTURE SÉLECTIONNÉE ===== -->
         <div>
           Email :
-          <% user = User.where(stripe_customer_id: @invoice["customer"]).first %>
-            <% unless user.nil? %>
-              <%= user.email %>
+          <% @user_to_unsubscribe = User.where(stripe_customer_id: @invoice["customer"]).first %>
+            <% unless @user_to_unsubscribe.nil? %>
+              <%= @user_to_unsubscribe.email %>
             <% end %>
           <br>
           Id de l'utilisateur pour Stripe :
@@ -45,7 +45,7 @@
         <!-- === BOUTON D'ACTION === -->
 
           <div class = "btn btn-primary">
-            Désabonner et prévenir
+            <%= link_to "Désabonner et prévenir", unsubscribe_path(user_to_unsubscribe: @user_to_unsubscribe.id) %>
           </div>
 
         <!-- ===== FIN DE PAGE ===== -->

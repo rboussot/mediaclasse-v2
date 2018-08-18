@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get "invoices_pastdue", to: "pages#invoices_pastdue"
   get "invoice_infos", to: "pages#invoice_infos"
   get "customer_infos", to: "pages#customer_infos"
+  get "unsubscribe", to: "pages#unsubscribe"
   get "replacesub", to: "pages#replacesub"
   get "test", to: "pages#test"
   get "inprogress", to: "plans#inprogress"

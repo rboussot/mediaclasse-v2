@@ -84,7 +84,7 @@ class PagesController < ApplicationController
       @subscription_id = @customer_infos["subscriptions"]["data"].find({["canceled_at"] => "null"}).first["id"]
       @subscription_infos = Stripe::Subscription.retrieve(@subscription_id)
     end
- end
+  end
 
   def invoices_pastdue
     # Page réservée aux Administrateurs du site
@@ -107,7 +107,7 @@ class PagesController < ApplicationController
     require "stripe"
     Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
     # Récupérer les informations de la facture
-    @invoice = Stripe::Invoice.retrieve(params[:format])
+    @invoice = Stripe::Invoice.retrieve(params[:invoice])
     # Récupérer l'utilisateur dans ma base de données
     @user = User.where(stripe_customer_id: @invoice["customer"]).first
     # Si l'utilisateur existe en base de données, récupérer le client stripe
@@ -116,19 +116,23 @@ class PagesController < ApplicationController
     end
   end
 
-  def customer_delete
+  def unsubscribe
+    # Accéder à l'API de stripe
+    require "stripe"
+    Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
+    # Définir l'utilisateur concerné par le désabonnement
+    @user_to_unsubscribe = User.where(id: params[:user_to_unsubscribe]).first
+    # Supprimer le customer sur Stripe
+    customer = Stripe::Customer.retrieve(@user_to_unsubscribe.stripe_customer_id)
+    customer.delete
     # Désabonner l'utilisateur dans la base de données
-    current_user.paydate = nil
-    current_user.plan = nil
-    current_user.stripe_customer_id = nil
-    @user = current_user
+    user_to_unsubscribe.paydate = nil
+    user_to_unsubscribe.plan = nil
+    user_to_unsubscribe.stripe_customer_id = nil
+    @user = user_to_unsubscribe
     @user.save
     # Envoyer un email à l'utilisateur
-    # ?
-    # ?
-    # Supprimer le customer sur Stripe
-    customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
-    customer.delete
+    PageMailer.invoices_pastdue(@user_to_unsubscribe).deliver_now
     # Rediriger sur la page des factures impayées
     redirect_to invoices_pastdue_path
   end
