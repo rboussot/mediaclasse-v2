@@ -9,6 +9,5 @@ class PageMailer < ApplicationMailer
     @user = user
 
     mail(to: @user.email, subject: "Votre participation sur Mediaclasse.fr")
-    mail(to: "mediaclasse.fr@gmail.com", subject: "#{@user.email} désabonné(e) avec succès")
   end
 end
