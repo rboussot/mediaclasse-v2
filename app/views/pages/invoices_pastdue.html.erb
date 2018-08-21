@@ -11,6 +11,8 @@
                 <% user = User.where(stripe_customer_id: invoice["customer"]).first %>
                 <% unless user.nil? %>
                   <%= user.email %>
+                <% else %>
+                  <span style="color:grey"><%= invoice["customer"] %></span>
                 <% end %>
                  <!-- - <#%= invoice["customer"] %> -->
                  - <%= invoice["attempt_count"] %> échecs.

@@ -10,6 +10,8 @@
           <% @user_to_unsubscribe = User.where(stripe_customer_id: @invoice["customer"]).first %>
             <% unless @user_to_unsubscribe.nil? %>
               <%= @user_to_unsubscribe.email %>
+            <% else %>
+              Utilisateur introuvable en base de donnée.
             <% end %>
           <br>
           Id de l'utilisateur pour Stripe :
@@ -44,9 +46,11 @@
         </div><br>
         <!-- === BOUTON D'ACTION === -->
 
-          <div class = "btn btn-primary">
-            <%= link_to "Désabonner et prévenir", unsubscribe_path(user_to_unsubscribe: @user_to_unsubscribe.id) %>
-          </div>
+          <% unless @user_to_unsubscribe.nil? %>
+            <div class = "btn btn-primary">
+              <%= link_to "Désabonner et prévenir", unsubscribe_path(user_to_unsubscribe: @user_to_unsubscribe.id) %>
+            </div>
+          <% end %>
 
         <!-- ===== FIN DE PAGE ===== -->
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

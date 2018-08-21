@@ -95,7 +95,7 @@ class PagesController < ApplicationController
     require "stripe"
     Stripe.api_key = ENV['STRIPE_SECRET_LIVE_KEY']
     # Récupérer tous les utilisateurs qui ont un défaut de paiement
-    @invoices = Stripe::Invoice.list(past_due: true, limit: 100)
+    @invoices = Stripe::Invoice.list(past_due: true, closed: false, limit: 100)
   end
 
   def invoice_infos
