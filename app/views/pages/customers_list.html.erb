@@ -2,12 +2,13 @@
   <div class="container">
 <!-- === EN-TÊTE === -->
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h3>Nombre d'Abonnés : <%= @customers.length %></h3>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @customers.each do |customer| %>
             <%= link_to customer_infos_path(customer.stripe_customer_id), target: :_blank do %>
               <p>
+                <%= customer.current_sign_in_at.strftime('%d/%m/%Y à %H:%M') %> -
                 <%= customer.email %> -
                 <%= customer.stripe_customer_id %> -
                 <%= customer.plan %> -
