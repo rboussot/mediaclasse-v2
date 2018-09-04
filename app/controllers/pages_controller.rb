@@ -47,7 +47,7 @@ class PagesController < ApplicationController
       redirect_to root_path
     end
     # Récupérer tous les utilisateurs qui ont un abonnement en cours
-    @customers = User.where.not(stripe_customer_id: [nil, ""]).order('updated_at ASC')
+    @customers = User.where.not(stripe_customer_id: [nil, ""]).order('current_sign_in_at DESC')
   end
 
   def replacesub
