@@ -7,8 +7,8 @@
         <% @total %>
         <% @stripe = (@total * 0.11).round(2) %>
         <% @rsi = (@total * 0.25044).round(2) %>
-        <h4>Net : <%= @net = (@total - @stripe - @rsi).round(2) %> €</h4>
-        <h5>(Moyenne client : <%= (@net / @customers.length).round(2) %> €)</h5>
+        <h4>Estimation net : <%= @net = (@total - @stripe - @rsi).round(2) %> €</h4>
+        <% @moyenne = (@net / @customers.length).round(2) %>
         <br>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @customers.each do |customer| %>
