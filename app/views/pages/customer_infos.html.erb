@@ -13,21 +13,23 @@
         <br>
         <% if @customer_infos["deleted"] %>
           Client supprimé sur Stripe
+          <br>
         <% elsif @customer_infos["subscriptions"]["data"].blank? %>
           Client désabonné
+          <br>
         <% else %>
           Abonnement en cours : <%= @customer_infos["subscriptions"]["data"].last["plan"]["name"] %>
           <br>
           Subscription ID : <%= @subscription_id %>
           <br>
-        <% end %>
-        Début de l'abonnement :
-        <%= Time.at(@customer_infos["created"]).strftime('%d/%m/%Y') %>
-        <br>
-        Nombre de mois payés :
-          <%= (Date.today.year * 12 + Date.today.month) - (Time.at(@customer_infos["created"]).year * 12 + Time.at(@customer_infos["created"]).month) + 1 %>
+          Début de l'abonnement :
+          <%= Time.at(@customer_infos["created"]).strftime('%d/%m/%Y') %>
           <br>
-        <br>
+          Nombre de mois payés :
+            <%= (Date.today.year * 12 + Date.today.month) - (Time.at(@customer_infos["created"]).year * 12 + Time.at(@customer_infos["created"]).month) + 1 %>
+            <br>
+          <br>
+        <% end %>
         <!-- ===== INFOS BRUTES ===== -->
         <!--
           <br><br>

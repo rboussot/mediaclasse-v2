@@ -133,6 +133,7 @@ class PagesController < ApplicationController
     @user_to_unsubscribe.paydate = nil
     @user_to_unsubscribe.plan = nil
     @user_to_unsubscribe.stripe_customer_id = nil
+    @user_to_unsubscribe.pricing = 0.0
     @user = @user_to_unsubscribe
     @user.save
     # Envoyer un email à l'utilisateur

@@ -30,6 +30,7 @@ class PlansController < ApplicationController
     current_user.stripe_customer_id = customer['id']
     current_user.paydate = Time.at(customer['created'])
     current_user.plan = plan
+    current_user.pricing = customer["subscriptions"].first["items"].first["plan"]["amount"]/100.to_f
     @user = current_user
     @user.save
     # Send email with mailgun
@@ -48,6 +49,7 @@ class PlansController < ApplicationController
     current_user.paydate = nil
     current_user.plan = nil
     current_user.stripe_customer_id = nil
+    current_user.pricing = 0.0
     @user = current_user
     @user.save
     redirect_to plans_path
