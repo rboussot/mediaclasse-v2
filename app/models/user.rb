@@ -61,6 +61,7 @@ class User < ApplicationRecord
       field :collective
       field :plan
       field :stripe_customer_id
+      field :pricing
     end
   end
 
@@ -78,6 +79,7 @@ class User < ApplicationRecord
       field :deleted
       field :current_sign_in_ip
       field :last_sign_in_ip
+      field :pricing
     end
   end
 
