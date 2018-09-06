@@ -1,13 +1,7 @@
 <div class="navbar-media">
   <!-- Logo -->
-  <% if current_user && current_user.admin %>
-    <%= link_to rails_admin_path, class: "navbar-media-brand" do %>
-      <%= image_tag "logo.png", class: "hvr-grow" %>
-    <% end %>
-  <% else %>
-    <%= link_to root_path, class: "navbar-media-brand" do %>
-      <%= image_tag "logo.png", class: "hvr-grow" %>
-    <% end %>
+  <%= link_to root_path, class: "navbar-media-brand" do %>
+    <%= image_tag "logo.png", class: "hvr-grow" %>
   <% end %>
   <!-- ========== LARGE SCREEN MENU ========== -->
     <!-- === LINK LITT === -->
@@ -41,6 +35,25 @@
               <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% end %>
             <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
+              <!-- ADMIN ONLY MENU -->
+              <% if current_user && current_user.admin %>
+                <li>
+                  <%= link_to rails_admin_path do %>
+                    <i class="fa fa-unlock-alt"></i> Admin
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to invoices_pastdue_path do %>
+                    <i class="fa fa-tasks"></i> Impayés
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to customers_list_path do %>
+                    <i class="fa fa-users"></i> Clients
+                  <% end %>
+                </li>
+              <% end %>
+              <!-- USER MENU -->
               <li>
                 <%= link_to root_path do %>
                   <i class="fa fa-home"></i> Accueil
