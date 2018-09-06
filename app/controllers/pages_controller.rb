@@ -48,6 +48,10 @@ class PagesController < ApplicationController
     end
     # Récupérer tous les utilisateurs qui ont un abonnement en cours
     @customers = User.where.not(stripe_customer_id: [nil, ""]).order('current_sign_in_at DESC')
+    @total = 0.0
+    @customers.each do |customer|
+      @total += customer.pricing
+    end
   end
 
   def replacesub
@@ -135,6 +139,38 @@ class PagesController < ApplicationController
     PageMailer.invoices_pastdue(@user_to_unsubscribe).deliver_now
     # Rediriger sur la page des factures impayées
     redirect_to invoices_pastdue_path
+  end
+
+  def pricing
+    @customers = User.where.not(stripe_customer_id: [nil, ""])
+    @customers.each do |customer|
+      case customer.plan
+        when "deux"
+          customer.pricing = 2.0
+        when "quatre"
+          customer.pricing = 4.0
+        when "cinq"
+          customer.pricing = 5.0
+        when "huit"
+          customer.pricing = 8.0
+        when "dix"
+          customer.pricing = 10.0
+        when "quinze"
+          customer.pricing = 15.0
+        when "seize"
+          customer.pricing = 16.0
+        when "vingt"
+          customer.pricing = 20.0
+        when "vingt-cinq"
+          customer.pricing = 25.0
+        when "trente"
+          customer.pricing = 30.0
+        when "trente-deux"
+          customer.pricing = 32.0
+      end
+    customer.save
+    end
+    redirect_to customers_list_path
   end
 
   private

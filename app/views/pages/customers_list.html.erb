@@ -4,14 +4,20 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h3>Nombre d'Abonnés : <%= @customers.length %></h3>
+
+        <h3>Total : <%= @total %>0 €</h3>
+
+        <!--- ===== BOUTON D'ACTION ===== -->
+          <div class = "btn btn-primary">
+            <%= link_to "Convertir les plans", pricing_path %>
+          </div>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @customers.each do |customer| %>
             <%= link_to customer_infos_path(customer.stripe_customer_id), target: :_blank do %>
               <p>
                 <%= customer.current_sign_in_at.strftime('%d/%m/%Y à %H:%M') %> -
                 <%= customer.email %> -
-                <%= customer.stripe_customer_id %> -
-                <%= customer.plan %> -
+                <%= customer.pricing %>0 €
               </p>
             <% end %>
           <% end %>

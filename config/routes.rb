@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "unsubscribe", to: "pages#unsubscribe"
   get "replacesub", to: "pages#replacesub"
   get "test", to: "pages#test"
+  get "pricing", to: "pages#pricing"
   get "inprogress", to: "plans#inprogress"
   get "cancel_plan", to: "plans#cancel"
   get '/googleba02ed7fdee6ed83.html', to: 'pages#googlevalidation'
