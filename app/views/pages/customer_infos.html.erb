@@ -25,7 +25,7 @@
         <%= Time.at(@customer_infos["created"]).strftime('%d/%m/%Y') %>
         <br>
         Nombre de mois payés :
-          <%= (Date.today.year * 12 + Date.today.month) - (Time.at(@customer_infos["created"]).year * 12 + Time.at(@customer_infos["created"]).month) %>
+          <%= (Date.today.year * 12 + Date.today.month) - (Time.at(@customer_infos["created"]).year * 12 + Time.at(@customer_infos["created"]).month) + 1 %>
           <br>
         <br>
         <!-- ===== INFOS BRUTES ===== -->
