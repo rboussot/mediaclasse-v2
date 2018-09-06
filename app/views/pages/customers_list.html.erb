@@ -4,10 +4,11 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h3>Nombre d'Abonnés : <%= @customers.length %></h3>
-        <h4>Total : <%= @total %>0 €</h4>
+        <% @total %>
         <% @stripe = (@total * 0.11).round(2) %>
         <% @rsi = (@total * 0.25044).round(2) %>
-        <h4>Net : <%= (@total - @stripe - @rsi).round(2) %> €</h4>
+        <h4>Net : <%= @net = (@total - @stripe - @rsi).round(2) %> €</h4>
+        <h5>(Moyenne client : <%= (@net / @customers.length).round(2) %> €)</h5>
         <br>
         <!-- ===== AFFICHER LES ABONNÉS ===== -->
           <% @customers.each do |customer| %>
