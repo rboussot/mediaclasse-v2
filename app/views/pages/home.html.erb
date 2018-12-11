@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class= "home-card-large">
-          <h4>Découvrez mon dernier cours !</h4>
+          <h4>Ma dernière vidéo :</h4>
           <div class="embed-responsive embed-responsive-16by9 home-video">
           <% @last_lecture = Lecture.last %>
               <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
