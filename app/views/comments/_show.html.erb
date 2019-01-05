@@ -13,7 +13,7 @@
   <% end %>
   <!-- Add the timestamp on the comment -->
   <i> - <%= comment.created_at.strftime("le %d/%m/%y à %H:%M") %></i><br>
-  <%= comment.content.gsub("\n", "<br/>").html_safe %>
+  <%= comment.content.gsub("\n", "<br/>").gsub("<", "").gsub(">", "").html_safe %>
   <!-- Current user can suppr the comment -->
   <% if comment.user == current_user %>
     <%= form_tag comment_path(comment), remote: true do %>
