@@ -8,7 +8,9 @@
     </div>
 <!-- ========== COMMUNAUTE ========== -->
     <div class= "footer-part">
+      <%= link_to channels_path do %>
       <h1>Communauté</h1>
+      <% end %>
       <div class="footer-social-icons">
         <%= link_to "https://twitter.com/mediaclassefr?lang=fr" do %>
            <i class="fa fa-twitter"></i>
@@ -28,7 +30,8 @@
       <p>  <%= link_to "Oeuvres & analyses", litterature_courses_path %><p>
       <% @technique_category = Category.where(tag: "technique").first.name %>
       <p>  <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category) %><p>
+      <% if current_user %>
+        <p><%= link_to "Mes cours", user_path(current_user) %></p>
+      <% end %>
     </div>
-
-
 </div>
