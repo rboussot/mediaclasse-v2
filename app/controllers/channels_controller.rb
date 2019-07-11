@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
 
   def index
     @category = Category.find_by_name(params[:category])
-    @channels = Channel
+    @channels = Channel.all
       .joins(:category)
       .where(visible: true)
       .where(categories: {id: @category.id})

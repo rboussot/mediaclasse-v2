@@ -8,7 +8,8 @@
     </div>
 <!-- ========== COMMUNAUTE ========== -->
     <div class= "footer-part">
-      <%= link_to channels_path do %>
+      <% @channels_category = Category.where(tag: "chaines").first.name %>
+      <%= link_to channels_path(category: @channels_category) do %>
       <h1>Communauté</h1>
       <% end %>
       <div class="footer-social-icons">
