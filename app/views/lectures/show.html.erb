@@ -69,38 +69,37 @@
             <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
               <h3>Description</h3>
             </span>
+            <% if @documents != [] %>
             <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
               <h3>Documents</h3>
             </span>
+            <% end %>
           </div>
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
             <!-- === DESCRIPTION === -->
             <p class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %></p>
             <!-- === DOCUMENTS === -->
-            <div class="lecture-documents content">
-              <% if policy(@lecture).watch_video? && @documents %>
-                <ul>
-                  <% @documents.each do |document| %>
-                    <li class="hvr-icon-grow">
-                      <%= link_to document.title, document_path(document)%>
-                    </li>
-                  <% end %>
-                </ul>
-              <% elsif @documents %>
-                <%= render 'shared/planmodal' %>
-                <% @documents.each do |document| %>
+              <div class="lecture-documents content">
+                <% if policy(@lecture).watch_video? %>
                   <ul>
-                    <li data-toggle = "modal" data-target = "#PlanModal" class="hvr-icon-grow">
-                      <%= document.title %>
-                    </li>
+                    <% @documents.each do |document| %>
+                      <li class="hvr-icon-grow">
+                        <%= link_to document.title, document_path(document)%>
+                      </li>
+                    <% end %>
                   </ul>
+                <% else %>
+                  <%= render 'shared/planmodal' %>
+                  <% @documents.each do |document| %>
+                    <ul>
+                      <li data-toggle = "modal" data-target = "#PlanModal" class="hvr-icon-grow">
+                        <%= document.title %>
+                      </li>
+                    </ul>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <h4>Aucun document pour l'instant !</h4>
-                Mais n'hésitez pas à me suggérer par email ce qui pourrait vous aider : mediaclasse.fr@gmail.com
-              <% end %>
-            </div>
+              </div>
             <!-- ========== CLOSE TABS ========== -->
           </div>
     <!-- ========== CLOSE CONTAINERS ========== -->
