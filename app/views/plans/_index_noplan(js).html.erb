@@ -6,7 +6,7 @@
                 <h3>Vous souhaitez vous abonner ?</h3>
               <br>
               <div class="plan-infos">
-                ► C'est un prix libre : <u>quel que soit le montant choisi</u>, vous accédez à TOUT, sans limite ! Les forfaits les plus élevés contribuent aux forfaits réduits et au développement du site.<br>
+                ► C'est un prix libre à votre bon coeur ! En payant un peu plus, vous rendez possible l'accès à 2€, mais <u>dans tous les cas</u>, vous accédez à tout, tout de suite, et sans limite.<br>
                 ► Par carte bancaire, <u>Le paiement est renouvelé automatiquement tous les mois</u>, mais vous pouvez l'arrêter immédiatement en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
                 ► Le système de paiement est <u>international et sécurisé à 100%</u> (la connexion est cryptée de bout en bout). <br>
                 ► Vos informations <u>restent confidentielles</u> et ne servent qu'à activer votre abonnement.<br><br>
@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-xs-offset-2 plan-wrapper">
                 <!-- DEUX -->
-                <div class= "plan-stripe deux">
+                <div class= "plan-stripe grisclair">
                   <h4>Prix réduit</h4>
                   <p>Une somme symbolique pour les plus faibles revenus !</p>
                   <div class = "plan-stripebutton-inactive">2€ / mois</div>
@@ -50,7 +50,7 @@
                   </div>
                 </div>
                 <!-- QUATRE -->
-                <div class= "plan-stripe quatre">
+                <div class= "plan-stripe grisfonce">
                   <h4>Individuel</h4>
                   <p>Un prix neutre pour s'abonner en toute indépendance.</p>
                   <div class = "plan-stripebutton-inactive">4€ / mois</div>
@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 <!-- HUIT -->
-                <div class= "plan-stripe huit">
+                <div class= "plan-stripe vert">
                   <h4>Participant</h4>
                   <p>Merci ! Vous prenez part au système de solidarité !</p>
                   <div class = "plan-stripebutton-inactive">8€ / mois</div>
@@ -92,45 +92,63 @@
                   </div>
                 </div>
                 <!-- SEIZE -->
-                <div class= "plan-stripe seize">
+                <div class= "plan-stripe turquoise">
                   <h4>Contributeur</h4>
                   <p>Merci ! Grâce à vous, le site se développe et devient pérenne !</p>
-                  <div class = "plan-stripebutton-inactive">16€ / mois</div>
+                  <div class = "plan-stripebutton-inactive">12€ / mois</div>
                   <div class = "plan-stripebutton-active">
                     <%= form_tag plans_path do %>
-                      <%= hidden_field_tag "plan", "seize" %>
+                      <%= hidden_field_tag "plan", "douze" %>
                       <span style="margin: 13px"></span>
                       <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
                         data-name="Mediaclasse.fr"
                         data-description="Participation mensuelle"
-                        data-amount="1600"
-                        data-label="16€ /mois"
+                        data-amount="1200"
+                        data-label="12€ /mois"
                         data-currency="EUR">
                       </script>
                     <% end %>
                   </div>
                 </div>
                 <!-- TRENTE-DEUX -->
-                <div class= "plan-stripe trente-deux">
+                <div class= "plan-stripe bleu">
                   <h4>Mécène</h4>
                   <p>Vous soutenez le projet avec passion ! Merci pour cette générosité !</p>
-                  <div class = "plan-stripebutton-inactive">32€ / mois</div>
+                  <div class = "plan-stripebutton-inactive">16€ / mois</div>
                   <div class = "plan-stripebutton-active">
                     <%= form_tag plans_path do %>
-                      <%= hidden_field_tag "plan", "trente-deux" %>
+                      <%= hidden_field_tag "plan", "seize" %>
                       <span style="margin: 12px"></span>
                       <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
                         data-name="Mediaclasse.fr"
                         data-description="Participation mensuelle"
-                        data-amount="3200"
-                        data-label="32€ / mois"
+                        data-amount="1600"
+                        data-label="16€ / mois"
                         data-currency="EUR">
                       </script>
                     <% end %>
+                  </div>
+                </div>
+                <!-- VIREMENT -->
+                <%= render 'shared/planvirement' %>
+                <div class= "plan-stripe orange">
+                  <h4>Virement</h4>
+                  <p>Ce mode de paiement est accessible via un forfait unique :</p>
+                  <div data-toggle = "modal" data-target = "#PlanVirement" class = "plan-cbutton">
+                    <p>96€ / 1 an</p>
+                  </div>
+                </div>
+                <!-- COLLECTIF -->
+                <%= render 'shared/plancollectif' %>
+                <div class= "plan-stripe orange">
+                  <h4>Collectif</h4>
+                  <p>Ouvrez un accès annuel à tout un groupe d'utilisateurs !</p>
+                  <div data-toggle = "modal" data-target = "#PlanCollectif" class = "plan-cbutton">
+                    <p>96€ / 1 an</p>
                   </div>
                 </div>
               </div>
@@ -138,15 +156,6 @@
     <!-- === BOUTONS === -->
             <br>
             <div class="row">
-              <!-- Remises et virements -->
-                <%= render 'shared/plancollectif' %>
-              <!-- Payer par virement -->
-              <div class="col-xs-offset-3 plan-button">
-                Payer par virement ? Profiter de remises collectives ?
-                <div data-toggle = "modal" data-target = "#PlanCollectif" class="plan-question hvr-glow">
-                  <p>Contactez-moi</p>
-                </div><br>
-              </div>
               <!-- Cesser de participer -->
               <div class="col-xs-offset-3 plan-button">
                 <%= render 'shared/planquestion' %>

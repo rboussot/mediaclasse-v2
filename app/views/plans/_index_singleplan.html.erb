@@ -5,7 +5,7 @@
               <br><h3>Merci pour votre participation !
               </h3><br>
               <div class="plan-infos">
-                ► C'est un prix libre : <u>quel que soit le montant choisi</u>, vous accédez à TOUT, sans limite ! Les forfaits les plus élevés contribuent aux forfaits réduits et au développement du site.<br>
+                ► C'est un prix libre à votre bon coeur ! En payant un peu plus, vous rendez possible l'accès à 2€, mais <u>dans tous les cas</u>, vous accédez à tout, tout de suite, et sans limite.<br>
                 ► Par carte bancaire, <u>Le paiement est renouvelé automatiquement tous les mois</u>, mais vous pouvez l'arrêter immédiatement en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
                 ► Le système de paiement est <u>international et sécurisé à 100%</u> (la connexion est cryptée de bout en bout). <br>
                 ► Vos informations <u>restent confidentielles</u> et ne servent qu'à activer votre abonnement.<br><br>
@@ -17,62 +17,67 @@
         <!-- === PLANS  === -->
           <div class="col-sm-offset-3 col-sm-1 plan-wrapper">
             <% if current_user.plan === "deux" %>
-              <div class= "plan-stripe deux">
+              <div class= "plan-stripe grisclair">
                   <h4>Prix réduit</h4>
                   <p>Vous participez actuellement pour un montant de 2€ / mois !</p>
               </div>
             <% elsif current_user.plan === "quatre" %>
-              <div class= "plan-stripe quatre">
+              <div class= "plan-stripe grisfonce">
                   <h4>Individuel</h4>
                   <p>Vous participez actuellement pour un montant de 4€ / mois !</p>
               </div>
             <% elsif current_user.plan === "cinq" %>
-              <div class= "plan-stripe quatre">
+              <div class= "plan-stripe grisfonce">
                   <h4>Individuel</h4>
                   <p>Vous participez actuellement pour un montant de 5€ / mois !</p>
               </div>
             <% elsif current_user.plan === "huit" %>
-              <div class= "plan-stripe huit">
+              <div class= "plan-stripe vert">
                   <h4>Participant</h4>
                   <p>Merci ! Vous participez actuellement pour un montant de 8€ / mois !</p>
               </div>
             <% elsif current_user.plan === "dix" %>
-              <div class= "plan-stripe huit">
+              <div class= "plan-stripe vert">
                   <h4>Participant</h4>
                   <p>Merci ! Vous participez actuellement pour un montant de 10€ / mois !</p>
               </div>
+            <% elsif current_user.plan === "douze" %>
+            <div class= "plan-stripe turquoise">
+                <h4>Contributeur</h4>
+                <p>Merci ! Vous participez actuellement pour un montant de 12€ / mois !</p>
+            </div>
             <% elsif current_user.plan === "quinze" %>
-              <div class= "plan-stripe seize">
+              <div class= "plan-stripe bleu">
                   <h4>Contributeur</h4>
                   <p>Merci ! Vous contribuez actuellement pour un montant de 15€ / mois !</p>
               </div>
             <% elsif current_user.plan === "seize" %>
-              <div class= "plan-stripe seize">
-                  <h4>Contributeur</h4>
+              <div class= "plan-stripe bleu">
+                  <h4>Mécène</h4>
                   <p>Merci ! Vous contribuez actuellement pour un montant de 16€ / mois !</p>
               </div>
             <% elsif current_user.plan === "vingt" %>
-              <div class= "plan-stripe seize">
+              <div class= "plan-stripe turquoise">
                   <h4>Contributeur</h4>
                   <p>Merci ! Vous contribuez actuellement pour un montant de 20€ / mois !</p>
               </div>
             <% elsif current_user.plan === "vingt-cinq" %>
-              <div class= "plan-stripe seize">
+              <div class= "plan-stripe turquoise">
                   <h4>Contributeur</h4>
                   <p>Merci ! Vous contribuez actuellement pour un montant de 25€ / mois !</p>
               </div>
             <% elsif current_user.plan === "trente" %>
-              <div class= "plan-stripe trente-deux">
+              <div class= "plan-stripe bleu">
                   <h4>Mécène</h4>
                   <p>Merci ! Vous participez actuellement pour un montant de 30€ / mois !</p>
               </div>
             <% elsif current_user.plan === "trente-deux" %>
-              <div class= "plan-stripe trente-deux">
+              <div class= "plan-stripe bleu">
                   <h4>Mécène</h4>
                   <p>Merci ! Vous participez actuellement pour un montant de 32€ / mois !</p>
               </div>
             <% else %>
-              <div class= "plan-stripe remise">
+              <div class= "plan-stripe orange">
                   <h4>Remise spéciale</h4>
                   <p>Ce compte correspond à un montant de <%= current_user.plan %> !</p>
               </div>
