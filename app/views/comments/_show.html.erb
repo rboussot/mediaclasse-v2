@@ -14,8 +14,12 @@
   <% end %>
   <!-- === Date et heure du commentaire === -->
   <i> - <%= comment.created_at.strftime("le %d/%m/%y à %H:%M") %></i><br>
-  <!-- Sous-commentaire -->
-  <%= comment.content.gsub("<", "'").gsub(">", "'").gsub("\n", "<br/>").html_safe %>
+  <!-- === Contenu du commentaire -->
+  <% if comment.user.admin %>
+    <%= comment.content.gsub("\n", "<br/>").html_safe %>
+  <% else %>
+    <%= comment.content.gsub("<", "'").gsub(">", "'").gsub("\n", "<br/>").html_safe %>
+  <% end %>
   <!-- === L'utilisateur peut supprimer ses propres commentaires === -->
   <% if comment.user == current_user %>
     <%= form_tag comment_path(comment), remote: true do %>
@@ -46,6 +50,6 @@
     <!-- === Date et heure du commentaire === -->
     <i> - <%= subcomment.created_at.strftime("le %d/%m/%y à %H:%M") %></i><br>
     <!-- === Contenu du sous-commentaire === -->
-    <%= subcomment.content.gsub("<", "'").gsub(">", "'").gsub("\n", "<br/>").html_safe %>
+    <%= subcomment.content.gsub("\n", "<br/>").html_safe %>
   </div>
 <% end %>
