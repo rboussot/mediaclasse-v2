@@ -54,9 +54,7 @@ class User < ApplicationRecord
       field :plan
       field :stripe_customer_id
       field :pricing
-      field :expire do
-        strftime_format "%d/%m/%Y"
-      end
+      field :expire
     end
   end
 
@@ -65,9 +63,7 @@ class User < ApplicationRecord
       field :id
       field :email
       field :plan
-      field :expire do
-        strftime_format "%d/%m/%Y"
-      end
+      field :expire
       field :collective
       field :sign_in_count
       field :current_sign_in_at
@@ -93,9 +89,7 @@ class User < ApplicationRecord
       field :current_sign_in_ip
       field :last_sign_in_ip
       field :pricing
-      field :expire do
-        strftime_format "%d/%m/%Y"
-      end
+      field :expire
     end
   end
 
