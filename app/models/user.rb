@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :channel
   belongs_to :level
   has_many :comments
+  has_many :subcomments
   validates :email, presence: true
   has_attachment :picture
 
