@@ -133,7 +133,8 @@ class PagesController < ApplicationController
     @user_to_unsubscribe.paydate = nil
     @user_to_unsubscribe.plan = nil
     @user_to_unsubscribe.stripe_customer_id = nil
-    @user_to_unsubscribe.pricing = 0.0
+    @user_to_unsubscribe.pricing = nil
+    @user_to_unsubscribe.expire = Date.today
     @user = @user_to_unsubscribe
     @user.save
     # Envoyer un email à l'utilisateur
@@ -156,6 +157,8 @@ class PagesController < ApplicationController
           customer.pricing = 8.0
         when "dix"
           customer.pricing = 10.0
+        when "douze"
+          customer.pricing = 12.0
         when "quinze"
           customer.pricing = 15.0
         when "seize"

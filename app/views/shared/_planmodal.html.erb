@@ -3,20 +3,32 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-          <h3>Le site existe grâce à vous !</h3><br>
+        <!-- === 1e partie du message === -->
+        <!-- Le compte de l'utilisateur a expiré -->
+        <% if current_user && current_user.expire %>
           <div class="plan-infos">
-                ► Pour un prix libre, vous accédez à TOUT mon site, sans limites !<br>
-                ►  Le système de paiement est international et sécurisé à 100%.<br>
-                ►  Vous pouvez vous désengager en un seul clic.</i></br>
-                ► Une question particulière ? Contactez-moi par email : <i>mediaclasse.fr@gmail.com</i>
-              </div>
-
+            <h4> Votre abonnement est fermé depuis le <%= current_user.expire.strftime '%d/%m/%Y' %></h4>
+            Soit vous avez cliqué sur le bouton "Cesser de participer", soit votre abonnement était limité dans le temps, soit votre carte bancaire a expiré. Dans tous les cas, un email vous a été envoyé, et aucun prélèvement n'a été effectué après cette date.<br><br>
+            Cependant, si vous pensez avoir un abonnement en cours, n'hésitez pas à me contacter par email, je vous répondrai personnellement dans les meilleurs délais : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i><br>
+          </div>
+        <!-- L'utilisateur n'a jamais eu d'abonnement -->
+        <% else %>
+          <div class="plan-infos">
+            <h3>Le site existe grâce à vous !</h3><br>
+            ► Pour un prix libre, vous accédez à TOUT mon site, sans limites !<br>
+            ► Le système de paiement est international et sécurisé à 100%.<br>
+            ► Vous pouvez vous désengager en un seul clic.</i></br>
+            ► Une question particulière ? Contactez-moi par email : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i>
+          </div>
+        <% end %>
+        <!-- === 2e partie du message === -->
+        <!-- L'utilisateur est connecté à un compte gratuit : lien vers les forfaits -->
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <%= link_to "Voir la page de participation", plans_path, class: "btn btn-default hvr-glow" %>
+            <%= link_to "Voir la page des abonnements", plans_path, class: "btn btn-default hvr-glow" %>
           </div>
+        <!-- L'utilisateur n'est pas connecté : formulaire de connexion-->
         <% else %>
         <h2>Connexion</h2>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -31,6 +43,7 @@
           <% end %>
           <%= render "devise/shared/links" %>
         <% end %>
+        <!-- Fin de la 2e partie -->
       </div>
     </div>
   </div>
