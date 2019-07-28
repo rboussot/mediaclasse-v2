@@ -7,7 +7,7 @@
               <br>
               <div class="plan-infos">
                 ► C'est un prix libre à votre bon coeur ! En payant un peu plus, vous rendez possible l'accès à 2€, mais <u>dans tous les cas</u>, vous accédez à tout, tout de suite, et sans limite.<br>
-                ► Par carte bancaire, <u>Le paiement est renouvelé automatiquement tous les mois</u>, mais vous pouvez l'arrêter immédiatement en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
+                ► Les abonnements mensuels <u>sont reconduits tous les mois</u>, mais vous pouvez vous désengager n'importe quand en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
                 ► Le système de paiement est <u>international et sécurisé à 100%</u> (la connexion est cryptée de bout en bout). <br>
                 ► Vos informations <u>restent confidentielles</u> et ne servent qu'à activer votre abonnement.<br><br>
               </div>
@@ -91,7 +91,7 @@
                     <% end %>
                   </div>
                 </div>
-                <!-- SEIZE -->
+                <!-- DOUZE -->
                 <div class= "plan-stripe turquoise">
                   <h4>Contributeur</h4>
                   <p>Merci ! Grâce à vous, le site se développe et devient pérenne !</p>
@@ -112,7 +112,7 @@
                     <% end %>
                   </div>
                 </div>
-                <!-- TRENTE-DEUX -->
+                <!-- SEIZE -->
                 <div class= "plan-stripe bleu">
                   <h4>Mécène</h4>
                   <p>Vous soutenez le projet avec passion ! Merci pour cette générosité !</p>
@@ -133,6 +133,29 @@
                     <% end %>
                   </div>
                 </div>
+                <!-- ANNUEL -->
+
+                <div class= "plan-stripe orange">
+                  <h4>Annuel</h4>
+                  <p>Payez en 1 fois par CB pour accéder à tout pendant 12 mois.</p>
+                  <div class = "plan-stripebutton-inactive">24€ / 1 an</div>
+                  <div class = "plan-stripebutton-active">
+                    <%= form_tag plans_path do %>
+                      <%= hidden_field_tag "plan", "annuel" %>
+                      <span style="margin: 12px"></span>
+                      <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key=<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>
+                        data-name="Mediaclasse.fr"
+                        data-description="Participation annuelle"
+                        data-amount="2400"
+                        data-label="24€ / 1 an"
+                        data-currency="EUR">
+                      </script>
+                    <% end %>
+                  </div>
+                </div>
+
                 <!-- VIREMENT -->
                 <%= render 'shared/planvirement' %>
                 <div class= "plan-stripe orange">

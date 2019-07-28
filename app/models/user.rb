@@ -49,24 +49,36 @@ class User < ApplicationRecord
         partial "upload_pictures"
       end
       field :email
-      field :level_id
-      field :firstname
-      field :lastname
-      field :adress
-      field :phone
-      field :birth
-      field :visible
       field :admin
-      field :deleted
       field :collective
       field :plan
       field :stripe_customer_id
       field :pricing
+      field :expire do
+        strftime_format "%d/%m/%Y"
+      end
     end
   end
 
   rails_admin do
     list do
+      field :id
+      field :email
+      field :plan
+      field :expire do
+        strftime_format "%d/%m/%Y"
+      end
+      field :collective
+      field :sign_in_count
+      field :current_sign_in_at
+    end
+  end
+
+  rails_admin do
+    show do
+      field :picture do
+        partial "upload_pictures"
+      end
       field :id
       field :email
       field :sign_in_count
@@ -76,10 +88,14 @@ class User < ApplicationRecord
       field :created_at
       field :updated_at
       field :reset_password_sent_at
+      field :visible
       field :deleted
       field :current_sign_in_ip
       field :last_sign_in_ip
       field :pricing
+      field :expire do
+        strftime_format "%d/%m/%Y"
+      end
     end
   end
 
