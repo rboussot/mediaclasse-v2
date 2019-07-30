@@ -17,9 +17,15 @@
         </div>
         <%= link_to plans_path do %>
           <p class="text-center home-promo">
-            <span class="hvr-grow"><i class="fa fa-star"></i>
-              Votre <u>abonnement intégral</u> pour un <u>prix libre mensuel</u> !
-            <i class="fa fa-star"></i></span>
+            <% if current_user && current_user.plan.present? %>
+              <span class="hvr-grow"><i class="fa fa-star"></i>
+                Accéder à votre espace abonné.
+              <i class="fa fa-star"></i></span>
+            <% else %>
+              <span class="hvr-grow"><i class="fa fa-star"></i>
+                Accédez à tout pour un <u>prix libre</u> !
+              <i class="fa fa-star"></i></span>
+            <% end %>
           <p/>
         <% end %>
       </div>
