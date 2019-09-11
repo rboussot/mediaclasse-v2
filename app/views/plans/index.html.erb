@@ -1,18 +1,12 @@
 <div class="home-wrapper">
   <div class="container-fluid">
     <div class="border profile hidden-xs"></div>
-      <!-- ========== IF PLAN EXIST ========== -->
+      <!-- ========== L'UTILISATEUR A UN ABONNEMENT ACTIF ========== -->
       <% if !current_user.plan.blank? %>
-        <%= render 'index_singleplan' %>
-      <!-- ========== ELSIF PLANS COLLECTIFS ========== -->
-      <% elsif current_user.collective %>
-        <%= render 'index_collectiveplan' %>
-      <!-- ========== ELSE PLANS CHECKED ========== -->
-      <% elsif params[:format] %>
-        <%= render 'index_showplans' %>
-      <!-- ========== ELSE PLANS CHECKED ========== -->
+        <%= render 'index_plan' %>
+      <!-- ========== AUCUN ABONNEMENT POUR CET UTILISATEUR ========== -->
       <% else %>
-        <%= render 'index_noplan(js)' %>
+        <%= render 'index_plans' %>
     <!-- ========== END ========== -->
       <% end %>
     <!-- ========== CLOSE WRAPPERS ========== -->

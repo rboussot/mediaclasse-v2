@@ -16,7 +16,9 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'pg_search'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+#gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
+gem 'stripe_event'
 gem 'money-rails'
 gem 'mailgunner', '~> 2.5.0'
 gem 'mail', '2.6.5'

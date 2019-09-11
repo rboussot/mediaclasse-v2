@@ -55,6 +55,7 @@ class User < ApplicationRecord
       field :plan
       field :stripe_customer_id
       field :pricing
+      field :paydate
       field :expire
     end
   end

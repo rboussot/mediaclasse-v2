@@ -1,0 +1,49 @@
+<% @unique_plans.each  do |plan| %>
+
+  <div class= "plan-stripe <%= plan.css_class %>">
+    <h4><%= plan.title %></h4>
+    <p><%= plan.description %></p>
+    <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
+    <div class = "plan-stripebutton-inactive"><%= plan.price.round %>€ / 1 an</div>
+    <!-- Bouton actif quand les CGV sont cochées -->
+    <div class = "plan-stripebutton-active">
+      <button class = "checkout-button hvr-glow" id="checkout-button-annuel" role="link"
+        data-name="<%= plan.plan_name %>">
+        <%= plan.price.round %>€ / 1 an
+      </button>
+      <div id="error-message"></div>
+    </div>
+  </div>
+
+<% end %>
+<!-- ====== JS STRIPE CHECKOUT ====== -->
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+
+    $(document).ready(function(){
+
+        var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+
+        var checkoutButton = document.getElementById('checkout-button-annuel');
+        checkoutButton.addEventListener('click', function () {
+          //Quand l'utilisateur clique sur le bouton, il est renvoyé vers Checkout
+          stripe.redirectToCheckout({
+            items: [{sku: 'sku_Fjzugn0L3qFstn', quantity: 1}],
+            clientReferenceId: '<%= current_user.id %>',
+            customerEmail: '<%= current_user.email %>',
+            successUrl: '<%= ENV['domain'] %>/plans',
+            cancelUrl: '<%= ENV['domain'] %>/plans',
+          })
+          .then(function (result) {
+            if (result.error) {
+              // Renvoyer message d'erreur
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+        });
+
+    });
+  <% end %>
+<% end %>

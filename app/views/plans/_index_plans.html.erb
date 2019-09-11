@@ -1,0 +1,78 @@
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+<!-- === EN-TÊTE === -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="plan-title">
+              <br>
+                <h3>Vous souhaitez vous abonner ?</h3>
+              <% if current_user && current_user.expire %>
+                <h4>(Votre abonnement est fermé depuis le <%= current_user.expire.strftime '%d/%m/%Y' %>)</h4>
+              <% end %>
+              <br>
+              <div class="plan-infos">
+                ► C'est un prix libre à votre bon coeur ! En payant un peu plus, vous rendez possible l'accès à prix réduit, mais <u>dans tous les cas</u>, vous accédez à tout, tout de suite, et sans limite.<br>
+                ► Les abonnements mensuels <u>sont reconduits tous les mois</u>, mais vous pouvez vous désengager n'importe quand en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
+                ► Le système de paiement est <u>international et sécurisé à 100%</u> (la connexion est cryptée de bout en bout). <br>
+                ► Vos informations <u>restent confidentielles</u> et ne servent qu'à activer votre abonnement.<br><br>
+              </div>
+              <div id = "plan-pointer">
+                Accepter les
+                <%= render 'shared/plancgv' %>
+                <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
+                  <i>Conditions générales de vente ?  </i>
+                </span>
+                <!-- <#%= link_to plans_path(@test = "cgv_accepted") do %> -->
+                  <span class= "plan-box plan-unchecked">☐</span>
+                  <span class= "plan-box plan-checked">☑</span>
+                <!-- <#% end %> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- === PLANS NOT ACCEPTED === -->
+            <div class="row">
+              <div class="col-xs-offset-2 plan-wrapper">
+                <%= render 'plans_recurrent' %><br>
+                <%= render 'plan_unique' %>
+                <%= render 'plan_virement' %>
+              </div>
+            </div>
+    <!-- === BOUTONS === -->
+            <br>
+            <div class="row">
+              <!-- Cesser de participer -->
+              <div class="col-xs-offset-3 plan-button">
+                <%= render 'shared/planquestion' %>
+                Ce bouton deviendra actif dès que vous serez abonné :
+                <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-delete-off hvr-glow">
+                  <p>Cesser de participer</p>
+                </div><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.plan-stripebutton-inactive').on('click', function(event) {
+        $('#plan-pointer').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+        });
+      $('.plan-unchecked').on('click', function(event) {
+        $('.plan-stripebutton-inactive').hide();
+        $('.plan-stripebutton-active').show();
+        $('.plan-unchecked').hide();
+        $('.plan-checked').show();
+        });
+      $('.plan-checked').on('click', function(event) {
+        $('.plan-stripebutton-active').hide();
+        $('.plan-stripebutton-inactive').show();
+        $('.plan-unchecked').show();
+        $('.plan-checked').hide();
+        });
+    });
+  <% end %>
+<% end %>
+
+
