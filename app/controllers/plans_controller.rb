@@ -9,6 +9,9 @@ class PlansController < ApplicationController
     if current_user.pricing.present?
       # Récupérer le plan qui a été sélectionné par l'utilisateur.
       @plan = Plan.where(price: current_user.pricing).first
+      if @plan.nil?
+        @plan = Plan.where(plan_name: "erreur").first
+      end
     else
       # Récupérer les paiements récurrents, uniques, et par virement.
       @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC")

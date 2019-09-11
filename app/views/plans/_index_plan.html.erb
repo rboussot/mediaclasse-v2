@@ -25,7 +25,9 @@
                 <h4><%= @plan.title %></h4>
                   <% if @plan.payment == "recurrent" %>
                     <p>Vous participez actuellement pour un montant de <%= current_user.pricing.round %>€ chaque mois !</p>
-                  <% else @plan.payment == "unique" %>
+                  <% elsif @plan.payment == "erreur" %>
+                    <p><%= @plan.description %></p>
+                  <% else %>
                     <p>Vous bénéficiez d'un accès à <%= current_user.plan %> !</p>
                   <% end %>
               </div>
