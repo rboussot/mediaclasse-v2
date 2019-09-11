@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   mount Attachinary::Engine => "/attachinary"
+  # mount StripeEvent::Engine, at: '/stripe_events'
 
   resources :courses, only: [:show, :index] do
     collection do
@@ -26,21 +27,15 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
   get "newsletter", to: "pages#newsletter"
   get "invoices", to: "pages#invoices"
-  get "customers_list", to: "pages#customers_list"
-  get "invoices_pastdue", to: "pages#invoices_pastdue"
-  get "invoice_infos", to: "pages#invoice_infos"
-  get "customer_infos", to: "pages#customer_infos"
+  get "expired", to: "pages#expired"
   get "unsubscribe", to: "pages#unsubscribe"
-  get "replacesub", to: "pages#replacesub"
-  get "test", to: "pages#test"
-  get "pricing", to: "pages#pricing"
   get "inprogress", to: "plans#inprogress"
   get "cancel_plan", to: "plans#cancel"
   get '/googleba02ed7fdee6ed83.html', to: 'pages#googlevalidation'
 
   root to: 'pages#home'
 
-  resources :stripe_callbacks, only: [:create]
+  resources :stripe_events
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

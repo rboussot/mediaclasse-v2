@@ -4,11 +4,16 @@
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class= "text-left">
-          <%if current_user.collective %>
+
+          <%if current_user.plan.present? %>
+
             <h2>Votre abonnement est déjà entièrement payé !</h2>
-            Ce bouton est inactif car votre paiement a été réglé en 1 seule fois : aucun versement n'est attendu de votre part. Votre accès à mes contenus réservés s'arrêtera automatiquement à la date d'échéance.<br>
+            Ce bouton est inactif car votre paiement a été réglé en 1 seule fois : aucun versement n'est attendu de votre part. Votre accès à mes contenus réservés s'arrêtera automatiquement peu de temps après la date d'échéance.<br>
+
           <% else %>
+
             <h2>Vous ne participez pas actuellement.</h2>
+
             <% if current_user.expire %>
               Ce bouton est actuellement inactif car votre abonnement a été fermé le <%= current_user.expire.strftime '%d/%m/%Y' %>.
               <br><br>
@@ -16,13 +21,15 @@
             <% else %>
               Ce bouton est actuellement inactif car aucun abonnement ni aucun moyen de paiement ne sont associés à ce compte email : <%= current_user.email %><br><br>
             <% end %>
+
               Cependant, si vous pensez avoir un abonnement en cours, n'hésitez pas à me contacter par email, je vous répondrai personnellement dans les meilleurs délais : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i><br><br>
+
           <% end %>
         </div>
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK !</button>
+            <button type="link" class="btn-default hvr-glow" data-dismiss="modal" aria-label="Close">OK !</button>
           </div>
         <% else %>
           <%= render :template => "devise/sessions/new" %>

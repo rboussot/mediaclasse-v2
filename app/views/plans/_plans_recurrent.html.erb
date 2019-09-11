@@ -1,0 +1,62 @@
+<% @recurrent_plans.each  do |plan| %>
+
+  <div class= "plan-stripe <%= plan.css_class %>">
+    <h4><%= plan.title %></h4>
+    <p><%= plan.description %></p>
+    <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
+    <div class = "plan-stripebutton-inactive"><%= plan.price.round %>€ / mois</div>
+    <!-- Bouton actif quand les CGV sont cochées -->
+    <div class = "plan-stripebutton-active">
+      <button class = "checkout-button hvr-glow" id="checkout-button-<%=plan.plan_name%>" role="link"
+        data-name="<%=plan.plan_name%>"
+        >
+        <%= plan.price.round %>€ / mois
+      </button>
+      <div id="error-message"></div>
+    </div>
+  </div>
+
+<% end %>
+
+
+<!-- ====== JS STRIPE CHECKOUT ====== -->
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+
+    $(document).ready(function(){
+
+      var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+
+      function stripeCheckout(plan_name)
+      {
+        stripe.redirectToCheckout({
+          items: [{plan: plan_name, quantity: 1}],
+          clientReferenceId: '<%= current_user.id %>',
+          customerEmail: '<%= current_user.email %>',
+          successUrl: '<%= ENV['domain'] %>/plans',
+          cancelUrl: '<%= ENV['domain'] %>/plans',
+        })
+        .then(function (result) {
+          if (result.error) {
+            // Renvoyer message d'erreur
+            var displayError = document.getElementById('error-message');
+            displayError.textContent = result.error.message;
+          }
+        });
+      }
+
+      $('.plan-stripe button.checkout-button').on('click', function(e){
+        let plan_name=$(e.currentTarget).data('name');
+        stripeCheckout(plan_name);
+
+      });
+      return;
+
+      // Quand l'utilisateur clique sur le bouton, il est renvoyé vers Stripe Checkout
+      var checkoutButton = document.getElementById('checkout-button-'+plan_name);
+      checkoutButton.addEventListener('click', function () {
+      });
+
+    });
+  <% end %>
+<% end %>

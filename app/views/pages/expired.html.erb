@@ -1,0 +1,51 @@
+<div class="home-wrapper">
+  <div class="container">
+<!-- === EN-TÊTE === -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <!-- ======== ABONNÉS ======== -->
+        <!-- ==== COMPTER ABONNÉS ==== -->
+        <h3>Abonnés en cours : <%= @customers.length %></h3>
+        <!-- ==== ESTIMATION NET ==== -->
+        <% @total %>
+        <% @stripe = (@total * 0.11).round(2) %>
+        <% @rsi = (@total * 0.25044).round(2) %>
+        <h4>Estimation net : <%= @net = (@total - @stripe - @rsi).round(2) %> €</h4><br>
+        <!-- ======== UNITAIRES EXPIRÉS ======== -->
+        <!-- ==== COMPTER UNITAIRES EXPIRÉS ==== -->
+        <h3>Abonnements expirés : <%= @expired_plans.count %></h3>
+        <!-- ==== LISTER UNITAIRES EXPIRÉS ==== -->
+          <% @expired_plans.each do |user| %>
+              <p>
+                <%= user.email %>
+                (plan à <%= user.pricing.round %>€ depuis
+                <% if user.paydate.present? %>
+                  <%= (Date.today.to_date - (user.paydate.to_date)).to_i + 1 %> jours)
+                <% end %>
+                expiré depuis
+                <%= (Date.today.to_date - (user.expire.to_date)).to_i + 1 %> jours.
+                <%= link_to unsubscribe_path(id: user.id) do %>
+                 [fermer]
+                <% end %>
+              </p>
+          <% end %>
+        <!-- ======== IMPAYÉS SELON STRIPE ======== -->
+        <!-- ==== COMPTER IMPAYÉS SELON STRIPE ==== -->
+        <h3>Récurrents impayées selon Stripe: <%= @invoices_pastdue.count %></h3>
+        <!-- ==== LISTER IMPAYÉS SELON STRIPE ==== -->
+          <% @invoices_pastdue.each do |invoice| %>
+              <p>
+                <% user = User.where(stripe_customer_id: invoice["customer"]).first %>
+                <% unless user.nil? %>
+                  <%= user.email %>
+                <% else %>
+                  <span style="color:grey"><%= invoice["customer"] %></span>
+                <% end %>
+                 - <%= invoice["attempt_count"] %> échecs.
+              </p>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

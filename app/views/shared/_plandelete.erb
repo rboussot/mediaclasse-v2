@@ -5,12 +5,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class= "text-left">
           <h2>Êtes-vous sûr de vouloir vous désabonner ?</h2>
-          Lorsque vous arrêtez votre abonnement, les versements cessent immédiatement. Vous n'avez plus accès à mes contenus réservés, ni à votre espace "Abonnement" : il est donc conseillé de télécharger vos factures si vous souhaitez en garder une trace. Cependant vous conservez toutes les informations de votre "Profil".<br>
+          Lorsque vous arrêtez votre abonnement, l'effet est immédiat :<br><br>
+          ► Les versements cessent immédiatement. <br>
+          ► Vous n'avez <u>plus accès à mes contenus réservés</u>.<br>
+          ► Votre espace "Abonné" (présentant les factures en ligne) est fermé.<br>
+          ► Vous gardez votre compte gratuit et vos informations de profil.<br><br>
         </div>
         <% if current_user %>
           <div class="form-actions">
             <br>
-            <%= link_to "Oui", cancel_plan_path, class: "btn btn-default" %><br><br>
+            <%= link_to "Oui, fermer mon abonnement", cancel_plan_path, class: "btn btn-default" %><br><br>
             <button type="link" class="btn btn-default" data-dismiss="modal" aria-label="Close">Annuler</button>
           </div>
         <% else %>

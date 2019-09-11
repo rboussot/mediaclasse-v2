@@ -1,0 +1,226 @@
+#<Stripe::StripeObject:0x3fd5d32f2e8c id=cs_test_482CIYEuPfpMcrm9G3BkEJFg6uhTi8phkiDnyqWDQWdq23nUzfGIoELq> JSON: {
+  "id": "cs_test_482CIYEuPfpMcrm9G3BkEJFg6uhTi8phkiDnyqWDQWdq23nUzfGIoELq",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg20LA2pdgwaZ7",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg20dD8TZ4Eptf",
+  "success_url": "http://localhost:3000/plans"
+}D, [2019-08-23T19:25:24.816942 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d3b4f2ec id=cs_test_EpkbLfPmU0Fp3cLGWraWpVEtyeuu4GtnDpVfzo30Ucs1CU6vKfAdWhGz> JSON: {
+  "id": "cs_test_EpkbLfPmU0Fp3cLGWraWpVEtyeuu4GtnDpVfzo30Ucs1CU6vKfAdWhGz",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2b0jqFwTHoAM",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2bztNXKFXZyy",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T19:27:19.025000 #28305] DEBUG -- : New log---------------------------------
+D, [2019-08-23T19:27:19.027232 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d50ed194 id=cs_test_i55eFIOHV2Hwwf5d3pONPFrdQFZ31n4c4iF1fMV4OcaMVlJ7CrJE6cq9> JSON: {
+  "id": "cs_test_i55eFIOHV2Hwwf5d3pONPFrdQFZ31n4c4iF1fMV4OcaMVlJ7CrJE6cq9",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2cDW9tfG2qnK",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2cmm9tJpC8jc",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T19:28:58.813443 #28305] DEBUG -- : New log---------------------------------
+D, [2019-08-23T19:28:58.815790 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d27d2ea8 id=cs_test_5KN9xnXmeHx1cojnAUjWGgTKHQIN1I3oYS0DtqyBr4p0hViPj9fOgs6b> JSON: {
+  "id": "cs_test_5KN9xnXmeHx1cojnAUjWGgTKHQIN1I3oYS0DtqyBr4p0hViPj9fOgs6b",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2etw1se3Ti8s",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2eRRFrcF8ItY",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T19:28:58.816082 #28305] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 15:33:52", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg2etw1se3Ti8s", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 200.0, expire: nil>
+D, [2019-08-23T19:30:43.331420 #28305] DEBUG -- : New log---------------------------------
+D, [2019-08-23T19:30:43.333604 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d5134468 id=cs_test_rMu3EglEX2hlehKynguCpy9ISZjrK5gLGBeRFN7GybSWbHXCMWCY9kop> JSON: {
+  "id": "cs_test_rMu3EglEX2hlehKynguCpy9ISZjrK5gLGBeRFN7GybSWbHXCMWCY9kop",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2gHHxrBCTeHT",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2gaFCn7gkdgq",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T19:30:43.335268 #28305] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 15:33:52", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg2gHHxrBCTeHT", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
+D, [2019-08-23T19:32:37.387430 #28305] DEBUG -- : New log---------------------------------
+D, [2019-08-23T19:32:37.389682 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d0985cfc id=cs_test_Mr79oQmCMmUWgmgpKSUC1w5FZGhtITPo9J77jo7YDzYLY6rlDO2qCtPk> JSON: {
+  "id": "cs_test_Mr79oQmCMmUWgmgpKSUC1w5FZGhtITPo9J77jo7YDzYLY6rlDO2qCtPk",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2iQbtq58gmth",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2i0PPbWgiXba",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T19:32:37.389891 #28305] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 15:33:52", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg2iQbtq58gmth", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
+D, [2019-08-23T20:55:10.609748 #28305] DEBUG -- : New log---------------------------------
+D, [2019-08-23T20:55:10.610188 #28305] DEBUG -- : #<Stripe::StripeObject:0x3fd5d333af70 id=cs_test_zEq9ZI9ZJdpsej5DUcUNuijunhrV9guUD6rFD4L7a6wqu76VEp7Jg5gD> JSON: {
+  "id": "cs_test_zEq9ZI9ZJdpsej5DUcUNuijunhrV9guUD6rFD4L7a6wqu76VEp7Jg5gD",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg192LGOmbjffn",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg19yhoUWb1qUL",
+  "success_url": "http://http://localhost:3000/plans"
+}
+D, [2019-08-23T20:55:10.610461 #28305] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 18:31:48", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg192LGOmbjffn", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
+D, [2019-08-23T21:36:34.116519 #36872] DEBUG -- : New log---------------------------------
+D, [2019-08-23T21:36:34.118818 #36872] DEBUG -- : #<Stripe::StripeObject:0x3fd29f8c5198 id=cs_test_CsvPpBCoHR3SJhOZYmNakAlaFMUKHpasK8XOvtdRhddUgrSUaQIcURiV> JSON: {
+  "id": "cs_test_CsvPpBCoHR3SJhOZYmNakAlaFMUKHpasK8XOvtdRhddUgrSUaQIcURiV",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg1oGLrhNmXPIm",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg1oq58dqq3XkW",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T21:36:34.119045 #36872] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 18:56:29", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg1oGLrhNmXPIm", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
+D, [2019-08-23T22:12:53.731818 #36872] DEBUG -- : New log---------------------------------
+D, [2019-08-23T22:12:53.734004 #36872] DEBUG -- : #<Stripe::StripeObject:0x3fd2a56a8df0 id=cs_test_jLIxel4I3netGpngyh2veelKJWEtPD0yNempTKpyaM44i4bPdfPEzVwn> JSON: {
+  "id": "cs_test_jLIxel4I3netGpngyh2veelKJWEtPD0yNempTKpyaM44i4bPdfPEzVwn",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg5IzroIo8CfHQ",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "mode": "subscription",
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "setup_intent": null,
+  "submit_type": null,
+  "subscription": "sub_Fg5IaDeyIIwCg1",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T22:12:53.735185 #36872] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 19:37:30", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg5IzroIo8CfHQ", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
+D, [2019-08-23T22:14:37.767398 #36872] DEBUG -- : New log---------------------------------
+D, [2019-08-23T22:14:37.770001 #36872] DEBUG -- : #<Stripe::StripeObject:0x3fd2a561896c id=cs_test_9zllaMDnDlqXybfKRVxxoBW3mE0OE2MMebPUvvIfMjR5WpFSELkTcBrE> JSON: {
+  "id": "cs_test_9zllaMDnDlqXybfKRVxxoBW3mE0OE2MMebPUvvIfMjR5WpFSELkTcBrE",
+  "object": "checkout.session",
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:3000/plans",
+  "client_reference_id": "1891",
+  "customer": "cus_Fg2OwZe3uKRwWv",
+  "customer_email": "test@gmail.com",
+  "display_items": [
+    {"amount":200,"currency":"eur","plan":{"id":"deux","object":"plan","active":true,"aggregate_usage":null,"amount":200,"amount_decimal":"200","billing_scheme":"per_unit","created":1472467071,"currency":"eur","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"2 € par mois","nickname":null,"product":"prod_BTZWQwkeJE9Mht","statement_descriptor":null,"tiers":null,"tiers_mode":null,"transform_usage":null,"trial_period_days":null,"usage_type":"licensed"},"quantity":1,"type":"plan"}
+  ],
+  "livemode": false,
+  "locale": null,
+  "payment_intent": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "submit_type": null,
+  "subscription": "sub_Fg2Oj4WtfpWQ9S",
+  "success_url": "http://localhost:3000/plans"
+}
+D, [2019-08-23T22:14:37.770464 #36872] DEBUG -- : #<User id: 1891, email: "test@gmail.com", created_at: "2016-09-14 08:11:51", updated_at: "2019-08-23 20:12:53", level_id: nil, firstname: "", lastname: "", adress: "", phone: "", birth: nil, visible: true, admin: true, stripe_customer_id: "cus_Fg2OwZe3uKRwWv", plan: "deux", paydate: nil, deleted: false, collective: false, courses_ids: "18 13", pricing: 2.0, expire: nil>
