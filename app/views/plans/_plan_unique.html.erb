@@ -29,7 +29,7 @@
         checkoutButton.addEventListener('click', function () {
           //Quand l'utilisateur clique sur le bouton, il est renvoyé vers Checkout
           stripe.redirectToCheckout({
-            items: [{sku: 'sku_Fn0R1FFGpggIqb', quantity: 1}],
+            items: [{sku: '<%= ENV['STRIPE_SKU'] %>', quantity: 1}],
             clientReferenceId: '<%= current_user.id %>',
             customerEmail: '<%= current_user.email %>',
             successUrl: '<%= ENV['domain'] %>/plans',
