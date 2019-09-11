@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="border profile hidden-xs"></div>
       <!-- ========== L'UTILISATEUR A UN ABONNEMENT ACTIF ========== -->
-      <% if !current_user.plan.blank? %>
+      <% if current_user.plan.present? %>
         <%= render 'index_plan' %>
       <!-- ========== AUCUN ABONNEMENT POUR CET UTILISATEUR ========== -->
       <% else %>

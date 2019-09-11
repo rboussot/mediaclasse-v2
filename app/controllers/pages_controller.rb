@@ -42,7 +42,8 @@ class PagesController < ApplicationController
     end
     # ==== BDD ====
     # Récupérer tous les utilisateurs qui ont un abonnement en cours
-    @customers = User.where.not(plan: [nil, ""])
+    @customers = User.where.not(plan: [nil, ""]).where(collective: false)
+    @collective = User.where(collective: true)
     # Estimer le montant net
     @total = 0.0
     @customers.each do |customer|

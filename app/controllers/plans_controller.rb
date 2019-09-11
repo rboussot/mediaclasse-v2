@@ -12,12 +12,11 @@ class PlansController < ApplicationController
       if @plan.nil?
         @plan = Plan.where(plan_name: "erreur").first
       end
-    else
-      # Récupérer les paiements récurrents, uniques, et par virement.
-      @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC")
-      @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC")
-      @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC")
     end
+    # Récupérer les paiements récurrents, uniques, et par virement.
+    @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC")
+    @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC")
+    @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC")
   end
 
   def show
