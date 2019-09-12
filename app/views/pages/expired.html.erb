@@ -25,24 +25,10 @@
                 -
                 <%= (Date.today.to_date - (user.expire.to_date)).to_i + 1 %> jours.
                 <%= link_to unsubscribe_path(id: user.id) do %>
-                 [X]
+                 [fermer]
                 <% end %>
               </p>
           <% end %>
-        <!-- ======== IMPAYÉS SELON STRIPE ======== -->
-        <!-- ==== COMPTER IMPAYÉS SELON STRIPE ==== -->
-        <h3>Récurrents impayées selon Stripe: <%= @invoices_pastdue.count %></h3>
-        <!-- ==== LISTER IMPAYÉS SELON STRIPE ==== -->
-          <% @invoices_pastdue.each do |invoice| %>
-              <p>
-                <% if user = User.where(stripe_customer_id: invoice["customer"]).first %>
-                  <%= user.email %>
-                <% else %>
-                  <span style="color:grey"><%= invoice["customer"] %></span>
-                <% end %>
-                 - <%= invoice["attempt_count"] %> échecs.
-              </p>
-            <% end %>
       </div>
     </div>
   </div>
