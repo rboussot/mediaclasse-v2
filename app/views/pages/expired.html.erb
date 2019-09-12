@@ -18,14 +18,14 @@
           <% @expired_plans.each do |user| %>
               <p>
                 <%= user.email %>
-                (<%= user.pricing.round %>€ /
+                (<%= user.pricing.round %>€ pendant
                 <% if user.paydate.present? %>
                   <%= (Date.today.to_date - (user.paydate.to_date)).to_i + 1 %> jours)
                 <% end %>
-                expiré
+                depuis
                 <%= (Date.today.to_date - (user.expire.to_date)).to_i + 1 %> jours.
                 <%= link_to unsubscribe_path(id: user.id) do %>
-                 [fermer]
+                 [X]
                 <% end %>
               </p>
           <% end %>
