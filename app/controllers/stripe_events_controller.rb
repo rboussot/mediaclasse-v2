@@ -72,9 +72,12 @@ class StripeEventsController < ApplicationController
 
   def handle_invoice_payment_failed(invoice_infos)
     @stripe_customer_id = invoice_infos.customer
-    @user = User.where(stripe_customer_id: @stripe_customer_id).first
-    @user.expire = Date.today
-    @user.save
+    # Si le client a bien un abonnement ouvert (il a un id Stripe en DB)
+    if @user = User.where(stripe_customer_id: @stripe_customer_id).first
+      # Alors on note la date d'expiration
+      @user.expire = Date.today
+      @user.save
+    end
   end
 
 end
