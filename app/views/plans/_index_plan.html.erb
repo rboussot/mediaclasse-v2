@@ -4,17 +4,8 @@
             <div class="plan-title">
               <br><h3>Merci pour votre participation !
               </h3><br>
-              <div class="plan-infos">
-                ► C'est un prix libre à votre bon coeur ! En payant un peu plus, vous rendez possible l'accès à prix réduit, mais <u>dans tous les cas</u>, vous accédez à tout, tout de suite, et sans limite.<br>
-                ► Les abonnements mensuels <u>sont reconduits tous les mois</u>, mais vous pouvez vous désengager n'importe quand en cliquant sur le bouton rouge "Cesser de participer" en bas de la page. <br>
-                ► Le système de paiement est <u>international et sécurisé à 100%</u>.
-                <%= render 'shared/plansecurity' %>
-                <span data-toggle = "modal" data-target = "#PlanSecurity" class= "plan-pointer" >
-                   [<i class="fa fa-lock"></i>]
-                </span>
-                <br>
-                ► Vos informations <u>restent confidentielles</u> et ne servent qu'à activer votre abonnement.<br><br>
-              </div>
+              <!-- ======== INFORMATIONS SUR LE FONCTIONNEMENT ======== -->
+              <%= render 'plan_infos' %>
             </div>
           </div>
         </div>
@@ -24,7 +15,7 @@
               <div class= "plan-stripe <%= @plan.css_class %>">
                 <h4><%= @plan.title %></h4>
                   <% if @plan.payment == "recurrent" %>
-                    <p>Vous participez actuellement pour un montant de <%= current_user.pricing.round %>€ chaque mois !</p>
+                    <p>Vous participez actuellement pour un montant de <%= current_user.pricing.round %>€ par mois !</p>
                   <% elsif @plan.payment == "erreur" %>
                     <p><%= @plan.description %></p>
                   <% else %>
@@ -61,9 +52,16 @@
           <% end %>
           <!-- ======== CONSULTER CGV ======== -->
           <div class="col-sm-offset-1 col-sm-5 plan-button">
-                <%= render 'shared/plancgv' %>
-                <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
-                  Consulter les <i>Conditions générales de vente ?  </i>
-                </span>
-              </div>
+            <%= render 'shared/plancgv' %>
+            <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
+              Consulter les <i>Conditions générales de vente ?  </i>
+            </span>
+          </div>
+          <!-- ======== TAKHOTAKH ======== -->
+          <div class="col-sm-9 plan-wrapper">
+            <%= link_to "https://takhotakh.com/chaine/192" do %>
+              Faire un don sur
+              <%= image_tag "https://www.echosciences-hauts-de-france.fr/uploads/user/1018338442/avatar/xl_avatar.png" %>
+              <% end %>
+          </div>
         </div>
