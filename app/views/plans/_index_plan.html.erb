@@ -66,8 +66,10 @@
           <!-- === FAIRE UN DON === -->
             <div class="row">
               <div class="col-xs-offset-2 plan-wrapper"><br>
-                <h4 class= "plan-frame">Pour soutenir Mediaclasse avec un don :</h4><br>
-                <%= render 'plan_don' %>
+                <% if @don_plans.last.present? %>
+                  <h4 class= "plan-frame">Pour soutenir Mediaclasse avec un don :</h4><br>
+                  <%= render 'plan_don' %>
+                <% end %>
                 <br><br><br><br><br><br>
               </div>
             </div>
