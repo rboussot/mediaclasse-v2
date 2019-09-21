@@ -1,0 +1,22 @@
+
+<% @don_plans.each  do |plan| %>
+
+  <!-- ==== VIGNETTE ==== -->
+    <div class= "plan-stripe <%= plan.css_class %>">
+      <h4><%= plan.title %></h4>
+      <p><%= plan.description %></p>
+      <%= link_to plan.message, target: :_blank do %>
+        <div class = "plan-cbutton hvr-light">Visiter</div>
+      <% end %>
+    </div>
+  <!-- ==== FIN DE LA VIGNETTE ==== -->
+
+<% end %>
+
+
+
+
+
+<!-- IMAGE
+  "https://www.echosciences-hauts-de-france.fr/uploads/user/1018338442/avatar/xl_avatar.png"
+-->

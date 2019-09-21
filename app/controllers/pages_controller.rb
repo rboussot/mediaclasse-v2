@@ -27,12 +27,14 @@ class PagesController < ApplicationController
 
   def invoices
     # Accéder à l'API de Stripe
-    require "stripe"
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    # On récupère le user avec son id Stripe
-    @stripe_customer_id = current_user[:stripe_customer_id]
-    # Récupérer les Factures depuis l'API de Stripe
-    @invoices = Stripe::Invoice.list(limit: 100, customer: @stripe_customer_id)
+    if current_user.stripe_customer_id.present?
+      require "stripe"
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      # On récupère le user avec son id Stripe
+      @stripe_customer_id = current_user[:stripe_customer_id]
+      # Récupérer les Factures depuis l'API de Stripe
+      @invoices = Stripe::Invoice.list(limit: 100, customer: @stripe_customer_id)
+    end
   end
 
   def expired

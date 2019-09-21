@@ -9,6 +9,13 @@
             </div>
           </div>
         </div>
+        <div>
+          <div class="row">
+            <div class="col-xs-offset-2 plan-wrapper">
+              <h4 class= "plan-frame">Détails de l'abonnement pour <i><u><%= current_user.email %></i></u></h4>
+            </div>
+          </div>
+        </div>
         <div class="row">
         <!-- === PLANS  === -->
           <div class="col-sm-offset-3 col-sm-1 plan-wrapper">
@@ -30,13 +37,13 @@
             <!-- Abonnement unitaire : on ne peut pas -->
             <% if current_user.collective || !current_user.stripe_customer_id.present? %>
               <%= render 'shared/planquestion' %>
-              Votre abonnement est payé !
+              • Votre abonnement est payé !
                 <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-delete-off hvr-glow">
                   <p>Cesser de participer</p>
                 </div><br>
             <!-- Abonnement récurrent -->
             <% else %>
-              Arrêter mon abonnement :<br>
+              • Arrêter mon abonnement :<br>
               <%= render 'shared/plandelete' %>
               <div data-toggle = "modal" data-target = "#PlanDelete" class="plan-delete hvr-glow">
                 <p>Cesser de participer</p>
@@ -44,24 +51,24 @@
             <% end %>
           </div>
           <!-- ======== CONSULTER FACTURES ======== -->
-          <!-- Abonnement récurrent seulement -->
-          <% unless current_user.collective || !current_user.stripe_customer_id.present? %>
             <div class="col-sm-offset-1 col-sm-5 plan-button">
-                <%= link_to "Consulter mes factures", invoices_path %>
+              • <%= link_to "Consulter mes factures", invoices_path %>
             </div>
-          <% end %>
           <!-- ======== CONSULTER CGV ======== -->
           <div class="col-sm-offset-1 col-sm-5 plan-button">
             <%= render 'shared/plancgv' %>
             <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
-              Consulter les <i>Conditions générales de vente ?  </i>
+              • Consulter les <i>Conditions générales de vente ?  </i>
             </span>
           </div>
-          <!-- ======== TAKHOTAKH ======== -->
-          <div class="col-sm-9 plan-wrapper">
-            <%= link_to "https://takhotakh.com/chaine/192", target: :_blank do %>
-              Faire un don sur
-              <%= image_tag "https://www.echosciences-hauts-de-france.fr/uploads/user/1018338442/avatar/xl_avatar.png" %>
-              <% end %>
-          </div>
+          <!-- ======== FIN DES BOUTONS ======== -->
         </div>
+          <!-- === FAIRE UN DON === -->
+            <div class="row">
+              <div class="col-xs-offset-2 plan-wrapper"><br>
+                <h4 class= "plan-frame">Pour soutenir Mediaclasse avec un don :</h4><br>
+                <%= render 'plan_don' %>
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+

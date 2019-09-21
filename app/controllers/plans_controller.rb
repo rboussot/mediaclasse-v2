@@ -17,6 +17,7 @@ class PlansController < ApplicationController
     @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC")
     @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC")
     @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC")
+    @don_plans = Plan.where(visible: true).where(payment: "don")
   end
 
   def show

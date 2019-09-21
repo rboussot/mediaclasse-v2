@@ -11,15 +11,34 @@
             <% end %>
           </div>
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
-        <br><h3>Factures de votre abonnement en cours</h3><br><br>
-<!-- === LISTE DES FACTURES === -->
-          <% @invoices["data"].each do |data| %>
-            <%= link_to data["hosted_invoice_url"], format: 'pdf', target: :_blank do %>
-              <h4> <%= Time.at(data["date"]).strftime("%d/%m/%Y") %>
-                <!-- - (<#%= number_to_currency(data["amount_due"]/100.0,:unit=>'€')%>)</h4> -->
+        <% if @invoices %>
+          <br><h3>Factures de votre abonnement en cours</h3><br><br>
+        <% else %>
+          <br><h3>Facture de votre abonnement en cours</h3><br><br>
+        <% end %>
+        <!-- ==== INFOS USER ==== -->
+            <div>
+              <p>Adresse email : <%= email ||= current_user.email %></p>
+              <p>Type : <%= current_user.collective ? "Payé en 1 fois" : "Mensuel" %></p>
+              <p><%= prenom ||= current_user.firstname ; prenom ? "Prénom : "+prenom : "" %></p>
+              <p><%= nom ||= current_user.lastname ; nom ? "Nom : "+nom : "" %></p>
+              <p><%= paydate ||= current_user.paydate ; paydate ? "Début de l'abonnement : "+paydate.strftime("%d/%m/%Y") : "" %></p>
+              <p><%= expire ||= current_user.expire ; expire ? "Fin de l'abonnement : "+expire.strftime("%d/%m/%Y") : "" %></p>
+              <hr><p align= "center">
+                <%= pricing ||= current_user.pricing ; pricing ? "Montant : "+pricing.round.to_s+"€" : "" %>
+                <%= current_user.collective ? "" : "/ mois" %>
+              </p><hr>
+            </div>
+            <!-- ==== FIN INFOS USER ==== -->
+          <!-- === LISTE DES FACTURES === -->
+          <% if @invoices %>
+            <% @invoices["data"].each do |data| %>
+              <%= link_to data["hosted_invoice_url"], format: 'pdf', target: :_blank do %>
+                  <p>► Consulter la facture du <%= Time.at(data["date"]).strftime("%d/%m/%Y") %></p>
+              <% end %>
             <% end %>
           <% end %>
-<!-- ===== Fin de la page ===== -->
+          <!-- ===== Fin de la page ===== -->
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>

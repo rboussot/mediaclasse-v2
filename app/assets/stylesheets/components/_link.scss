@@ -198,9 +198,16 @@ li.hvr-icon-grow {
   -moz-osx-font-smoothing: grayscale;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
 }
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 6px rgba(0, 0, 0, 3);
+}
+
+.hvr-light {
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.hvr-light:hover, .hvr-glow:focus, .hvr-glow:active {
+  -webkit-filter: brightness(110%);
 }
