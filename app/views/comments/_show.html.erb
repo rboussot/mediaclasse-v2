@@ -32,7 +32,7 @@
 
 <!-- ===== réponses au commentaire ===== -->
 
-<% comment.subcomments.each do |subcomment| %>
+<% comment.subcomments.order("created_at ASC").each do |subcomment| %>
 <!-- === Bloc de sous-commentaire === -->
   <div class= "lecture-subcomment">
     <!-- === Avatar de l'utilisateur -->
