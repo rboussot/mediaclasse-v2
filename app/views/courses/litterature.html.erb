@@ -38,10 +38,9 @@
       <div class="list-scroll">
         <% if @litterature_courses.count > 0 %>
           <% @litterature_courses.each do |course| %>
-            <% if course.lectures.first && course.visible %>
-
+            <% if course.lectures.where(visible: :true).count > 0 && course.visible %>
               <div class="list-item hidden-xs" id="<%= course.author.pseudo.first %>">
-                <%= link_to lecture_path(course.lectures(where: :visible).first) do %>
+                <%= link_to lecture_path(course.lectures.where(visible: :true).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
                   <ul>
                     <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i>, <%= course.date %>. </h3></li>
