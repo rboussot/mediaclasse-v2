@@ -193,7 +193,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (2.0.5)
-    puma (3.6.0)
+    puma (3.12.6)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.3)
