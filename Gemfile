@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.5'
 
-gem 'rails', '5.0.0'
+gem 'rails', '~> 5.2.0'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
@@ -37,7 +37,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'rb-readline'
 
-  gem 'pry-byebug'
+  gem 'pry-byebug', '3.9.0'
   gem 'pry-rails'
   gem 'spring'
   gem 'listen', '~> 3.0.5'
