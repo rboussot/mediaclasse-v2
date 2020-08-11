@@ -79,8 +79,7 @@ class StripeEventsController < ApplicationController
 
     invoice = Stripe::Invoice.create({
       customer: @user.stripe_customer_id,
-      #TODO: modifier l'id pour la prod.
-      default_tax_rates: ["txr_1H5wUQGSIfDI2OQZz67hgSpF"],
+      default_tax_rates: default_tax_rates: ENV['STRIPE_INCLUSIVE_VAT'],
       auto_advance: true, # auto-finalize this draft after ~1 hour
     })
 

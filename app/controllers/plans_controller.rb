@@ -54,8 +54,7 @@ class PlansController < ApplicationController
         quantity: 1,
       }],
       subscription_data: {
-        #TODO: modifier pour l'id en prod.
-        default_tax_rates: ['txr_1H5wUQGSIfDI2OQZz67hgSpF'],
+        default_tax_rates: ENV['STRIPE_INCLUSIVE_VAT'],
       },
       mode: "subscription",
       success_url: ENV['domain']+'/plans',
