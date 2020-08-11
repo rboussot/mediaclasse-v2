@@ -1,5 +1,9 @@
+require "logger"
+require 'pry'
+
 class PlansController < ApplicationController
   skip_after_action :verify_authorized, :verify_policy_scoped
+
   def index
     # Si aucun cours n'est payant, rediriger vers une page "en construction".
     if Lecture.where(payment: true).count == 0
@@ -18,6 +22,65 @@ class PlansController < ApplicationController
     @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC")
     @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC")
     @don_plans = Plan.where(visible: true).where(payment: "don")
+  end
+
+ def planselected
+    # Le mode : est-ce un "subscription" ou un "payment"
+    @plan_mode = params[:mode]
+    # Le plan sélectionné a un nom en BDD qui est le même côté Stripe
+    @plan_id = params[:id]
+
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    # La méthode n'est pas la même selon si c'est un abonnement ou un paiement unique
+    if @plan_mode == 'subscription'
+      @session = create_session_with_subscription()
+    elsif @plan_mode== 'payment'
+      @session = create_session_with_payment()
+    end
+
+    @session_id = @session.id
+  end
+
+  def create_session_with_subscription
+    return Stripe::Checkout::Session.create(
+      client_reference_id: current_user.id,
+      # Les informations dans metadata seront récupérable dans
+      # l'évènement de retour du webhook: stripe_events_controller::handle_checkout_session_completed
+      metadata: {
+        plan_id: @plan_id,
+      },
+      payment_method_types: ['card'],
+      line_items: [{
+        price: @plan_id,
+        quantity: 1,
+      }],
+      subscription_data: {
+        #TODO: modifier pour l'id en prod.
+        default_tax_rates: ['txr_1H5wUQGSIfDI2OQZz67hgSpF'],
+      },
+      mode: "subscription",
+      success_url: ENV['domain']+'/plans',
+      cancel_url: ENV['domain']+'/plans',
+    )
+  end
+
+  def create_session_with_payment
+    return Stripe::Checkout::Session.create(
+      client_reference_id: current_user.id,
+      # Les informations dans metadata seront récupérable dans
+      # l'évènement de retour du webhook: stripe_events_controller::handle_checkout_session_completed
+      metadata: {
+        plan_id: @plan_id,
+      },
+      payment_method_types: ['card'],
+      line_items: [{
+        price: @plan_id,
+        quantity: 1,
+      }],
+      mode: "payment",
+      success_url: ENV['domain']+'/plans',
+      cancel_url: ENV['domain']+'/plans',
+    )
   end
 
   def show
