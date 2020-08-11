@@ -34,7 +34,7 @@
           <% if @invoices %>
             <% @invoices["data"].each do |data| %>
               <%= link_to data["hosted_invoice_url"], format: 'pdf', target: :_blank do %>
-                  <p>► Consulter la facture du <%= Time.at(data["date"]).strftime("%d/%m/%Y") %></p>
+                  <p>► Consulter la facture du <%= Time.at(data.status_transitions.paid_at).strftime("%d/%m/%Y") %></p>
               <% end %>
             <% end %>
           <% end %>

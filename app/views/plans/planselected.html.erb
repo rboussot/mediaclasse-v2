@@ -1,0 +1,44 @@
+<div class="home-wrapper">
+  <div class="container-fluid">
+    <div class="border profile hidden-xs"></div>
+      <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="plan-title">
+          <br>
+            <span data-toggle = "modal" data-target = "#PlanSecurity" class= "plan-pointer" >
+               [<i class="fa fa-lock"></i>]
+            </span>
+            Renvoi vers la zone sécurisée par Stripe.
+
+          <div class= "plan-stripe">
+            <div id="error-message"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<script src="https://js.stripe.com/v3"></script>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+
+  $(document).ready(function(){
+
+    var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+    stripe.redirectToCheckout({
+      sessionId: '<%= @session_id %>'
+    })
+    .then(function (result) {
+        if (result.error) {
+          <!-- Renvoyer message d'erreur -->
+          var displayError = document.getElementById('error-message');
+          displayError.textContent = result.error.message;
+        }
+      });
+    })
+
+  <% end %>
+<% end %>

@@ -7,6 +7,8 @@ class StripeEventsController < ApplicationController
 
   def create
     require 'json'
+    # Après le paiement, Stripe renvoie ici grâce au webhook
+    #TODO: Utiliser NGROK pour le tester
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     endpoint_secret = ENV['STRIPE_SIGNING_SECRET']
 
@@ -28,11 +30,11 @@ class StripeEventsController < ApplicationController
         return
     end
 
+    # Les webhook peut renvoyer deux événements différents
     case event.type
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
     when 'invoice.payment_failed'
-
       handle_invoice_payment_failed(event.data.object)
     else
       # Unexpected event type
@@ -46,28 +48,45 @@ class StripeEventsController < ApplicationController
     @id_user = checkout_session.client_reference_id
     @user = User.find(@id_user)
     @user.stripe_customer_id = checkout_session.customer
+    @user.pricing = checkout_session.amount_total / 100
+    @user.paydate = Date.today
     # On vérifie le type de paiement
-    if checkout_session.display_items.first().type == "plan"
+    if checkout_session.mode == "subscription"
       # Si le paiement est récurrent, sauvegarder le montant
-      @user.plan = checkout_session.display_items.first().plan.id
-      @user.pricing = checkout_session.display_items.first().amount / 100
-      @user.paydate = Date.today
+      @user.plan = checkout_session.metadata.plan_id
       @user.collective = false
       @user.expire = nil
-    elsif checkout_session.display_items.first().type == "sku"
+    elsif checkout_session.mode == "payment"
       # Si le paiement est en une fois, sauvegarder la date d'expiration
-      @user.paydate = Date.today
-      @user.pricing = 24
       @user.collective = true
       @user.expire = Date.today + 1.year
-      @user.plan = "24€ pour 1 utilisateur jusqu'au #{@user.expire.strftime '%d/%m/%Y'}"
+      @user.plan = "#{@user.pricing.round} € pour 1 utilisateur jusqu'au #{@user.expire.strftime '%d/%m/%Y'}"
       # Afficher une notice pour rappeler la date d'expiration de l'abonnement
       flash[:notice] = "Votre abonnement fermera le #{@user.expire.strftime '%d/%m/%Y'}"
+      create_invoice(checkout_session.metadata.plan_id)
     end
     # Envoyer un message de bienvenue
     if @user.save
       PlanMailer.welcome(@user).deliver_now
     end
+  end
+
+  def create_invoice(plan_id)
+    Stripe::InvoiceItem.create({
+      customer: @user.stripe_customer_id,
+      price: plan_id,
+    })
+
+    invoice = Stripe::Invoice.create({
+      customer: @user.stripe_customer_id,
+      #TODO: modifier l'id pour la prod.
+      default_tax_rates: ["txr_1H5wUQGSIfDI2OQZz67hgSpF"],
+      auto_advance: true, # auto-finalize this draft after ~1 hour
+    })
+
+    Stripe::Invoice.pay(invoice.id, {
+      paid_out_of_band: true,
+    })
   end
 
   def handle_invoice_payment_failed(invoice_infos)

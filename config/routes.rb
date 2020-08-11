@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :plans, only: [:index, :show, :new, :create, :edit, :update]
+  get "planselected", to: "plans#planselected"
   get "newsletter", to: "pages#newsletter"
   get "invoices", to: "pages#invoices"
   get "expired", to: "pages#expired"
