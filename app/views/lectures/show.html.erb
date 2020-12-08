@@ -82,13 +82,11 @@
             <!-- === DOCUMENTS === -->
               <div class="lecture-documents content">
                 <% if policy(@lecture).watch_video? %>
-                  <ul>
-                    <% @documents.each do |document| %>
-                      <li class="hvr-icon-grow">
-                        <%= link_to document.title, document_path(document)%>
-                      </li>
-                    <% end %>
-                  </ul>
+                  <% @documents.each do |document| %>
+                    <p>
+                      ⇨ <%= link_to document.title, document_path(document)%>
+                    </p>
+                  <% end %>
                 <% else %>
                   <%= render 'shared/planmodal' %>
                   <% @documents.each do |document| %>

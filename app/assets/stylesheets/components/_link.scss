@@ -106,6 +106,10 @@ div.form-actions {
   width: 100%;
 }
 
+li {
+  padding-left: 1.3em;
+}
+
 /* ========== Icon Float ========== */
 /* Icon Grow */
 .hvr-icon-grow {
@@ -125,9 +129,9 @@ div.form-actions {
   transition-duration: 0.3s;
 }
 .hvr-icon-grow:before {
-  content: "\f093";
+  content: "\f06e";
   position: absolute;
-  left: -2em;
+  left: -1.3em;
   padding: 0 1px;
   font-family: FontAwesome;
   -webkit-transform: translateZ(0);
