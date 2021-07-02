@@ -12,7 +12,7 @@
     <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
     <!-- === LINK CHANNELS === -->
     <% @channels_category = Category.where(tag: "chaines").first.name %>
-    <%= link_to "Communauté", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
+    <%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
     <!-- === LINK MY_COURSES === -->
     <% if current_user %>
       <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
