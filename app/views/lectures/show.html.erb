@@ -78,9 +78,9 @@
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
             <!-- === DESCRIPTION === -->
-            <p class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %></p>
+            <div class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %></div>
             <!-- === DOCUMENTS === -->
-              <div class="lecture-documents content">
+              <div class="lecture-documents content" id="documents">
                 <% if policy(@lecture).watch_video? %>
                   <% @documents.each do |document| %>
                     <p>
@@ -90,11 +90,9 @@
                 <% else %>
                   <%= render 'shared/planmodal' %>
                   <% @documents.each do |document| %>
-                    <ul>
-                      <li data-toggle = "modal" data-target = "#PlanModal" class="hvr-icon-grow">
-                        <%= document.title %>
-                      </li>
-                    </ul>
+                      <p data-toggle = "modal" data-target = "#PlanModal">
+                        ⇨ <%= link_to document.title, '#documents' %>
+                      </p>
                   <% end %>
                 <% end %>
               </div>
