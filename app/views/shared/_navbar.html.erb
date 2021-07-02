@@ -104,7 +104,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
         <li><%= link_to "Oeuvres & analyses", litterature_courses_path %></li>
         <li><%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category)%></li>
-        <li><%= link_to "Communauté", channels_path(category: @channels_category) %></li>
+        <li><%= link_to "Partenaires", channels_path(category: @channels_category) %></li>
         <% if current_user %>
           <li><%= link_to "Mes cours", user_path(current_user) %></li>
         <% else %>
