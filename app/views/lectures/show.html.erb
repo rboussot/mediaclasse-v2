@@ -1,5 +1,5 @@
 <% content_for :meta_title do %>
-  <%= @lecture_course.title+" - "+@lecture.title %>
+  <%= @lecture_course.title+" de "+@lecture_author+" : "+@lecture.title %> (Explication et commentaire détaillés)
 <% end %>
 
 <% content_for :meta_image do %>
@@ -22,7 +22,7 @@
         </div>
       <% end %>
       <!-- ========== SIDE MENU ========== -->
-      <div class= "col-xs-12 col-sm-12 col-md-3">
+      <nav class= "col-xs-12 col-sm-12 col-md-3">
         <div class="lecture-menu">
           <% @lectures.each do |lecture| %>
             <ul>
@@ -40,7 +40,7 @@
             </ul>
           <% end %>
         </div>
-      </div>
+      </nav>
       <!-- ========== VIDEO PAGE ========== -->
       <div class= "col-xs-12 col-md-9">
         <div class="lecture-show">
@@ -67,20 +67,21 @@
           <!-- ========== TABS ========== -->
           <div class= "tabs">
             <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
-              <h3>Description</h3>
+              <label for="description">Description</label>
             </span>
             <% if @documents != [] %>
             <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
-              <h3>Documents</h3>
+              <label for="documents">Documents</label>
             </span>
             <% end %>
           </div>
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
             <!-- === DESCRIPTION === -->
-            <div class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %></div>
+            <section class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %>
+            </section>
             <!-- === DOCUMENTS === -->
-              <div class="lecture-documents content" id="documents">
+              <section class="lecture-documents content" id="documents">
                 <% if policy(@lecture).watch_video? %>
                   <% @documents.each do |document| %>
                     <p>
@@ -95,7 +96,7 @@
                       </p>
                   <% end %>
                 <% end %>
-              </div>
+              </section>
             <!-- ========== CLOSE TABS ========== -->
           </div>
     <!-- ========== CLOSE CONTAINERS ========== -->

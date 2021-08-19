@@ -11,12 +11,14 @@
   text-decoration: none;
   opacity: 0.8;
 }
-.tabs h3 {
-  font-size: 17px;
+.tabs label {
+  font-size: 18px;
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
+  cursor: pointer
 }
+
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
