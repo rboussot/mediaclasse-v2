@@ -4,6 +4,7 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find(params[:id])
     @lecture_course = @lecture.course
+    @lecture_course.author ? @lecture_author = @lecture.course.author.name.to_s : @lecture_author = "Mediaclasse"
     @lectures = @lecture_course.lectures.order('updated_at ASC').where(visible: true)
     @documents = Document.where(lecture_id: params[:id])
     skip_authorization
