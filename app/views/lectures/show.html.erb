@@ -67,19 +67,27 @@
           <!-- ========== TABS ========== -->
           <div class= "tabs">
             <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
-              <label for="description">Description</label>
+              <label for="description">CONTENU</label>
             </span>
             <% if @documents != [] %>
             <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
-              <label for="documents">Documents</label>
+              <label for="documents">DOCUMENTS</label>
             </span>
             <% end %>
           </div>
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
             <!-- === DESCRIPTION === -->
-            <section class="lecture-description content"><%= @lecture.description.gsub("\n", "<br/>").html_safe %>
-            </section>
+            <% if policy(@lecture).watch_video? %>
+              <section class="lecture-description content">
+                <%= @description_for_subscribers %>
+              </section>
+            <% else %>
+              <section class="lecture-description content"><%= @description_for_free %>
+                <p>[...]</p>
+                <br><br><i><%= link_to "Soutenez le site et accédez au texte complet.", plans_url %></i>
+              </section>
+            <% end %>
             <!-- === DOCUMENTS === -->
               <section class="lecture-documents content" id="documents">
                 <% if policy(@lecture).watch_video? %>

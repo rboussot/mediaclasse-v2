@@ -23,6 +23,7 @@ default: &default
 
 development:
   <<: *default
+  username: romainboussot
   database: mediaclasse-v2_development
 
   # The specified database role being used to connect to postgres.

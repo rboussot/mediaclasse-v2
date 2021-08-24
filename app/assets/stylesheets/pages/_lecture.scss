@@ -1,3 +1,24 @@
+h1 {
+  font-size: 30px;
+  color: $greydark;
+  text-align: center;
+  border-bottom: 2px solid $greydark;
+  padding: 0px 20% 20px 20%;
+}
+
+h2 {
+  font-size: 26px;
+  color: $greydark;
+  margin: 10px 0px 0px 0px;
+}
+
+h3 {
+  font-size: 18px;
+  color: $greydark;
+  margin: 10px 0px -20px 0px;
+  text-shadow: 1px 0px 0px $greydark;
+}
+
 .lecture-wrapper {
   padding-top : 70px;
   min-height: 800px;
