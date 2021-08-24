@@ -47,7 +47,7 @@
           <% @channels.each do |channel| %>
             <div class="list-item hidden-xs">
               <%= link_to channel.link, target: :_blank do %>
-                <%= cl_image_tag channel.picture.path, class: "list-image", width: 178, height: 267, crop: :fill %>
+                <%= cl_image_tag channel.picture.path, class: "list-image", alt: "Logo de la chaîne "+channel.name, width: 178, height: 267, crop: :fill %>
                 <ul>
                   <li><h3><%= channel.name %></h3></li>
                   <li><p><%= channel.description.gsub("\n", "<br/>").html_safe %></p></li>

@@ -52,7 +52,7 @@
             <!-- ==== LIST ITEM ==== -->
               <div class="list-item hidden-xs">
                 <%= link_to lecture_path(course.lectures.first) do %>
-                  <%= cl_image_tag course.picture, class: "list-image", width: 178, height: 267, crop: :fill %>
+                  <%= cl_image_tag course.picture, class: "list-image", alt: "Couverture pour mes cours en "+@category.name+" sur "+course.title, width: 178, height: 267, crop: :fill %>
                   <ul>
                     <li><h3><%= course.title %></h3></li>
                     <li><p><%= course.description %></p></li>

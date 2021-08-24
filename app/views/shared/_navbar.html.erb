@@ -2,7 +2,7 @@
   <div class="navbar-media">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-media-brand" do %>
-    <%= image_tag "logo.png", class: "hvr-grow" %>
+    <%= image_tag "logo.png", alt:"Logo de Mediaclasse", class: "hvr-grow" %>
   <% end %>
   <!-- ========== LARGE SCREEN MENU ========== -->
     <!-- === LINK LITT === -->
@@ -31,7 +31,7 @@
         <div class="navbar-media-item">
           <div class="dropdown">
             <% if current_user.picture %>
-              <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
+              <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, alt: "Avatar de l'utilisateur "+current_user.firstname+" "+current_user.lastname, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% else %>
               <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', width: 40, height: 40, crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% end %>

@@ -39,21 +39,21 @@
           <h4>Présentation</h4>
           <p><%= @pres.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
-            <iframe class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+            <iframe title="Vidéo de présentation du site de Mediaclasse" class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
         <div class= "home-card-large">
           <h4>Ma dernière vidéo :</h4>
           <div class="embed-responsive embed-responsive-16by9 home-video">
           <% @last_lecture = Lecture.last %>
-              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+              <iframe title= "Le dernier cours de Mediaclasse au format vidéo", width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
         <div class= "home-card-large">
           <h4>Mon dernier coup de coeur sur Youtube !</h4>
           <p><%= @favorite.description %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
-              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+              <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
       </div>
