@@ -9,6 +9,8 @@ public/assets
 *.key
 *.csr
 *.pem
+latest.dump*
+latest.dump.*
 
 # Ignore application configuration
 /config/application.yml

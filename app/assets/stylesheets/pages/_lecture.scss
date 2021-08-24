@@ -1,4 +1,4 @@
-h1 {
+.lecture-content h1 {
   font-size: 30px;
   color: $greydark;
   text-align: center;
@@ -6,13 +6,13 @@ h1 {
   padding: 0px 20% 20px 20%;
 }
 
-h2 {
+.lecture-content h2 {
   font-size: 26px;
   color: $greydark;
   margin: 10px 0px 0px 0px;
 }
 
-h3 {
+.lecture-content h3 {
   font-size: 18px;
   color: $greydark;
   margin: 10px 0px -20px 0px;
