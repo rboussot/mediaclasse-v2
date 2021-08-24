@@ -1,5 +1,5 @@
 <% content_for :meta_title do %>
-  <%= @lecture_course.title+" de "+@lecture_author+" : "+@lecture.title %> (Explication et commentaire détaillés)
+  <%= @meta_title %>
 <% end %>
 
 <% content_for :meta_image do %>
@@ -52,7 +52,7 @@
             <%= render 'shared/planmodal' %>
             <div data-toggle = "modal" data-target = "#PlanModal">
               <div class="embed-responsive embed-responsive-16by9 lecture-vignette">
-                <%= image_tag @lecture.course.picture, class: "lecture-cover" %>
+                <%= image_tag @lecture.course.picture, class: "lecture-cover", alt: "Couverture du livre "+@lecture_course.title+" de "+@lecture_author %>
                 <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
                 <h2 class= "lecture-title hidden-xs"><%= @lecture.title %></h2>
                 <h2 class= "lecture-title-xs hidden-sm hidden-md hidden-lg hidden-xl"><%= @lecture.title %></h2>
