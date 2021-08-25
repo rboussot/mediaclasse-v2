@@ -19,6 +19,11 @@
   text-shadow: 1px 0px 0px $greydark;
 }
 
+.lecture-content q {
+  font-family: times;
+  font-style: italic;
+}
+
 .lecture-wrapper {
   padding-top : 70px;
   min-height: 800px;
