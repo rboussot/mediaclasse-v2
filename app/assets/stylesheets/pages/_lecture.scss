@@ -12,16 +12,19 @@
   margin: 10px 0px 0px 0px;
 }
 
+.lecture-content q {
+  font-family: 'Garamond';
+  font-style: normal;
+  quotes: none;
+  color: #555555;
+  font-weight: 100;
+  }
+
 .lecture-content h3 {
   font-size: 18px;
   color: $greydark;
   margin: 10px 0px -20px 0px;
   text-shadow: 1px 0px 0px $greydark;
-}
-
-.lecture-content q {
-  font-family: times;
-  font-style: italic;
 }
 
 .lecture-wrapper {
