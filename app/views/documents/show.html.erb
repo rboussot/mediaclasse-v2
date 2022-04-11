@@ -9,7 +9,12 @@
       <% end %>
     </div>
       <div class="col-xs-8">
-        <iframe src="<%= @document.url %>" style="width:100%; height:calc(100vh - 110px); margin-top: 20px" frameborder="0"></iframe>
+        <span style="position: fixed;padding:5% 5%;width: 50%;z-index: 0;">
+          Patientez pendant le chargement et n'hésitez pas à rafraîchir plusieurs fois le document ne se charge par correctement (F5 ou Ctrl+R).
+        </span>
+        <span style="position: fixed;padding:0px 0px;width: 50%;z-index: 10;">
+        <iframe src="<%= @document.url %>" style="width:100%; height:calc(100vh - 110px); margin-top: 20px; z-index: 10;" frameborder="0"></iframe>
+      </span>
       </div>
     </div>
   </div>
