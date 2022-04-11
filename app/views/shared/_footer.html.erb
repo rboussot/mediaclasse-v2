@@ -33,9 +33,9 @@
 <!-- ========== PLAN DU SITE ========== -->
     <div class= "footer-part">
       <h3>Plan du site</h3>
-      <p>  <%= link_to "Oeuvres & analyses", litterature_courses_path %><p>
+      <p>  <%= link_to "Œuvres & Analyses", litterature_courses_path %><p>
       <% @technique_category = Category.where(tag: "technique").first.name %>
-      <p>  <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category) %><p>
+      <p>  <%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category) %><p>
       <% if current_user %>
         <p><%= link_to "Mes cours", user_path(current_user) %></p>
       <% end %>

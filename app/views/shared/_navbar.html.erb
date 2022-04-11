@@ -7,10 +7,10 @@
   <!-- ========== LARGE SCREEN MENU ========== -->
     <!-- === LINK LITT === -->
 
-    <%= link_to "Oeuvres & analyses", litterature_courses_path, class: "hidden-xs hidden-sm navbar-link underline link-litterature hvr-underline-from-center" %>
+    <%= link_to "Œuvres & Analyses", litterature_courses_path, class: "hidden-xs hidden-sm navbar-link underline link-litterature hvr-underline-from-center" %>
     <!-- === LINK TECH === -->
     <% @technique_category = Category.where(tag: "technique").last.name %>
-    <%= link_to "Méthodes & Techniques", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
+    <%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
     <!-- === LINK CHANNELS === -->
     <% @channels_category = Category.where(tag: "chaines").first.name %>
     <%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>

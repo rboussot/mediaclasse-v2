@@ -12,7 +12,20 @@
   margin: 10px 0px 0px 0px;
 }
 
+.lecture-content cite {
+  font-style: italic;
+  text-decoration: underline;
+}
+
 .lecture-content q {
+  font-family: 'Garamond';
+  font-style: normal;
+  quotes: none;
+  color: #555555;
+  font-weight: 100;
+  }
+
+.lecture-content bq {
   font-family: 'Garamond';
   font-style: normal;
   quotes: none;
