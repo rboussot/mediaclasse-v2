@@ -91,6 +91,7 @@
                 <br><br><i><%= link_to "Soutenez le site et accédez au contenu complet.", plans_url %></i>
               </section>
             <% end %>
+            <br><img src= "<%=@lecture.picture%>", width="100%">
             <!-- === DOCUMENTS === -->
               <section class="lecture-documents content" id="documents">
                 <% if policy(@lecture).watch_video? %>
