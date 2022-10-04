@@ -46,7 +46,7 @@
         <!-- ======== LAST COURSE ================ -->
           <div class= "home-card-large">
             <h4>Mon dernier cours en vidéo :</h4>
-            <%= link_to lecture_path(@last_lecture) do %>
+            <%= link_to lecture_path(@last_lecture.title) do %>
             <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
             <!--
             <div class="embed-responsive embed-responsive-16by9 home-video">
