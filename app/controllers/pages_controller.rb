@@ -14,6 +14,7 @@ class PagesController < ApplicationController
       @channel = Channel.where(user_id: current_user[:id]).first
     end
     @technique_category = Category.where(tag: "technique").last.name
+    @last_lecture = Lecture.last
   end
 
   def googlevalidation

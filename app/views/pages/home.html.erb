@@ -10,8 +10,7 @@
           <p>pour tous les passionnés de culture !</p>
           <%= link_to newsletter_path do %>
             <div class="plan-newsletter hvr-grow home-newsletter">
-              <i class="fa fa-paper-plane"></i>
-              <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
+              <i class="fa fa-paper-plane"></i> <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
             </div>
           <% end %>
         </div>
@@ -30,8 +29,10 @@
         <% end %>
       </div>
     </div>
+<!-- =================== GREAT COLUMN ========================================= -->
     <div class= "row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-6 video-wrapper">
+        <!-- ======== PRESENTATION VIDEO ================ -->
         <div class= "home-card-large">
           <%= link_to comments_path do %>
             <p id="home-reagissez"><i>Livre d'or</i></p>
@@ -42,13 +43,20 @@
             <iframe title="Vidéo de présentation du site de Mediaclasse" class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
-        <div class= "home-card-large">
-          <h4>Ma dernière vidéo :</h4>
-          <div class="embed-responsive embed-responsive-16by9 home-video">
-          <% @last_lecture = Lecture.last %>
-              <iframe title= "Le dernier cours de Mediaclasse au format vidéo", width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+        <!-- ======== LAST COURSE ================ -->
+          <div class= "home-card-large">
+            <h4>Mon dernier cours en vidéo :</h4>
+            <%= link_to lecture_path(@last_lecture) do %>
+            <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
+            <!--
+            <div class="embed-responsive embed-responsive-16by9 home-video">
+                <iframe title= "Le dernier cours de Mediaclasse au format vidéo", width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+            </div>
+            <br><p>⇨ Accéder maintenant au cours complet.</p>
+            -->
+            <% end %>
           </div>
-        </div>
+        <!-- ======== COUP DE COEUR ================ -->
         <div class= "home-card-large">
           <h4>Mon dernier coup de coeur sur Youtube !</h4>
           <p><%= @favorite.description %></p>
@@ -56,35 +64,86 @@
               <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
         </div>
+        <!-- ======== MINISTERE DE LA CULTURE ================ -->
+        <div class= "home-card-large">
+          <h4>Recommandé par le Ministère de la Culture :</h4>
+            <p>Consultez l'inventaire des chaînes Youtube culturelles et scientifiques francophones du ministère de la Culture. ↓ </p>
+          <a target= "_blank" href= "https://acquis.s3.eu-west-1.amazonaws.com/documents/350+chaines+Youtube.pdf">
+            <img src="https://acquis.s3.eu-west-1.amazonaws.com/documents/Ministère+de+la+culture.jpg" width= "100%">
+          </a>
+        </div>
       </div>
+<!-- =================== SMALL COLUMN ========================================= -->
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
+        <!-- ===== EDITO ===== -->
         <div class= "home-card-small">
           <h4>Édito</h4>
-          <p><%= @edito.description.gsub("\n", "<br/>").html_safe %> <br><br>Pour recevoir mes publications en avant-première et connaître mes projets à venir, inscrivez-vous maintenant à ma <strong><%= link_to "Lettre d'Infos !", newsletter_path, class: "underline link-profile" %></strong>
+          <p><%= @edito.description.gsub("\n", "<br/>").html_safe %></p>
+        </div>
+         <!-- ===== PROGRAMMES ===== -->
+        <div class= "home-card-small">
+          <a target= "_blank"
+          href="https://www.education.gouv.fr/bo/20/Hebdo18/MENE2009217N.htm">
+            <h4 class= "underline link-profile">Bac de français</h4>
+          </a>
+            <p> Conforme au programme du Ministère de l'Éducation Nationale. Bulletin Officiel ↓</p>
+            <a target= "_blank" href="https://www.education.gouv.fr/bo/20/Hebdo18/MENE2009217N.htm">
+              <img width= "100%" src= "https://acquis.s3.eu-west-1.amazonaws.com/documents/logo-ministere-education-nationale.jpg">
+            </a>
+        </div>
+        <!-- ===== NEWSLETTER ===== -->
+        <div class= "home-card-small">
+          <%= link_to newsletter_path do %>
+            <h4 class= "underline link-profile">Ma Lettre d'Info</h4>
+          <% end %>
+              <p> Privilèges de cette liste : Recevoir gratuitement les nouvelles vidéos en avant-première. Connaître mes projets à venir. Accéder à certaines offres spéciales.
+                <%= link_to newsletter_path do %>
+                    <i class="fa fa-paper-plane"></i>
+                <% end %>
+              </p>
+        </div>
+        <!-- ===== RESEAUX SOCIAUX ===== -->
+        <div class= "home-card-small">
+          <h4><%= link_to "Réseaux sociaux", plans_path %></h4>
+          <p>Je publie régulièrement des contenus exclusifs sur les réseaux sociaux : 
+            <%= link_to "https://twitter.com/mediaclassefr?lang=fr", target: "_blank" do %>
+               <i class="fab fa-twitter"></i> 
+            <% end %>
+            <%= link_to "https://www.facebook.com/mediaclasse/", target: "_blank" do %>
+               <i class="fab fa-facebook"></i> 
+            <% end %>
+            <%= link_to "https://www.linkedin.com/in/romain-boussot-051a6154/", target: "_blank" do %>
+               <i class="fab fa-linkedin"></i> 
+            <% end %>
+            <%= link_to "https://www.instagram.com/mediaclasse/", target: "_blank" do %>
+               <i class="fab fa-instagram"></i> 
+            <% end %>
+            <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: "_blank" do %>
+               <i class="fab fa-tiktok"></i> 
+            <% end %>
           </p>
         </div>
-        <div class= "home-card-small">
-          <% if @channel %>
-            <h4><%= link_to "Rejoignez la communauté !", edit_channel_path(@channel), {class: "underline link-community"} %></h4>
-          <% else %>
-            <h4><%= link_to "Rejoignez la communauté !", new_channel_path, {class: "underline link-community"} %></h4>
-          <% end %>
-          <p><%= @channels.description %></p>
-        </div>
+
+        <!-- ===== ABONNEMENT ===== -->
+        <!--
         <div class= "home-card-small">
           <h4><%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
-          <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous pouvez fixer vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
+          <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous fixez vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
         </div>
+        -->
+        <!-- ===== LITTERATURE ===== -->
         <div class= "home-card-small">
           <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
           <p><%= @litterature.description %></p>
         </div>
+        <!-- ===== TECHNIQUE ===== -->
         <div class= "home-card-small">
           <h4><%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
           <p><%= @methodo.description %></p>
         </div>
       </div>
     </div>
+    <!-- =========================== SUPER COMMENTAIRES ================================= -->
     <div class="row">
       <div class="col-xs-11 col-sm-offset-2 col-sm-8">
         <% if @super_comments.length > 0 %>
