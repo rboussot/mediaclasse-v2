@@ -1,6 +1,7 @@
 section ul {
   line-height: 0.75;
   margin-left: -1.5em;
+  margin-bottom: 0;
   padding-left: -0.7em;
   list-style-type: "•  "
 }
@@ -60,6 +61,11 @@ section ul {
     border-radius: 3px;
     width: 178;
     height: 267;
+}
+
+.list-cover {
+    margin-left: 20px;
+    float: right;
 }
 
 .list-search {
