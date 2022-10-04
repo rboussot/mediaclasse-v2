@@ -1,3 +1,10 @@
+section ul {
+  line-height: 0.75;
+  margin-left: -1.5em;
+  padding-left: -0.7em;
+  list-style-type: "•  "
+}
+
 .list-item {
   background-color: $greywhite;
   border-radius: 6px;
