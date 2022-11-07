@@ -12,8 +12,10 @@
     <% @technique_category = Category.where(tag: "technique").last.name %>
     <%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
     <!-- === LINK CHANNELS === -->
-    <% @channels_category = Category.where(tag: "chaines").first.name %>
-    <%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
+    <!--
+    <#% @channels_category = Category.where(tag: "chaines").first.name %>
+    <#%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
+    -- >
     <!-- === LINK MY_COURSES === -->
     <% if current_user %>
       <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
@@ -105,7 +107,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
         <li><%= link_to "Oeuvres & analyses", litterature_courses_path %></li>
         <li><%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category)%></li>
-        <li><%= link_to "Partenaires", channels_path(category: @channels_category) %></li>
+        <!-- <li><#%= link_to "Partenaires", channels_path(category: @channels_category) %></li>-->
         <% if current_user %>
           <li><%= link_to "Mes cours", user_path(current_user) %></li>
         <% else %>
