@@ -95,7 +95,7 @@ class PagesController < ApplicationController
   private
 
   def find_super_comments
-    @super_comments = policy_scope(Comment).includes(user: :picture_files).where(super: true).order(created_at: :desc).first(10)
+    @super_comments = policy_scope(Comment).includes(user: :picture_files).where(super: true).order(created_at: :desc).first(30)
   end
 
 end

@@ -2,9 +2,9 @@
 <div class= "lecture-discussion" id="comment-<%= comment.id %>">
 <!-- === Avatar de l'utilisateur === -->
   <% if comment.user.picture %>
-    <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+    <%= cl_image_tag comment.user.picture.path, class: "avatar-list", width:80, height:80, crop: :fill %>
   <% else %>
-    <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
+    <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(comment.user.id+99).to_s.last(2)+".jpg", class: "avatar-list", crop: :fill %>
   <% end %>
   <!-- === Nom de l'utilisateur, ou début de l'adresse email === -->
   <% if comment.user.firstname %>
@@ -37,9 +37,9 @@
   <div class= "lecture-subcomment">
     <!-- === Avatar de l'utilisateur -->
     <% if subcomment.user.picture %>
-    <%= cl_image_tag subcomment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+    <%= cl_image_tag subcomment.user.picture.path, class: "avatar-list", width:80, height:80, crop: :fill %>
     <% else %>
-      <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
+      <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(subcomment.user.id+99).to_s.last(2)+".jpg", class: "avatar-list", crop: :fill %>
     <% end %>
     <!-- === Nom de l'utilisateur, ou début de l'adresse email === -->
     <% if subcomment.user.firstname %>
