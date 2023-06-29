@@ -2,9 +2,9 @@
   <% if user_signed_in? %>
     <div class= "lecture-discussion">
         <% if current_user.picture %>
-          <%= cl_image_tag current_user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+          <%= cl_image_tag current_user.picture.path, class: "avatar-list", width:80, height:80, crop: :fill %>
         <% else %>
-          <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
+          <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+99).to_s.last(2)+".jpg", class: "avatar-list", crop: :fill %>
         <% end %>
       <!-- Capture name or begining of email adress -->
       <% if current_user.firstname %>
@@ -35,9 +35,9 @@
   <div class= "lecture-discussion" id="comment-<%= comment.id %>">
   <!-- Capture if picture exist -->
     <% if comment.user.picture %>
-      <%= cl_image_tag comment.user.picture.path, class: "list-image", width: 80, height: 80, crop: :fill %>
+      <%= cl_image_tag comment.user.picture.path, class: "avatar-list", width:80, height:80, crop: :fill %>
     <% else %>
-      <%= cl_image_tag 'https://s3-eu-west-1.amazonaws.com/acquis/couvertures/default-user.jpg', class: "list-image", width: 80, height: 80, crop: :fill %>
+      <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(comment.user.id.to_s+99).last(2)+".jpg", class: "avatar-list", crop: :fill %>
     <% end %>
     <!-- Capture name or begining of email adress -->
     <% if comment.user.firstname %>
