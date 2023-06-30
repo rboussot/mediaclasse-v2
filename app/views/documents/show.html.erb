@@ -9,7 +9,7 @@
         </div>
       <% end %>
     <!-- ===================== BOUTON DOWNLOAD ======================= -->
-      <% if @document.url.include? "preview" %>
+      <% if @document.url.include? "preview" && "/document/" %>
         <%= link_to @document.url.gsub("preview", "export?format=pdf"), title:@document.title do %>
           <div class="lecture-retour" >
             <h4>📥<br> </h4>
@@ -25,8 +25,6 @@
         </span>
         <span style="position: fixed;padding:0px 0px;width: 70%;z-index: 10;">
         <iframe src="<%= @document.url %>" style="width:100%; height:calc(100vh - 110px); margin-top: 20px; z-index: 10;" frameborder="0"></iframe>
-
-
       </span>
       </div>
     </div>
