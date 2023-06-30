@@ -1,13 +1,23 @@
 <div class="home-wrapper">
   <div class="container-fluid">
     <div class="row">
+    <!-- ================== BOUTON RETOUR ====================== -->
     <div class="col-xs-1 col-xs-offset-1">
       <%= link_to lecture_path(@document.lecture) do %>
         <div class="lecture-retour hvr-bubble-left">
         <p>Retour</p>
         </div>
       <% end %>
+    <!-- ===================== BOUTON DOWNLOAD ======================= -->
+      <% if @document.url.include? "preview" %>
+        <%= link_to @document.url.gsub("preview", "export?format=pdf"), title:@document.title do %>
+          <div class="lecture-retour" >
+            <h4>📥<br> </h4>
+          </div>
+        <% end %>
+      <% end %>
     </div>
+    <!-- ==================== Afficher le document =================== -->
       <div class="col-xs-8">
         <span style="position: fixed;padding:5% 5%;width: 55%;z-index: 0;">
           <img style="margin-left: 35%;width:15%"; src="https://www.media-shopping.ma/public/web/assets/images/loader.gif"><br>
@@ -15,6 +25,8 @@
         </span>
         <span style="position: fixed;padding:0px 0px;width: 70%;z-index: 10;">
         <iframe src="<%= @document.url %>" style="width:100%; height:calc(100vh - 110px); margin-top: 20px; z-index: 10;" frameborder="0"></iframe>
+
+
       </span>
       </div>
     </div>
