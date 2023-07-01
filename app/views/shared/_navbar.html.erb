@@ -35,7 +35,7 @@
             <% if current_user.picture %>
               <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, alt: "Avatar de l'utilisateur "+current_user.firstname+" "+current_user.lastname, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% else %>
-              <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+99).to_s.last(2)+".jpg", crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
+              <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+1000).to_s.last(3)+".jpg", crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
             <% end %>
             <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
               <!-- ADMIN ONLY MENU -->

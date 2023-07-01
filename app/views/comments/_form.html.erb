@@ -5,7 +5,7 @@
       <% if current_user.picture %>
         <%= cl_image_tag current_user.picture.path, class: "avatar-list", width: 80, height: 80, crop: :fill %>
       <% else %>
-        <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+99).to_s.last(2)+".jpg", class: "avatar-list", crop: :fill %>
+        <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+1000).to_s.last(3)+".jpg", class: "avatar-list", crop: :fill %>
       <% end %>
       <!-- Capture name or begining of email adress -->
       <% if current_user.firstname %>
