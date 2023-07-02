@@ -28,11 +28,11 @@
             <ul>
               <%= link_to lecture_path(lecture) do %>
                 <% if lecture.id.to_s == params[:id] %>
-                  <li class="lecture-link active"><%= lecture.title %>
+                  <li class="lecture-link active"><%= lecture.title.gsub(/<.*?>/,"") %>
                     <%= "*" unless policy(lecture).watch_video? %>
                   </li>
                 <% else %>
-                  <li class="lecture-link"><%= lecture.title %>
+                  <li class="lecture-link"><%= lecture.title.gsub(/<.*?>/,"") %>
                     <%= "*" unless policy(lecture).watch_video? %>
                   </li>
                 <% end %>
