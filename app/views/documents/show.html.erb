@@ -5,14 +5,14 @@
     <div class="col-xs-9 col-sm-1 col-xs-offset-1">
       <%= link_to lecture_path(@document.lecture) do %>
         <div class="lecture-retour hvr-bubble-left">
-        <p class="hidden-sm-md">⬅️</p>
+        <p class="hidden-sm-md">⬅</p>
         </div>
       <% end %>
     <!-- ===================== BOUTON DOWNLOAD ======================= -->
       <% if @document.url.include? "preview" && "/document/" %>
         <%= link_to @document.url.gsub("preview", "export?format=pdf"), title:@document.title do %>
           <div class="lecture-retour hvr-bubble-down" width="100" >
-            <p>📥</p>
+            <p><u>⬇</u></p>
           </div>
         <% end %>
       <% end %>
