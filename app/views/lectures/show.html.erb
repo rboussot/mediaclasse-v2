@@ -55,7 +55,7 @@
                 <%= image_tag @lecture.course.picture, class: "lecture-cover", alt: "Couverture du livre "+@lecture_course.title+" de "+@lecture_author %>
                 <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
                 <h2 class= "lecture-title hidden-xs"><%= @lecture.title.gsub(/<.*?>/,"") %></h2>
-                <h2 class= "lecture-title-xs hidden-sm hidden-md hidden-lg hidden-xl"><%= @lecture.title %></h2>
+                <h2 class= "lecture-title-xs hidden-sm hidden-md hidden-lg hidden-xl"><%= @lecture.title.gsub(/<.*?>/,"") %></h2>
                 <p class="lecture-note">
               </div>
               <p class="lecture-note">
