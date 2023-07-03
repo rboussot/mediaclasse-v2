@@ -2,23 +2,23 @@
   <div class="container-fluid">
     <div class="row">
     <!-- ================== BOUTON RETOUR ====================== -->
-    <div class="col-xs-1 col-xs-offset-1">
+    <div class="col-xs-9 col-sm-1 col-xs-offset-1">
       <%= link_to lecture_path(@document.lecture) do %>
         <div class="lecture-retour hvr-bubble-left">
-        <p>Retour</p>
+        <p class="hidden-sm-md">⬅️</p>
         </div>
       <% end %>
     <!-- ===================== BOUTON DOWNLOAD ======================= -->
       <% if @document.url.include? "preview" && "/document/" %>
         <%= link_to @document.url.gsub("preview", "export?format=pdf"), title:@document.title do %>
-          <div class="lecture-retour" >
-            <h4>📥<br> </h4>
+          <div class="lecture-retour hvr-bubble-down" width="100" >
+            <p>📥</p>
           </div>
         <% end %>
       <% end %>
     </div>
     <!-- ==================== Afficher le document =================== -->
-      <div class="col-xs-8">
+      <div class="col-xs-offset-1 col-sm-offset-0 col-xs-8">
         <span style="position: fixed;padding:5% 5%;width: 55%;z-index: 0;">
           <img style="margin-left: 35%;width:15%"; src="https://www.media-shopping.ma/public/web/assets/images/loader.gif"><br>
           Patientez pendant le chargement et n'hésitez pas à rafraîchir plusieurs fois si le document ne se charge par correctement (F5 ou Ctrl+R).
