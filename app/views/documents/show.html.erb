@@ -6,7 +6,7 @@
       <%= link_to lecture_path(@document.lecture) do %>
         <div class="lecture-retour hvr-bubble-left">
         <p><img src="https://acquis.s3.eu-west-1.amazonaws.com/divers/fleche+gauche.png" width="30px"></p>
-        </div><br>
+        </div><br class="hidden-xs">
       <% end %>
     <!-- ===================== BOUTON DOWNLOAD ======================= -->
       <% if (@document.url.include? "preview") && (@document.url.exclude? "file") %>
