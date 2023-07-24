@@ -48,7 +48,6 @@
           <% if policy(@lecture).watch_video? %>
             <%= render 'shared/embedvideo' %>
           <% else %>
-
             <%= render 'shared/planmodal' %>
             <div data-toggle = "modal" data-target = "#PlanModal">
               <div class="embed-responsive embed-responsive-16by9 lecture-vignette">
@@ -97,12 +96,12 @@
             <% end %>
             <!-- === DOCUMENTS === -->
               <section class="lecture-documents content" id="documents">
-                <% if policy(@lecture).watch_video? %>
-                  <% @documents.each do |document| %>
-                    <p>
-                      ⇨ <%= link_to document.title, document_path(document)%>
-                    </p>
-                  <% end %>
+                <% if current_user && current_user.pricing.present? %>
+                    <% @documents.each do |document| %>
+                      <p>
+                        ⇨ <%= link_to document.title, document_path(document)%>
+                      </p>
+                    <% end %>
                 <% else %>
                   <%= render 'shared/planmodal' %>
                   <% @documents.each do |document| %>

@@ -43,7 +43,7 @@
                   <ul>
                     <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i>, <%= course.date %>. </h3></li>
                     <li> <p> <%= course.description %> </p> </li>
-                    <li> <p> <%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p> </li>
+                    <!--<li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>-->
                     <li>
                       <p class="list-themes"> <% course.themes.each do |t| %>
                         <%= t.name %>;
