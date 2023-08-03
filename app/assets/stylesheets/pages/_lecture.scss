@@ -136,14 +136,15 @@ input[type=submit] {
 a li.lecture-link.active {
   text-decoration: none;
   font-weight: bolder;
-  font-size: 19px;
+  background-color: $greylighter;
+  font-size: 16px;
   padding-left: 0px;
   margin-left: -10px;
 }
 
 a li.lecture-link {
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
   padding-left: 0px;
   margin-left: -10px;
 }
@@ -154,13 +155,7 @@ ul a:link {
 }
 
 .lecture-link:hover {
-  background-color: $greylighter;
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
-  text-decoration : none;
+  background-color: $greywhite;
 }
 
 .lecture-video {
