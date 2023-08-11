@@ -17,7 +17,8 @@ class LecturesController < ApplicationController
     @description_for_free = @lecture.description.gsub("\n", "<br/>").split("[/]")[0..0].join(" ").to_s.html_safe
     @description_title = @lecture.description.gsub("\n", "<br/>").split("<br/>")[0..1].join('<br/>').to_s.html_safe
     if @lecture.picture
-      @legend = @lecture.picture.partition('images/').last[0...-4].gsub("+"," ").gsub("%2C",",").gsub("%C3%A8","è").gsub("%C3%A9","é")+"."
+      # @legend = @lecture.picture.partition('images/').last[0...-4].gsub("+"," ").gsub("%2C",",").gsub("%C3%A8","è").gsub("%C3%A9","é")+"."
+      @legend = CGI.unescape(@lecture.picture.partition('images/').last[0...-4])+"."
     end
 
   end
