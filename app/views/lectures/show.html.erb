@@ -86,9 +86,7 @@
                 <br>
                 <img src= "<%=@lecture.picture%>", width="100%">
                 <br>
-                <p class="lecture-legend">
-                  <!-- <sub><#%= @legend %></sub> -->
-                </p>
+                <p class="lecture-legend"><sub><%= @legend %></sub></p>
               </section>
             <% else %>
               <section class="lecture-description content">
@@ -99,6 +97,7 @@
             <br>
             <img src= "<%=@lecture.picture%>", width="100%">
             <br>
+            <p class="lecture-legend"><sub><%= @legend %></sub></p>
               </section>
             <% end %>
             <!-- === DOCUMENTS === -->
