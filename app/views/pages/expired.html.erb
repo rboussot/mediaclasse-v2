@@ -5,15 +5,21 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <!-- ======== ABONNÉS ======== -->
         <!-- ==== COMPTER ABONNÉS ==== -->
+        <!--
         <h3>Abonnés en cours : <%= @customers.length %></h3>
+      -->
         <!-- ==== ESTIMATION NET ==== -->
+      <!--
         <% @total %>
-        <% @stripe = (@total * 0.11).round(2) %>
-        <% @rsi = (@total * 0.25044).round(2) %>
-        <h4>Estimation net : <%= @net = (@total - @stripe - @rsi).round(2) %> €</h4><br>
+        <#% @stripe = (@total * 0.11).round(2) %>
+        <#% @rsi = (@total * 0.25044).round(2) %>
+        <h4>Estimation net : <#%= @net = (@total - @stripe - @rsi).round(2) %> €</h4><br>
+      -->
         <!-- ======== UNITAIRES EXPIRÉS ======== -->
         <!-- ==== COMPTER UNITAIRES EXPIRÉS ==== -->
+
         <h3>Abonnements expirés : <%= @expired_plans.count %></h3>
+
         <!-- ==== LISTER UNITAIRES EXPIRÉS ==== -->
           <% @expired_plans.each do |user| %>
               <p>
