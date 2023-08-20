@@ -16,7 +16,7 @@
 
 a {
   text-decoration : none;
-  color: black;
+  color: $greydark;
 }
 
 .home-card-small strong {
@@ -88,6 +88,16 @@ a:hover, a:focus {
   background-color: $litterature;
 }
 
+p.link-button-new {
+  background-color: $stripe;
+  padding: 10px 20px 10px 20px;
+  margin: 10px 0px 0px 0px;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
 p.link-button {
   background-color: $greydark;
   padding: 10px 20px 10px 20px;
@@ -98,6 +108,7 @@ p.link-button {
   opacity: 0.6;
   color: white;
 }
+
 p.link-button.hvr-glow a {
   color: white;
 }

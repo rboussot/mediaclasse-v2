@@ -1,7 +1,7 @@
 require "logger"
 
 class PlansController < ApplicationController
-  skip_after_action :verify_authorized, :verify_policy_scoped
+ skip_after_action :verify_authorized, :verify_policy_scoped
 
   def index
     # Si aucun cours n'est payant, rediriger vers une page "en construction".

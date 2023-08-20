@@ -50,16 +50,18 @@
                       <% end %>
                       </p>
                     </li>
-                  </ul>
-                  <!-- === CHECKBOX === -->
-                  <% if current_user %>
-                    <div>
+                  </ul><br>
+                  <!-- === CHECKBOX ===
+                  <#% if current_user %>
                       <div class= "list-like checkbox" id="like-<%= course.id %>">
-                        <%= render 'like', course: course %>
+                        <#%= render 'like', course: course %>
                       </div>
-                    </div>
-                  <% end %>
-                  <!-- === END OF CHECKBOX === -->
+                  <#% else %>
+                      <div class="list-like checkbox">
+                        <br><i>Garder dans Mes Cours ?</i>
+                      </div>
+                  <#% end %>
+                  === END OF CHECKBOX === -->
                 <% end %>
               </div>
               <!-- ========== LIST-ITEM-XS ========== -->

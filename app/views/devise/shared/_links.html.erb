@@ -3,15 +3,19 @@
 <%# end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p class="link-button hvr-glow">
-    <%= link_to "Pas encore de compte ?", new_registration_path(resource_name) %>
-  </p>
+    <%= link_to new_registration_path(resource_name) do %>
+      <p class="link-button-new hvr-glow">
+        Pas de compte ? Création gratuite !
+      </p>
+    <% end %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <p class="link-button hvr-glow">
-    <%= link_to "Réinitialiser mon mot de passe !", new_password_path(resource_name) %>
-  </p>
+    <%= link_to new_password_path(resource_name) do %>
+      <p class="link-button hvr-glow">
+        Réinitialiser mon mot de passe !
+      </p>
+    <% end %>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

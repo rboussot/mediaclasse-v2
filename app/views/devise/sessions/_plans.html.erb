@@ -1,6 +1,5 @@
 <!-- Load Stripe.js on your website. -->
 <script src="https://js.stripe.com/v3"></script>
-
 <!-- === EN-TÊTE === -->
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -47,8 +46,8 @@
             <div class="row">
               <div class="col-xs-offset-2 plan-wrapper">
                 <h4 class= "plan-frame">Si vous préférez payer en 1 fois :</h4>
-                <%= render 'shared/plan_unique' %>
-                <%= render 'shared/plan_virement' %>
+                <%= render 'plan_unique' %>
+                <%= render 'plan_virement' %>
                 <br><br><br><br><br><br>
               </div>
             </div>
@@ -58,23 +57,20 @@
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>
-    $('.plan-stripe-active').hide();
     $(document).ready(function() {
-      $('.plan-stripe-inactive').on('click', function(event) {
+      $('.plan-stripebutton-inactive').on('click', function(event) {
         $('html, body').animate({scrollTop:50}, 'easeInExpo');
         $('#plan-pointer').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         });
       $('.plan-unchecked').on('click', function(event) {
-        $('.display-none').show();
-        $('.plan-stripe-inactive').hide();
-        $('.plan-stripe-active').show();
+        $('.plan-stripebutton-inactive').hide();
+        $('.plan-stripebutton-active').show();
         $('.plan-unchecked').hide();
         $('.plan-checked').show();
         });
       $('.plan-checked').on('click', function(event) {
-        $('.display-none').hide();
-        $('.plan-stripe-active').hide();
-        $('.plan-stripe-inactive').show();
+        $('.plan-stripebutton-active').hide();
+        $('.plan-stripebutton-inactive').show();
         $('.plan-unchecked').show();
         $('.plan-checked').hide();
         });

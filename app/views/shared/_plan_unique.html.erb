@@ -1,0 +1,32 @@
+<% @unique_plans.each  do |plan| %>
+
+  <div class= "plan-stripe-inactive <%= plan.css_class %>">
+    <h4><%= plan.title %></h4>
+    <p><%= plan.description %></p>
+    <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
+    <div class = "plan-stripebutton-inactive"><%= plan.price.round %>€ / 1 an</div>
+    <!-- Bouton actif quand les CGV sont cochées -->
+  </div>
+
+  <%= link_to controller:"plans", action: "planselected", id: plan.plan_name, mode: "payment" do %>
+    <span class= display-none >
+      <div class= "plan-stripe-active <%= plan.css_class %>">
+        <h4><%= plan.title %></h4>
+        <p><%= plan.description %></p>
+        <!-- Bouton actif quand les CGV sont cochées -->
+        <div class = "plan-stripebutton-active">
+          <!-- Le bouton renvoie à l'action planselected qui renvoie à Checkout -->
+          <!-- En paramètres on envoie
+            - En "id" : le nom du plan en BDD qui est l'id côté Stripe.
+            - En "mode" : le mode de paiement "payment" puisqu'on est dans les plans uniques. -->
+            <button class = "checkout-button hvr-light" id="checkout-button-annuel" role="link"
+              data-name="<%= plan.plan_name %>">
+              <%= plan.price.round %>€ / 1 an
+            </button>
+
+          <div id="error-message"></div>
+        </div>
+      </div>
+    </span>
+  <% end %>
+<% end %>

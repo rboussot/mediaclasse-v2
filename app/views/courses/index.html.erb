@@ -37,10 +37,8 @@
                 </ul>
                 <!-- === CHECKBOX === -->
                 <% if current_user %>
-                  <div>
-                    <div class= "list-like checkbox" id="like-<%= course.id %>">
-                      <%= render 'like', course: course %>
-                    </div>
+                  <div class= "list-like checkbox" id="like-<%= course.id %>">
+                    <%= render 'like', course: course %>
                   </div>
                 <% end %>
                 <!-- === END OF CHECKBOX === -->

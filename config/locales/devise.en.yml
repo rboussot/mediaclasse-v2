@@ -14,7 +14,7 @@ en:
       last_attempt: "Il vous reste un dernier essai avant que votre compte ne soit verrouillé."
       not_found_in_database: "Désolé, votre %{authentication_keys} et votre mot de passe ne correspondent pas !"
       timeout: "Votre session s'est terminée, s'il vous plaît, veuillez vous connecter à nouveau !"
-      unauthenticated: "Vous devez vous connecter pour continuer !"
+      unauthenticated: "Connectez-vous à votre compte pour vous abonner"
       unconfirmed: "Vous devez confirmer votre email avant de continuer !"
     mailer:
       confirmation_instructions:
