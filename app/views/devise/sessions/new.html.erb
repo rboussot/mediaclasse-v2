@@ -1,23 +1,117 @@
 <div class="home-wrapper">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-3"><br><br>
-        <h2>Me connecter</h2>
+    <div class="border profile hidden-xs"></div>
+<!-- ================= FORMULAIRE DE CONNEXION =================== -->
+      <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+          <h3>Connectez-vous à votre compte pour vous abonner</h3>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email, required: false, autofocus: true %>
+              <%= f.input :password, label: "Mot de passe", required: false %>
+              <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
+            </div>
 
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :email, required: false, autofocus: true %>
-            <%= f.input :password, label: "Mot de passe", required: false %>
-            <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
-          </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Me connecter" %>
-          </div>
-        <% end %>
-
-        <%= render "devise/shared/links" %>
+            <div class="form-actions">
+              <%= f.button :submit, "Me connecter à mon compte" %>
+            </div>
+          <% end %>
+          <!-- Bouton créer un nouveau compte -->
+          <%= link_to new_registration_path(resource_name) do %>
+            <p class="link-button-new hvr-glow">
+              Pas de compte ? Création gratuite !
+            </p>
+          <% end %>
+        </div>
       </div>
-    </div>
+<!-- =================== INFOS ET CGV ==================== -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="plan-title">
+              <br><br>
+              <h3>Conditions d'abonnement pour accéder à tout</h3>
+              <br>
+              <%= render 'shared/plan_infos' %>
+              <div id = "plan-pointer">
+                <%= render 'shared/plancgv' %>
+                <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
+                  <i>• Consulter les Conditions Générales de Vente</i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- ================= PLANS MENSUELS ================ -->
+      <div class="row">
+        <div class="col-xs-offset-2 plan-wrapper">
+          <h4 class= "plan-frame">Participation mensuelle récurrente :</h4>
+            <% @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC") %>
+              <% @recurrent_plans.each  do |plan| %>
+                <div class= "plan-stripe <%= plan.css_class %>" data-toggle="modal" data-target="#myLoginModal">
+                  <h4><%= plan.title %></h4>
+                  <p><%= plan.description %></p>
+                    <div class="plan-stripebutton-inactive">
+                      <%= plan.price.round %>€ / mois
+                    </div>
+                </div>
+              <% end %>
+          <br><br>
+        </div>
+      </div>
+<!-- =================== BOUTON CESSER DE PARTICIPER === -->
+      <div class="row">
+        <div class="col-xs-offset-3 plan-button">
+          <%= render 'shared/planquestion' %>
+          Ce bouton vous permettra de fermer l'abonnement immédiatement :
+          <div data-toggle = "modal" data-target = "#PlanQuestion" class="plan-delete-off hvr-glow">
+            <p>Cesser de participer</p>
+          </div>
+        </div>
+      </div>
+<!-- =================== PLANS UNIQUES ============================== -->
+      <div class="row">
+        <div class="col-xs-offset-2 plan-wrapper">
+          <h4 class= "plan-frame">Si vous préférez payer en 1 fois :</h4>
+          <% @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC") %>
+          <% @unique_plans.each  do |plan| %>
+            <div class= "plan-stripe <%= plan.css_class %>" data-toggle="modal" data-target="#myLoginModal">
+              <h4><%= plan.title %></h4>
+              <p><%= plan.description %></p>
+              <div class="plan-stripebutton-inactive" class="slate">
+                <%= plan.price.round %>€ / 1 an
+              </div>
+            </div>
+          <% end %>
+<!-- =================== PLANS RECURRENTS ============================== -->
+          <% @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC") %>
+          <% @virement_plans.each  do |plan| %>
+            <div class= "plan-stripe <%= plan.css_class %>" data-toggle = "modal" data-target = "#Plan<%= plan.title %>">
+              <h4><%= plan.title %></h4>
+              <p><%= plan.description %></p>
+              <div class = "plan-cbutton hvr-light">
+                <p><%= plan.price.round %>€ / 1 an</p>
+              </div>
+            </div>
+            <div class="modal fade" id="Plan<%= plan.title %>" tabindex="-1" role="dialog" aria-labelledby="PlanLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class= "text-left">
+                      <%= plan.message.html_safe %>
+                    </div>
+                      <div class="form-actions">
+                        <br>
+                        <button type="link" class="btn btn-default hvr-glow" data-dismiss="modal" aria-label="Close">OK !</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+<!-- ==================== FIN DE LA PAGE ====================== -->
+          <br><br><br><br><br><br>
   </div>
 </div>

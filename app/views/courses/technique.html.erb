@@ -56,23 +56,29 @@
                   <ul>
                     <li><h3><%= course.title %></h3></li>
                     <li><p><%= course.description %></p></li>
+                    <!-- Donne le nombre de vidéos
                     <li> <p> <%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p> </li>
+                    -->
                     <li>
                       <p class="list-themes"> <% course.themes.each do |t| %>
                         <%= t.name %>;
                       <% end %>
                       </p>
                     </li>
-                  </ul>
-                  <!-- === CHECKBOX === -->
-                  <% if current_user %>
+                  </ul><br>
+                  <!-- === CHECKBOX ===
+                  <#% if current_user %>
                     <div>
                       <div class= "list-like checkbox" id="like-<%= course.id %>">
-                        <%= render 'like', course: course %>
+                        <#%= render 'like', course: course %>
                       </div>
                     </div>
-                  <% end %>
-                  <!-- === END OF CHECKBOX === -->
+                  <#% else %>
+                      <div class="list-like checkbox">
+                        <br><i>Garder dans Mes Cours ?</i>
+                      </div>
+                  <#% end %>
+                  === END OF CHECKBOX === -->
                 <% end %>
               </div>
               <!-- ========== LIST-ITEM-XS ========== -->
@@ -81,7 +87,9 @@
                   <%= cl_image_tag course.picture, class: "list-image", width: 174, height: 259, crop: :fill %>
                   <ul>
                     <li><h4><%= course.title %></h4></li>
+                    <!-- Donne le nombre de vidéos
                     <li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>
+                    -->
                   </ul>
                 <% end %>
               </div>

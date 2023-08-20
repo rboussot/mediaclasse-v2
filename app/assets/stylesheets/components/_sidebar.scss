@@ -85,6 +85,10 @@
   z-index: 1;
 }
 
+.sidebar-like :hover{
+  cursor: pointer;
+}
+
 .sidebar-like label{
   font-weight: lighter;
   font-style: italic;

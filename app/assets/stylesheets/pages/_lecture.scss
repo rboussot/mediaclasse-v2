@@ -120,13 +120,7 @@ input[type=submit] {
   bottom: 14px;
 
   &:hover {
-    background-color: $greydark;
-    -webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
-    text-decoration : none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 3);
   }
 }
 

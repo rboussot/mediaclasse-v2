@@ -20,6 +20,11 @@
         <div class= "sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
           <%= render '/courses/like', course: @lecture_course %>
         </div>
+      <% else %>
+        <div class= "sidebar-like checkbox" data-toggle="modal" data-target="#myLoginModal">
+          <i>Garder dans Mes Cours ?</i>
+        </div>
+
       <% end %>
       <!-- ========== SIDE MENU ========== -->
       <nav class= "col-xs-12 col-sm-12 col-md-3">

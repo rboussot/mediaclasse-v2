@@ -15,19 +15,19 @@
             </div>
           <% end %>
         </div>
-        <%= link_to plans_path do %>
           <p class="text-center home-promo">
-            <% if current_user && current_user.plan.present? %>
-              <span class="hvr-grow"><i class="fa fa-star"></i>
-                Accéder à votre espace abonné.
-              <i class="fa fa-star"></i></span>
-            <% else %>
-              <span class="hvr-grow"><i class="fa fa-star"></i>
-                Accédez à tout et soutenez le site !
-              <i class="fa fa-star"></i></span>
+            <%= link_to plans_path do %>
+              <% if current_user && current_user.plan.present? %>
+                <span class="hvr-grow"><i class="fa fa-star"></i>
+                  Accéder à votre espace abonné.
+                <i class="fa fa-star"></i></span>
+              <% else %>
+                <span class="hvr-grow"><i class="fa fa-star"></i>
+                  Conditions d'abonnement pour accéder à tout !
+                <i class="fa fa-star"></i></span>
+              <% end %>
             <% end %>
           <p/>
-        <% end %>
       </div>
     </div>
 <!-- =================== GREAT COLUMN ========================================= -->
