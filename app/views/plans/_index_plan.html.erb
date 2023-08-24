@@ -22,7 +22,7 @@
               <div class= "plan-stripe <%= @plan.css_class %>">
                 <h4><%= @plan.title %></h4>
                   <% if @plan.payment == "recurrent" %>
-                    <p>Vous participez actuellement pour un montant de <%= current_user.pricing.round %>€ par mois !</p>
+                    <p>Vous participez actuellement pour un montant de <%= number_to_currency(current_user.pricing, unit:"").gsub(".00","") %>€ par mois !</p>
                   <% elsif @plan.payment == "erreur" %>
                     <p><%= @plan.description %></p>
                   <% else %>

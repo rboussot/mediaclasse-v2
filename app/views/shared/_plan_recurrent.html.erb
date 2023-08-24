@@ -4,7 +4,9 @@
     <h4><%= plan.title %></h4>
     <p><%= plan.description %></p>
     <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
-    <div class = "plan-stripebutton-inactive"><%= plan.price.round %>€ / mois</div>
+    <div class = "plan-stripebutton-inactive">
+      <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ /mois
+    </div>
     <!-- Bouton actif quand les CGV sont cochées -->
   </div>
 
@@ -21,7 +23,7 @@
             - En "mode" : le mode de paiement "subscription" puisqu'on est dans les plans récurrents. -->
               <button class = "checkout-button hvr-light" id="checkout-button-<%=plan.plan_name%>" role="link"
                 data-name="<%=plan.plan_name%>">
-                <%= plan.price.round %>€ / mois
+                <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ /mois
               </button>
         </div>
       </div>

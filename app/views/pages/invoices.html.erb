@@ -25,7 +25,7 @@
               <p><%= paydate ||= current_user.paydate ; paydate ? "Début de l'abonnement : "+paydate.strftime("%d/%m/%Y") : "" %></p>
               <p><%= expire ||= current_user.expire ; expire ? "Fin de l'abonnement : "+expire.strftime("%d/%m/%Y") : "" %></p>
               <hr><p align= "center">
-                <%= pricing ||= current_user.pricing ; pricing ? "Montant : "+pricing.round.to_s+"€" : "" %>
+                <%= pricing ||= current_user.pricing ; pricing ? "Montant : "+number_to_currency(pricing, unit:"").gsub(".00","")+"€" : "" %>
                 <%= current_user.collective ? "" : "/ mois" %>
               </p><hr>
             </div>

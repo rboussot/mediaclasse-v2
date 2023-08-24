@@ -24,7 +24,7 @@
           <% @expired_plans.each do |user| %>
               <p>
                 <%= user.email %>
-                (<%= user.pricing.round %>€ /
+                (<%= number_to_currency(user.pricing, unit:"").gsub(".00","") %>€ /
                 <% if user.paydate.present? %>
                   <%= (Date.today.to_date - (user.paydate.to_date)).to_i + 1 %> jours)
                 <% end %>

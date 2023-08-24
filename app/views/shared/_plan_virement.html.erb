@@ -5,7 +5,7 @@
     <h4><%= plan.title %></h4>
     <p><%= plan.description %></p>
     <div class= "plan-cbutton hvr-light">
-      <p><%= plan.price.round %>€ / 1 an</p>
+      <p><%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / 1 an</p>
     </div>
   </div>
 
