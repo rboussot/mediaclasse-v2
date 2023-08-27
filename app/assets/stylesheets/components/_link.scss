@@ -19,6 +19,11 @@ a {
   color: $greydark;
 }
 
+p a {
+  text-decoration : none;
+  color: black;
+}
+
 .home-card-small strong {
   font-size: 16px;
   text-style: none;

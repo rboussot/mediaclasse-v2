@@ -60,7 +60,7 @@
         <!-- ======== COUP DE COEUR ================ -->
         <div class= "home-card-large">
           <h4>Mon dernier coup de coeur sur Youtube !</h4>
-          <p><%= @favorite.description %></p>
+          <p><%= @favorite.description.gsub("\n", "<br/>").html_safe %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
               <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
