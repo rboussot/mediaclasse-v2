@@ -26,7 +26,7 @@
                   <% elsif @plan.payment == "erreur" %>
                     <p><%= @plan.description %></p>
                   <% else %>
-                    <p>Vous bénéficiez d'un accès à <%= current_user.plan %> !</p>
+                    <p>Vous bénéficiez d'un abonnement <%= current_user.plan %> !</p>
                   <% end %>
               </div>
           </div>
