@@ -60,7 +60,7 @@ class StripeEventsController < ApplicationController
       # Si le paiement est en une fois, sauvegarder la date d'expiration
       @user.collective = true
       @user.expire = Date.today + 1.year
-      @user.plan = "#{number_to_currency(@user.pricing, unit:"").gsub(".00","")} € pour 1 utilisateur jusqu'au #{@user.expire.strftime '%d/%m/%Y'}"
+      @user.plan = "{@user.pricing} € pour 1 utilisateur jusqu'au #{@user.expire.strftime '%d/%m/%Y'}"
       # Afficher une notice pour rappeler la date d'expiration de l'abonnement
       flash[:notice] = "Votre abonnement fermera le #{@user.expire.strftime '%d/%m/%Y'}"
       create_invoice(checkout_session.metadata.plan_id)
