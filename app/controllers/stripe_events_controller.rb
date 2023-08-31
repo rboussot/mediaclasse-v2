@@ -48,7 +48,7 @@ class StripeEventsController < ApplicationController
     @id_user = checkout_session.client_reference_id
     @user = User.find(@id_user)
     @user.stripe_customer_id = checkout_session.customer
-    @user.pricing = checkout_session.amount_total / 100
+    @user.pricing = checkout_session.amount_total
     @user.paydate = Date.today
     # On vérifie le type de paiement
     if checkout_session.mode == "subscription"
