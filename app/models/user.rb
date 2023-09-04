@@ -67,8 +67,7 @@ class User < ApplicationRecord
       field :plan
       field :expire
       field :collective
-      field :sign_in_count
-      field :current_sign_in_at
+      field :stripe_customer_id
     end
   end
 
