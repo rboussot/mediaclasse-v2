@@ -9,8 +9,8 @@ class LecturesController < ApplicationController
     @documents = Document.where(lecture_id: params[:id])
     skip_authorization
 
-    @meta_title = @lecture_course.title.gsub(/<.*?>/,"")+" de "+@lecture_author+" : "+@lecture.title.gsub(/<.*?>/,"")+
-    " (Explications et commentaires détaillés)"
+    @meta_title = (@lecture_course.title.gsub(/<.*?>/,"")+" "+@lecture_author+" : "+@lecture.title.gsub(/<.*?>/,"")+
+    " (Explications et commentaires détaillés)").html_safe
 
     @description_for_subscribers = @lecture.description.gsub("\n", "<br/>").split("[/]").join(" ").to_s.html_safe
     @description_for_free = @lecture.description.gsub("\n", "<br/>").split("[/]")[0..0].join(" ").to_s.html_safe
