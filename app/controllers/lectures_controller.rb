@@ -10,7 +10,7 @@ class LecturesController < ApplicationController
     skip_authorization
 
     @meta_title = (@lecture_course.title+", "+@lecture_author+" : "+@lecture.title+
-    " (Explications et commentaires détaillés)").gsub(/<.*?>/,"").gsub!(160.chr("UTF-8")," ").html_safe
+    " (Explications et commentaires détaillés)").gsub(/<.*?>/,"").gsub(160.chr("UTF-8")," ").html_safe
 
     @description_for_subscribers = @lecture.description.gsub("\n", "<br/>").split("[/]").join(" ").to_s.html_safe
     @description_for_free = @lecture.description.gsub("\n", "<br/>").split("[/]")[0..0].join(" ").to_s.html_safe
