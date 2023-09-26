@@ -7,6 +7,7 @@
         <!-- Le compte de l'utilisateur a expiré -->
         <% if current_user && current_user.expire %>
           <div class="plan-infos">
+            <h2>Fonctionnalité réservée aux abonnés</h2>
             <h4> Votre abonnement est fermé depuis le <%= current_user.expire.strftime '%d/%m/%Y' %></h4>
             Soit vous avez cliqué sur le bouton "Cesser de participer", soit votre abonnement était limité dans le temps, soit votre carte bancaire a expiré. Dans tous les cas, un email vous a été envoyé, et aucun prélèvement n'a été effectué après cette date.<br><br>
             Cependant, si vous pensez avoir un abonnement en cours, n'hésitez pas à me contacter par email, je vous répondrai personnellement dans les meilleurs délais : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i><br>
