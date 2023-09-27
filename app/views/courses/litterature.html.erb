@@ -41,7 +41,7 @@
                 <%= link_to lecture_path(course.lectures.where(visible: :true).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", alt: "Couverture du livre de "+course.author.pseudo+" "+course.title, width: 178, height: 267, crop: :fill %>
                   <ul>
-                    <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i>, <%= course.date %>. </h3></li>
+                    <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i> (<%= course.date %>). </h3></li>
                     <li> <p> <%= course.description %> </p> </li>
                     <!--<li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>-->
                     <li>

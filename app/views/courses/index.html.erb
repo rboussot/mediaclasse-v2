@@ -25,7 +25,7 @@
               <%= link_to lecture_path(course.lectures.first) do %>
                 <%= image_tag course.picture, class: "list-image" %>
                 <ul>
-                  <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i>, <%= course.date %> </h3></li>
+                  <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i> (<%= course.date %>)</h3></li>
                   <li> <p> <%= course.description %> </p> </li>
                   <li> <p> <%= course.lectures.count %> videos </p> </li>
                   <li>
