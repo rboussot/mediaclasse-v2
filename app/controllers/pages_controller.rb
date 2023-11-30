@@ -15,6 +15,7 @@ class PagesController < ApplicationController
     end
     @technique_category = Category.where(tag: "technique").last.name
     @last_lecture = Lecture.last
+    @banner = Category.where(tag: "ban").first
   end
 
   def googlevalidation
