@@ -3,17 +3,17 @@
     <div class="row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10">
         <div class= "plan-banner text-center" style="background-image: url('<%= @banner.description %>');">
-          <h1>Mediaclasse
-          </h1>
-          <p>La littérature illustrée et analysée en vidéos.</p>
-          <p class="hidden-xs">
-          <p>Pour les professeurs, étudiants</p>
-          <p>Et tous les passionnés de culture !</p>
             <%= link_to newsletter_path do %>
-            <div class="plan-newsletter hvr-grow home-newsletter">
-              <i class="fa fa-paper-plane"></i> <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
-            </div>
-          <% end %>
+              <div class="plan-newsletter hvr-grow home-newsletter">
+                <i class="fa fa-paper-plane"></i> <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
+              </div>
+            <% end %>
+          <h1>Mediaclasse</h1>
+          <div class="hidden-xs hidden-sm">
+            <p>La littérature analysée et illustrée en vidéos,</p>
+            <p>Pour les professeurs, étudiants</p>
+            <p>Et tous les passionnés de culture !</p>
+          </div>
         </div>
           <p class="text-center home-promo">
             <%= link_to plans_path do %>
