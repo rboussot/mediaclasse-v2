@@ -1,126 +1,128 @@
 <nav>
   <div class="navbar-media">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-media-brand" do %>
-    <%= image_tag "logo.png", alt:"Logo de Mediaclasse", class: "hvr-grow" %>
-  <% end %>
-  <!-- ========== LARGE SCREEN MENU ========== -->
-    <!-- === LINK LITT === -->
-
-    <%= link_to "Œuvres & Analyses", litterature_courses_path, class: "hidden-xs hidden-sm navbar-link underline link-litterature hvr-underline-from-center" %>
-    <!-- === LINK TECH === -->
-    <% @technique_category = Category.where(tag: "technique").last.name %>
-    <%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
-    <!-- === LINK CHANNELS === -->
-    <!--
-    <#% @channels_category = Category.where(tag: "chaines").first.name %>
-    <#%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
-    -- >
-    <!-- === LINK MY_COURSES === -->
-    <% if current_user %>
-      <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
-    <% else %>
-      <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-media-brand" do %>
+      <%= image_tag "logo.png", alt:"Logo de Mediaclasse", class: "hvr-grow" %>
     <% end %>
+    <!-- ========== LARGE SCREEN MENU ========== -->
+      <!-- === LINK LITT === -->
 
+      <%= link_to "Œuvres & Analyses", litterature_courses_path, class: "hidden-xs hidden-sm navbar-link underline link-litterature hvr-underline-from-center" %>
+      <!-- === LINK TECH === -->
+      <% @technique_category = Category.where(tag: "technique").last.name %>
+      <%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category), class: "hidden-xs hidden-sm navbar-link underline link-technique" %>
+      <!-- === LINK CHANNELS === -->
+      <!--
+      <#% @channels_category = Category.where(tag: "chaines").first.name %>
+      <#%= link_to "Partenaires", channels_path(category: @channels_category), class: "hidden-xs hidden-sm navbar-link underline link-community" %>
+      -- >
+      <!-- === LINK MY_COURSES === -->
+      <% if current_user %>
+        <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+      <% else %>
+        <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+      <% end %>
+
+  <!-- ========== MOBILE SCREEN ========== -->
+    <div class="visible-xs visible-sm">
+      <div class="dropdown">
+          <div class="navbar-link link-litterature hvr-underline-from-center" data-toggle="dropdown">
+                Accéder ▼
+          </div>
+        <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
+          <li><%= link_to "Oeuvres & analyses", litterature_courses_path %></li>
+          <li><%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category)%></li>
+          <!-- <li><#%= link_to "Partenaires", channels_path(category: @channels_category) %></li>-->
+          <% if current_user %>
+            <li><%= link_to "Mes cours", user_path(current_user) %></li>
+          <% else %>
+            <li><%= link_to "Mes cours", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
   <!-- ========== LOGIN ========== -->
 
   <!-- === PROFILE & DROPDOWN === -->
-  <div class="">
-    <div class="navbar-media-right">
-      <% if user_signed_in? %>
-        <div class="navbar-media-item">
-          <div class="dropdown">
-            <% if current_user.picture %>
-              <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, alt: "Avatar de l'utilisateur "+current_user.firstname+" "+current_user.lastname, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
-            <% else %>
-              <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+1000).to_s.last(3)+".jpg", crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
-            <% end %>
-            <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
-              <!-- ADMIN ONLY MENU -->
-              <% if current_user && current_user.admin %>
-                <li>
-                  <%= link_to rails_admin_path do %>
-                    <i class="fa fa-unlock-alt"></i> Admin
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to expired_path do %>
-                    <i class="fa fa-tasks"></i> Routine
-                  <% end %>
-                </li>
-                <!-- <li>
-                  <#%= link_to customers_list_path do %>
-                    <i class="fa fa-users"></i> Clients
-                  <#% end %>
-                </li> -->
+    <div class="">
+      <div class="navbar-media-right">
+        <% if user_signed_in? %>
+          <div class="navbar-media-item">
+            <div class="dropdown">
+              <% if current_user.picture %>
+                <%= cl_image_tag current_user.picture.path, width: 40, height: 40, crop: :fill, alt: "Avatar de l'utilisateur "+current_user.firstname+" "+current_user.lastname, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
+              <% else %>
+                <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(current_user.id+1000).to_s.last(3)+".jpg", crop: :fill, class: "avatar-bordered hvr-grow dropdown-toggle", id: "navbar-media-menu", "data-toggle" => "dropdown" %>
               <% end %>
-              <!-- USER MENU -->
-              <li>
-                <%= link_to root_path do %>
-                  <i class="fa fa-home"></i> Accueil
+              <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
+                <!-- ADMIN ONLY MENU -->
+                <% if current_user && current_user.admin %>
+                  <li>
+                    <%= link_to rails_admin_path do %>
+                      <i class="fa fa-unlock-alt"></i> Admin
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to expired_path do %>
+                      <i class="fa fa-tasks"></i> Routine
+                    <% end %>
+                  </li>
+                  <!-- <li>
+                    <#%= link_to customers_list_path do %>
+                      <i class="fa fa-users"></i> Clients
+                    <#% end %>
+                  </li> -->
                 <% end %>
-              </li>
-              <li>
-                <%= link_to plans_path do %>
-                  <i class="fa fa-star"></i> Abonnement
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_user_path(current_user) do %>
-                  <i class="fa fa-user"></i> Mon Profil
-                <% end %>
-              </li>
-              <li>
-                <%= link_to newsletter_path do %>
-                  <i class="fa fa-paper-plane"></i> Lettre d'Info
-                <% end %>
-              </li>
-              <li>
-                <%= link_to comments_path do %>
-                  <i class="fa fa-book"></i> Livre d'Or
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
-                <% end %>
-              </li>
-            </ul>
+                <!-- USER MENU -->
+                <li>
+                  <%= link_to root_path do %>
+                    <i class="fa fa-home"></i> Accueil
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to plans_path do %>
+                    <i class="fa fa-star"></i> Abonnement
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_user_path(current_user) do %>
+                    <i class="fa fa-user"></i> Mon Profil
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to newsletter_path do %>
+                    <i class="fa fa-paper-plane"></i> Lettre d'Info
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to comments_path do %>
+                    <i class="fa fa-book"></i> Livre d'Or
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      <% else %>
-    <!-- ========== NOT LOGIN ========== -->
-        <div class="loginsignup">
-          <!-- === CONNEXION === -->
-          <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">
-            Mon compte
-          </button>
-          <!-- === INSCRIPTION ===
-          <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">
-            inscription
-          </button>
-          -->
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <!-- ========== MOBILE SCREEN ========== -->
-  <div class="navbar-media-item visible-xs visible-sm">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-media-dropdown-menu">
-        <li><%= link_to "Oeuvres & analyses", litterature_courses_path %></li>
-        <li><%= link_to "Méthodes & Repères", technique_courses_path(category: @technique_category)%></li>
-        <!-- <li><#%= link_to "Partenaires", channels_path(category: @channels_category) %></li>-->
-        <% if current_user %>
-          <li><%= link_to "Mes cours", user_path(current_user) %></li>
         <% else %>
-          <li><%= link_to "Mes cours", new_user_session_path %></li>
+      <!-- ========== NOT LOGIN ========== -->
+          <div class="loginsignup">
+            <!-- === CONNEXION === -->
+            <button type="button" class="navbar-login" data-toggle="modal" data-target="#myLoginModal">
+              Mon compte
+            </button>
+            <!-- === INSCRIPTION ===
+            <button type="button" class="navbar-signup" data-toggle="modal" data-target="#mySignUpModal">
+              inscription
+            </button>
+            -->
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
-</div>
 </nav>

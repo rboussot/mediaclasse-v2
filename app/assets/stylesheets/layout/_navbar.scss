@@ -25,6 +25,9 @@ a.navbar-link {
   display: flex;
   justify-content: space-around;
 }
+.navbar-link:hover {
+  cursor: pointer;
+}
 div.navbar-menu {
   display: flex;
   justify-content: space-around;
