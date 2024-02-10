@@ -35,7 +35,10 @@ class StripeEventsController < ApplicationController
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
     when 'invoice.payment_failed'
-      handle_invoice_payment_failed(event.data.object)
+    # Si aucune nouvelle tentative de paiement n'est prévue alors on gère
+      #if event.data.object.next_attempt == "null"
+        handle_invoice_payment_failed(event.data.object)
+      #end
     else
       # Unexpected event type
       status 400
