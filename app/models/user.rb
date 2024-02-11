@@ -57,6 +57,8 @@ class User < ApplicationRecord
       field :pricing
       field :paydate
       field :expire
+      field :firstname
+      field :lastname
     end
   end
 
