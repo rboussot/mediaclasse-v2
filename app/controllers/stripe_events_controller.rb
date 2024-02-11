@@ -5,10 +5,11 @@ class StripeEventsController < ApplicationController
   skip_after_action :verify_authorized
   skip_before_action :verify_authenticity_token, only: :create
 
+
   def create
     require 'json'
+    require 'stripe'
     # Après le paiement, Stripe renvoie ici grâce au webhook
-    #TODO: Utiliser NGROK pour le tester
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     endpoint_secret = ENV['STRIPE_SIGNING_SECRET']
 
@@ -34,8 +35,22 @@ class StripeEventsController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
+    when 'customer.created'
+    when 'payment_method.attached'
+    when 'customer.updated'
+    when 'invoiceitem.created'
+    when 'invoice.created'
+    when 'charge.failed'
+    when 'customer.updated'
+    when 'payment_intent.created'
+    when 'payment_intent.payment_failed'
     when 'invoice.payment_failed'
-      handle_invoice_payment_failed(event.data.object)
+    # Si aucune nouvelle tentative de paiement n'est prévue alors on gère
+      if event.data.object.next_payment_attempt = "null"
+        handle_invoice_payment_failed(event.data.object)
+      end
+    when 'invoice.updated'
+    when 'invoice.finalized'
     else
       # Unexpected event type
       status 400
@@ -44,6 +59,7 @@ class StripeEventsController < ApplicationController
   end
 
   def handle_checkout_session_completed(checkout_session)
+    print "========== Handle checkout completed =========="
     # On récupère l'ID sauvegardé par Stripe et on identifie le client
     @id_user = checkout_session.client_reference_id
     @user = User.find(@id_user)
