@@ -35,22 +35,8 @@ class StripeEventsController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
-    when 'customer.created'
-    when 'payment_method.attached'
-    when 'customer.updated'
-    when 'invoiceitem.created'
-    when 'invoice.created'
-    when 'charge.failed'
-    when 'customer.updated'
-    when 'payment_intent.created'
-    when 'payment_intent.payment_failed'
-    when 'invoice.payment_failed'
-    # Si aucune nouvelle tentative de paiement n'est prévue alors on gère
-      if event.data.object.next_payment_attempt = "null"
-        handle_invoice_payment_failed(event.data.object)
-      end
-    when 'invoice.updated'
-    when 'invoice.finalized'
+    when 'customer.subscription.deleted'
+        handle_customer_subscription_deleted(event.data.object)
     else
       # Unexpected event type
       status 400
@@ -104,7 +90,7 @@ class StripeEventsController < ApplicationController
     })
   end
 
-  def handle_invoice_payment_failed(invoice_infos)
+  def handle_customer_subscription_deleted(invoice_infos)
     @stripe_customer_id = invoice_infos.customer
     # Si le client a bien un abonnement ouvert (il a un id Stripe en DB)
     if @user = User.where(stripe_customer_id: @stripe_customer_id).first
