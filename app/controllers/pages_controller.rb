@@ -54,7 +54,7 @@ class PagesController < ApplicationController
       @total += customer.pricing
     end
     # Récupérer tous les utilisateurs dont l'abonnement est en cours mais dont la date d'expiration est dépassée
-    @expired_plans = User.where.not(plan: [nil, ""]).where("expire <= ?", Date.today-4).order('expire DESC')
+    @expired_plans = User.where.not(plan: [nil, ""]).where("expire <= ?", Date.today).order('expire DESC')
     # ==== STRIPE ====
     # Accéder à l'API de stripe
     require "stripe"
