@@ -33,16 +33,16 @@ class StripeEventsController < ApplicationController
 
     # Les webhook peut renvoyer deux événements différents
     case event.type
-    when 'checkout.session.completed'
-      handle_checkout_session_completed(event.data.object)
-    when 'customer.subscription.deleted'
-      handle_customer_subscription_deleted(event.data.object)
-    when 'invoice.payment_failed'
-      print "Un paiement a échoué, nouvelle tentative dans trois jours"
-    else
-      # Unexpected event type
-      status 400
-      return
+      when 'checkout.session.completed'
+        handle_checkout_session_completed(event.data.object)
+      when 'customer.subscription.deleted'
+        handle_customer_subscription_deleted(event.data.object)
+      when 'invoice.payment_failed'
+        handle_invoice_payment_failed(event.data.object)
+      else
+        # Unexpected event type
+        status 400
+        return
     end
   end
 
@@ -90,6 +90,10 @@ class StripeEventsController < ApplicationController
     Stripe::Invoice.pay(invoice.id, {
       paid_out_of_band: true,
     })
+  end
+
+  def handle_invoice_payment_failed(invoice_infos)
+    print "Un paiement a échoué."
   end
 
   def handle_customer_subscription_deleted(event_infos)
