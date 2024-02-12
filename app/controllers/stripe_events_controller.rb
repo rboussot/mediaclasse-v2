@@ -36,7 +36,9 @@ class StripeEventsController < ApplicationController
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
     when 'customer.subscription.deleted'
-        handle_customer_subscription_deleted(event.data.object)
+      handle_customer_subscription_deleted(event.data.object)
+    when 'invoice.payment_failed'
+      print "Un paiement a échoué, nouvelle tentative dans trois jours"
     else
       # Unexpected event type
       status 400
@@ -90,8 +92,8 @@ class StripeEventsController < ApplicationController
     })
   end
 
-  def handle_customer_subscription_deleted(invoice_infos)
-    @stripe_customer_id = invoice_infos.customer
+  def handle_customer_subscription_deleted(event_infos)
+    @stripe_customer_id = event_infos.customer
     # Si le client a bien un abonnement ouvert (il a un id Stripe en DB)
     if @user = User.where(stripe_customer_id: @stripe_customer_id).first
       # Alors on note la date d'expiration
