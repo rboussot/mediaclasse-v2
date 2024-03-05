@@ -48,13 +48,10 @@
           <div class= "home-card-large">
             <h4>Mon dernier cours en vidéo :</h4>
             <%= link_to lecture_path(@last_lecture.title) do %>
-            <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
-            <!--
-            <div class="embed-responsive embed-responsive-16by9 home-video">
-                <iframe title= "Le dernier cours de Mediaclasse au format vidéo", width="854" height="480" src= "https://www.youtube.com/embed/<%= @last_lecture.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
-            </div>
-            <br><p>⇨ Accéder maintenant au cours complet.</p>
-            -->
+              <div class="embed-responsive embed-responsive-16by9 home-video">
+                <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
+                <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
+              </div>
             <% end %>
           </div>
         <!-- ======== COUP DE COEUR ================ -->
