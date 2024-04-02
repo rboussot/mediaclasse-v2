@@ -2,12 +2,17 @@
   font-size: 15px;
   text-align: right;
 }
+
 .lecture-content h1 {
   font-size: 30px;
   color: $greydark;
   text-align: center;
   border-bottom: 2px solid $greydark;
   padding: 0px 20% 20px 20%;
+}
+
+.lecture-content hr {
+  border-top: 2px solid $greydark;
 }
 
 .lecture-content h2 {
