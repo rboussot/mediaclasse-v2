@@ -17,8 +17,10 @@
 
 .lecture-content h2 {
   font-size: 26px;
-  color: $greydark;
-  margin: 0px 0px 0px 0px;
+  color: #333333;
+  margin: 20px 0px 0px 0px;
+  border-top: 2px solid #333333;
+  padding-top: 20px;
 }
 
 .lecture-content cite {
