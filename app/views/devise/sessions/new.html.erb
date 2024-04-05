@@ -78,7 +78,7 @@
               <h4><%= plan.title %></h4>
               <p><%= plan.description %></p>
               <div class="plan-stripebutton-inactive" class="slate">
-                <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / 1 an
+                <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / <%= plan.title %>
               </div>
             </div>
           <% end %>
