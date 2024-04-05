@@ -1,15 +1,15 @@
 <% @unique_plans.each  do |plan| %>
 
+  <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
   <div class= "plan-stripe-inactive <%= plan.css_class %>">
     <h4><%= plan.title %></h4>
     <p><%= plan.description %></p>
-    <!-- Bouton inactif tant que les CGV ne sont pas cochées -->
     <div class = "plan-stripebutton-inactive">
-      <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / 1 an
+      <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / <%= plan.title %>
     </div>
-    <!-- Bouton actif quand les CGV sont cochées -->
   </div>
 
+  <!-- Bouton actif quand les CGV sont cochées -->
   <%= link_to controller:"plans", action: "planselected", id: plan.plan_name, mode: "payment" do %>
     <span class= display-none >
       <div class= "plan-stripe-active <%= plan.css_class %>">
@@ -23,7 +23,7 @@
             - En "mode" : le mode de paiement "payment" puisqu'on est dans les plans uniques. -->
             <button class = "checkout-button hvr-light" id="checkout-button-annuel" role="link"
               data-name="<%= plan.plan_name %>">
-              <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ /1 an
+              <%= number_to_currency(plan.price, unit:"").gsub(".00","") %>€ / <%= plan.title %>
             </button>
 
           <div id="error-message"></div>
