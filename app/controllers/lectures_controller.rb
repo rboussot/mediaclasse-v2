@@ -6,7 +6,7 @@ class LecturesController < ApplicationController
     @lecture_course = @lecture.course
     @lecture_course.author ? @lecture_author = @lecture.course.author.name.to_s : @lecture_author = "Mediaclasse"
     @lectures = @lecture_course.lectures.order('title ASC').where(visible: true)
-    @documents = Document.where(lecture_id: params[:id])
+    @documents = Document.where(lecture_id: params[:id]).where(visible:true)
     skip_authorization
 
     @meta_title = (@lecture_course.title+", "+@lecture_author+" : "+@lecture.title+

@@ -109,15 +109,12 @@
               <section class="lecture-documents content" id="documents">
                 <% if current_user && current_user.pricing.present? %>
                     <% @documents.each do |document| %>
-                      <% if document.visible %>
                         <p>
                           ⇨ <%= link_to document.title, document_path(document)%>
                         </p>
-                      <% end %>
                     <% end %>
                 <% else %>
                   <% @documents.each do |document| %>
-                    <% if document.visible %>
                       <% if document.payment %>
                         <%= render 'shared/planmodal' %>
                         <p data-toggle = "modal" data-target = "#PlanModal">
@@ -128,9 +125,10 @@
                           ⇨ <%= link_to document.title, document_path(document)%>
                         </p>
                       <% end %>
-                    <% end %>
                   <% end %>
-                   <i>* Document réservé aux abonnés.</i>
+                  <% if @documents.any? { |document| document.payment == true } %>
+                       <i>* Document téléchargeable réservé aux abonnés.</i>
+                  <% end %>
                 <% end %>
               </section>
             <!-- ========== CLOSE TABS ========== -->
