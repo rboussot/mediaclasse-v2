@@ -75,6 +75,12 @@
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
         <!-- ===== EDITO ===== -->
         <div class= "home-card-small">
+        <!-- ====== Lien vers l'Admin ====== -->
+          <% if current_user && current_user.admin %>
+            <%= link_to rails_admin.edit_path(model_name: 'category', id: 8) do %>
+              <span id="home-admin">Edit</span>
+            <% end %>
+          <% end %>
           <h4>Édito</h4>
           <p><%= @edito.description.gsub("\n", "<br/>").html_safe %></p>
         </div>
@@ -134,7 +140,7 @@
         -->
         <!-- ===== LITTERATURE ===== -->
         <div class= "home-card-small">
-          <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
+          <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
           <p><%= @litterature.description %></p>
         </div>
         <!-- ===== TECHNIQUE ===== -->

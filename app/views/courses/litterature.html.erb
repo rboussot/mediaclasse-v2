@@ -36,6 +36,12 @@
       <div class="list-scroll">
         <% if @litterature_courses.count > 0 %>
           <% @litterature_courses.each do |course| %>
+              <!-- ====== Lien vers l'Admin ====== -->
+                <% if current_user && current_user.admin %>
+                  <%= link_to rails_admin.edit_path(model_name: 'course', id: course.id) do %>
+                    <span id="course-admin">Edit</span>
+                  <% end %>
+                <% end %>
             <% if course.lectures.where(visible: :true).count > 0 && course.visible %>
               <div class="list-item hidden-xs" id="<%= course.author.pseudo.first %>">
                 <%= link_to lecture_path(course.lectures.where(visible: :true).first) do %>

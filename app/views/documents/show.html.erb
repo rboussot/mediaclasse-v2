@@ -20,7 +20,7 @@
     <!-- ====== Lien vers l'Admin ====== -->
           <% if current_user && current_user.admin %>
             <%= link_to rails_admin.edit_path(model_name: 'document', id: @document.id) do %>
-              <p id="document-admin">Edit</p>
+              <p id="lecture-admin">Edit</p>
             <% end %>
           <% end %>
     <!-- ==================== Afficher le document =================== -->

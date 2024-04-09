@@ -49,6 +49,22 @@
   border: 1px solid black;
 }
 
+#home-admin {
+  color: grey;
+  background-color: #EEEEEE;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 2px 14px 0px;
+  margin: 0% 0% 0% 110%;
+  position: absolute;
+  top: 13px;
+  left: -110px;
+
+    &:hover {
+      background-color: $grey;
+  }
+}
+
 .home-discussion {
   width: 100%;
   min-height: 100px;
