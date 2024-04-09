@@ -6,6 +6,7 @@
   <%= @lecture.meta_image %>
 <% end %>
 
+
 <!-- <#% content_for :meta_description do %>
   <#%= @lecture.description %>
 <#% end %> -->
@@ -67,6 +68,12 @@
               </p>
             </div>
 
+          <% end %>
+          <!-- ====== Lien vers l'Admin ====== -->
+          <% if current_user && current_user.admin %>
+            <%= link_to rails_admin.edit_path(model_name: 'lecture', id: @lecture.id) do %>
+              <p id="lecture-admin">Edit</p>
+            <% end %>
           <% end %>
           <!-- ========== TABS ========== -->
           <div class= "tabs">
