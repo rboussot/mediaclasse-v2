@@ -247,9 +247,9 @@ ul a:link {
   font-size: 14px;
   padding: 2px 14px 0px;
   line-height: normal;
-  position: absolute;
-  right: 15px;
-  top: -10px;
+  position: fixed;
+  right: 20px;
+  top: 90px;
 
     &:hover {
       background-color: $greydark;
