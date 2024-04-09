@@ -37,6 +37,12 @@
         <% if @technique_courses.count > 0 %>
           <% @technique_courses.each do |course| %>
             <% if course.lectures.first && course.visible %>
+          <!-- ====== Lien vers l'Admin ====== -->
+                <% if current_user && current_user.admin %>
+                  <%= link_to rails_admin.edit_path(model_name: 'course', id: course.id) do %>
+                    <span id="course-admin">Edit</span>
+                  <% end %>
+                <% end %>
             <!-- ==== LIST ITEM ==== -->
               <div class="list-item hidden-xs">
                 <%= link_to lecture_path(course.lectures.first) do %>
