@@ -17,6 +17,12 @@
         <% end %>
       <% end %>
     </div>
+    <!-- ====== Lien vers l'Admin ====== -->
+          <% if current_user && current_user.admin %>
+            <%= link_to rails_admin.edit_path(model_name: 'document', id: @document.id) do %>
+              <p id="document-admin">Edit</p>
+            <% end %>
+          <% end %>
     <!-- ==================== Afficher le document =================== -->
       <div class="col-xs-offset-1 col-sm-offset-0 col-xs-8">
         <span style="position: fixed;padding:5% 5%;width: 55%;z-index: 0;">
