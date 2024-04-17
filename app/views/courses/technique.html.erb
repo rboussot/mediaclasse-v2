@@ -45,7 +45,7 @@
                 <% end %>
             <!-- ==== LIST ITEM ==== -->
               <div class="list-item hidden-xs">
-                <%= link_to lecture_path(course.lectures.first) do %>
+                <%= link_to lecture_path(course.lectures.where(visible: :true).order(title: :asc).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", alt: "Couverture pour mes cours en "+@category.name+" sur "+course.title, width: 178, height: 267, crop: :fill %>
                   <ul>
                     <li><h3><%= course.title %></h3></li>
@@ -77,10 +77,10 @@
               </div>
               <!-- ========== LIST-ITEM-XS ========== -->
               <div class= "list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
-                <%= link_to lecture_path(course.lectures.first) do %>
+                <%= link_to lecture_path(course.lectures.where(visible: :true).order(title: :asc).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 174, height: 259, crop: :fill %>
                   <ul>
-                    <li><h4><%= course.title %></h4></li>
+                    <li><h4><br><br><%= course.title %></h4></li>
                     <!-- Donne le nombre de vidéos
                     <li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>
                     -->

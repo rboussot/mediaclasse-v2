@@ -44,7 +44,7 @@
                 <% end %>
             <% if course.lectures.where(visible: :true).count > 0 && course.visible %>
               <div class="list-item hidden-xs" id="<%= course.author.pseudo.first %>">
-                <%= link_to lecture_path(course.lectures.where(visible: :true).first) do %>
+                <%= link_to lecture_path(course.lectures.where(visible: :true).order(title: :asc).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", alt: "Couverture du livre de "+course.author.pseudo+" "+course.title, width: 178, height: 267, crop: :fill %>
                   <ul>
                     <li> <h3>  <%= course.author.pseudo %>, <i><%= course.title %></i> (<%= course.date %>). </h3></li>
@@ -72,9 +72,9 @@
               </div>
               <!-- ========== LIST-ITEM-XS ========== -->
               <div class= "list-item-xs hidden-sm hidden-md hidden-lg hidden-xl">
-                <%= link_to lecture_path(course.lectures.first) do %>
+                <%= link_to lecture_path(course.lectures.where(visible: :true).order(title: :asc).first) do %>
                   <%= cl_image_tag course.picture, class: "list-image", width: 174, height: 259, crop: :fill %>
-                  <ul>
+                  <br><br><ul>
                     <li><h4><%= course.author.pseudo %></h4></li>
                     <li><p><i><u><%= course.title %></u></i></p></li>
                     <li><p><%= pluralize(course.lectures.where(visible: true).count, 'vidéo') %></p></li>
