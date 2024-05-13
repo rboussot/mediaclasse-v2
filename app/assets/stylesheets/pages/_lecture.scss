@@ -29,7 +29,7 @@
 }
 
 .lecture-content q {
-  font-family: 'Garamond';
+  font-family: 'times';
   font-style: normal;
   quotes: none;
   color: #555555;
@@ -37,11 +37,13 @@
   }
 
 .lecture-content bq {
-  font-family: 'Garamond';
+  font-family: 'Times';
   font-style: normal;
   quotes: none;
   color: #555555;
   font-weight: 100;
+  position: relative;
+  left: 30px;
   }
 
 .lecture-content h3 {
