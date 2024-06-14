@@ -74,14 +74,14 @@
         <div class= "home-card-large">
           <h4>Ils en parlent :</h4>
             <div class= "lecture-carousel">
-              <% @articles.order(created_at: :desc).each do |article| %>
+              <% @articles.each do |article| %>
                 <%= link_to article.description, target: :_blank do %>
                   <%= image_tag (article.video), class: ("lecture-press") %>
                 <% end %>
               <% end %>
             </div>
             <div class= "lecture-carousel">
-              <% @articles.order(created_at: :asc).each do |article| %>
+              <% @articles.reverse.each do |article| %>
                 <%= link_to article.description, target: :_blank do %>
                   <%= image_tag (article.video), class: ("lecture-press") %>
                 <% end %>

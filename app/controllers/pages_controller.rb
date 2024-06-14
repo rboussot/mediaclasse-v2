@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     @technique_category = Category.where(tag: "technique").last.name
     @last_lecture = Lecture.last
     @banner = Category.where(tag: "ban").first
-    @articles = Category.where(tag: "press")
+    @articles = Category.where(tag: "press").shuffle
   end
 
   def googlevalidation
