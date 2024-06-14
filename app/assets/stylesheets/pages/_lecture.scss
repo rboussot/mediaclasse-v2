@@ -1,3 +1,14 @@
+
+.lecture-press {
+  height: 100px;
+}
+
+.lecture-carousel {
+  display: flex;
+    overflow-x: scroll;
+    padding: 1rem 0;
+}
+
 .lecture-legend {
   font-size: 15px;
   text-align: right;

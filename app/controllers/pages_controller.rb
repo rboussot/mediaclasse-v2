@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :find_super_comments, only: [:home]
 
   def home
-    @edito= Category.where(tag: "edito").first
+    @edito= Category.where(tag: "edito").last
     @pres= Category.where(tag: "pres").first
     @favorite= Category.where(tag: "favorite").first
     @litterature = Category.where(tag: "litterature").first
@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     @technique_category = Category.where(tag: "technique").last.name
     @last_lecture = Lecture.last
     @banner = Category.where(tag: "ban").first
+    @articles = Category.where(tag: "press")
   end
 
   def googlevalidation

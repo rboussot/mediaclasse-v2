@@ -70,6 +70,24 @@
             <img src="https://acquis.s3.eu-west-1.amazonaws.com/documents/Ministère+de+la+culture.jpg" width= "100%">
           </a>
         </div>
+        <!-- ======== PRESSE =================================== -->
+        <div class= "home-card-large">
+          <h4>Ils en parlent :</h4>
+            <div class= "lecture-carousel">
+              <% @articles.order(created_at: :desc).each do |article| %>
+                <%= link_to article.description, target: :_blank do %>
+                  <%= image_tag (article.video), class: ("lecture-press") %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class= "lecture-carousel">
+              <% @articles.order(created_at: :asc).each do |article| %>
+                <%= link_to article.description, target: :_blank do %>
+                  <%= image_tag (article.video), class: ("lecture-press") %>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
       </div>
 <!-- =================== SMALL COLUMN ========================================= -->
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
