@@ -1,12 +1,13 @@
 
 .lecture-press {
-  height: 100px;
+  height: 80px;
 }
 
 .lecture-carousel {
   display: flex;
   overflow-x: scroll;
   padding: 1rem 0;
+  scrollbar-width: thin;
 }
 
 .lecture-legend {

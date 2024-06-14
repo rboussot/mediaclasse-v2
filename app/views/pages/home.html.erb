@@ -74,14 +74,21 @@
         <div class= "home-card-large">
           <h4>Ils en parlent :</h4>
             <div class= "lecture-carousel">
-              <% @articles.each do |article| %>
+              <% @articles1.each do |article| %>
                 <%= link_to article.description, target: :_blank do %>
                   <%= image_tag (article.video), class: ("lecture-press") %>
                 <% end %>
               <% end %>
             </div>
             <div class= "lecture-carousel">
-              <% @articles.reverse.each do |article| %>
+              <% @articles2.each do |article| %>
+                <%= link_to article.description, target: :_blank do %>
+                  <%= image_tag (article.video), class: ("lecture-press") %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class= "lecture-carousel">
+              <% @articles3.each do |article| %>
                 <%= link_to article.description, target: :_blank do %>
                   <%= image_tag (article.video), class: ("lecture-press") %>
                 <% end %>

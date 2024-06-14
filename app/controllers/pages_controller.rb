@@ -17,6 +17,11 @@ class PagesController < ApplicationController
     @last_lecture = Lecture.last
     @banner = Category.where(tag: "ban").first
     @articles = Category.where(tag: "press").shuffle
+    @un = @articles.count/3
+    @deux = (@articles.count/3)*2
+    @articles1 = @articles[0..@un-1]
+    @articles2 = @articles[@un..@deux-1]
+    @articles3 = @articles[@deux..-1]
   end
 
   def googlevalidation
