@@ -74,25 +74,27 @@
         <div class= "home-card-large">
           <h4>Ils aiment :</h4>
             <div class= "lecture-carousel">
-              <% @articles1.each do |article| %>
-                <%= link_to article.description, target: :_blank do %>
-                  <%= image_tag (article.video), class: ("lecture-press") %>
+              <div class= "lecture-press">
+                <% @articles1.each do |article| %>
+                  <%= link_to article.description, target: :_blank do %>
+                    <%= image_tag (article.video), class: ("lecture-presslogo") %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class= "lecture-carousel">
-              <% @articles2.each do |article| %>
-                <%= link_to article.description, target: :_blank do %>
-                  <%= image_tag (article.video), class: ("lecture-press") %>
+              </div>
+              <div class= "lecture-press">
+                <% @articles2.each do |article| %>
+                  <%= link_to article.description, target: :_blank do %>
+                    <%= image_tag (article.video), class: ("lecture-presslogo") %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class= "lecture-carousel">
-              <% @articles3.each do |article| %>
-                <%= link_to article.description, target: :_blank do %>
-                  <%= image_tag (article.video), class: ("lecture-press") %>
+              </div>
+              <div class= "lecture-press">
+                <% @articles3.each do |article| %>
+                  <%= link_to article.description, target: :_blank do %>
+                    <%= image_tag (article.video), class: ("lecture-presslogo") %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
         </div>
       </div>
