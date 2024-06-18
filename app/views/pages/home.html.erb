@@ -144,41 +144,45 @@
               </p>
         </div>
         -- >
-        <!-- ===== RESEAUX SOCIAUX ===== -->
+        <!-- ===== RESEAUX SOCIAUX =====
         <div class= "home-card-small">
-          <h4><%= link_to "Réseaux sociaux", plans_path %></h4>
+          <h4><#%= link_to "Réseaux sociaux", plans_path %></h4>
           <p>Je publie régulièrement des contenus exclusifs sur les réseaux sociaux : 
-            <%= link_to "https://twitter.com/mediaclassefr?lang=fr", target: "_blank" do %>
-               <i class="fab fa-twitter"></i> 
-            <% end %>
-            <%= link_to "https://www.facebook.com/mediaclasse/", target: "_blank" do %>
+            <#%= link_to "https://twitter.com/mediaclassefr?lang=fr", target: "_blank" do %>
+               𝕏 
+            <#% end %>
+            <#%= link_to "https://www.facebook.com/mediaclasse/", target: "_blank" do %>
                <i class="fab fa-facebook"></i> 
-            <% end %>
-            <%= link_to "https://www.linkedin.com/in/romain-boussot-051a6154/", target: "_blank" do %>
+            <#% end %>
+            <#%= link_to "https://www.linkedin.com/in/romain-boussot-051a6154/", target: "_blank" do %>
                <i class="fab fa-linkedin"></i> 
-            <% end %>
-            <%= link_to "https://www.instagram.com/mediaclasse/", target: "_blank" do %>
+            <#% end %>
+            <#%= link_to "https://www.instagram.com/mediaclasse/", target: "_blank" do %>
                <i class="fab fa-instagram"></i> 
-            <% end %>
-            <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: "_blank" do %>
+            <#% end %>
+            <#%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: "_blank" do %>
                <i class="fab fa-tiktok"></i> 
-            <% end %>
+            <#% end %>
           </p>
         </div>
+      -->
+        <!-- ====== POST INSTAGRAM ====== -->
           <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/<%= @insta_link %>/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
           </blockquote> <script async src="//www.instagram.com/embed.js"></script>
-        <!--
-        ===== ABONNEMENT =====
+        <!-- ====== POST TIKTOK ======
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mediaclasse/video/7291952467875548448" data-video-id="7291952467875548448" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mediaclasse" href="https://www.tiktok.com/@mediaclasse?refer=embed">@mediaclasse</a> ☂️ La subordonnée circonstancielle <a title="questiondegrammaire" target="_blank" href="https://www.tiktok.com/tag/questiondegrammaire?refer=embed">#questiondegrammaire</a>  au <a title="bacdefrancais" target="_blank" href="https://www.tiktok.com/tag/bacdefrancais?refer=embed">#bacdefrancais</a>  <a title="bac2024" target="_blank" href="https://www.tiktok.com/tag/bac2024?refer=embed">#bac2024</a>  <a title="grammaire" target="_blank" href="https://www.tiktok.com/tag/grammaire?refer=embed">#grammaire</a>  <a title="circonstancielle" target="_blank" href="https://www.tiktok.com/tag/circonstancielle?refer=embed">#circonstancielle</a>  <a title="mediaclasse" target="_blank" href="https://www.tiktok.com/tag/mediaclasse?refer=embed">#mediaclasse</a> <a target="_blank" title="♬ son original  - mediaclasse" href="https://www.tiktok.com/music/son-original-mediaclasse-7291952571483310881?refer=embed">♬ son original  - mediaclasse</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+
+        ====== ABONNEMENT ======
         <div class= "home-card-small">
           <h4><#%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
           <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous fixez vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
         </div>
-        ===== LITTERATURE =====
+        ====== LITTERATURE ======
         <div class= "home-card-small">
           <h4><#%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
           <p><%= @litterature.description %></p>
         </div>
-        ===== TECHNIQUE =====
+        ====== TECHNIQUE ======
         <div class= "home-card-small">
           <h4><#%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
           <p><%= @methodo.description %></p>
@@ -186,6 +190,7 @@
         -->
       </div>
     </div>
+
     <!-- =========================== SUPER COMMENTAIRES ================================= -->
     <div class="row">
       <div class="col-xs-11 col-sm-offset-2 col-sm-8">
@@ -224,8 +229,12 @@
         <% end %>
       </div>
     </div>
+<!-- ====== PROFIL TIKTOK ======
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mediaclasse" data-unique-id="mediaclasse" data-embed-from="embed_page" data-embed-type="creator" style="max-width:780px; min-width:288px;"> <section> <a target="_blank" href="https://www.tiktok.com/@mediaclasse?refer=creator_embed">@mediaclasse</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+  -->
   </div>
 </div>
+
 
 <%= render 'shared/footer' %>
 <%= render 'shared/cookie' %>
