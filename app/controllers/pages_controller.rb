@@ -23,6 +23,7 @@ class PagesController < ApplicationController
     @articles2 = @articles[@un..@deux-1]
     @articles3 = @articles[@deux..-1]
     @users_count = User.last.id.to_i
+    @insta_link = Category.where(tag: "insta").last.video
   end
 
   def googlevalidation
