@@ -125,17 +125,25 @@
               <img width= "100%" src= "https://acquis.s3.eu-west-1.amazonaws.com/documents/logo-ministere-education-nationale.jpg">
             </a>
         </div>
-        <!-- ===== NEWSLETTER ===== -->
+        <!-- ======== NOMBRE D'UTILISATEURS ? ========== -->
+        <%= link_to plans_path do %>
+          <div class= "home-card-large">
+            <h4>Rejoignez-les !</h4>
+              <big><%= @users_count %></big> personnes formées avec Mediaclasse.
+          </div>
+        <% end %>
+        <!-- ===== NEWSLETTER =====
         <div class= "home-card-small">
-          <%= link_to newsletter_path do %>
+          <#%= link_to newsletter_path do %>
             <h4 class= "underline link-profile">Ma Lettre d'Info</h4>
-          <% end %>
+          <#% end %>
               <p> Privilèges de cette liste : Recevoir gratuitement les nouvelles vidéos en avant-première. Connaître mes projets à venir. Accéder à certaines offres spéciales.
-                <%= link_to newsletter_path do %>
+                <#%= link_to newsletter_path do %>
                     <i class="fa fa-paper-plane"></i>
-                <% end %>
+                <#% end %>
               </p>
         </div>
+        -- >
         <!-- ===== RESEAUX SOCIAUX ===== -->
         <div class= "home-card-small">
           <h4><%= link_to "Réseaux sociaux", plans_path %></h4>
@@ -157,24 +165,25 @@
             <% end %>
           </p>
         </div>
-
-        <!-- ===== ABONNEMENT ===== -->
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C7WOd9AtqXr/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+          </blockquote> <script async src="//www.instagram.com/embed.js"></script>
         <!--
+        ===== ABONNEMENT =====
         <div class= "home-card-small">
-          <h4><%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
+          <h4><#%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
           <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous fixez vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
         </div>
-        -->
-        <!-- ===== LITTERATURE ===== -->
+        ===== LITTERATURE =====
         <div class= "home-card-small">
-          <h4><%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
+          <h4><#%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
           <p><%= @litterature.description %></p>
         </div>
-        <!-- ===== TECHNIQUE ===== -->
+        ===== TECHNIQUE =====
         <div class= "home-card-small">
-          <h4><%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
+          <h4><#%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
           <p><%= @methodo.description %></p>
         </div>
+        -->
       </div>
     </div>
     <!-- =========================== SUPER COMMENTAIRES ================================= -->

@@ -22,6 +22,7 @@ class PagesController < ApplicationController
     @articles1 = @articles[0..@un-1]
     @articles2 = @articles[@un..@deux-1]
     @articles3 = @articles[@deux..-1]
+    @users_count = User.last.id.to_i
   end
 
   def googlevalidation
