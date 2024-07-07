@@ -168,7 +168,7 @@
       -->
       <!-- ====== INSTAGRAM ====== -->
       <% if Category.exists?(tag: "insta") %>
-        <%= link_to "https://www.instagram.com/mediaclasse/" do %>
+        <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
           <div class= "home-card-large">
           <h4><%= @insta.name %></h4>
             <%= @insta.description %>
@@ -179,7 +179,7 @@
 
       <!-- ====== TIKTOK ====== -->
       <% if Category.exists?(tag: "tiktok") %>
-        <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr" do %>
+        <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: :_blank do %>
           <div class= "home-card-large">
           <h4><%= @tiktok.name %></h4>
             <%= @tiktok.description %>
