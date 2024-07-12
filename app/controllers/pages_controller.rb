@@ -25,6 +25,7 @@ class PagesController < ApplicationController
     @users_count = User.last.id.to_i
     @insta = Category.where(tag: "insta").last
     @tiktok = Category.where(tag: "tiktok").last
+    @diapo = Category.where(tag: "diapo").last
   end
 
   def googlevalidation

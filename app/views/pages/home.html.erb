@@ -166,14 +166,29 @@
           </p>
         </div>
       -->
-      <!-- ====== INSTAGRAM ====== -->
-      <% if Category.exists?(tag: "insta") %>
-        <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
+      <!-- ====== INSTAGRAM ======
+      <#% if Category.exists?(tag: "insta") %>
+        <#%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
           <div class= "home-card-large">
-          <h4><%= @insta.name %></h4>
+          <h4><#%= @insta.name %></h4>
             <%= @insta.description %>
-            <%= image_tag (@insta.video), width: "100%" %>
+            <#%= image_tag (@insta.video), width: "100%" %>
           </div>
+        <#% end %>
+      <#% end %> -->
+
+<!-- ====== DIAPORAMA ====== -->
+      <% if Category.exists?(tag: "diapo") %>
+        <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
+        <div class= "home-card-large">
+          <img class="avatar-bordered" src="http://res.cloudinary.com/mediaclasse-fr/image/upload/c_fill,h_40,w_40/v1695739031/olnctuxngvds9t7uyw3i.jpg" margin-bottom=10px>
+          <span style="font-family: Arial;">
+          <b> Mediaclasse | Instagram
+            <i class="fab fa-instagram"></i></b><br>
+          <font size="2"><%= @diapo.description %></font></span>
+          <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="330px", height= "330px";>
+          </iframe>
+        </div>
         <% end %>
       <% end %>
 
