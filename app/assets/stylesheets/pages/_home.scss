@@ -25,6 +25,17 @@
   min-height: 100%;
 }
 
+.home-card-insta {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  max-width: 360px;
+  border: solid grey 2px;
+  border-radius: 6px;
+  line-height: 16px;
+  word-wrap : break-word;
+}
+
 .home-card-small {
   background-color: $greywhite;
   border: 1px solid $greylight;

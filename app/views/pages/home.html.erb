@@ -180,13 +180,14 @@
 <!-- ====== DIAPORAMA ====== -->
       <% if Category.exists?(tag: "diapo") %>
         <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
-        <div class= "home-card-large">
-          <img class="avatar-bordered" src="http://res.cloudinary.com/mediaclasse-fr/image/upload/c_fill,h_40,w_40/v1695739031/olnctuxngvds9t7uyw3i.jpg" margin-bottom=10px>
+        <div class= "home-card-insta">
+          <span><img class="avatar-bordered" src="https://acquis.s3.eu-west-1.amazonaws.com/divers/id+insta4.jpg" margin-bottom=10px></span>
           <span style="font-family: Arial;">
-          <b> Mediaclasse | Instagram
+          <b>  Mediaclasse  
             <i class="fab fa-instagram"></i></b><br>
-          <font size="2"><%= @diapo.description %></font></span>
-          <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="330px", height= "330px";>
+          <font size="2"><%= @diapo.description %></font>
+          <br><br></span>
+          <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="360px", height= "330px";>
           </iframe>
         </div>
         <% end %>
