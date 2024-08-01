@@ -12,6 +12,12 @@ class LecturesController < ApplicationController
     @meta_title = (@lecture_course.title+", "+@lecture_author+" : "+@lecture.title+
     " (Explications et commentaires détaillés)").gsub(/<.*?>/,"").gsub(160.chr("UTF-8")," ").html_safe
 
+    if Category.exists?(tag: "message")
+      @message_plan = Category.where(tag: "message").last.description
+    else
+      @message_plan = "Super ! Voir les conditions pour accéder à toutes les ressources !"
+    end
+
     @description_for_subscribers = @lecture.description.gsub("\n", "<br/>").split("[/]").join(" ").to_s.html_safe
     @description_for_free = @lecture.description.gsub("\n", "<br/>").split("[/]")[0..0].join(" ").to_s.html_safe
     @description_title = @lecture.description.gsub("\n", "<br/>").split("<br/>")[0..1].join('<br/>').to_s.html_safe
