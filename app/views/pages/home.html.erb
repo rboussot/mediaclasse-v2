@@ -177,7 +177,7 @@
         <#% end %>
       <#% end %> -->
 
-<!-- ====== DIAPORAMA ====== -->
+<!-- ====== DIAPORAMA INSTAGRAM ====== -->
       <% if Category.exists?(tag: "diapo") %>
         <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
         <div class= "home-card-insta">
@@ -185,7 +185,7 @@
           <span style="font-family: Arial;">
           <b>  Mediaclasse  
             <i class="fab fa-instagram"></i></b><br>
-          <font size="2"><%= @diapo.description %></font>
+          <font size="2"><%= @diapo.description.gsub("\n", "<br/>").html_safe %></font>
           <br><br></span>
           <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="360px", height= "330px";>
           </iframe>
