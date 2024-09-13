@@ -14,7 +14,7 @@ class PagesController < ApplicationController
       @channel = Channel.where(user_id: current_user[:id]).first
     end
     @technique_category = Category.where(tag: "technique").last.name
-    @last_lecture = Category.where(tag: "lecture").last
+    @last_lecture = Category.where(tag: "last_lecture").last
     @banner = Category.where(tag: "ban").first
     @articles = Category.where(tag: "press").shuffle
     @un = @articles.count/3
