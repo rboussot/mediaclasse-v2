@@ -15,7 +15,7 @@
             <p>Et tous les passionnés de culture !</p>
           </div>
         </div>
-          <p class="text-center home-promo">
+          <p class="text-center home-plan">
             <%= link_to plans_path do %>
               <% if current_user && current_user.plan.present? %>
                 <span class="hvr-grow"><i class="fa fa-star"></i>
@@ -46,8 +46,11 @@
         </div>
         <!-- ======== LAST COURSE ================ -->
           <div class= "home-card-large">
-            <h4>Mon dernier cours en vidéo :</h4>
-            <%= link_to lecture_path(@last_lecture.title) do %>
+            <%= link_to rails_admin.edit_path(model_name: 'category', id: @last_lecture.id) do %>
+              <span id="home-edit">Edit</span>
+            <% end %>
+            <h4><%= @last_lecture.description %></h4>
+            <%= link_to lecture_path(@last_lecture.name) do %>
               <div class="embed-responsive embed-responsive-16by9 home-video">
                 <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
                 <%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
@@ -55,13 +58,29 @@
             <% end %>
           </div>
         <!-- ======== COUP DE COEUR ================ -->
-        <div class= "home-card-large">
-          <h4>Mon dernier coup de coeur sur Youtube !</h4>
-          <p><%= @favorite.description.gsub("\n", "<br/>").html_safe %></p>
-          <div class="embed-responsive embed-responsive-16by9 home-video">
-              <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+        <% if Category.exists?(tag: "favorite") %>
+          <div class= "home-card-large">
+            <h4>Mon dernier coup de coeur sur Youtube !</h4>
+            <p><%= @favorite.description.gsub("\n", "<br/>").html_safe %></p>
+            <div class="embed-responsive embed-responsive-16by9 home-video">
+                <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+            </div>
           </div>
-        </div>
+        <% end %>
+        <!-- ======== PROMO LIVRE ================ -->
+        <% if Category.exists?(tag: "promo") %>
+            <%= link_to rails_admin.edit_path(model_name: 'category', id: @promo.id) do %>
+              <span id="home-edit">Edit</span>
+            <% end %>
+          <%= link_to @promo.name do %>
+            <div class= "home-card-large">
+              <img width= "40%" src= <%=@promo.video%>></span>
+              <span id="home-promo">
+                <%= @promo.description.gsub("\n", "<br/>").html_safe %>
+              </span>
+            </div>
+          <% end %>
+        <% end %>
         <!-- ======== MINISTERE DE LA CULTURE ================ -->
         <div class= "home-card-large">
           <h4>Recommandé par le Ministère de la Culture :</h4>
@@ -101,17 +120,16 @@
 <!-- =================== SMALL COLUMN ========================================= -->
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
         <!-- ===== EDITO ===== -->
-        <div class= "home-card-small">
-        <!-- ====== Lien vers l'Admin ====== -->
-          <% if current_user && current_user.admin %>
-            <%= link_to rails_admin.edit_path(model_name: 'category', id: 8) do %>
-              <span id="home-admin">Edit</span>
+        <% if current_user && current_user.admin %>
+            <%= link_to rails_admin.edit_path(model_name: 'category', id: @edito.id) do %>
+              <span id="home-edit">Edit</span>
             <% end %>
+        <div class= "home-card-small">
           <% end %>
           <h4>Édito</h4>
           <p><%= @edito.description.gsub("\n", "<br/>").html_safe %></p>
         </div>
-         <!-- ===== PROGRAMMES ===== -->
+         <!-- ===== PROGRAMMES ============== -->
         <div class= "home-card-small">
           <a target= "_blank"
           href="https://www.education.gouv.fr/bo/20/Hebdo18/MENE2009217N.htm">
@@ -125,7 +143,7 @@
               <img width= "100%" src= "https://acquis.s3.eu-west-1.amazonaws.com/documents/logo-ministere-education-nationale.jpg">
             </a>
         </div>
-        <!-- ======== NOMBRE D'UTILISATEURS ? ========== -->
+        <!-- ======== NOMBRE D'UTILISATEURS ========== -->
         <%= link_to plans_path do %>
           <div class= "home-card-large">
             <h4>Rejoignez-les !</h4>
@@ -166,19 +184,11 @@
           </p>
         </div>
       -->
-      <!-- ====== INSTAGRAM ======
-      <#% if Category.exists?(tag: "insta") %>
-        <#%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
-          <div class= "home-card-large">
-          <h4><#%= @insta.name %></h4>
-            <%= @insta.description %>
-            <#%= image_tag (@insta.video), width: "100%" %>
-          </div>
-        <#% end %>
-      <#% end %> -->
-
 <!-- ====== DIAPORAMA INSTAGRAM ====== -->
       <% if Category.exists?(tag: "diapo") %>
+          <%= link_to rails_admin.edit_path(model_name: 'category', id: @diapo.id) do %>
+            <span id="home-edit">Edit</span>
+          <% end %>
         <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
         <div class= "home-card-insta">
           <span><img class="avatar-bordered" src="https://acquis.s3.eu-west-1.amazonaws.com/divers/id+insta4.jpg" margin-bottom=10px></span>
@@ -192,7 +202,6 @@
         </div>
         <% end %>
       <% end %>
-
       <!-- ====== TIKTOK ====== -->
       <% if Category.exists?(tag: "tiktok") %>
         <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: :_blank do %>

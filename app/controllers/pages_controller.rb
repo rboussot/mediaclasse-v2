@@ -14,7 +14,7 @@ class PagesController < ApplicationController
       @channel = Channel.where(user_id: current_user[:id]).first
     end
     @technique_category = Category.where(tag: "technique").last.name
-    @last_lecture = Lecture.last
+    @last_lecture = Category.where(tag: "lecture").last
     @banner = Category.where(tag: "ban").first
     @articles = Category.where(tag: "press").shuffle
     @un = @articles.count/3
@@ -26,6 +26,7 @@ class PagesController < ApplicationController
     @insta = Category.where(tag: "insta").last
     @tiktok = Category.where(tag: "tiktok").last
     @diapo = Category.where(tag: "diapo").last
+    @promo = Category.where(tag: "promo").last
   end
 
   def googlevalidation

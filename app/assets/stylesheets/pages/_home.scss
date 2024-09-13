@@ -60,20 +60,38 @@
   border: 1px solid black;
 }
 
-#home-admin {
+#home-insta {
   color: grey;
   background-color: #EEEEEE;
   border-radius: 4px;
   font-size: 14px;
   padding: 2px 14px 0px;
-  margin: 0% 0% 0% 110%;
+  margin: 10px 0% 0% 110%;
   position: absolute;
-  top: 13px;
   left: -110px;
 
     &:hover {
       background-color: $grey;
   }
+}
+
+#home-edit {
+  color: #DDDDDD;
+  background-color: #EEEEEE;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 2px 14px 0px;
+  margin: 12px 0% 0% 70%;
+  position: absolute;
+  opacity: 50%;
+    &:hover {
+      background-color: $grey;
+  }
+}
+
+#home-promo {
+  position: absolute;
+  margin: 20px;
 }
 
 .home-discussion {
@@ -97,7 +115,7 @@
   color: white;
 }
 
-.home-promo {
+.home-plan {
   color: black;
   font-size: 18px;
   margin-bottom: 22px;
