@@ -71,8 +71,10 @@
         <% end %>
         <!-- ======== PROMO LIVRE ================ -->
         <% if Category.exists?(tag: "promo") %>
-            <%= link_to rails_admin.edit_path(model_name: 'category', id: @promo.id) do %>
-              <span id="home-edit">Edit</span>
+            <% if current_user && current_user.admin %>
+              <%= link_to rails_admin.edit_path(model_name: 'category', id: @promo.id) do %>
+                <span id="home-edit">Edit</span>
+              <% end %>
             <% end %>
           <%= link_to @promo.name do %>
             <div class= "home-card-large">
@@ -126,8 +128,8 @@
             <%= link_to rails_admin.edit_path(model_name: 'category', id: @edito.id) do %>
               <span id="home-edit">Edit</span>
             <% end %>
+        <% end %>
         <div class= "home-card-small">
-          <% end %>
           <h4>Édito</h4>
           <p><%= @edito.description.gsub("\n", "<br/>").html_safe %></p>
         </div>
@@ -152,87 +154,38 @@
               <big><%= @users_count %></big> personnes inscrites sur Mediaclasse.
           </div>
         <% end %>
-        <!-- ===== NEWSLETTER =====
-        <div class= "home-card-small">
-          <#%= link_to newsletter_path do %>
-            <h4 class= "underline link-profile">Ma Lettre d'Info</h4>
-          <#% end %>
-              <p> Privilèges de cette liste : Recevoir gratuitement les nouvelles vidéos en avant-première. Connaître mes projets à venir. Accéder à certaines offres spéciales.
-                <#%= link_to newsletter_path do %>
-                    <i class="fa fa-paper-plane"></i>
-                <#% end %>
-              </p>
-        </div>
-        -- >
-        <!-- ===== RESEAUX SOCIAUX =====
-        <div class= "home-card-small">
-          <h4><#%= link_to "Réseaux sociaux", plans_path %></h4>
-          <p>Je publie régulièrement des contenus exclusifs sur les réseaux sociaux : 
-            <#%= link_to "https://twitter.com/mediaclassefr?lang=fr", target: "_blank" do %>
-               𝕏 
-            <#% end %>
-            <#%= link_to "https://www.facebook.com/mediaclasse/", target: "_blank" do %>
-               <i class="fab fa-facebook"></i> 
-            <#% end %>
-            <#%= link_to "https://www.linkedin.com/in/romain-boussot-051a6154/", target: "_blank" do %>
-               <i class="fab fa-linkedin"></i> 
-            <#% end %>
-            <#%= link_to "https://www.instagram.com/mediaclasse/", target: "_blank" do %>
-               <i class="fab fa-instagram"></i> 
-            <#% end %>
-            <#%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: "_blank" do %>
-               <i class="fab fa-tiktok"></i> 
-            <#% end %>
-          </p>
-        </div>
-      -->
-<!-- ====== DIAPORAMA INSTAGRAM ====== -->
-      <% if Category.exists?(tag: "diapo") %>
-          <%= link_to rails_admin.edit_path(model_name: 'category', id: @diapo.id) do %>
-            <span id="home-edit">Edit</span>
+        <!-- ====== DIAPORAMA INSTAGRAM ====== -->
+        <% if Category.exists?(tag: "diapo") %>
+            <% if current_user && current_user.admin %>
+              <%= link_to rails_admin.edit_path(model_name: 'category', id: @diapo.id) do %>
+                <span id="home-edit">Edit</span>
+              <% end %>
+            <% end %>
+          <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
+            <div class= "home-card-insta">
+              <span><img class="avatar-bordered" src="https://acquis.s3.eu-west-1.amazonaws.com/divers/id+insta4.jpg" margin-bottom=10px></span>
+              <span style="font-family: Arial;">
+              <b>  Mediaclasse  
+                <i class="fab fa-instagram"></i></b><br>
+              <font size="2"><%= @diapo.description.gsub("\n", "<br/>").html_safe %></font>
+              <br><br></span>
+              <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="360px", height= "330px";>
+              </iframe>
+            </div>
           <% end %>
-        <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
-        <div class= "home-card-insta">
-          <span><img class="avatar-bordered" src="https://acquis.s3.eu-west-1.amazonaws.com/divers/id+insta4.jpg" margin-bottom=10px></span>
-          <span style="font-family: Arial;">
-          <b>  Mediaclasse  
-            <i class="fab fa-instagram"></i></b><br>
-          <font size="2"><%= @diapo.description.gsub("\n", "<br/>").html_safe %></font>
-          <br><br></span>
-          <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="360px", height= "330px";>
-          </iframe>
-        </div>
         <% end %>
-      <% end %>
-      <!-- ====== TIKTOK ====== -->
-      <% if Category.exists?(tag: "tiktok") %>
-        <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: :_blank do %>
-          <div class= "home-card-large">
-          <h4><%= @tiktok.name %></h4>
-            <%= @tiktok.description %>
-            <%= image_tag (@tiktok.video), width: "100%" %>
-          </div>
+        <!-- ====== TIKTOK ====== -->
+        <% if Category.exists?(tag: "tiktok") %>
+          <%= link_to "https://www.tiktok.com/@mediaclasse?lang=fr", target: :_blank do %>
+            <div class= "home-card-large">
+            <h4><%= @tiktok.name %></h4>
+              <%= @tiktok.description %>
+              <%= image_tag (@tiktok.video), width: "100%" %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-
-        <!-- ====== ABONNEMENT ======
-        <div class= "home-card-small">
-          <h4><#%= link_to "Participez", plans_path, {class: "underline link-profile"} %></h4>
-          <p>Je souhaite que mes vidéos soient accessibles au plus grand nombre, c'est pourquoi vous fixez vous-même le montant de l'abonnement : cela permet à chacun de participer selon ses revenus.</p>
-        </div>
-        ====== LITTERATURE ======
-        <div class= "home-card-small">
-          <h4><#%= link_to "Mes résumés illustrés en vidéo !", litterature_courses_path, {class: "underline link-litterature"} %></h4>
-          <p><%= @litterature.description %></p>
-        </div>
-        ====== TECHNIQUE ======
-        <div class= "home-card-small">
-          <h4><#%= link_to "Toute la méthodologie", technique_courses_path(category: @methodo.name), {class: "underline link-technique"} %></h4>
-          <p><%= @methodo.description %></p>
-        </div>
-        -->
-      </div>
     </div>
+  </div>
 
     <!-- =========================== SUPER COMMENTAIRES ================================= -->
     <div class="row">
