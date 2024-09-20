@@ -39,7 +39,7 @@
               <%= link_to rails_admin.edit_path(model_name: 'category', id: @last_lecture.id) do %>
                 <span id="home-edit">Edit</span>
               <% end %>
-              <h4><%= @last_lecture.description %></h4>
+              <p><%= @last_lecture.description.gsub("\n", "<br/>").html_safe %></p>
               <%= link_to lecture_path(@last_lecture.name) do %>
                 <div class="embed-responsive embed-responsive-16by9 home-video">
                   <img width= "100%" src="http://img.youtube.com/vi/<%= @last_lecture.video %>/maxresdefault.jpg">
@@ -69,8 +69,7 @@
           <%= link_to comments_path do %>
             <p id="home-reagissez"><i>Livre d'or</i></p>
           <% end %>
-          <h4>Présentation</h4>
-          <p><%= @pres.description %></p>
+          <p><%= @pres.description.gsub("\n", "<br/>").html_safe %></p>
           <div class="embed-responsive embed-responsive-16by9 home-video">
             <iframe title="Vidéo de présentation du site de Mediaclasse" class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
           </div>
