@@ -33,17 +33,6 @@
 <!-- =================== GREAT COLUMN ========================================= -->
     <div class= "row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-6 video-wrapper">
-        <!-- ======== PRESENTATION VIDEO ================ -->
-        <div class= "home-card-large">
-          <%= link_to comments_path do %>
-            <p id="home-reagissez"><i>Livre d'or</i></p>
-          <% end %>
-          <h4>Présentation</h4>
-          <p><%= @pres.description %></p>
-          <div class="embed-responsive embed-responsive-16by9 home-video">
-            <iframe title="Vidéo de présentation du site de Mediaclasse" class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
-          </div>
-        </div>
         <!-- ======== LAST COURSE ================ -->
           <% if Category.exists?(tag: "last_lecture") %>
             <div class= "home-card-large">
@@ -59,16 +48,6 @@
               <% end %>
             </div>
           <% end %>
-        <!-- ======== COUP DE COEUR ================ -->
-        <% if Category.exists?(tag: "favorite") %>
-          <div class= "home-card-large">
-            <h4>Mon dernier coup de coeur sur Youtube !</h4>
-            <p><%= @favorite.description.gsub("\n", "<br/>").html_safe %></p>
-            <div class="embed-responsive embed-responsive-16by9 home-video">
-                <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
-            </div>
-          </div>
-        <% end %>
         <!-- ======== PROMO LIVRE ================ -->
         <% if Category.exists?(tag: "promo") %>
             <% if current_user && current_user.admin %>
@@ -84,6 +63,27 @@
               </span>
             </div>
           <% end %>
+        <% end %>
+        <!-- ======== PRESENTATION VIDEO ================ -->
+        <div class= "home-card-large">
+          <%= link_to comments_path do %>
+            <p id="home-reagissez"><i>Livre d'or</i></p>
+          <% end %>
+          <h4>Présentation</h4>
+          <p><%= @pres.description %></p>
+          <div class="embed-responsive embed-responsive-16by9 home-video">
+            <iframe title="Vidéo de présentation du site de Mediaclasse" class="embed-responsive-item" showinfo=0 src="https://www.youtube.com/embed/<%= @pres.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+          </div>
+        </div>
+        <!-- ======== COUP DE COEUR ================ -->
+        <% if Category.exists?(tag: "favorite") %>
+          <div class= "home-card-large">
+            <h4>Mon dernier coup de coeur sur Youtube !</h4>
+            <p><%= @favorite.description.gsub("\n", "<br/>").html_safe %></p>
+            <div class="embed-responsive embed-responsive-16by9 home-video">
+                <iframe title= "La vidéo littéraire du moment" width="854" height="480" src= "https://www.youtube.com/embed/<%= @favorite.video %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+            </div>
+          </div>
         <% end %>
         <!-- ======== MINISTERE DE LA CULTURE ================ -->
         <div class= "home-card-large">
