@@ -146,13 +146,6 @@
               <img width= "100%" src= "https://acquis.s3.eu-west-1.amazonaws.com/documents/logo-ministere-education-nationale.jpg">
             </a>
         </div>
-        <!-- ======== NOMBRE D'UTILISATEURS ========== -->
-        <%= link_to plans_path do %>
-          <div class= "home-card-large">
-            <h4>Rejoignez-les !</h4>
-              <big><%= @users_count %></big> personnes inscrites sur Mediaclasse.
-          </div>
-        <% end %>
         <!-- ====== DIAPORAMA INSTAGRAM ====== -->
         <% if Category.exists?(tag: "diapo") %>
             <% if current_user && current_user.admin %>
