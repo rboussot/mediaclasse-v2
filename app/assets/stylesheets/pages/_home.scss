@@ -22,7 +22,14 @@
   border-radius: 6px;
   margin-bottom: 20px;
   padding: 15px;
-  min-height: 100%;
+}
+
+.home-card-promo {
+  background-color: $greylighter;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 15px;
+  overflow: hidden;
 }
 
 .home-card-insta {
@@ -90,8 +97,14 @@
 }
 
 #home-promo {
-  position: absolute;
-  margin: 20px;
+  position: relative;
+}
+
+
+#home-cover {
+  width: 40%;
+  margin-right: 20px;
+  float: left;
 }
 
 .home-discussion {
