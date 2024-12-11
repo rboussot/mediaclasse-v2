@@ -18,13 +18,13 @@
           <p class="text-center home-plan">
             <%= link_to plans_path do %>
               <% if current_user && current_user.plan.present? %>
-                <span class="hvr-grow"><i class="fa fa-star"></i>
-                  Accéder à votre espace abonné.
-                <i class="fa fa-star"></i></span>
+                <span class="hvr-grow">
+                  👉 <u>Accéder à votre espace abonné.</u>
+                </span>
               <% else %>
-                <span class="hvr-grow"><i class="fa fa-star"></i>
-                  Conditions d'abonnement pour accéder à tout !
-                <i class="fa fa-star"></i></span>
+                <span class="hvr-grow">
+                  👉 <u>Voir comment accéder à tout !</u> 👈
+                </span>
               <% end %>
             <% end %>
           <p/>
@@ -173,6 +173,17 @@
             <h4><%= @tiktok.name %></h4>
               <%= @tiktok.description %>
               <%= image_tag (@tiktok.video), width: "100%" %>
+            </div>
+          <% end %>
+        <% end %>
+        <!-- ====== ABONNEMENT ====== -->
+        <% if Category.exists?(tag: "cta") %>
+          <%= link_to plans_path do %>
+            <div class= "home-card-small">
+              <h4><%= @cta.name %></h4>
+              <p>
+                <%= @cta.description.gsub("\n", "<br/>").html_safe %>
+              </p>
             </div>
           <% end %>
         <% end %>
