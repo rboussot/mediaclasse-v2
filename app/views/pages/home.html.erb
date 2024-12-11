@@ -119,6 +119,19 @@
               </div>
             </div>
         </div>
+        <!-- ====== CTA OFFRES ABONNEMENT ====== -->
+        <div class= "home-card-large">
+          <% if Category.exists?(tag: "cta1") %>
+            <%= link_to plans_path do %>
+              <div class= "home-card-small">
+                <h4><%= @cta1.name %></h4>
+                <p>
+                  <%= @cta1.description.gsub("\n", "<br/>").html_safe %>
+                </p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
 <!-- =================== SMALL COLUMN ========================================= -->
       <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-4 infos-wrapper">
@@ -177,12 +190,12 @@
           <% end %>
         <% end %>
         <!-- ====== ABONNEMENT ====== -->
-        <% if Category.exists?(tag: "cta") %>
+        <% if Category.exists?(tag: "cta2") %>
           <%= link_to plans_path do %>
             <div class= "home-card-small">
-              <h4><%= @cta.name %></h4>
+              <h4><%= @cta2.name %></h4>
               <p>
-                <%= @cta.description.gsub("\n", "<br/>").html_safe %>
+                <%= @cta2.description.gsub("\n", "<br/>").html_safe %>
               </p>
             </div>
           <% end %>

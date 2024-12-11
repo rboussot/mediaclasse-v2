@@ -27,7 +27,8 @@ class PagesController < ApplicationController
     @tiktok = Category.where(tag: "tiktok").last
     @diapo = Category.where(tag: "diapo").last
     @promo = Category.where(tag: "promo").last
-    @cta = Category.where(tag: "cta").last
+    @cta1 = Category.where(tag: "cta1").last
+    @cta2 = Category.where(tag: "cta2").last
   end
 
   def googlevalidation
