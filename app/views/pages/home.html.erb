@@ -10,9 +10,13 @@
             <% end %>
           <img src="https://acquis.s3.eu-west-1.amazonaws.com/divers/MediaClasse_logo.png" width="240px" opacity= 0.33;>
           <div class="hidden-xs hidden-sm">
-            <p>La littérature analysée et illustrée en vidéos,</p>
-            <p>Pour les professeurs, étudiants, lycéens,</p>
-            <p>Et tous les passionnés de culture !</p>
+            <% if Category.exists?(tag: "slogan") %>
+              <p><%= @slogan.description.gsub("\n", "<br/>").html_safe %></p>
+            <% else %>
+              <p>Ton allié pour réussir en français</p>
+              <p>Une méthode rapide et fiable</p>
+              <p>Un accélérateur culturel</p>
+            <% end %>
           </div>
         </div>
           <p class="text-center home-plan">
