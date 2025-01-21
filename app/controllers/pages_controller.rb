@@ -30,6 +30,7 @@ class PagesController < ApplicationController
     @cta1 = Category.where(tag: "cta1").last
     @cta2 = Category.where(tag: "cta2").last
     @slogan = Category.where(tag: "slogan").last
+    @youtube = Category.where(tag: "youtube").last
   end
 
   def googlevalidation

@@ -20,7 +20,7 @@
       <% if current_user %>
         <%= link_to "Mes cours", user_path(current_user), class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
       <% else %>
-        <%= link_to "Mes cours", "#", "data-toggle" => "modal", "data-target" => "#myLoginModal", class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
+        <%= link_to "Mes cours", plans_path, class: "hidden-xs hidden-sm navbar-link underline link-profile" %>
       <% end %>
 
   <!-- ========== MOBILE SCREEN ========== -->
@@ -36,7 +36,7 @@
           <% if current_user %>
             <li><%= link_to "Mes cours", user_path(current_user) %></li>
           <% else %>
-            <li><%= link_to "Mes cours", new_user_session_path %></li>
+            <li><%= link_to "Mes cours", plans_path %></li>
           <% end %>
         </ul>
       </div>

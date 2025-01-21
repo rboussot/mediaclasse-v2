@@ -3,11 +3,29 @@
     <div class="row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10">
         <div class= "plan-banner text-center" style="background-image: url('<%= @banner.description %>');">
-            <%= link_to newsletter_path do %>
+            <!-- ========= LIEN NEWSLETTER =========
+            <#%= link_to newsletter_path do %>
               <div class="plan-newsletter hvr-grow home-newsletter">
                 <i class="fa fa-paper-plane"></i> <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
               </div>
+            <#% end %>
+            -->
+          <!-- ====== LIEN YOUTUBE ====== -->
+          <% if Category.exists?(tag: "youtube") %>
+            <%= link_to @youtube.video, target: "_blank" do %>
+                <div class="plan-newsletter hvr-grow home-newsletter">
+                    <%= @youtube.description.gsub("\n", "<br/>").html_safe %>
+                </div>
             <% end %>
+          <% else %>
+            <%= link_to "https://www.youtube.com/@mediaclasse/", target: "_blank" do %>
+              <div class="plan-newsletter hvr-grow home-newsletter">
+                <i style="color: red;"class="fab fa-youtube"></i>
+                   170k<br>YouTube</i>
+              </div>
+            <% end %>
+          <% end %>
+          <!-- ============ BANNER ============ -->
           <img src="https://acquis.s3.eu-west-1.amazonaws.com/divers/MediaClasse_logo.png" width="240px" opacity= 0.33;>
           <div class="hidden-xs hidden-sm">
             <% if Category.exists?(tag: "slogan") %>
