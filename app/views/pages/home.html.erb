@@ -144,13 +144,24 @@
         <!-- ====== CTA OFFRES ABONNEMENT ====== -->
         <div class= "home-card-large">
           <% if Category.exists?(tag: "cta1") %>
-            <%= link_to plans_path do %>
-              <div class= "home-card-small">
-                <h4><%= @cta1.name %></h4>
-                <p>
-                  <%= @cta1.description.gsub("\n", "<br/>").html_safe %>
-                </p>
-              </div>
+            <% if current_user %>
+              <%= link_to technique_courses_path(category: @technique_category) do %>
+                <div class= "home-card-small">
+                  <h4><%= @cta1.name %></h4>
+                  <p>
+                    <%= @cta1.description.gsub("\n", "<br/>").html_safe %>
+                  </p>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to plans_path do %>
+                <div class= "home-card-small">
+                  <h4><%= @cta1.name %></h4>
+                  <p>
+                    <%= @cta1.description.gsub("\n", "<br/>").html_safe %>
+                  </p>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
