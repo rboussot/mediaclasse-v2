@@ -46,7 +46,6 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  RailsAdmin.config do |config|
   config.model 'User' do
     list do
       configure :id do
@@ -54,6 +53,4 @@ RailsAdmin.config do |config|
       end
     end
   end
-end
-
 end

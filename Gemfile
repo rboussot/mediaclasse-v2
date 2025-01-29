@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.1.5'
 
-gem 'rails', '~> 6.1.7'
+gem 'rails', '~> 7.0.8'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
@@ -10,7 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'pundit'
 gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '~> 2.3'
+gem 'rails_admin', '~> 3.1.4'
 gem "cloudinary", "1.1.7"
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
