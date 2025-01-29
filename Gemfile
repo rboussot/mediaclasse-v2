@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '3.1.5'
+ruby '3.2.6'
 
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1.5'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
@@ -20,7 +20,7 @@ gem 'pg_search'
 gem 'stripe'
 gem 'stripe_event'
 gem 'money-rails'
-gem 'mailgunner', '~> 2.5.0'
+gem 'mailgunner'
 gem 'mail'#, '2.6.5'
 
 gem 'sass-rails'
@@ -39,6 +39,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'rb-readline'
 
+  gem 'pry', '~> 0.14.2'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
