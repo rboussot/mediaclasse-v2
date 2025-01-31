@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
-ruby '2.6.7'
+ruby '3.3.7'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 7.2.2'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
-gem 'jbuilder', '~> 2.0'
-gem 'devise', github: 'plataformatec/devise'
+gem 'jbuilder'#, '~> 2.0'
+gem 'devise'
 gem 'redis'
 gem 'pundit'
 gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '>= 1.0.0.rc'
-gem "cloudinary", "1.1.0"
+gem 'rails_admin', '~> 3.1.4'
+gem "cloudinary", "1.1.7"
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
@@ -20,8 +20,8 @@ gem 'pg_search'
 gem 'stripe'
 gem 'stripe_event'
 gem 'money-rails'
-gem 'mailgunner', '~> 2.5.0'
-gem 'mail', '2.6.5'
+gem 'mailgunner'
+gem 'mail'#, '2.6.5'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -30,6 +30,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'concurrent-ruby', '1.3.4'
+gem 'psych', '< 4'
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -37,11 +39,10 @@ group :development, :test do
   gem 'letter_opener'
   gem 'rb-readline'
 
-  gem 'pry-byebug', '3.9.0'
+  gem 'pry', '~> 0.14.2'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-

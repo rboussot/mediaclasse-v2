@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :channel
-  belongs_to :level
+  belongs_to :level, optional: true
   has_many :comments
   has_many :subcomments
   validates :email, presence: true
