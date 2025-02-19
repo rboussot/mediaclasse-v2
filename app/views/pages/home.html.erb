@@ -207,7 +207,9 @@
                 <i class="fab fa-instagram"></i></b><br>
               <font size="2"><%= @diapo.description.gsub("\n", "<br/>").html_safe %></font>
               <br><br></span>
-              <iframe src="<%= @diapo.video.html_safe %>", width="100%", max-width="360px", height= "330px";>
+              <iframe class= "hidden-md" src="<%= @diapo.video.html_safe %>", width="100%", max-width="390px", height= "406px";>
+              </iframe>
+              <iframe class= "hidden-xs hidden-lg hidden-sm" src="<%= @diapo.video.html_safe %>", width="100%", max-width="390px", height= "320px";>
               </iframe>
             </div>
           <% end %>
