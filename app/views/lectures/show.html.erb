@@ -77,13 +77,22 @@
           <% end %>
           <!-- ========== TABS ========== -->
           <div class= "tabs">
-            <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
-              <label for="description">CONTENU</label>
-            </span>
+              <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
+                <label for="description">CONTENU</label>
+              </span>
             <% if @documents != [] %>
-            <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
-              <label for="documents">DOCUMENTS</label>
-            </span>
+              <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
+                <label for="documents">DOCUMENTS</label>
+              </span>
+            <% end %>
+              <% @documents.each do |document| %>
+                <% if document.title.include?("✅") %>
+                  <%= link_to document_path(document, class:"tab-quiz") do %>
+                    <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
+                      <label for="documents">     ✅     </label>
+                    </span>
+                  <% end %>
+                <% end %>
             <% end %>
           </div>
           <!-- ========== TAB CONTENT ========== -->

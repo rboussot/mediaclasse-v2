@@ -7,6 +7,14 @@
   height: 80px;
 }
 
+.lecture-quiz {
+  font-size: 30px;
+  color: $greydark;
+  text-align: center;
+  border-bottom: 2px solid $greydark;
+  padding: 0px 20% 20px 20%;
+}
+
 .lecture-carousel {
   overflow-x: scroll;
   padding: 1rem 0;
