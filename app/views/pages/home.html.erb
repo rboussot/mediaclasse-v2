@@ -58,9 +58,11 @@
         <!-- ======== LAST COURSE ================ -->
           <% if Category.exists?(tag: "last_lecture") %>
             <div class= "home-card-large">
-              <%= link_to rails_admin.edit_path(model_name: 'category', id: @last_lecture.id) do %>
-                <span id="home-edit">Edit</span>
-              <% end %>
+                <% if current_user && current_user.admin %>
+                  <%= link_to rails_admin.edit_path(model_name: 'category', id: @last_lecture.id) do %>
+                    <span id="home-edit">Edit</span>
+                  <% end %>
+                <% end %>
               <p><%= @last_lecture.description.gsub("\n", "<br/>").html_safe %></p>
               <%= link_to lecture_path(@last_lecture.name) do %>
                 <div class="embed-responsive embed-responsive-16by9 home-video">
