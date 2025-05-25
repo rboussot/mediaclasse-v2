@@ -82,17 +82,29 @@
               </span>
             <% if @documents != [] %>
               <span class="tab tab-documents <%= @lecture_course.category.tag %>" href="#">
-                <label for="documents">DOCUMENTS</label>
+                <label class="hidden-sm hidden-md hidden-lg hidden-xl" for="documents">DOCS</label>
+                <label class="hidden-xs"for="documents">DOCUMENTS</label>
               </span>
             <% end %>
               <% @documents.each do |document| %>
                 <% if document.title.include?("✅") %>
-                  <%= link_to document_path(document, class:"tab-quiz") do %>
-                    <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
-                      <label for="documents">
-                             ✅     
-                      </label>
-                    </span>
+                  <% if current_user %>
+                    <%= link_to document_path(document, class:"tab-quiz") do %>
+                      <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
+                        <label for="documents">
+                               QUIZ     
+                        </label>
+                      </span>
+                    <% end %>
+                  <% else %>
+                    <%= render 'shared/planmodal' %>
+                      <a data-toggle="modal" data-target="#PlanModal">
+                        <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
+                          <label for="documents">
+                                 QUIZ     
+                          </label>
+                        </a>
+                      </div>
                   <% end %>
                 <% end %>
             <% end %>
