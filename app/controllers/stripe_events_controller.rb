@@ -1,14 +1,13 @@
 require 'logger'
+require 'json'
+require 'stripe'
 
 class StripeEventsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_after_action :verify_authorized
-  skip_before_action :verify_authenticity_token, only: :create
-
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    require 'json'
-    require 'stripe'
     # Après le paiement, Stripe renvoie ici grâce au webhook
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     endpoint_secret = ENV['STRIPE_SIGNING_SECRET']
@@ -22,13 +21,11 @@ class StripeEventsController < ApplicationController
             payload, sig_header, endpoint_secret
         )
     rescue JSON::ParserError => e
-        # Invalid payload
-        status 400
-        return
+        # Payload invalide
+        return render json: { error: "Invalid payload" }, status: :bad_request
     rescue Stripe::SignatureVerificationError => e
         # Invalid signature
-        status 400
-        return
+        return render json: { error: "Invalid signature" }, status: :bad_request
     end
 
     # Les webhook peut renvoyer deux événements différents
@@ -41,16 +38,22 @@ class StripeEventsController < ApplicationController
         handle_invoice_payment_failed(event.data.object)
       else
         # Unexpected event type
-        status 400
-        return
+        logger.info "Événement Stripe non géré : #{event.type}"
     end
+
+    # OBLIGATOIRE : Répondre 200 OK à Stripe pour confirmer la bonne réception
+    head :ok
   end
 
+  private
+
   def handle_checkout_session_completed(checkout_session)
-    print "========== Handle checkout completed =========="
+    logger.info "========== Handle checkout completed =========="
     # On récupère l'ID sauvegardé par Stripe et on identifie le client
     @id_user = checkout_session.client_reference_id
     @user = User.find(@id_user)
+    return unless @user # Sécurité si l'utilisateur n'existe pas
+
     @user.stripe_customer_id = checkout_session.customer
     @user.pricing = checkout_session.amount_total.to_f / 100
     @user.paydate = Date.today
@@ -63,10 +66,9 @@ class StripeEventsController < ApplicationController
     elsif checkout_session.mode == "payment"
       # Si le paiement est en une fois, sauvegarder la date d'expiration
       @user.collective = true
+      months = checkout_session.metadata&.plan_id.to_s[0..1].to_i
       @user.expire = Date.today + checkout_session.metadata.plan_id[0..1].to_i.months
       @user.plan = "pour 1 utilisateur jusqu'au #{@user.expire.strftime '%d/%m/%Y'}"
-      # Afficher une notice pour rappeler la date d'expiration de l'abonnement
-      flash[:notice] = "Votre abonnement fermera le #{@user.expire.strftime '%d/%m/%Y'}"
       create_invoice(checkout_session.metadata.plan_id)
     end
     # Envoyer un message de bienvenue
@@ -76,6 +78,8 @@ class StripeEventsController < ApplicationController
   end
 
   def create_invoice(plan_id)
+    return unless plan_id.present?
+
     Stripe::InvoiceItem.create({
       customer: @user.stripe_customer_id,
       price: plan_id,
@@ -93,16 +97,15 @@ class StripeEventsController < ApplicationController
   end
 
   def handle_invoice_payment_failed(invoice_infos)
-    print "Un paiement a échoué."
+    logger.info "Un paiement a échoué pour le client : #{invoice_infos.customer}"
   end
 
   def handle_customer_subscription_deleted(event_infos)
     @stripe_customer_id = event_infos.customer
     # Si le client a bien un abonnement ouvert (il a un id Stripe en DB)
-    if @user = User.where(stripe_customer_id: @stripe_customer_id).first
+    if (user = User.find_by(stripe_customer_id: stripe_customer_id))
       # Alors on note la date d'expiration
-      @user.expire = Date.today
-      @user.save
+      user.update(expire: Date.today)
     end
   end
 
