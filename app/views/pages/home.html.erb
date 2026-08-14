@@ -37,15 +37,15 @@
             <% end %>
           </div>
         </div>
-          <p class="text-center home-plan">
+          <p class="text-center home-plan, home-cta">
             <%= link_to plans_path do %>
               <% if current_user && current_user.plan.present? %>
-                <span class="hvr-grow">
-                  👉 <u>Accéder à votre espace abonné.</u>
+                <span class="hvr-grow, home-special">
+                  Accéder à votre espace abonné.
                 </span>
               <% else %>
-                <span class="hvr-grow">
-                  👉 <u>Voir comment accéder à tout !</u> 👈
+                <span class="hvr-grow, home-cta">
+                  Voir comment accéder à tout !
                 </span>
               <% end %>
             <% end %>

@@ -179,3 +179,49 @@
       text-decoration : none;
   }
 }
+
+.home-cta a {
+  // Structure & Centrage
+  display: block; // Permet au margin auto de centrer le bloc de 300px
+  width: 300px;
+  margin: 20px auto; // Centre le bouton horizontalement dans la page
+  box-sizing: border-box;
+  text-align: center;
+
+  // Couleurs & Bordures
+  background-color: #00bfb1;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+
+  // Typographie & Nettoyage des styles de liens par défaut
+  color: black;
+  text-decoration: none !important; // Enlève le soulignement noir
+  font-size: 17px;
+  font-weight: 600; // Un brin plus affirmé pour la lisibilité
+
+  // Interaction & Espacement
+  cursor: pointer;
+  outline: none;
+  padding: 12px 20px;
+
+  // Transition fluide
+  transition: all 0.25s ease-in-out;
+
+  // Animation au survol (Hover)
+  &:hover {
+    background-color: #00d6c6; // Turquoise un peu plus lumineux
+    border-color: #00736c;
+    text-decoration: none !important;
+
+    // Animation de soulèvement + ombre douce
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 191, 177, 0.35) 0 6px 15px 0;
+  }
+
+  // Animation au clic (Active)
+  &:active {
+    transform: translateY(0);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  }
+}
