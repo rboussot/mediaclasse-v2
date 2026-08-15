@@ -3,3 +3,11 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+# Autorise tous les robots d'indexation
+User-agent: *
+Disallow: /admin/
+Disallow: /users/
+Disallow: /subscriptions/
+
+# Déclaration officielle de la Sitemap
+Sitemap: https://www.mediaclasse.fr/sitemap.xml

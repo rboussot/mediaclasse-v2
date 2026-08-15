@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get "inprogress", to: "plans#inprogress"
   get "cancel_plan", to: "plans#cancel"
   get '/googleba02ed7fdee6ed83.html', to: 'pages#googlevalidation'
+  get 'sitemap.xml', to: 'sitemaps#index', defaults: { format: 'xml' }
 
   root to: 'pages#home'
 
