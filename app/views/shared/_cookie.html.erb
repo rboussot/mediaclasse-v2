@@ -1,4 +1,4 @@
-<div class = "banner-cookie pointer">
+<div class = "banner-info pointer">
 <button type="button" class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
@@ -9,7 +9,7 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      $('.banner-cookie').on('click', function(event) {
+      $('.banner-info').on('click', function(event) {
         $(this).fadeOut();
         });
     });

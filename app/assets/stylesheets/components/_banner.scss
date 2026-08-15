@@ -27,7 +27,7 @@
     font-size: 20px;
     padding-top: 200px;
   }
-  .banner-cookie {
+  .banner-info {
     width: 100%;
     background-color: black;
     color: silver;
@@ -43,6 +43,6 @@
     cursor: pointer;
     font-size: 16px;
   }
-  .banner-cookie:target {
+  .banner-info:target {
     display: none;
   }
