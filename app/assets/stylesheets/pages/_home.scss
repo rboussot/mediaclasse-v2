@@ -185,6 +185,10 @@
   // Structure & Centrage
   display: block; // Permet au margin auto de centrer le bloc de 300px
   width: 300px;
+  height: 45px;
+  min-height: 45px;
+  max-height: 45px;
+  line-height: 1;
   margin: 20px auto; // Centre le bouton horizontalement dans la page
   box-sizing: border-box;
   text-align: center;

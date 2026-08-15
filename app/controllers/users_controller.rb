@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_noindex
 
   def show
     @user = current_user

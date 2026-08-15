@@ -8,8 +8,12 @@ class CoursesController < ApplicationController
   end
 
   def litterature
+    @category = Category.find_by(tag: "litterature")
     @courses = policy_scope(Course)
-    if params[:search] && params[:search] != ""
+    @meta_title = "Auteurs et Œuvres Littéraires : cours en vidéos, fiches et podcasts | Mediaclasse"
+    raw_desc = ActionController::Base.helpers.strip_tags(@category&.description.to_s)
+    @meta_description = CGI.unescapeHTML(raw_desc).gsub('&nbsp;', ' ').squish
+    if params[:search].present?
       @litterature_courses = Course.search(params[:search]).joins(:author).joins(:category).where(categories: {tag: "litterature"}).reorder('pseudo ASC')
     else
       @litterature_courses = Course.joins(:author).joins(:category).where(categories: {tag: "litterature"}).order('pseudo ASC')
@@ -22,10 +26,16 @@ class CoursesController < ApplicationController
     @category = Category.find_by_name(params[:category])
     @courses = policy_scope(Course)
     @categories = Category.where(tag: "technique")
-    if params[:search] && params[:search] != ""
+    if params[:search].present?
       @technique_courses = Course.search(params[:search]).joins(:category).where(categories: {tag: "technique"}).order('title ASC')
     else
       @technique_courses = Course.joins(:category).where(categories: {id: @category.id}).order('title ASC')
+    end
+    # Gestion dynamique du SEO selon la catégorie consultée
+    if @category
+      @meta_title = "#{@category.name} : tous tes cours en vidéos, fiches, podcasts | Mediaclasse"
+      raw_description = ActionController::Base.helpers.strip_tags(@category.description)
+      @meta_description = CGI.unescapeHTML(raw_description).gsub('&nbsp;', ' ').squish
     end
   end
 

@@ -26,6 +26,8 @@ class CommentsController < ApplicationController
 
   def index
     @comment = Comment.new
+    @meta_title = "Avis et Témoignages : réussir en Français | Mediaclasse"
+    @meta_description = "Découvre les avis des élèves et des parents sur Mediaclasse. Témoignages, notes obtenues au Bac de français et retours d'expérience sur nos accompagnements."
   end
 
   def update

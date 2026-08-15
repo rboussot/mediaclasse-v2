@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /^rails_admin/
   end
 
+  def set_noindex
+    @noindex = true
+  end
+
 end

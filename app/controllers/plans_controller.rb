@@ -5,25 +5,22 @@ class PlansController < ApplicationController
 
   def index
     # Si aucun cours n'est payant, rediriger vers une page "en construction".
-    if Lecture.where(payment: true).count == 0
-      redirect_to inprogress_path
-    end
+    redirect_to inprogress_path unless Lecture.exists?(payment: true)
+    # Balises Meta  
+    @meta_title = "Abonnements et Tarifs : Accompagnement aux cours de Français | Mediaclasse"
+    @meta_description = "Découvre les forfaits d'abonnement pour un accès illimité à toutes nos ressources culturelles et méthodologiques en vidéos, fiches, podcasts notamment sur toutes tes œuvres au programme du Bac de Français."
     # Si l'utilisateur a un abonnement en cours
-    if current_user.pricing.present?
-      # Récupérer le plan qui a été sélectionné par l'utilisateur.
-      @plan = Plan.where(price: current_user.pricing).first
-      if @plan.nil?
-        @plan = Plan.where(plan_name: "erreur").first
-      end
+    if current_user&.pricing.present?
+      @plan = Plan.find_by(price: current_user.pricing) || Plan.find_by(plan_name: "erreur")
     end
-    # Récupérer les paiements récurrents, uniques, et par virement.
-    @recurrent_plans = Plan.where(visible: true).where(payment: "recurrent").order("price ASC")
-    @unique_plans = Plan.where(visible: true).where(payment: "unique").order("price ASC")
-    @virement_plans = Plan.where(visible: true).where(payment: "virement").order("price ASC")
-    @don_plans = Plan.where(visible: true).where(payment: "don")
+    # Récupérer les offres visibles triées par prix
+    @recurrent_plans = Plan.where(visible: true, payment: "recurrent").order(price: :asc)
+    @unique_plans    = Plan.where(visible: true, payment: "unique").order(price: :asc)
+    @virement_plans  = Plan.where(visible: true, payment: "virement").order(price: :asc)
+    @don_plans       = Plan.where(visible: true, payment: "don")
   end
 
- def planselected
+  def planselected
     # Le mode : est-ce un "subscription" ou un "payment"
     @plan_mode = params[:mode]
     # Le plan sélectionné a un nom en BDD qui est le même côté Stripe

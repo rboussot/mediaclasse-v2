@@ -16,27 +16,28 @@
     <%= favicon_link_tag 'logo.png', rel: 'icon', type: 'image/png' %>
     <%= favicon_link_tag 'logo.png', rel: 'apple-touch-icon', type: 'image/png' %>
 
+    <% if content_for?(:noindex) || @noindex %>
+      <meta name="robots" content="noindex, nofollow">
+    <% end %>
 
-    <!-- SEO & Métadonnées de base (dynamiques avec fallback YML) -->
-    <title><%= @meta_title.presence || meta_title %></title>
-    <meta name="description" content="<%= @meta_description.presence || meta_description %>">
+    <!-- Titre et description tels que définis dans application_helper -->
+    <title><%= page_title.html_safe %></title>
+    <meta name="description" content="<%= page_description %>">
 
     <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
-    <meta property="og:title" content="<%= @meta_title.presence || meta_title %>">
-    <meta property="og:description" content="<%= @meta_description.presence || meta_description %>">
-    <meta property="og:image" content="<%= @meta_image.presence || meta_image %>">
+    <meta property="og:title" content="<%= page_title %>">
+    <meta property="og:description" content="<%= page_description %>">
+    <meta property="og:image" content="<%= page_image %>">
     <meta property="og:site_name" content="Mediaclasse">
     <meta property="fb:app_id" content="1811784869040752">
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%= DEFAULT_META['twitter_account'] %>">
-    <meta name="twitter:creator" content="<%= DEFAULT_META['twitter_account'] %>">
-    <meta name="twitter:title" content="<%= @meta_title.presence || meta_title %>">
-    <meta name="twitter:description" content="<%= @meta_description.presence || meta_description %>">
-    <meta name="twitter:image" content="<%= @meta_image.presence || meta_image %>">
+    <meta name="twitter:title" content="<%= page_title %>">
+    <meta name="twitter:description" content="<%= page_description %>">
+    <meta name="twitter:image" content="<%= page_image %>">
 
     <!-- Google Analytics 4 (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-30MKCGK52X"></script>
@@ -47,12 +48,11 @@
 
       gtag('config', 'G-30MKCGK52X');
     </script>
+    <!-- Json-LD : données structurées Schema.org pour Google -->
+    <title><%= page_title %></title>
+    <meta name="description" content="<%= page_description %>">
+    <%= schema_json_ld %>
   </head>
-
-
-
-
-
 
   <body>
     <script>
