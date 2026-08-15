@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     @technique_category = Category.where(tag: "technique").last.name
     @last_lecture = Category.where(tag: "last_lecture").last
     @banner = Category.where(tag: "ban").first
+    @meta_image = @banner.description
     @articles = Category.where(tag: "press").shuffle
     @un = @articles.count/3
     @deux = (@articles.count/3)*2

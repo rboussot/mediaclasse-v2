@@ -1,5 +1,5 @@
 # config/meta.yml
-meta_title: "Mediaclasse"
-meta_description: "Les grands classiques de la littérature française résumés, analysés et illustrés en vidéo pour les lycéens, les étudiants en Lettres, et tous les passionnés de culture ! Ce sont des cours en ligne sous forme de vidéos. Mes explications linéaires, mes commentaires composés et mes méthodologies sont spécialement conçues pour le baccalauréat de Français, les classes Prepa, le CAPES et l'Agrégation de Lettres Modernes."
-meta_image: "logo.png" # Une image dans votre dossier app/assets/images/
+meta_title: "Mediaclasse | Réussis en Français : tous tes cours en vidéo, fiches et podcasts"
+meta_description: "Réussis ton Bac de français et tes études de Lettres avec Mediaclasse. Les grands classiques résumés et analysés en vidéo, fiches et podcasts pour le lycée, la Prépa et le CAPES."
+meta_image: "https://acquis.s3.eu-west-1.amazonaws.com/couvertures/20260810_site.jpg" # Image dans votre dossier app/assets/images/
 twitter_account: "@mediaclassefr" # indispensable pour les Twitter Cards
