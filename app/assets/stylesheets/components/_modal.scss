@@ -26,6 +26,13 @@
   padding: 6px;
 }
 
+.form-actions .btn-default[disabled] {
+    background-color: #967DC6;
+    color: white;
+    opacity: 1; /* Empêche l'effet d'estompage de Bootstrap */
+    cursor: not-allowed;
+}
+
 .form-inputs label {
   font-size : 15px;
   color: $grey;

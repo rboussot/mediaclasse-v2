@@ -1,41 +1,21 @@
 <div class="home-wrapper">
   <div class="container-fluid">
     <div class="border profile hidden-xs"></div>
-<!-- ================= FORMULAIRE DE CONNEXION =================== -->
-      <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-          <h3>J'ai un compte, je me connecte !</h3>
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-inputs">
-              <%= f.input :email, required: false, autofocus: true %>
-              <%= f.input :password, label: "Mot de passe", required: false %>
-              <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Me connecter à mon compte" %>
-            </div>
-          <% end %>
-          <!-- Bouton créer un nouveau compte -->
-          <%= link_to new_registration_path(resource_name) do %>
-            <p class="link-button-new hvr-glow">
-              Pas de compte ? Création gratuite !
-            </p>
-          <% end %>
-        </div>
-      </div>
 <!-- =================== INFOS ET CGV ==================== -->
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <div class="plan-title">
-              <br><br>
               <h3>Conditions d'abonnement pour accéder à tout</h3>
-              <br>
+              <div data-toggle="modal" data-target="#myLoginModal">
+                <br>
+                <p class= "plan-pointer">Vous pouvez d'ors et déjà accéder aux ressources gratuites avec un simple compte !<br>
+                Mais certaines ressources sont réservées aux abonnés :</p>
+              </div>
               <%= render 'shared/plan_infos' %>
               <div id = "plan-pointer">
                 <%= render 'shared/plancgv' %>
                 <span data-toggle = "modal" data-target = "#PlanCgv" class= "plan-pointer" >
-                  <i>• Consulter les Conditions Générales de Vente</i>
+                  <i>👉 Consulter les Conditions Générales de Vente</i>
                 </span>
               </div>
             </div>
