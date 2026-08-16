@@ -165,8 +165,8 @@
                 <img src= "<%=@lecture.picture%>", width="100%">
                 <br>
                 <p class="lecture-legend"><sub><%= @legend %></sub></p>
+              </section>
             <% end %>
-
             <!-- === DOCUMENTS === -->
               <section class="lecture-documents content" id="documents">
                 <% if current_user && current_user.pricing.present? %>
