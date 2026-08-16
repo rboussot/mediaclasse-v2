@@ -1,0 +1,95 @@
+/* Carte latérale d'accompagnement des Shorts sur Desktop */
+.short-desktop-container {
+  margin-bottom: 25px;
+}
+
+.short-sidebar-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  height: 600px; /* Aligné sur la hauteur du Short */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  hr {
+    margin: 12px 0;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .short-resources-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+  }
+
+  .short-link-highlight {
+    font-weight: 600;
+    color: #2563eb;
+  }
+
+  .short-social-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Style d'affichage de la carte promo livre dans l'encart Short */
+.short-book-flex {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.short-book-cover {
+  width: 75px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.short-book-info {
+  flex: 1;
+
+  .short-book-desc {
+    font-size: 0.85em;
+    color: #334155;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+
+  .short-book-btn {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

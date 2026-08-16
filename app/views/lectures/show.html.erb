@@ -47,44 +47,94 @@
       <!-- ========== VIDEO PAGE ========== -->
       <div class="col-xs-12 col-md-9">
         <div class="lecture-show">
-          <!-- ========== VIDEO EMBED / PAYWALL ========== -->
-          <div id="video-player-box" class="video-player-container <%= 'is-vertical-short-wrapper' if @lecture.respond_to?(:short) && @lecture.short? %>">
-            <% if policy(@lecture).watch_video? %>
-              <div class="embed-responsive embed-responsive-16by9 lecture-video <%= 'is-vertical-short' if @lecture.respond_to?(:short) && @lecture.short? %>">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-              </div>
-            <% else %>
-              <%= render 'shared/planmodal' %>
+          
+          <!-- ========== BLOC VIDÉO ET ENCART LATÉRAL DYNAMIQUE ========== -->
+          <% if @lecture.respond_to?(:short) && @lecture.short? %>
+            <!-- CAS 1 : FORMAT SHORT (DISPOSITION 2 COLONNES SUR PC/TABLETTE) -->
+            <div class="row short-desktop-container">
+              
+              <!-- Colonne Gauche : Le lecteur vidéo vertical -->
+              <div class="col-xs-12 col-sm-6 col-md-5">
+                <div id="video-player-box" class="video-player-container is-vertical-short-wrapper">
+                  <% if policy(@lecture).watch_video? %>
+                    <div class="embed-responsive embed-responsive-16by9 lecture-video is-vertical-short">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                  <% else %>
+                    <%= render 'shared/planmodal' %>
 
-              <!-- ========== LECTEUR VIDÉO PLACEHOLDER (PAYWALL) ========== -->
-              <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
-                <div class="video-vignette-locked <%= 'is-vertical-short' if @lecture.respond_to?(:short) && @lecture.short? %>">
-                  <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
-                  <div class="video-overlay"></div>
-                  <div class="video-locked-content">
-                    <div class="play-button-wrapper">
-                      <div class="youtube-play-btn">
-                        <div class="yt-triangle"></div>
+                    <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
+                      <div class="video-vignette-locked is-vertical-short">
+                        <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
+                        <div class="video-overlay"></div>
+                        <div class="video-locked-content">
+                          <div class="play-button-wrapper">
+                            <div class="youtube-play-btn"><div class="yt-triangle"></div></div>
+                            <span class="lock-badge">🔒</span>
+                          </div>
+                          <div class="video-title">
+                            <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
+                          </div>
+                          <div class="video-subtitle">
+                            Ton cours complet en vidéo
+                            <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
+                              (<%= @lecture.duration %> min)
+                            <% end %>
+                          </div>
+                        </div>
                       </div>
-                      <span class="lock-badge">🔒</span>
+                      <p class="lecture-note-locked">
+                        🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+                      </p>
                     </div>
-                    <div class="video-title">
-                      <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
-                    </div>
-                    <div class="video-subtitle">
-                      Ton cours complet en vidéo
-                      <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
-                        (<%= @lecture.duration %> min)
-                      <% end %>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Colonne Droite : Appel du partial (Masqué sur mobile via hidden-xs) -->
+              <div class="col-xs-12 col-sm-6 col-md-7 hidden-xs">
+                <%= render 'lectures/short_sidebar', lecture: @lecture, lectures: @lectures, documents: @documents %>
+              </div>
+
+            </div>
+
+          <% else %>
+            <!-- CAS 2 : FORMAT PAYSAGE STANDARD -->
+            <div id="video-player-box" class="video-player-container">
+              <% if policy(@lecture).watch_video? %>
+                <div class="embed-responsive embed-responsive-16by9 lecture-video">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+              <% else %>
+                <%= render 'shared/planmodal' %>
+
+                <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
+                  <div class="video-vignette-locked">
+                    <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
+                    <div class="video-overlay"></div>
+                    <div class="video-locked-content">
+                      <div class="play-button-wrapper">
+                        <div class="youtube-play-btn"><div class="yt-triangle"></div></div>
+                        <span class="lock-badge">🔒</span>
+                      </div>
+                      <div class="video-title">
+                        <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
+                      </div>
+                      <div class="video-subtitle">
+                        Ton cours complet en vidéo
+                        <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
+                          (<%= @lecture.duration %> min)
+                        <% end %>
+                      </div>
                     </div>
                   </div>
+                  <p class="lecture-note-locked">
+                    🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+                  </p>
                 </div>
-                <p class="lecture-note-locked">
-                  🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
-                </p>
-              </div>
-            <% end %>
-          </div>
+              <% end %>
+            </div>
+          <% end %>
 
           <!-- ====== Lien vers l'Admin ====== -->
           <% if current_user && current_user.admin %>

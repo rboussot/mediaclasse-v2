@@ -377,3 +377,43 @@ ul a:link {
     height: 500px !important;
   }
 }
+
+.short-sidebar-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  height: auto; /* S'adapte au contenu */
+  max-height: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+  h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+  }
+
+  .short-resources-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      margin-bottom: 6px;
+      font-size: 0.9em;
+    }
+  }
+
+  .short-link-highlight {
+    font-weight: 600;
+    color: #2563eb;
+  }
+
+  .short-social-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
