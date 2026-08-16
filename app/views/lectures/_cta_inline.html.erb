@@ -1,0 +1,17 @@
+<% cta2 = Category.find_by(tag: 'cta2') %>
+
+<% if cta2.present? %>
+  <div class="cta-embedded-block" data-toggle="modal" data-target="#PlanModal">
+    <div class="cta-info">
+      <div class="cta-title">
+        <span>💡</span> <%= cta2.name %>
+      </div>
+      <p class="cta-subtitle">
+        <%= cta2.description %>
+      </p>
+    </div>
+    <a href="/plans" class="btn-cta-action">
+      <%= cta2.video %>
+    </a>
+  </div>
+<% end %>

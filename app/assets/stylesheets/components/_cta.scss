@@ -1,0 +1,81 @@
+/* Conteneur global des CTA intégrés dans le texte */
+.cta-embedded-block {
+  margin: 20px 0px 0px 0px;
+  padding: 18px 24px;
+  background-color: #f8fafc; /* Gris très doux */
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #1e293b; /* Accent anthracite élégant */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+  }
+
+  .cta-info {
+    flex-grow: 1;
+
+    .cta-title {
+      font-family: 'Hind', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+    }
+  }
+
+  /* Bouton d'action à droite */
+  .btn-cta-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #1e293b; /* Anthracite élégant */
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #0f172a;
+    }
+  }
+}
+
+/* Version responsive mobile */
+@media (max-width: 768px) {
+  .cta-embedded-block {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 16px;
+
+    .cta-info .cta-title {
+      justify-content: center;
+    }
+
+    .btn-cta-action {
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+}

@@ -25,7 +25,6 @@
         <div class= "sidebar-like checkbox" data-toggle="modal" data-target="#myLoginModal">
           <i>Garder dans Mes Cours ?</i>
         </div>
-
       <% end %>
       <!-- ========== SIDE MENU ========== -->
       <nav class= "col-xs-12 col-sm-12 col-md-3">
@@ -69,52 +68,37 @@
               </p>
             </div>
             -->
-
-
-<!-- ========== LECTEUR VIDÉO PLACEHOLDER (PAYWALL) ========== -->
-<div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
-  <div class="video-vignette-locked">
-    
-    <!-- Image de fond dynamique avec le champ @lecture.video -->
-    <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
-    
-    <!-- Voile sombre -->
-    <div class="video-overlay"></div>
-
-    <!-- Contenu superposé -->
-    <div class="video-locked-content">
-      <div class="play-button-wrapper">
-        <div class="youtube-play-btn">
-          <div class="yt-triangle"></div>
-        </div>
-        <span class="lock-badge">🔒</span>
-      </div>
-      
-      <!-- Titre nettoyé du préfixe <XX> (la loupe conservée depuis la BDD) -->
-      <div class="video-title">
-        <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
-      </div>
-      
-      <!-- Sous-titre axé sur l'expérience vidéo -->
-      <div class="video-subtitle">
-        Ton cours complet en vidéo
-        <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
-          (<%= @lecture.duration %> min)
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-  
-  <p class="lecture-note-locked">
-    🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
-  </p>
-</div>
-
-
-
-
-
+          <!-- ========== LECTEUR VIDÉO PLACEHOLDER (PAYWALL) ========== -->
+          <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
+            <div class="video-vignette-locked">
+              <!-- Image de fond dynamique avec le champ @lecture.video -->
+              <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
+              <!-- Overlay et contenu superposés -->
+              <div class="video-overlay"></div>
+              <div class="video-locked-content">
+                <div class="play-button-wrapper">
+                  <div class="youtube-play-btn">
+                    <div class="yt-triangle"></div>
+                  </div>
+                  <span class="lock-badge">🔒</span>
+                </div>
+                <!-- Titre et sous-titre -->
+                <div class="video-title">
+                  <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
+                </div>
+                <div class="video-subtitle">
+                  Ton cours complet en vidéo
+                  <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
+                    (<%= @lecture.duration %> min)
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- Message pour les non-abonnés -->
+            <p class="lecture-note-locked">
+              🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+            </p>
+          </div>
           <% end %>
           <!-- ====== Lien vers l'Admin ====== -->
           <% if current_user && current_user.admin %>
@@ -135,7 +119,7 @@
             <% end %>
               <% @documents.each do |document| %>
                 <% if document.title.include?("✅") %>
-                  <% if current_user %>
+                  <% if current_user && current_user.pricing.present? %>
                     <%= link_to document_path(document, class:"tab-quiz") do %>
                       <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
                         <label for="documents">
@@ -173,14 +157,16 @@
             <% else %>
               <section class="lecture-description content">
                 <%= cl_image_tag @lecture.course.picture, class: "list-cover", alt: "Couverture pour"+" "+@lecture.course.title, width: 178, height: 267, crop: :fill %>
-                <%= @description_for_free %>
-                <br><br><p align="center"><%= link_to @message_plan, plans_url %></p>
+                <!-- Contenu tronqué avec le CTA après l'intro -->
+                <%= render_content_with_first_cta(@description_for_free) %>
+                <!-- Deuxième CTA à la fin -->
+                <%= render 'lectures/cta_footer' %>
                 <br>
                 <img src= "<%=@lecture.picture%>", width="100%">
                 <br>
                 <p class="lecture-legend"><sub><%= @legend %></sub></p>
-              </section>
             <% end %>
+
             <!-- === DOCUMENTS === -->
               <section class="lecture-documents content" id="documents">
                 <% if current_user && current_user.pricing.present? %>
