@@ -1,0 +1,161 @@
+.video-placeholder-container {
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.video-vignette-locked {
+  position: relative !important;
+  width: 100%;
+  padding-top: 56.25% !important; /* Ratio 16:9 */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: #000000;
+}
+
+.video-bg-image {
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: blur(2px); /* Légère baisse du flou pour garder l'élégance */
+  transform: scale(1.02);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.video-overlay {
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45) !important; /* Voile sombre inspiré du player YouTube */
+  transition: background 0.3s ease;
+}
+
+.video-placeholder-container:hover {
+  .video-bg-image {
+    transform: scale(1.04);
+    filter: blur(1px);
+  }
+  .video-overlay {
+    background: rgba(0, 0, 0, 0.35) !important;
+  }
+  .play-button-wrapper {
+    transform: translate(-50%, -50%) scale(1.08) !important;
+  }
+  .youtube-play-btn {
+    background-color: #cc0000;
+  }
+}
+
+.video-locked-content {
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 5;
+  padding: 15px;
+}
+
+/* Bouton rouge dimensionné sur le modèle YouTube officiel */
+.play-button-wrapper {
+  position: absolute !important;
+  top: 50%; /* Pile au centre verticalement */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  transition: transform 0.3s ease;
+}
+
+.youtube-play-btn {
+  width: 80px;
+  height: 56px;
+  background-color: #ff0000;
+  border-radius: 14px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+
+  .yt-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 11px 0 11px 20px;
+    border-color: transparent transparent transparent #ffffff;
+    margin-left: 3px;
+  }
+}
+
+.lock-badge {
+  position: absolute !important;
+  bottom: -4px;
+  right: -4px;
+  background: #1e293b;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 13px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Titre et sous-titre placés en bas de l'image */
+.video-title {
+  position: absolute !important;
+  bottom: 40px;
+  width: 90%;
+  font-family: 'Hind', sans-serif;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  margin: 0;
+}
+
+.video-subtitle {
+  position: absolute !important;
+  bottom: 18px;
+  width: 90%;
+  font-size: 14px !important;
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.lecture-note-locked {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #f59e0b;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .youtube-play-btn {
+    width: 60px;
+    height: 42px;
+    border-radius: 10px;
+    .yt-triangle {
+      border-width: 8px 0 8px 15px;
+    }
+  }
+  .lock-badge {
+    width: 21px;
+    height: 21px;
+    font-size: 11px;
+  }
+  .video-title {
+    font-size: 15px !important;
+    bottom: 30px;
+  }
+  .video-subtitle {
+    font-size: 12px !important;
+    bottom: 12px;
+  }
+}
