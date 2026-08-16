@@ -339,3 +339,41 @@ ul a:link {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
 }
+
+
+/* ==========================================================================
+   FORMAT SHORT VERTICAL (SANS JAVASCRIPT)
+   ========================================================================== */
+
+.video-player-container.is-vertical-short-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.embed-responsive.is-vertical-short,
+.lecture-video.is-vertical-short,
+.video-vignette-locked.is-vertical-short {
+  width: 100% !important;
+  max-width: 360px !important;
+  height: 600px !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  margin: 0 auto 20px auto !important;
+  border-radius: 12px;
+  overflow: hidden;
+
+  iframe {
+    height: 100% !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .embed-responsive.is-vertical-short,
+  .lecture-video.is-vertical-short,
+  .video-vignette-locked.is-vertical-short {
+    height: 500px !important;
+  }
+}

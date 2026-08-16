@@ -6,28 +6,25 @@
   <%= @lecture.meta_image %>
 <% end %>
 
-
-<!-- <#% content_for :meta_description do %>
-  <#%= @lecture.description %>
-<#% end %> -->
-
 <div class="lecture-wrapper">
   <div class="container">
-    <div class= "row">
+    <div class="row">
       <!-- ========== BORDER COLOR ========== -->
       <div class="hidden-xs border <%= @lecture_course.category.tag %>"></div>
+      
       <!-- ========== CHECKBOX ========== -->
       <% if current_user %>
-        <div class= "sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
+        <div class="sidebar-like checkbox" id="like-<%= @lecture_course.id %>">
           <%= render '/courses/like', course: @lecture_course %>
         </div>
       <% else %>
-        <div class= "sidebar-like checkbox" data-toggle="modal" data-target="#myLoginModal">
+        <div class="sidebar-like checkbox" data-toggle="modal" data-target="#myLoginModal">
           <i>Garder dans Mes Cours ?</i>
         </div>
       <% end %>
+
       <!-- ========== SIDE MENU ========== -->
-      <nav class= "col-xs-12 col-sm-12 col-md-3">
+      <nav class="col-xs-12 col-sm-12 col-md-3">
         <div class="lecture-menu">
           <% @lectures.each do |lecture| %>
             <ul>
@@ -46,66 +43,56 @@
           <% end %>
         </div>
       </nav>
+
       <!-- ========== VIDEO PAGE ========== -->
-      <div class= "col-xs-12 col-md-9">
+      <div class="col-xs-12 col-md-9">
         <div class="lecture-show">
-          <!-- ========== VIDEO EMBED ========== -->
-          <% if policy(@lecture).watch_video? %>
-            <%= render 'shared/embedvideo' %>
-          <% else %>
-            <%= render 'shared/planmodal' %>
-            <!-- ANCIENNE VERSION DU PLACEHOLDER 
-            <div data-toggle = "modal" data-target = "#PlanModal">
-              <div class="embed-responsive embed-responsive-16by9 lecture-vignette">
-                <#%= image_tag @lecture.course.picture, class: "lecture-cover", alt: "Couverture du livre "+@lecture_course.title+" de "+@lecture_author %>
-                <#%= image_tag ("lecture-icon.png"), class: "lecture-icon" %>
-                <h2 class= "lecture-title hidden-xs"><#%= @lecture.title.gsub(/<.*?>/,"") %></h2>
-                <h2 class= "lecture-title-xs hidden-sm hidden-md hidden-lg hidden-xl"><#%= @lecture.title.gsub(/<.*?>/,"") %></h2>
-                <p class="lecture-note">
+          <!-- ========== VIDEO EMBED / PAYWALL ========== -->
+          <div id="video-player-box" class="video-player-container <%= 'is-vertical-short-wrapper' if @lecture.respond_to?(:short) && @lecture.short? %>">
+            <% if policy(@lecture).watch_video? %>
+              <div class="embed-responsive embed-responsive-16by9 lecture-video <%= 'is-vertical-short' if @lecture.respond_to?(:short) && @lecture.short? %>">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
               </div>
-              <p class="lecture-note">
-                <i>* Video réservée aux abonnés</i>
-              </p>
-            </div>
-            -->
-          <!-- ========== LECTEUR VIDÉO PLACEHOLDER (PAYWALL) ========== -->
-          <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
-            <div class="video-vignette-locked">
-              <!-- Image de fond dynamique avec le champ @lecture.video -->
-              <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
-              <!-- Overlay et contenu superposés -->
-              <div class="video-overlay"></div>
-              <div class="video-locked-content">
-                <div class="play-button-wrapper">
-                  <div class="youtube-play-btn">
-                    <div class="yt-triangle"></div>
+            <% else %>
+              <%= render 'shared/planmodal' %>
+
+              <!-- ========== LECTEUR VIDÉO PLACEHOLDER (PAYWALL) ========== -->
+              <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
+                <div class="video-vignette-locked <%= 'is-vertical-short' if @lecture.respond_to?(:short) && @lecture.short? %>">
+                  <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
+                  <div class="video-overlay"></div>
+                  <div class="video-locked-content">
+                    <div class="play-button-wrapper">
+                      <div class="youtube-play-btn">
+                        <div class="yt-triangle"></div>
+                      </div>
+                      <span class="lock-badge">🔒</span>
+                    </div>
+                    <div class="video-title">
+                      <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
+                    </div>
+                    <div class="video-subtitle">
+                      Ton cours complet en vidéo
+                      <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
+                        (<%= @lecture.duration %> min)
+                      <% end %>
+                    </div>
                   </div>
-                  <span class="lock-badge">🔒</span>
                 </div>
-                <!-- Titre et sous-titre -->
-                <div class="video-title">
-                  <%= @lecture.title.gsub(/<[^>]+>/, '').strip %>
-                </div>
-                <div class="video-subtitle">
-                  Ton cours complet en vidéo
-                  <% if @lecture.respond_to?(:duration) && @lecture.duration.present? %>
-                    (<%= @lecture.duration %> min)
-                  <% end %>
-                </div>
+                <p class="lecture-note-locked">
+                  🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+                </p>
               </div>
-            </div>
-            <!-- Message pour les non-abonnés -->
-            <p class="lecture-note-locked">
-              🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
-            </p>
+            <% end %>
           </div>
-          <% end %>
+
           <!-- ====== Lien vers l'Admin ====== -->
           <% if current_user && current_user.admin %>
             <%= link_to rails_admin.edit_path(model_name: 'lecture', id: @lecture.id) do %>
               <p id="lecture-admin">Edit</p>
             <% end %>
           <% end %>
+
           <!-- ========== TABS ========== -->
           <div class= "tabs">
               <span class="tab active tab-description <%= @lecture_course.category.tag %>" href="#">
@@ -123,7 +110,7 @@
                     <%= link_to document_path(document, class:"tab-quiz") do %>
                       <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
                         <label for="documents">
-                               QUIZ     
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QUIZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </label>
                       </span>
                     <% end %>
@@ -132,76 +119,71 @@
                       <a data-toggle="modal" data-target="#PlanModal">
                         <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
                           <label for="documents">
-                                 QUIZ     
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QUIZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </label>
-                        </a>
+                        </span>
+                      </a>
                       </div>
                   <% end %>
                 <% end %>
             <% end %>
           </div>
+
           <!-- ========== TAB CONTENT ========== -->
           <div class="lecture-content">
             <!-- === DESCRIPTION === -->
-            <div class="hidden-xs">
-            </div>
+            <div class="hidden-xs"></div>
             <% if policy(@lecture).watch_video? %>
               <section class="lecture-description content">
-              <%= cl_image_tag @lecture.course.picture, class: "list-cover", alt: "Couverture pour"+" "+@lecture.course.title, width: 178, height: 267, crop: :fill %>
+                <%= cl_image_tag @lecture.course.picture, class: "list-cover", alt: "Couverture pour "+@lecture.course.title, width: 178, height: 267, crop: :fill %>
                 <%= @description_for_subscribers %>
                 <br>
-                <img src= "<%=@lecture.picture%>", width="100%">
+                <img src="<%= @lecture.picture %>" width="100%">
                 <br>
                 <p class="lecture-legend"><sub><%= @legend %></sub></p>
               </section>
             <% else %>
               <section class="lecture-description content">
-                <%= cl_image_tag @lecture.course.picture, class: "list-cover", alt: "Couverture pour"+" "+@lecture.course.title, width: 178, height: 267, crop: :fill %>
-                <!-- Contenu tronqué avec le CTA après l'intro -->
+                <%= cl_image_tag @lecture.course.picture, class: "list-cover", alt: "Couverture pour "+@lecture.course.title, width: 178, height: 267, crop: :fill %>
                 <%= render_content_with_first_cta(@description_for_free) %>
-                <!-- Deuxième CTA à la fin -->
                 <%= render 'lectures/cta_footer' %>
                 <br>
-                <img src= "<%=@lecture.picture%>", width="100%">
+                <img src="<%= @lecture.picture %>" width="100%">
                 <br>
                 <p class="lecture-legend"><sub><%= @legend %></sub></p>
               </section>
             <% end %>
+
             <!-- === DOCUMENTS === -->
-              <section class="lecture-documents content" id="documents">
-                <% if current_user && current_user.pricing.present? %>
-                    <% @documents.each do |document| %>
-                        <p>
-                          ⇨ <%= link_to document.title, document_path(document)%>
-                        </p>
-                    <% end %>
-                <% else %>
-                  <% @documents.each do |document| %>
-                      <% if document.payment %>
-                        <%= render 'shared/planmodal' %>
-                        <p data-toggle = "modal" data-target = "#PlanModal">
-                          ⇨ * <%= link_to document.title, '#documents' %> *
-                        </p>
-                      <% else %>
-                        <p>
-                          ⇨ <%= link_to document.title, document_path(document)%>
-                        </p>
-                      <% end %>
-                  <% end %>
-                  <% if @documents.any? { |document| document.payment == true } %>
-                       <i>* Document téléchargeable réservé aux abonnés.</i>
+            <section class="lecture-documents content" id="documents">
+              <% if current_user && current_user.pricing.present? %>
+                <% @documents.each do |document| %>
+                  <p>⇨ <%= link_to document.title, document_path(document)%></p>
+                <% end %>
+              <% else %>
+                <% @documents.each do |document| %>
+                  <% if document.payment %>
+                    <p data-toggle="modal" data-target="#PlanModal">
+                      ⇨ * <%= link_to document.title, '#documents' %> *
+                    </p>
+                  <% else %>
+                    <p>⇨ <%= link_to document.title, document_path(document)%></p>
                   <% end %>
                 <% end %>
-              </section>
-            <!-- ========== CLOSE TABS ========== -->
+                <% if @documents.any? { |document| document.payment == true } %>
+                  <i>* Document téléchargeable réservé aux abonnés.</i>
+                <% end %>
+              <% end %>
+            </section>
           </div>
-    <!-- ========== CLOSE CONTAINERS ========== -->
+
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- ========== JS ACTION ON TABS ========== -->
+
+<!-- ========== JS SEULEMENT POUR LES ONGLETS ========== -->
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
