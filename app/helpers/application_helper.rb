@@ -93,6 +93,34 @@ module ApplicationHelper
     schemas.map { |schema| content_tag(:script, schema.to_json.html_safe, type: 'application/ld+json') }.join("\n").html_safe
   end
 
+ require 'cgi'
+
+
+require 'cgi'
+
+require 'cgi'
+
+
+  def clean_strip(text)
+    return "" if text.blank?
+    
+    decoded_text = CGI.unescapeHTML(text.to_s)
+    
+    # On supprime les titres, les blockquotes et les balises bq AVEC tout leur contenu
+    without_blocks = decoded_text
+                         .gsub(/<h[1-6][^>]*>.*?<\/h[1-6]>/im, '')
+                         .gsub(/<blockquote[^>]*>.*?<\/blockquote>/im, '')
+                         .gsub(/<bq[^>]*>.*?<\/bq>/im, '')
+    
+    # On nettoie le reste des balises et entités
+    ActionController::Base.helpers.strip_tags(without_blocks)
+        .gsub(/&lt;\d+&gt;/i, '')
+        .gsub(/<\d+>/, '')
+        .strip
+  end
+
+
+
   def page_title
     content_for(:title).presence || @meta_title.presence || meta_title
   end

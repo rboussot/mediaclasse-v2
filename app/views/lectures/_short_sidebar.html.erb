@@ -17,7 +17,9 @@
         <% if pdf_doc %>
           <li>
             📄 <strong>Document PDF :</strong> 
-            <%= link_to pdf_doc.title, document_path(pdf_doc) %>
+            <%= link_to document_path(pdf_doc) do %>
+              <%= clean_strip(pdf_doc.title) %>
+            <% end %>
           </li>
         <% end %>
       </ul>
@@ -40,12 +42,10 @@
         <% end %>
         <div style="flex: 1; min-width: 0;">
           <p style="font-size: 0.85em; font-weight: bold; color: #0f172a; margin-bottom: 4px; line-height: 1.25;">
-            <%= next_lecture.title.gsub(/<.*?>/,"").strip %>
+            <%= clean_strip(next_lecture.title) %>
           </p>
           <% if next_lecture.respond_to?(:description) && next_lecture.description.present? %>
-            <% 
-              clean_desc = next_lecture.description.gsub(/<h[1-6].*?>.*?<\/h[1-6]>/im, '').gsub(/<blockquote.*?>.*?<\/blockquote>/im, '').gsub(/<[^>]*>/, '').strip 
-            %>
+            <% clean_desc = clean_strip(next_lecture.description) %>
             <% if clean_desc.present? %>
               <p style="font-size: 0.8em; color: #475569; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                 <%= clean_desc %>
@@ -69,9 +69,7 @@
           <img src="<%= promo_book.video %>" alt="Couverture Annabac Mediaclasse" style="height: 105px; width: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
         <% end %>
         <div style="flex: 1; min-width: 0;">
-          <% 
-            clean_book_desc = promo_book.description.gsub(/<h[1-6].*?>.*?<\/h[1-6]>/im, '').gsub(/<[^>]*>/, '').strip 
-          %>
+          <% clean_book_desc = clean_strip(promo_book.description) %>
           <% if clean_book_desc.present? %>
             <p style="font-size: 0.8em; color: #334155; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
               <%= clean_book_desc %>
@@ -88,14 +86,14 @@
   <% tips_category = Category.find_by(tag: "tips") %>
   <% if tips_category && tips_category.description.present? %>
     <% 
-      # On découpe la description ligne par ligne en ignorant les lignes vides
       tips_array = tips_category.description.split("\n").map(&:strip).reject(&:blank?)
       random_tip = tips_array.sample
+      clean_tip = clean_strip(random_tip)
     %>
-    <% if random_tip.present? %>
+    <% if clean_tip.present? %>
       <div class="short-card-section">
         <p style="font-size: 0.8em; color: #334155; margin-bottom: 0; line-height: 1.35;">
-          <strong><%= tips_category.name %></strong> <%= random_tip.html_safe %>
+          <strong><%= clean_strip(tips_category.name) %></strong> <%= clean_tip %>
         </p>
       </div>
       <hr style="margin: 10px 0;">
