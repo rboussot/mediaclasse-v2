@@ -2,49 +2,96 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <!-- === 1e partie du message === -->
-        <!-- Le compte de l'utilisateur a expiré -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- ================= CAS 1 : UTILISATEUR AVEC ABONNEMENT EXPIRÉ ================= -->
         <% if current_user && current_user.expire %>
-          <div class="plan-infos">
-            <h2>Fonctionnalité réservée aux abonnés</h2>
-            <h4> Votre abonnement est fermé depuis le <%= current_user.expire.strftime '%d/%m/%Y' %></h4>
-            Soit vous avez cliqué sur le bouton "Cesser de participer", soit votre abonnement était limité dans le temps, soit votre carte bancaire a expiré. Dans tous les cas, un email vous a été envoyé, et aucun prélèvement n'a été effectué après cette date.<br><br>
-            Cependant, si vous pensez avoir un abonnement en cours, n'hésitez pas à me contacter par email, je vous répondrai personnellement dans les meilleurs délais : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i><br>
+          <div class="plan-infos text-center">
+            <h2>🔒 Contenu réservé aux abonnés</h2>
+            <p class="lead">Votre abonnement s'est terminé le <strong><%= current_user.expire.strftime '%d/%m/%Y' %></strong>.</p>
+            <p class="text-muted" style="font-size: 0.95em;">
+              (Expiration automatique, changement de carte ou fin de période). Aucun prélèvement n'a été effectué depuis cette date.
+            </p>
+            
+            <div class="form-actions style="margin: 20px 0;">
+              <%= link_to "Réactiver mon accès illimité", plans_path, class: "btn btn-primary btn-lg hvr-glow" %>
+            </div>
+
+            <p style="font-size: 0.85em; color: #666;">
+              <br>Une question ? Contactez-moi directement : 
+              <a href="mailto:mediaclasse.fr@gmail.com">mediaclasse.fr@gmail.com</a>
+            </p>
           </div>
-        <!-- L'utilisateur n'a jamais eu d'abonnement -->
+
+        <!-- ================= CAS 2 : UTILISATEUR CONNECTÉ SANS ABONNEMENT ================= -->
+        <% elsif current_user %>
+          <div class="plan-infos">
+            <h3 class="text-center" style="margin-bottom: 20px;">Accéde à l'intégralité de Mediaclasse !</h3>
+            
+            <ul class="plan-benefits-list" style="list-style: none; padding-left: 0; font-size: 1.05em; line-height: 1.8;">
+              <li>✨ <strong>Toutes tes cours de français</strong> en vidéo et fiches PDF rédigées.</li>
+              <li>✨ <strong>Méthodologies complètes</strong> (Bac, études supérieures, concours).</li>
+              <li>✨ <strong>Prix libre & équitable</strong> : choisis le tarif qui te convient.</li>
+              <li>✨ <strong>En toute liberté</strong> : désabonnement immédiat en un seul clic.</li>
+            </ul>
+
+            <div class="text-center" style="margin-top: 25px;">
+              <%= link_to "Découvre les formules d'accès", plans_path, class: "btn btn-primary btn-lg hvr-glow" %>
+            </div>
+            
+            <p class="text-center text-muted" style="margin-top: 15px; font-size: 0.85em;">
+              Une question ? Contacte-moi par email : <a href="mailto:mediaclasse.fr@gmail.com">mediaclasse.fr@gmail.com</a>
+            </p>
+          </div>
+
+        <!-- ================= CAS 3 : VISITEUR NON CONNECTÉ ================= -->
         <% else %>
           <div class="plan-infos">
-            <h3>Le site existe grâce à vous !</h3><br>
-            ► Pour un prix libre, vous accédez à TOUT mon site, sans limites !<br>
-            ► Le système de paiement est international et sécurisé à 100%.<br>
-            ► Vous pouvez vous désengager en un seul clic.</i></br>
-            ► Une question particulière ? Contactez-moi par email : <span style="background:#FFFF22"><i>mediaclasse.fr@gmail.com</i>
-          </div>
-        <% end %><br>
-        <!-- === 2e partie du message === -->
-        <!-- L'utilisateur est connecté à un compte gratuit : lien vers les forfaits -->
-        <% if current_user %>
-          <div class="form-actions">
-            <br>
-            <%= link_to "Voir la page des abonnements", plans_path, class: "btn btn-default hvr-glow" %>
-          </div>
-        <!-- L'utilisateur n'est pas connecté : formulaire de connexion-->
-        <% else %>
-        <h2>Connexion</h2>
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-inputs">
-              <%= f.input :email, required: false, autofocus: true %>
-              <%= f.input :password, label: "Mot de passe", required: false %>
-              <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
+            <h3 class="text-center" style="margin-bottom: 20px;">Accède à l'intégralité de Mediaclasse !</h3>
+            
+            <ul class="plan-benefits-list" style="list-style: none; padding-left: 0; font-size: 1.05em; line-height: 1.8;">
+              <li>📚 <strong>Tous les cours & analyses</strong> en vidéo HD et fiches PDF rédigées</li>
+              <li>🎓 <strong>Contenus adaptés</strong> au Bac de français, Lettres Modernes et concours</li>
+              <li>💛 <strong>Prix libre & équitable</strong> : choisis le tarif qui te convient</li>
+              <li>🔒 <strong>Paiement 100% sécurisé</strong> et résiliation en un clic</li>
+            </ul>
+
+            <div class="text-center" style="margin: 25px 0 15px 0;">
+              <%= link_to "Abonne-toi / Vois les tarifs", plans_path, class: "btn btn-primary btn-lg hvr-glow", style: "width: 100%; max-width: 350px;" %>
             </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Me connecter" %>
+
+            <hr style="margin: 20px 0;">
+
+            <!-- Section Connexion secondaire -->
+            <div class="modal-login-section text-center">
+              <p style="margin-bottom: 10px;"><strong>Déjà inscrit ou abonné ?</strong></p>
+              
+              <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#loginCollapse">
+                Je me connecte à mon compte ▼
+              </button>
+
+              <div id="loginCollapse" class="collapse" style="margin-top: 15px; text-align: left;">
+                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <div class="form-inputs">
+                    <%= f.input :email, required: false, placeholder: "votre@email.com" %>
+                    <%= f.input :password, label: "Mot de passe", required: false %>
+                    <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.button :submit, "Me connecter", class: "btn btn-success style: 'width: 100%'" %>
+                  </div>
+                <% end %>
+                <div style="margin-top: 10px; font-size: 0.85em;">
+                  <%= render "devise/shared/links" %>
+                </div>
+              </div>
             </div>
-          <% end %>
-          <%= render "devise/shared/links" %>
+
+          </div>
         <% end %>
-        <!-- Fin de la 2e partie -->
+
       </div>
     </div>
   </div>

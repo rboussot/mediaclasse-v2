@@ -1,31 +1,52 @@
 <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-<!--       <div class="modal-header"> -->
-
-<!--         <h4 class="modal-title" id="myModalLabel">Connexion</h4> -->
-<!--       </div> -->
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h2>J'ai un compte, je me connecte !</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
 
-            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-inputs">
-                <%= f.input :email, required: false, autofocus: true %>
-                <%= f.input :password, label: "Mot de passe", required: false %>
-                <%= f.input :remember_me, label: "se souvenir de moi",  as: :boolean if devise_mapping.rememberable? %>
+        <div class="login-modal-wrapper" style="padding: 10px 15px;">
+          <!-- En-tête avec titre principal -->
+          <h2 class="text-center" style="margin-top: 10px; margin-bottom: 25px; font-weight: 700;">
+            🔑 Je me connecte à mon compte
+          </h2>
+
+          <!-- Formulaire de connexion Devise -->
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email, required: false, autofocus: true, placeholder: "mon_adresse@email.com" %>
+              <%= f.input :password, label: "Mot de passe", required: false %>
+              <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions" style="margin-top: 20px;">
+              <%= f.button :submit, "Connexion", class: "btn btn-primary btn-lg hvr-glow", style: "width: 100%;" %>
+            </div>
+          <% end %>
+
+          <!-- Liens de réinitialisation de mot de passe & création de compte -->
+          <div class="modal-secondary-links text-center" style="margin-top: 20px;">
+            <p style="margin-bottom: 8px;">
+              <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "text-muted", style: "font-size: 0.9em;" %>
+            </p>
+
+            <hr style="margin: 20px 0;">
+
+            <!-- Bloc d'invitation pour les nouveaux visiteurs -->
+            <div class="new-user-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-top: 15px;">
+              <p style="margin-bottom: 10px; font-weight: 600; color: #0f172a;">
+                Pas encore de compte sur Mediaclasse ?
+              </p>
+              <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <%= link_to "Je crée un compte gratuit", new_registration_path(resource_name), class: "btn btn-default btn-sm hvr-glow" %>
+                <%= link_to "Je découvre les forfaits", plans_path, class: "btn btn-success btn-sm hvr-glow" %>
               </div>
+            </div>
 
-              <div class="form-actions">
-                <%= f.button :submit, "Me connecter" %>
-              </div>
-            <% end %>
+          </div>
+        </div>
 
-            <%= render "devise/shared/links" %>
-      </div>
-<!--       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Sauver les changements</button> -->
       </div>
     </div>
   </div>

@@ -3,13 +3,6 @@
     <div class="row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-10">
         <div class= "plan-banner text-center" style="background-image: url('<%= @banner.description %>');">
-            <!-- ========= LIEN NEWSLETTER =========
-            <#%= link_to newsletter_path do %>
-              <div class="plan-newsletter hvr-grow home-newsletter">
-                <i class="fa fa-paper-plane"></i> <u class="hidden-xs"><i>Lettre d'infos</i></u></p>
-              </div>
-            <#% end %>
-            -->
           <!-- ====== LIEN YOUTUBE ====== -->
           <% if Category.exists?(tag: "youtube") %>
             <%= link_to @youtube.video, target: "_blank" do %>
@@ -226,20 +219,8 @@
             </div>
           <% end %>
         <% end %>
-        <!-- ====== ABONNEMENT ====== -->
-        <% if Category.exists?(tag: "cta2") %>
-          <%= link_to plans_path do %>
-            <div class= "home-card-small">
-              <h4><%= @cta2.name %></h4>
-              <p>
-                <%= @cta2.description.gsub("\n", "<br/>").html_safe %>
-              </p>
-            </div>
-          <% end %>
-        <% end %>
     </div>
   </div>
-
     <!-- =========================== SUPER COMMENTAIRES ================================= -->
     <div class="row">
       <div class="col-xs-11 col-sm-offset-2 col-sm-8">
@@ -278,12 +259,7 @@
         <% end %>
       </div>
     </div>
-<!-- ====== PROFIL TIKTOK ======
-    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mediaclasse" data-unique-id="mediaclasse" data-embed-from="embed_page" data-embed-type="creator" style="max-width:780px; min-width:288px;"> <section> <a target="_blank" href="https://www.tiktok.com/@mediaclasse?refer=creator_embed">@mediaclasse</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-  -->
   </div>
 </div>
 
-
 <%= render 'shared/footer' %>
-<%= render 'shared/cookie' %>

@@ -1,0 +1,132 @@
+<div id="cookie-banner" class="cookie-banner-dark" style="display: none;">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      🍪 <strong>Respect de votre vie privée</strong> — Nous utilisons des cookies pour mesurer la fréquentation de manière anonyme et améliorer votre navigation. Vous pouvez accepter ou refuser leur dépôt.
+    </div>
+    <div class="cookie-banner-actions">
+      <button id="btn-cookie-deny" class="btn-cookie-link">Tout refuser</button>
+      <button id="btn-cookie-accept" class="btn-cookie-main">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner-dark {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 680px;
+    background-color: #1e293b; /* Fond sombre anthracite */
+    color: #f1f5f9;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    z-index: 9999;
+    font-family: inherit;
+  }
+
+  .cookie-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .cookie-banner-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #cbd5e1;
+    flex-grow: 1;
+  }
+
+  .cookie-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+
+  /* Bouton secondaire (Refuser) */
+  .btn-cookie-link {
+    background: transparent;
+    border: 1px solid #475569;
+    color: #cbd5e1;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-cookie-link:hover {
+    background: #334155;
+    color: #ffffff;
+  }
+
+  /* Bouton principal (Accepter) */
+  .btn-cookie-main {
+    background: #38bdf8; /* Bleu clair dynamique ou ajuster selon ta charte */
+    border: none;
+    color: #0f172a;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-cookie-main:hover {
+    background: #7dd3fc;
+  }
+
+  /* Responsive mobile */
+  @media (max-width: 600px) {
+    .cookie-banner-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 14px;
+    }
+    .cookie-banner-actions {
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-cookie-link, .btn-cookie-main {
+      flex-grow: 1;
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    var cookieChoice = localStorage.getItem('mediaclasse_cookie_consent');
+
+    if (!cookieChoice) {
+      $('#cookie-banner').fadeIn();
+    } else if (cookieChoice === 'accepted') {
+      enableAnalytics();
+    }
+
+    $('#btn-cookie-accept').on('click', function() {
+      localStorage.setItem('mediaclasse_cookie_consent', 'accepted');
+      $('#cookie-banner').fadeOut();
+      enableAnalytics();
+    });
+
+    $('#btn-cookie-deny').on('click', function() {
+      localStorage.setItem('mediaclasse_cookie_consent', 'denied');
+      $('#cookie-banner').fadeOut();
+    });
+
+    function enableAnalytics() {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    }
+  });
+</script>
