@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :store_user_location!, if: :storable_location?
   after_action :deleted_user
 
   def deleted_user
@@ -29,6 +30,20 @@ class ApplicationController < ActionController::Base
 
   def set_noindex
     @noindex = true
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    # Mémorise l'URL actuelle dans la session Devise
+    store_location_for(:user, request.fullpath)
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    # Redirige vers l'URL sauvegardée ou, par défaut, vers la page d'accueil/dashboard
+    stored_location_for(resource_or_scope) || super
   end
 
 end
