@@ -31,11 +31,11 @@
               <%= link_to lecture_path(lecture) do %>
                 <% if lecture.id.to_s == params[:id] %>
                   <li class="lecture-link active"><%= lecture.title.gsub(/<.*?>/,"") %>
-                    <%= "*" unless policy(lecture).watch_video? %>
+                    <%= "🔒" unless policy(lecture).watch_video? %>
                   </li>
                 <% else %>
                   <li class="lecture-link"><%= lecture.title.gsub(/<.*?>/,"") %>
-                    <%= "*" unless policy(lecture).watch_video? %>
+                    <%= "🔒" unless policy(lecture).watch_video? %>
                   </li>
                 <% end %>
               <% end %>
@@ -84,7 +84,7 @@
                         </div>
                       </div>
                       <p class="lecture-note-locked">
-                        🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+                        🔒 Débloque la vidéo et télécharge les fiches PDF rédigées dans l'onglet Documents ⬇️
                       </p>
                     </div>
                   <% end %>
@@ -129,7 +129,7 @@
                     </div>
                   </div>
                   <p class="lecture-note-locked">
-                    🔒 Débloque la vidéo — ⬇️ Télécharge les PDF rédigés dans l'onglet Documents
+                    🔒 Débloque la vidéo — ⬇️ Télécharge les fiches PDF rédigées dans l'onglet Documents
                   </p>
                 </div>
               <% end %>
@@ -208,21 +208,19 @@
             <section class="lecture-documents content" id="documents">
               <% if current_user && current_user.pricing.present? %>
                 <% @documents.each do |document| %>
-                  <p>⇨ <%= link_to document.title, document_path(document)%></p>
+                  <p><%= link_to document.title, document_path(document)%></p>
                 <% end %>
               <% else %>
                 <% @documents.each do |document| %>
                   <% if document.payment %>
                     <p data-toggle="modal" data-target="#PlanModal">
-                      ⇨ * <%= link_to document.title, '#documents' %> *
+                      <%= link_to document.title, '#documents' %> 🔒
                     </p>
                   <% else %>
-                    <p>⇨ <%= link_to document.title, document_path(document)%></p>
+                    <p><%= link_to document.title, document_path(document)%></p>
                   <% end %>
                 <% end %>
-                <% if @documents.any? { |document| document.payment == true } %>
-                  <i>* Document téléchargeable réservé aux abonnés.</i>
-                <% end %>
+
               <% end %>
             </section>
           </div>

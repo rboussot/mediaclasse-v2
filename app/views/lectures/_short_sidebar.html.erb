@@ -3,22 +3,36 @@
   <% quiz_doc = documents.find { |d| d.title.include?("✅") } %>
   <% pdf_doc = documents.find { |d| !d.title.include?("✅") } %>
 
+  <!-- On définit la condition d'accès (à ajuster selon la méthode de ton modèle User) -->
+  <% user_has_access = current_user && current_user.pricing.present? %>
+
   <% if quiz_doc || pdf_doc %>
     <div class="short-card-section">
-      <h4 style="margin-bottom: 8px;">💡 Pour aller plus loin sur ce cours :</h4>
+      <h4 style="margin-bottom: 8px;">💡 Pour aller plus loin :</h4>
       <ul class="short-resources-list">
         <% if quiz_doc %>
+          <% quiz_locked = quiz_doc.payment? && !user_has_access %>
           <li>
-            🎯 <strong>Entraînement :</strong> 
-            <%= link_to "Faire le Quiz sur ce chapitre", document_path(quiz_doc), class: "short-link-highlight" %>
+            ✅
+            <% if quiz_locked %>
+              <%= link_to "Faire le Quiz sur ce chapitre", "#", class: "short-link-highlight", data: { toggle: "modal", target: "#PlanModal" } %> 🔒
+            <% else %>
+              <%= link_to "Faire le Quiz sur ce chapitre", document_path(quiz_doc), class: "short-link-highlight" %>
+            <% end %>
           </li>
         <% end %>
 
         <% if pdf_doc %>
+          <% pdf_locked = pdf_doc.payment? && !user_has_access %>
           <li>
-            📄 <strong>Document PDF :</strong> 
-            <%= link_to document_path(pdf_doc) do %>
-              <%= clean_strip(pdf_doc.title) %>
+            <% if pdf_locked %>
+              <%= link_to "#", data: { toggle: "modal", target: "#PlanModal" } do %>
+                <%= clean_strip(pdf_doc.title) %> 🔒
+              <% end %>
+            <% else %>
+              <%= link_to document_path(pdf_doc) do %>
+                <%= clean_strip(pdf_doc.title) %>
+              <% end %>
             <% end %>
           </li>
         <% end %>
