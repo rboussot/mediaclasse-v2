@@ -6,6 +6,8 @@
   <%= @lecture.meta_image %>
 <% end %>
 
+<%= render 'shared/planmodal' %>
+
 <div class="lecture-wrapper">
   <div class="container">
     <div class="row">
@@ -61,8 +63,6 @@
                       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                     </div>
                   <% else %>
-                    <%= render 'shared/planmodal' %>
-
                     <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
                       <div class="video-vignette-locked is-vertical-short">
                         <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
@@ -106,8 +106,6 @@
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @lecture.video %>?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
               <% else %>
-                <%= render 'shared/planmodal' %>
-
                 <div data-toggle="modal" data-target="#PlanModal" class="video-placeholder-container">
                   <div class="video-vignette-locked">
                     <div class="video-bg-image" style="background-image: url('https://img.youtube.com/vi/<%= @lecture.video %>/maxresdefault.jpg');"></div>
@@ -165,7 +163,6 @@
                       </span>
                     <% end %>
                   <% else %>
-                    <%= render 'shared/planmodal' %>
                       <a data-toggle="modal" data-target="#PlanModal">
                         <span class="tab tab-quiz <%= @lecture_course.category.tag %>" href="#">
                           <label for="documents">
@@ -208,19 +205,20 @@
             <section class="lecture-documents content" id="documents">
               <% if current_user && current_user.pricing.present? %>
                 <% @documents.each do |document| %>
-                  <p><%= link_to document.title, document_path(document)%></p>
+                  <p><%= link_to document.title, document_path(document) %></p>
                 <% end %>
               <% else %>
                 <% @documents.each do |document| %>
                   <% if document.payment %>
-                    <p data-toggle="modal" data-target="#PlanModal">
-                      <%= link_to document.title, '#documents' %> 🔒
+                    <p>
+                      <%= link_to "#", data: { toggle: "modal", target: "#PlanModal" } do %>
+                        <%= document.title %> 🔒
+                      <% end %>
                     </p>
                   <% else %>
-                    <p><%= link_to document.title, document_path(document)%></p>
+                    <p><%= link_to document.title, document_path(document) %></p>
                   <% end %>
                 <% end %>
-
               <% end %>
             </section>
           </div>
