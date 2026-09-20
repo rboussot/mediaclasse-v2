@@ -12,7 +12,7 @@ class Lecture < ApplicationRecord
 
   def meta_image
     if self.payment
-      "https://s3-eu-west-1.amazonaws.com/acquis/couvertures/mediaclasse-capture.jpg"
+      "https://r2.mediaclasse.fr/couvertures/mediaclasse-capture.jpg"
     else
       "http://img.youtube.com/vi/"+self.video+"/sddefault.jpg"
     end

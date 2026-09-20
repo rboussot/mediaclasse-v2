@@ -19,7 +19,7 @@
             <% end %>
           <% end %>
           <!-- ============ BANNER ============ -->
-          <img src="https://acquis.s3.eu-west-1.amazonaws.com/divers/MediaClasse_logo.png" width="240px" opacity= 0.33;>
+          <img src="https://r2.mediaclasse.fr/divers/MediaClasse_logo.png" width="240px" opacity= 0.33;>
           <div class="hidden-xs hidden-sm">
             <% if Category.exists?(tag: "slogan") %>
               <p><%= @slogan.description.gsub("\n", "<br/>").html_safe %></p>
@@ -105,8 +105,8 @@
         <div class= "home-card-large">
           <h4>Recommandé par le Ministère de la Culture :</h4>
             <p>Consultez l'inventaire des chaînes Youtube culturelles et scientifiques francophones du ministère de la Culture. ↓ </p>
-          <a target= "_blank" href= "https://acquis.s3.eu-west-1.amazonaws.com/documents/350+chaines+Youtube.pdf">
-            <img src="https://acquis.s3.eu-west-1.amazonaws.com/presse/logo_culture.jpg" width= "100%">
+          <a target= "_blank" href= "https://r2.mediaclasse.fr/documents/350+chaines+Youtube.pdf">
+            <img src="https://r2.mediaclasse.fr/presse/logo_culture.jpg" width= "100%">
           </a>
         </div>
         <!-- ======== PRESSE =================================== -->
@@ -184,7 +184,7 @@
               Bulletin Officiel ↓</p>
             </a>
             <a target= "_blank" href="https://www.education.gouv.fr/bo/2025/Hebdo30/MENE2518792N">
-              <img width= "100%" src= "https://acquis.s3.eu-west-1.amazonaws.com/presse/logo_educnat.jpg">
+              <img width= "100%" src= "https://r2.mediaclasse.fr/presse/logo_educnat.jpg">
             </a>
         </div>
         <!-- ====== DIAPORAMA INSTAGRAM ====== -->
@@ -196,7 +196,7 @@
             <% end %>
           <%= link_to "https://www.instagram.com/mediaclasse/", target: :_blank do %>
             <div class= "home-card-insta">
-              <span><img class="avatar-bordered" src="https://acquis.s3.eu-west-1.amazonaws.com/divers/id+insta4.jpg" margin-bottom=10px></span>
+              <span><img class="avatar-bordered" src="https://r2.mediaclasse.fr/divers/id+insta4.jpg" margin-bottom=10px></span>
               <span style="font-family: Arial;">
               <b>  Mediaclasse  
                 <i class="fab fa-instagram"></i></b><br>
@@ -237,7 +237,7 @@
             <% if comment.user.picture %>
               <%= cl_image_tag comment.user.picture.path, class: "avatar-list", width:80, height:80, crop: :fill %>
             <% else %>
-              <%= cl_image_tag "https://s3-eu-west-1.amazonaws.com/acquis/avatars/"+(comment.user.id+1000).to_s.last(3)+".jpg", class: "avatar-list", crop: :fill %>
+              <%= cl_image_tag "https://r2.mediaclasse.fr/avatars/"+(comment.user.id+1000).to_s.last(3)+".jpg", class: "avatar-list", crop: :fill %>
             <% end %>
             <!-- Capture name or begining of email adress -->
             <% if comment.user.firstname %>
